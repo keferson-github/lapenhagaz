@@ -26,7 +26,7 @@ const AccessCardsSection = () => {
   return (
     <section className="relative overflow-hidden py-0 bg-gradient-to-b from-background to-[hsl(var(--muted)/0.35)] before:content-[''] before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_at_top_right,hsl(var(--accent)/0.10),transparent_60%)]">
       <div className="container">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 mt-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             O que você gostaria de acessar?
           </h2>

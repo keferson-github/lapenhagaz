@@ -1,4 +1,5 @@
-import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
+import { FaTiktok } from "react-icons/fa";
 
 const SiteFooter = () => {
   return (
@@ -22,11 +23,22 @@ const SiteFooter = () => {
           </div>
           <div>
             <h4 className="font-semibold mb-3">Redes sociais</h4>
-            <div className="flex items-center gap-3 text-muted-foreground">
-              <a aria-label="Facebook" href="#" className="hover:text-foreground"><Facebook /></a>
-              <a aria-label="Instagram" href="#" className="hover:text-foreground"><Instagram /></a>
-              <a aria-label="LinkedIn" href="#" className="hover:text-foreground"><Linkedin /></a>
-              <a aria-label="YouTube" href="#" className="hover:text-foreground"><Youtube /></a>
+            <div className="flex items-center gap-4 text-muted-foreground">
+              <a aria-label="Facebook" href="#" className="group hover:text-primary transition-all duration-300 hover:scale-110">
+                <div className="p-2 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white group-hover:shadow-lg transition-all duration-300">
+                  <Facebook className="h-5 w-5" />
+                </div>
+              </a>
+              <a aria-label="Instagram" href="#" className="group hover:text-primary transition-all duration-300 hover:scale-110">
+                <div className="p-2 rounded-full bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 text-white group-hover:shadow-lg transition-all duration-300">
+                  <Instagram className="h-5 w-5" />
+                </div>
+              </a>
+              <a aria-label="TikTok" href="#" className="group hover:text-primary transition-all duration-300 hover:scale-110">
+                <div className="p-2 rounded-full bg-gradient-to-br from-black to-gray-800 text-white group-hover:shadow-lg transition-all duration-300">
+                  <FaTiktok className="h-5 w-5" />
+                </div>
+              </a>
             </div>
           </div>
           <div>

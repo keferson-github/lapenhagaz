@@ -1,10 +1,10 @@
 
 import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 
 const Hero = () => {
-  const [api, setApi] = useState<any>();
+  const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
   const slides = [
@@ -63,19 +63,19 @@ const Hero = () => {
           {slides.map((slide, index) => (
             <CarouselItem key={index}>
               <div className="container grid md:grid-cols-2 gap-10 py-14 md:py-20 items-center">
-                <div className="space-y-6 animate-enter">
-                  <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+                <div className="space-y-6">
+                  <h1 className="text-4xl md:text-5xl font-extrabold leading-tight animate-fade-in">
                     {slide.title}
                   </h1>
-                  <p className="text-muted-foreground text-lg">
+                  <p className="text-muted-foreground text-lg animate-fade-in" style={{animationDelay: '0.2s'}}>
                     {slide.description}
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3 animate-fade-in" style={{animationDelay: '0.4s'}}>
                     <a href={slide.primaryAction.href}>
-                      <Button variant="hero" size="lg">{slide.primaryAction.text}</Button>
+                      <Button variant="hero" size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">{slide.primaryAction.text}</Button>
                     </a>
                     <a href={slide.secondaryAction.href}>
-                      <Button variant="outline" size="lg">{slide.secondaryAction.text}</Button>
+                      <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105">{slide.secondaryAction.text}</Button>
                     </a>
                   </div>
                 </div>
