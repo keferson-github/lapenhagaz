@@ -72,7 +72,7 @@ const Services = () => {
             </div>
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&crop=center"
+                src="/images/og-lapenhagaz.jpg"
                 alt="Instalação de gás natural em cozinha moderna"
                 className="rounded-lg shadow-[var(--shadow-elevated)] w-full"
                 loading="lazy"
@@ -89,7 +89,7 @@ const Services = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
               <img
-                src="https://images.unsplash.com/photo-1560472355-536de3962603?w=600&h=400&fit=crop&crop=center"
+                src="/images/og-lapenhagaz.jpg"
                 alt="Galões de água mineral em ambiente corporativo"
                 className="rounded-lg shadow-[var(--shadow-elevated)] w-full"
                 loading="lazy"

@@ -27,7 +27,7 @@ const Blog = () => {
       author: "Dr. Carlos Silva",
       date: "2024-01-15",
       readTime: "5 min",
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=250&fit=crop&crop=center",
+      image: "/images/og-lapenhagaz.jpg",
       featured: true
     },
     {
@@ -39,7 +39,7 @@ const Blog = () => {
       author: "Dra. Marina Santos",
       date: "2024-01-10",
       readTime: "4 min",
-      image: "https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=250&fit=crop&crop=center",
+      image: "/images/og-lapenhagaz.jpg",
       featured: false
     },
     {
@@ -51,7 +51,7 @@ const Blog = () => {
       author: "Prof. João Oliveira",
       date: "2024-01-08",
       readTime: "6 min",
-      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=250&fit=crop&crop=center",
+      image: "/images/og-lapenhagaz.jpg",
       featured: false
     },
     {
@@ -63,7 +63,7 @@ const Blog = () => {
       author: "Eng. Roberto Costa",
       date: "2024-01-05",
       readTime: "3 min",
-      image: "https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=400&h=250&fit=crop&crop=center",
+      image: "/images/og-lapenhagaz.jpg",
       featured: false
     },
     {
@@ -75,7 +75,7 @@ const Blog = () => {
       author: "Dra. Ana Paula",
       date: "2024-01-03",
       readTime: "4 min",
-      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=250&fit=crop&crop=center",
+      image: "/images/og-lapenhagaz.jpg",
       featured: false
     },
     {
@@ -87,7 +87,7 @@ const Blog = () => {
       author: "Consultor André Lima",
       date: "2024-01-01",
       readTime: "7 min",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=250&fit=crop&crop=center",
+      image: "/images/og-lapenhagaz.jpg",
       featured: false
     }
   ];

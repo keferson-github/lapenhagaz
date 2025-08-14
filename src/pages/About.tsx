@@ -56,7 +56,7 @@ const About = () => {
             </div>
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&crop=center"
+                src="/images/og-lapenhagaz.jpg"
                 alt="Instalações da LapenhaGáz"
                 className="rounded-lg shadow-[var(--shadow-elevated)] w-full"
                 loading="lazy"
@@ -121,7 +121,7 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
               <img
-                src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=600&h=400&fit=crop&crop=center"
+                src="/images/og-lapenhagaz.jpg"
                 alt="Infraestrutura e equipamentos da LapenhaGáz"
                 className="rounded-lg shadow-[var(--shadow-elevated)] w-full"
                 loading="lazy"
