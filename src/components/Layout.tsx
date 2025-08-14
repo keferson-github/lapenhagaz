@@ -1,7 +1,7 @@
 import BrandHeader from "@/components/BrandHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ChatbotWidget from "@/components/ChatbotWidget";
-import { ChatbotProvider } from "@/hooks/use-chatbot";
+import { ChatbotProvider } from "@/hooks/use-chatbot-provider";
 import { ReactNode } from "react";
 
 interface LayoutProps {

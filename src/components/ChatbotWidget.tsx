@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle, X } from "lucide-react";
-import { useChatbot } from "@/hooks/use-chatbot";
+import { useChatbot } from "@/hooks/use-chatbot-hook";
 
 const ChatbotWidget = () => {
   const { isOpen, toggleChat } = useChatbot();
