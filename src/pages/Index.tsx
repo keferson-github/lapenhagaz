@@ -4,6 +4,7 @@ import AdvantagesSection from "@/components/AdvantagesSection";
 import SolutionsSection from "@/components/SolutionsSection";
 import CommitmentsSection from "@/components/CommitmentsSection";
 import NumbersSection from "@/components/NumbersSection";
+import TipsVideoSection from "@/components/TipsVideoSection";
 import BackToTop from "@/components/BackToTop";
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
@@ -44,6 +45,10 @@ const Index = () => {
         <AdvantagesSection />
         <CommitmentsSection />
         <NumbersSection />
+      </section>
+
+      <section id="dicas" aria-label="Dicas úteis e rápidas" className="scroll-mt-24">
+        <TipsVideoSection />
       </section>
 
       <section id="blog" aria-label="Blog" className="scroll-mt-24">

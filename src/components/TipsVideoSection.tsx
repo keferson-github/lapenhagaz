@@ -1,0 +1,370 @@
+import { useState, useRef, useEffect, memo } from 'react';
+import { ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX } from 'lucide-react';
+
+// Dados dos vídeos de dicas
+const tipsVideos = [
+  {
+    id: 1,
+    title: "Como trocar o botijão de gás com segurança",
+    description: "Aprenda o passo a passo para trocar seu botijão de forma segura e evitar acidentes.",
+    thumbnail: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=600&fit=crop&crop=center&auto=format&q=80",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    duration: "2:30",
+    category: "Segurança"
+  },
+  {
+    id: 2,
+    title: "Sinais de vazamento de gás: como identificar",
+    description: "Conheça os principais sinais que indicam vazamento de gás e como agir rapidamente.",
+    thumbnail: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&h=600&fit=crop&crop=center&auto=format&q=80",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    duration: "1:45",
+    category: "Segurança"
+  },
+  {
+    id: 3,
+    title: "Armazenamento correto da água mineral",
+    description: "Dicas para manter a qualidade da sua água mineral por mais tempo.",
+    thumbnail: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=600&fit=crop&crop=center&auto=format&q=80",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    duration: "1:20",
+    category: "Cuidados"
+  },
+  {
+    id: 4,
+    title: "Economia de gás: dicas práticas",
+    description: "Como usar o gás de forma mais eficiente e economizar na conta mensal.",
+    thumbnail: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=600&fit=crop&crop=center&auto=format&q=80",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    duration: "3:15",
+    category: "Economia"
+  },
+  {
+    id: 5,
+    title: "Manutenção do fogão a gás",
+    description: "Mantenha seu fogão sempre funcionando perfeitamente com essas dicas simples.",
+    thumbnail: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=600&fit=crop&crop=center&auto=format&q=80",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    duration: "2:45",
+    category: "Manutenção"
+  },
+  {
+    id: 6,
+    title: "Benefícios da água mineral natural",
+    description: "Descubra por que a água mineral é a melhor opção para sua saúde e bem-estar.",
+    thumbnail: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=600&fit=crop&crop=center&auto=format&q=80",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    duration: "2:10",
+    category: "Saúde"
+  }
+];
+
+// Componente do player de vídeo
+const VideoPlayer = memo(({ video, isActive, onClose }: { 
+  video: typeof tipsVideos[0], 
+  isActive: boolean, 
+  onClose: () => void 
+}) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (isActive && videoRef.current) {
+      videoRef.current.currentTime = 0;
+      setProgress(0);
+    }
+  }, [isActive]);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      const progress = (videoRef.current.currentTime / videoRef.current.duration) * 100;
+      setProgress(progress);
+    }
+  };
+
+  return (
+    <div className="relative w-full h-full bg-black rounded-2xl overflow-hidden group">
+      <video
+        ref={videoRef}
+        className="w-full h-full object-cover"
+        muted={isMuted}
+        onTimeUpdate={handleTimeUpdate}
+        onEnded={() => setIsPlaying(false)}
+        poster={video.thumbnail}
+      >
+        <source src={video.videoUrl} type="video/mp4" />
+      </video>
+      
+      {/* Overlay com controles */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30">
+        {/* Header */}
+        <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-white z-10">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
+              <span className="text-xs font-bold text-white">LG</span>
+            </div>
+            <span className="text-sm font-medium">LapenhaGáz</span>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-8 h-8 bg-black/50 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
+          >
+            <span className="text-white text-lg leading-none">×</span>
+          </button>
+        </div>
+
+        {/* Progress bar */}
+        <div className="absolute top-16 left-4 right-4">
+          <div className="w-full h-1 bg-white/30 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-white transition-all duration-300 ease-out"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Play/Pause button central */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <button
+            onClick={togglePlay}
+            className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300 group-hover:scale-110"
+          >
+            {isPlaying ? (
+              <Pause className="w-8 h-8 text-white" />
+            ) : (
+              <Play className="w-8 h-8 text-white ml-1" />
+            )}
+          </button>
+        </div>
+
+        {/* Bottom info */}
+        <div className="absolute bottom-4 left-4 right-4 text-white">
+          <div className="flex items-end justify-between">
+            <div className="flex-1">
+              <div className="inline-block px-2 py-1 bg-primary/80 rounded-full text-xs font-medium mb-2">
+                {video.category}
+              </div>
+              <h3 className="font-bold text-lg mb-1 leading-tight">{video.title}</h3>
+              <p className="text-sm text-white/90 leading-relaxed">{video.description}</p>
+            </div>
+            <div className="flex flex-col items-center gap-2 ml-4">
+              <button
+                onClick={toggleMute}
+                className="w-10 h-10 bg-black/50 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors"
+              >
+                {isMuted ? (
+                  <VolumeX className="w-5 h-5 text-white" />
+                ) : (
+                  <Volume2 className="w-5 h-5 text-white" />
+                )}
+              </button>
+              <span className="text-xs text-white/80">{video.duration}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+});
+
+VideoPlayer.displayName = 'VideoPlayer';
+
+// Componente principal
+const TipsVideoSection = memo(() => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState<typeof tipsVideos[0] | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % tipsVideos.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + tipsVideos.length) % tipsVideos.length);
+  };
+
+  const openVideo = (video: typeof tipsVideos[0]) => {
+    setSelectedVideo(video);
+    setIsModalOpen(true);
+  };
+
+  const closeVideo = () => {
+    setIsModalOpen(false);
+    setSelectedVideo(null);
+  };
+
+  // Auto-scroll para o item ativo
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const itemWidth = 280; // w-64 + gap
+      const scrollPosition = currentIndex * itemWidth;
+      container.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, [currentIndex]);
+
+  return (
+    <>
+      <section className="py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23e2e8f0%22%20fill-opacity%3D%220.3%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-40" />
+        
+        {/* Floating shapes */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full blur-xl animate-pulse delay-1000" />
+        
+        <div className="container relative">
+          {/* Header */}
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider mb-6">
+              <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 6a2 2 0 012-2h6l2 2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+              </svg>
+              Conteúdo exclusivo
+            </div>
+            <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent leading-tight">
+              Dicas Úteis & Rápidas
+            </h2>
+            <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto">
+              Aprenda com nossos especialistas através de vídeos práticos e informativos sobre gás GLP e água mineral
+            </p>
+          </div>
+
+          {/* Stories Carousel */}
+          <div className="relative">
+            {/* Navigation buttons */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:bg-white hover:scale-110"
+            >
+              <ChevronLeft className="w-6 h-6 text-gray-700 group-hover:text-primary transition-colors" />
+            </button>
+            
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:bg-white hover:scale-110"
+            >
+              <ChevronRight className="w-6 h-6 text-gray-700 group-hover:text-primary transition-colors" />
+            </button>
+
+            {/* Stories container */}
+            <div 
+              ref={scrollContainerRef}
+              className="flex gap-4 overflow-x-auto scrollbar-hide px-16 py-8"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {tipsVideos.map((video, index) => (
+                <div
+                  key={video.id}
+                  className={`flex-shrink-0 w-64 transition-all duration-500 cursor-pointer group ${
+                    index === currentIndex ? 'scale-105' : 'scale-95 opacity-70'
+                  }`}
+                  onClick={() => {
+                    setCurrentIndex(index);
+                    openVideo(video);
+                  }}
+                >
+                  <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500">
+                    {/* Story ring */}
+                    <div className={`absolute -inset-1 rounded-2xl transition-all duration-500 ${
+                      index === currentIndex 
+                        ? 'bg-gradient-to-r from-primary via-secondary to-accent p-1' 
+                        : 'bg-gradient-to-r from-gray-300 to-gray-400 p-0.5'
+                    }`}>
+                      <div className="w-full h-full bg-white rounded-2xl" />
+                    </div>
+                    
+                    {/* Thumbnail */}
+                    <img
+                      src={video.thumbnail}
+                      alt={video.title}
+                      className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-xl group-hover:scale-105 transition-transform duration-700"
+                    />
+                    
+                    {/* Overlay */}
+                    <div className="absolute inset-1 bg-gradient-to-t from-black/80 via-transparent to-transparent rounded-xl">
+                      {/* Play button */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 group-hover:scale-110 transition-all duration-300">
+                          <Play className="w-8 h-8 text-white ml-1" />
+                        </div>
+                      </div>
+                      
+                      {/* Info */}
+                      <div className="absolute bottom-4 left-4 right-4 text-white">
+                        <div className="inline-block px-2 py-1 bg-primary/80 rounded-full text-xs font-medium mb-2">
+                          {video.category}
+                        </div>
+                        <h3 className="font-bold text-sm mb-1 leading-tight line-clamp-2">{video.title}</h3>
+                        <div className="flex items-center justify-between text-xs text-white/80">
+                          <span>{video.duration}</span>
+                          <span className="bg-black/50 px-2 py-1 rounded-full">Story</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Indicators */}
+            <div className="flex justify-center gap-2 mt-8">
+              {tipsVideos.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex 
+                      ? 'bg-primary w-8' 
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Modal de vídeo */}
+      {isModalOpen && selectedVideo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
+          <div className="relative w-full max-w-md h-[80vh] mx-4">
+            <VideoPlayer 
+              video={selectedVideo} 
+              isActive={isModalOpen} 
+              onClose={closeVideo}
+            />
+          </div>
+        </div>
+      )}
+    </>
+  );
+});
+
+TipsVideoSection.displayName = 'TipsVideoSection';
+
+export default TipsVideoSection;
