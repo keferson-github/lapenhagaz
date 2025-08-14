@@ -120,7 +120,7 @@ const NumbersSection = memo(() => {
         <div className="grid md:grid-cols-2 gap-10">
           <article ref={clientsCount.elementRef} className="group relative bg-white/90 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-3 hover:bg-white border border-white/50">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full overflow-hidden border-2 border-white/30 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700">
+            <div className="absolute -top-8 -right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-primary/70 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 ring-2 ring-secondary/40">
               <img
                 src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=400&h=400&fit=crop&crop=center&auto=format&q=80"
                 srcSet="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=200&h=200&fit=crop&crop=center&auto=format&q=75 200w,
@@ -136,22 +136,36 @@ const NumbersSection = memo(() => {
             </div>
             <div className="relative">
               <div className="flex items-baseline gap-3 mb-4">
-                <span className="text-6xl md:text-7xl font-black bg-gradient-to-br from-primary via-accent to-secondary bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-700 leading-none animate-pulse">
+                <span className="text-6xl md:text-7xl font-black bg-gradient-to-br from-primary via-accent to-secondary bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-700 leading-none">
                   +{clientsCount.count}
                 </span>
                 <span className="text-4xl font-black text-gray-500 group-hover:text-gray-700 transition-colors duration-500">MIL</span>
               </div>
-              <p className="text-gray-700 font-bold text-xl group-hover:text-gray-900 transition-colors duration-500">Clientes atendidos</p>
-              <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
-                <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full animate-pulse" />
-                <span>Crescimento contínuo desde 2009</span>
+              <p className="text-gray-700 font-bold text-xl group-hover:text-gray-900 transition-colors duration-500">Famílias e empresas atendidas</p>
+              <div className="mt-6 space-y-3">
+                <div className="flex items-center gap-3 text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full" />
+                  <span className="font-medium">Residências, restaurantes e comércios</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-green-500 rounded-full" />
+                  <span className="font-medium">Entrega de gás GLP e água mineral</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-full" />
+                  <span className="font-medium">Crescimento de 25% ao ano desde 2009</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full" />
+                  <span className="font-medium">Cobertura em toda região metropolitana</span>
+                </div>
               </div>
             </div>
           </article>
 
           <article ref={satisfactionCount.elementRef} className="group relative bg-white/90 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-3 hover:bg-white border border-white/50">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full overflow-hidden border-2 border-white/30 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700">
+            <div className="absolute -top-8 -right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-secondary/70 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 ring-2 ring-primary/40">
               <img
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=400&fit=crop&crop=center&auto=format&q=80"
                 srcSet="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&h=200&fit=crop&crop=center&auto=format&q=75 200w,
@@ -167,14 +181,28 @@ const NumbersSection = memo(() => {
             </div>
             <div className="relative">
               <div className="flex items-baseline gap-3 mb-4">
-                <span className="text-6xl md:text-7xl font-black bg-gradient-to-br from-primary via-accent to-secondary bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-700 leading-none animate-pulse">
+                <span className="text-6xl md:text-7xl font-black bg-gradient-to-br from-primary via-accent to-secondary bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-700 leading-none">
                   {satisfactionCount.count}%
                 </span>
               </div>
-              <p className="text-gray-700 font-bold text-xl group-hover:text-gray-900 transition-colors duration-500">Clientes satisfeitos</p>
-              <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
-                <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full animate-pulse" />
-                <span>Avaliação de qualidade 2024</span>
+              <p className="text-gray-700 font-bold text-xl group-hover:text-gray-900 transition-colors duration-500">Índice de satisfação dos clientes</p>
+              <div className="mt-6 space-y-3">
+                <div className="flex items-center gap-3 text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full" />
+                  <span className="font-medium">Pesquisa NPS realizada em 2024</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full" />
+                  <span className="font-medium">Qualidade do gás GLP certificada</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" />
+                  <span className="font-medium">Água mineral com pureza garantida</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full" />
+                  <span className="font-medium">Entrega pontual e atendimento 24h</span>
+                </div>
               </div>
             </div>
           </article>
@@ -199,7 +227,7 @@ const NumbersSection = memo(() => {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
               <div ref={experienceCount.elementRef} className="text-center space-y-2 group hover:scale-105 transition-transform duration-300">
-                <div className="text-3xl font-black text-green-600 group-hover:text-green-700 transition-colors duration-300 animate-pulse">{experienceCount.count}+</div>
+                <div className="text-3xl font-black text-green-600 group-hover:text-green-700 transition-colors duration-300">{experienceCount.count}+</div>
                 <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Anos de experiência</p>
               </div>
               <div className="text-center space-y-2 group hover:scale-105 transition-transform duration-300">
