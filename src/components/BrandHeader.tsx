@@ -74,32 +74,42 @@ export const BrandHeader = () => {
         </div>
       </nav>
 
-      {open && (
-        <div className="md:hidden border-t border-border/60 bg-background">
-          <ul className="container py-3 grid gap-3">
-            {[
-              { label: "Home", href: "#home" },
-              { label: "Serviços", href: "#servicos" },
-              { label: "Sobre Nós", href: "#sobre" },
-              { label: "Contato", href: "#contato" },
-              { label: "Blog", href: "#blog" },
-            ].map((item) => (
-              <li key={item.label}>
-                <a href={item.href} onClick={() => setOpen(false)} className="block py-2">
-                  {item.label}
-                </a>
-              </li>
-            ))}
-            <li>
-              <div className="flex gap-2">
-                <a href="#servicos" className="flex-1"><Button variant="secondary" className="w-full">Contratar gás encanado</Button></a>
-                <a href="#servicos" className="flex-1"><Button variant="hero" className="w-full">Loja de serviços</Button></a>
-              </div>
+      <div className={`md:hidden border-t border-border/60 bg-background overflow-hidden transition-all duration-300 ease-in-out ${
+        open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+      }`}>
+        <ul className="container py-3 grid gap-3 text-center transform transition-transform duration-300 ease-in-out">
+          {[
+            { label: "Home", href: "#home" },
+            { label: "Serviços", href: "#servicos" },
+            { label: "Sobre Nós", href: "#sobre" },
+            { label: "Contato", href: "#contato" },
+            { label: "Blog", href: "#blog" },
+          ].map((item, index) => (
+            <li key={item.label} className={`transform transition-all duration-300 ease-in-out ${
+              open ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
+            }`} style={{ transitionDelay: open ? `${index * 50}ms` : '0ms' }}>
+              <a href={item.href} onClick={() => setOpen(false)} className="block py-2 text-center font-medium hover:text-primary transition-colors duration-200">
+                {item.label}
+              </a>
             </li>
-            <li><Input placeholder="Pesquisar" aria-label="Pesquisar" /></li>
-          </ul>
-        </div>
-      )}
+          ))}
+          <li className={`transform transition-all duration-300 ease-in-out ${
+            open ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
+          }`} style={{ transitionDelay: open ? '250ms' : '0ms' }}>
+            <div className="flex flex-col gap-2 items-center">
+              <a href="#servicos" className="w-full max-w-xs"><Button variant="secondary" className="w-full transition-all duration-200 hover:scale-105">Contratar gás encanado</Button></a>
+              <a href="#servicos" className="w-full max-w-xs"><Button variant="hero" className="w-full transition-all duration-200 hover:scale-105">Loja de serviços</Button></a>
+            </div>
+          </li>
+          <li className={`flex justify-center transform transition-all duration-300 ease-in-out ${
+            open ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
+          }`} style={{ transitionDelay: open ? '300ms' : '0ms' }}>
+            <div className="w-full max-w-xs">
+              <Input placeholder="Pesquisar" aria-label="Pesquisar" className="text-center transition-all duration-200 focus:scale-105" />
+            </div>
+          </li>
+        </ul>
+      </div>
     </header>
   );
 };
