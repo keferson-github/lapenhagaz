@@ -10,7 +10,7 @@ const HomeHeroCarousel = () => {
       badge: "GÁS GLP PREMIUM",
       title: "Gás GLP para sua Casa",
       subtitle: "Qualidade e segurança garantidas",
-      desc: "Gás GLP das melhores marcas do mercado para sua residência. Entrega rápida, segura e com a qualidade que sua família merece.",
+      desc: "Gás GLP das melhores marcas do mercado para sua residência. Entrega rápida, segura e com a qualidade que sua família merece. Atendimento especializado.",
       img: "/images/banner-gás.webp",
       cta: "Solicite Entrega",
       ctaSecondary: "Ver Marcas"
@@ -18,9 +18,9 @@ const HomeHeroCarousel = () => {
     {
       id: "comercial",
       badge: "SOLUÇÕES EMPRESARIAIS",
-      title: "Gás GLP para seu Negócio",
-      subtitle: "Eficiência e economia para empresas",
-      desc: "Gás GLP de alta qualidade para restaurantes, padarias, hotéis e indústrias. Fornecimento regular das melhores marcas do mercado.",
+      title: "Gás GLP para Empresas",
+      subtitle: "Eficiência e economia garantidas",
+      desc: "Gás GLP de alta qualidade para restaurantes, padarias, hotéis e indústrias. Fornecimento regular das melhores marcas. Suporte técnico completo.",
       img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=1080&fit=crop&crop=center",
       cta: "Solicite Orçamento",
       ctaSecondary: "Ver Soluções"
@@ -30,7 +30,7 @@ const HomeHeroCarousel = () => {
       badge: "ÁGUA PREMIUM",
       title: "Água Mineral Natural",
       subtitle: "Pureza e qualidade certificada",
-      desc: "Água mineral de fontes protegidas com entrega programada. Qualidade premium para sua família e empresa.",
+      desc: "Água mineral de fontes protegidas com entrega programada. Qualidade premium para sua família e empresa. Distribuição confiável e pontual.",
       img: "/images/banner-agua-mineral-com-logo.webp",
       cta: "Assine Agora",
       ctaSecondary: "Ver Planos"
@@ -40,7 +40,7 @@ const HomeHeroCarousel = () => {
       badge: "MARCAS PREMIUM",
       title: "As Melhores Marcas",
       subtitle: "Qualidade certificada e confiança",
-      desc: "Trabalhamos exclusivamente com as marcas líderes do mercado de gás GLP e água mineral. Qualidade garantida em cada entrega.",
+      desc: "Trabalhamos exclusivamente com as marcas líderes do mercado de gás GLP e água mineral. Qualidade garantida em cada entrega. Parceiros de confiança.",
       img: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1920&h=1080&fit=crop&crop=center",
       cta: "Conheça as Marcas",
       ctaSecondary: "Nossos Produtos"
