@@ -122,11 +122,11 @@ const NumbersSection = memo(() => {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full overflow-hidden border-2 border-white/30 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700">
               <img
-                src="https://images.unsplash.com/photo-1556909114-16c3e839c1ce?w=400&h=400&fit=crop&crop=center&auto=format&q=80"
-                srcSet="https://images.unsplash.com/photo-1556909114-16c3e839c1ce?w=200&h=200&fit=crop&crop=center&auto=format&q=75 200w,
-                         https://images.unsplash.com/photo-1556909114-16c3e839c1ce?w=400&h=400&fit=crop&crop=center&auto=format&q=80 400w"
+                src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=400&h=400&fit=crop&crop=center&auto=format&q=80"
+                srcSet="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=200&h=200&fit=crop&crop=center&auto=format&q=75 200w,
+                         https://images.unsplash.com/photo-1609220136736-443140cffec6?w=400&h=400&fit=crop&crop=center&auto=format&q=80 400w"
                 sizes="(max-width: 768px) 100px, 200px"
-                alt="Família usando gás GLP com segurança"
+                alt="Mulher sorrindo com sua filha no colo demonstrando satisfação"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 fetchPriority="high"
                 decoding="async"
@@ -153,11 +153,11 @@ const NumbersSection = memo(() => {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full overflow-hidden border-2 border-white/30 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700">
               <img
-                src="https://images.unsplash.com/photo-1589831377283-33cb1cc6bd5e?w=400&h=400&fit=crop&crop=center&auto=format&q=80"
-                srcSet="https://images.unsplash.com/photo-1589831377283-33cb1cc6bd5e?w=200&h=200&fit=crop&crop=center&auto=format&q=75 200w,
-                         https://images.unsplash.com/photo-1589831377283-33cb1cc6bd5e?w=400&h=400&fit=crop&crop=center&auto=format&q=80 400w"
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=400&fit=crop&crop=center&auto=format&q=80"
+                srcSet="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&h=200&fit=crop&crop=center&auto=format&q=75 200w,
+                         https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=400&fit=crop&crop=center&auto=format&q=80 400w"
                 sizes="(max-width: 768px) 100px, 200px"
-                alt="Família satisfeita consumindo com segurança"
+                alt="Condomínio de edifícios representando clientes satisfeitos"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 loading="lazy"
                 decoding="async"

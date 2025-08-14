@@ -43,11 +43,13 @@ export const BrandHeader = () => {
         </Link>
 
         <button
-          className="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-border"
+          className="md:hidden inline-flex items-center justify-center p-2 rounded-md"
           onClick={() => setOpen(!open)}
           aria-label="Alternar menu"
         >
-          <Menu />
+          <Menu className={`transition-transform duration-300 ease-in-out ${
+            open ? 'rotate-90' : 'rotate-0'
+          }`} />
         </button>
 
         <div className="hidden md:flex items-center gap-6">
