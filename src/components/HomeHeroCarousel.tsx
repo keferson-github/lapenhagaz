@@ -83,7 +83,7 @@ const HomeHeroCarousel = () => {
   }, [emblaApi]);
 
   return (
-    <section className="relative h-[650px] md:h-[700px] lg:h-[800px] overflow-hidden">
+    <section className="relative h-[550px] md:h-[600px] lg:h-[650px] overflow-hidden">
       {/* Full-bleed Hero Slider */}
       <div ref={emblaRef} className="overflow-hidden h-full">
         <div className="flex h-full">
@@ -157,26 +157,7 @@ const HomeHeroCarousel = () => {
                     </Button>
                   </div>
 
-                  {/* Navigation Arrows - Positioned below buttons */}
-                  <div className={`flex justify-center gap-4 ${index === selectedIndex ? 'animate-fade-in animation-delay-1200 anim-700 animation-ease-smooth animate-once will-change-transform will-change-opacity' : ''}`}>
-                    <button
-                      onClick={scrollPrev}
-                      disabled={!canScrollPrev}
-                      className="bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-3 backdrop-blur-sm transition-all duration-300 group hover:scale-110"
-                      aria-label="Slide anterior"
-                    >
-                      <ChevronLeft className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
-                    </button>
-                    
-                    <button
-                      onClick={scrollNext}
-                      disabled={!canScrollNext}
-                      className="bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-3 backdrop-blur-sm transition-all duration-300 group hover:scale-110"
-                      aria-label="Próximo slide"
-                    >
-                      <ChevronRight className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
-                    </button>
-                  </div>
+
                 </div>
               </div>
 
@@ -188,6 +169,27 @@ const HomeHeroCarousel = () => {
 
       {/* Navigation Controls */}
       <div className="absolute inset-0 pointer-events-none">
+        {/* Navigation Arrows - Desktop and Tablet only */}
+        <div className="hidden md:block pointer-events-auto">
+          <button
+            onClick={scrollPrev}
+            disabled={!canScrollPrev}
+            className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-1 lg:p-2 backdrop-blur-sm transition-all duration-300 group hover:scale-110 z-20"
+            aria-label="Slide anterior"
+          >
+            <ChevronLeft className="w-4 h-4 lg:w-6 lg:h-6 text-white group-hover:scale-110 transition-transform" />
+          </button>
+          
+          <button
+            onClick={scrollNext}
+            disabled={!canScrollNext}
+            className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-1 lg:p-2 backdrop-blur-sm transition-all duration-300 group hover:scale-110 z-20"
+            aria-label="Próximo slide"
+          >
+            <ChevronRight className="w-4 h-4 lg:w-6 lg:h-6 text-white group-hover:scale-110 transition-transform" />
+          </button>
+        </div>
+
         {/* Progress Bar */}
         <div className="absolute bottom-0 left-0 right-0 pointer-events-auto">
           <div className="h-1 bg-white/20">
