@@ -148,26 +148,21 @@ export const BrandHeader = () => {
               { 
                 label: "Serviços", 
                 href: "#servicos",
-                dropdown: [
-                  { label: "Gás GLP Residencial", desc: "Para sua casa", href: "#glp-residencial", icon: Home },
-                  { label: "Gás GLP Comercial", desc: "Para empresas", href: "#glp-comercial", icon: Commercial },
-                  { label: "Água Mineral", desc: "Pureza garantida", href: "#agua-mineral", icon: Water },
-                  { label: "Gás Encanado", desc: "Instalação completa", href: "#gas-encanado", icon: Gas }
-                ]
+                simple: true
               },
               { 
                 label: "Sobre Nós", 
                 href: "#sobre",
-                dropdown: [
-                  { label: "Nossa História", desc: "Tradição e qualidade", href: "#historia", icon: Team },
-                  { label: "Missão e Valores", desc: "Nossos princípios", href: "#missao", icon: Star },
-                  { label: "Certificações", desc: "Qualidade certificada", href: "#certificacoes", icon: Award },
-                  { label: "Sustentabilidade", desc: "Compromisso ambiental", href: "#sustentabilidade", icon: Shield }
-                ]
+                simple: true
               },
               { 
-                label: "Contato", 
-                href: "#contato",
+                label: "Dicas Úteis & Rápidas", 
+                href: "#dicas",
+                simple: true
+              },
+              { 
+                label: "Depoimentos", 
+                href: "#depoimentos",
                 simple: true
               },
               { 
@@ -196,47 +191,7 @@ export const BrandHeader = () => {
                   )}
                 </a>
                 
-                {/* Mega Menu Dropdown */}
-                {!item.simple && item.dropdown && (
-                  <div className={`absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-elevated border border-border/20 p-6 transition-all duration-300 transform ${
-                    activeDropdown === item.label 
-                      ? 'opacity-100 visible translate-y-0' 
-                      : 'opacity-0 invisible translate-y-2 pointer-events-none'
-                  }`}>
-                    <div className="grid gap-3">
-                      {item.dropdown.map((subItem) => (
-                        <a 
-                          key={subItem.label}
-                          href={subItem.href}
-                          className="group/item flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-all duration-200 hover:scale-[1.02]"
-                        >
-                          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 group-hover/item:bg-primary/20 transition-colors">
-                            <subItem.icon className="w-4 h-4 text-primary stroke-2" />
-                          </div>
-                          <div>
-                            <div className="font-medium text-foreground group-hover/item:text-primary transition-colors">
-                              {subItem.label}
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              {subItem.desc}
-                            </div>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                    
-                    {/* Call to action in dropdown */}
-                    <div className="mt-4 pt-4 border-t border-border/20">
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
-                        className="w-full hover:bg-primary hover:text-white transition-all duration-300"
-                      >
-                        Ver todos os serviços
-                      </Button>
-                    </div>
-                  </div>
-                )}
+                {/* Dropdowns removidos - todos os itens são links simples agora */}
               </div>
             ))}
           </nav>

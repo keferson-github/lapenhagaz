@@ -120,7 +120,7 @@ const NumbersSection = memo(() => {
         <div className="grid md:grid-cols-2 gap-10">
           <article ref={clientsCount.elementRef} className="group relative bg-white/90 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-3 hover:bg-white border border-white/50">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            <div className="absolute -top-8 -right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-primary/70 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 ring-2 ring-secondary/40">
+            <div className="absolute -top-8 -right-4 md:-right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-primary/70 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 ring-2 ring-secondary/40">
               <img
                 src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=400&h=400&fit=crop&crop=center&auto=format&q=80"
                 srcSet="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=200&h=200&fit=crop&crop=center&auto=format&q=75 200w,
@@ -165,7 +165,7 @@ const NumbersSection = memo(() => {
 
           <article ref={satisfactionCount.elementRef} className="group relative bg-white/90 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-3 hover:bg-white border border-white/50">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            <div className="absolute -top-8 -right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-secondary/70 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 ring-2 ring-primary/40">
+            <div className="absolute -top-8 -right-4 md:-right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-secondary/70 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 ring-2 ring-primary/40">
               <img
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=400&fit=crop&crop=center&auto=format&q=80"
                 srcSet="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&h=200&fit=crop&crop=center&auto=format&q=75 200w,

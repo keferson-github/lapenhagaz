@@ -89,7 +89,8 @@ const TestimonialCard = memo(({ testimonial, isActive }: {
       
       {/* Header com avatar e info */}
       <div className="flex items-start gap-4 mb-6">
-        <div className="relative">
+        {/* Avatar - visível apenas no mobile */}
+        <div className="relative md:hidden">
           <img
             src={testimonial.avatar}
             alt={testimonial.name}
@@ -226,20 +227,20 @@ const TestimonialsSection = memo(() => {
           {/* Navigation buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:bg-white hover:scale-110"
+            className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:bg-white hover:scale-110"
           >
             <ChevronLeft className="w-6 h-6 text-gray-700 group-hover:text-primary transition-colors" />
           </button>
           
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:bg-white hover:scale-110"
+            className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:bg-white hover:scale-110"
           >
             <ChevronRight className="w-6 h-6 text-gray-700 group-hover:text-primary transition-colors" />
           </button>
           
           {/* Cards container */}
-          <div className="px-16">
+          <div className="px-4 md:px-16">
             {/* Desktop view - 3 cards */}
             <div className="hidden md:grid md:grid-cols-3 gap-8">
               {getVisibleTestimonials().map((testimonial, index) => (
@@ -252,11 +253,25 @@ const TestimonialsSection = memo(() => {
             </div>
             
             {/* Mobile view - 1 card */}
-            <div className="md:hidden">
+            <div className="md:hidden max-w-full mx-auto">
               <TestimonialCard
                 testimonial={testimonials[currentIndex]}
                 isActive={true}
               />
+              <div className="flex justify-between mt-4">
+                <button
+                  onClick={prevSlide}
+                  className="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:bg-white hover:scale-110"
+                >
+                  <ChevronLeft className="w-6 h-6 text-gray-700 group-hover:text-primary transition-colors" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:bg-white hover:scale-110"
+                >
+                  <ChevronRight className="w-6 h-6 text-gray-700 group-hover:text-primary transition-colors" />
+                </button>
+              </div>
             </div>
           </div>
           

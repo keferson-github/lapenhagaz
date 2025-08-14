@@ -50,7 +50,7 @@ const Hero = () => {
   }, [api]);
 
   return (
-    <section id="inicio" className="relative">
+    <section id="inicio" className="relative min-h-[100vh] md:min-h-0">
       <Carousel 
         setApi={setApi}
         className="w-full"
@@ -61,8 +61,8 @@ const Hero = () => {
       >
         <CarouselContent>
           {slides.map((slide, index) => (
-            <CarouselItem key={index}>
-              <div className="container grid md:grid-cols-2 gap-10 py-14 md:py-20 items-center">
+            <CarouselItem key={index} className="min-h-[100vh] md:min-h-0">
+              <div className="container grid md:grid-cols-2 gap-10 py-20 md:py-24 items-center min-h-[100vh] md:min-h-0">
                 <div className="space-y-6">
                   <h1 className="text-4xl md:text-5xl font-extrabold leading-tight animate-fade-in">
                     {slide.title}
