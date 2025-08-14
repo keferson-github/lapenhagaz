@@ -25,8 +25,8 @@ const NewsSection = () => {
       excerpt: "Condições exclusivas para estabelecimentos comerciais com desconto progressivo na compra de gás GLP.",
       date: "10 de Janeiro, 2024",
       category: "Promoções",
-      image: "https://images.unsplash.com/photo-1545259741-2ea3ebf61fa2?auto=format&fit=crop&w=1600&q=80",
-      alt: "Restaurante com fogões a gás representando promoção comercial"
+      image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80",
+      alt: "Chef profissional cozinhando em restaurante com fogão a gás durante promoção especial"
     },
     {
       title: "Água mineral com nova fonte natural",

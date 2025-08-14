@@ -33,19 +33,19 @@ const AccessCardsSection = () => {
   const accessCards = [
     {
       title: "Gás GLP Residencial",
-      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=250&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=250&fit=crop&crop=center",
       href: "#gas-residencial",
       desc: "Botijões de gás GLP das melhores marcas para sua casa."
     },
     {
       title: "Gás GLP Comercial", 
-      image: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?w=400&h=250&fit=crop&crop=center",
+      image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=250&fit=crop&crop=center",
       href: "#gas-comercial",
       desc: "Soluções em gás GLP para restaurantes, padarias e empresas."
     },
     {
       title: "Água Mineral Premium",
-      image: "https://images.unsplash.com/photo-1581091870622-7e0cdfbb6791?w=400&h=250&fit=crop&crop=center", 
+      image: "https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=250&fit=crop&crop=center", 
       href: "#agua-mineral",
       desc: "Água mineral natural de qualidade superior com entrega."
     }
