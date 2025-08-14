@@ -5,6 +5,7 @@ import SolutionsSection from "@/components/SolutionsSection";
 import CommitmentsSection from "@/components/CommitmentsSection";
 import NumbersSection from "@/components/NumbersSection";
 import TipsVideoSection from "@/components/TipsVideoSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import BackToTop from "@/components/BackToTop";
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
@@ -49,6 +50,10 @@ const Index = () => {
 
       <section id="dicas" aria-label="Dicas úteis e rápidas" className="scroll-mt-24">
         <TipsVideoSection />
+      </section>
+
+      <section id="depoimentos" aria-label="Depoimentos de clientes" className="scroll-mt-24">
+        <TestimonialsSection />
       </section>
 
       <section id="blog" aria-label="Blog" className="scroll-mt-24">
