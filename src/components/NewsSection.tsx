@@ -1,7 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
-import { Calendar, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const NewsSection = () => {
   const news = [
@@ -45,43 +52,51 @@ const NewsSection = () => {
           </Button>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {news.map((item, index) => (
-            <Card key={index} className="group cursor-pointer hover:shadow-[var(--shadow-elevated)] transition-all duration-300">
-              <div className="overflow-hidden rounded-t-lg">
-                <AspectRatio ratio={16 / 9}>
-                  <img
-                    src={item.image}
-                    alt={item.alt}
-                    loading="lazy"
-                    decoding="async"
-                    sizes="(min-width: 1024px) 360px, (min-width: 768px) 33vw, 100vw"
-                    className="h-full w-full object-cover"
-                  />
-                </AspectRatio>
-              </div>
-              <CardHeader>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                  <Calendar className="h-4 w-4" />
-                  <span>{item.date}</span>
-                </div>
-                <span className="inline-block bg-accent/10 text-accent text-xs px-2 py-1 rounded-full mb-3 w-fit">
-                  {item.category}
-                </span>
-                <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                  {item.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-sm line-clamp-3">
-                  {item.excerpt}
-                </p>
-                <Button variant="link" className="p-0 mt-4 text-primary">
-                  Leia mais <ArrowRight className="ml-1 h-3 w-3" />
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="relative">
+          <Carousel opts={{ align: "start", loop: true }}>
+            <CarouselContent>
+              {news.map((item, index) => (
+                <CarouselItem key={index} className="pl-4 sm:basis-1/2 lg:basis-1/3">
+                  <Card className="group cursor-pointer hover:shadow-[var(--shadow-elevated)] transition-all duration-300 h-full">
+                    <div className="overflow-hidden rounded-t-lg">
+                      <AspectRatio ratio={16 / 9}>
+                        <img
+                          src={item.image}
+                          alt={item.alt}
+                          loading="lazy"
+                          decoding="async"
+                          sizes="(min-width: 1024px) 360px, (min-width: 768px) 33vw, 100vw"
+                          className="h-full w-full object-cover"
+                        />
+                      </AspectRatio>
+                    </div>
+                    <CardHeader>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                        <Calendar className="h-4 w-4" />
+                        <span>{item.date}</span>
+                      </div>
+                      <span className="inline-block bg-accent/10 text-accent text-xs px-2 py-1 rounded-full mb-3 w-fit">
+                        {item.category}
+                      </span>
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                        {item.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground text-sm line-clamp-3">
+                        {item.excerpt}
+                      </p>
+                      <Button variant="link" className="p-0 mt-4 text-primary">
+                        Leia mais <ArrowRight className="ml-1 h-3 w-3" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="-left-3 md:-left-6" />
+            <CarouselNext className="-right-3 md:-right-6" />
+          </Carousel>
         </div>
         
         <div className="text-center mt-8 md:hidden">
