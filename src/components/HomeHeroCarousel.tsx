@@ -29,7 +29,7 @@ const HomeHeroCarousel = () => {
       id: "agua-mineral",
       badge: "ÁGUA PREMIUM",
       title: "Água Mineral Natural",
-      subtitle: "Pureza e qualidade certificada",
+      subtitle: "Pureza e qualidade certificada é na Lapenhagáz",
       desc: "Água mineral de fontes protegidas com entrega programada. Qualidade premium para sua família e empresa. Distribuição confiável e pontual.",
       img: "/images/banner-agua-mineral-com-logo.webp",
       cta: "Assine Agora",
@@ -113,7 +113,7 @@ const HomeHeroCarousel = () => {
                   className="max-w-3xl"
                 >
                   {/* Badge */}
-                  <div className={`mb-6 ${index === selectedIndex ? 'animate-slide-up animation-delay-200 anim-600 animation-ease-smooth animate-once will-change-transform will-change-opacity' : ''}`}>
+                  <div className={`hidden md:block mb-6 ${index === selectedIndex ? 'animate-slide-up animation-delay-200 anim-600 animation-ease-smooth animate-once will-change-transform will-change-opacity' : ''}`}>
                     <span className="inline-block px-6 py-3 bg-primary/30 backdrop-blur-md border border-primary/40 rounded-full text-primary-foreground text-sm font-semibold transform translate-y-0 transition-all duration-700 ease-out shadow-lg">
                       {slide.badge}
                     </span>
