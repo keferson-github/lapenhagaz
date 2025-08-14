@@ -227,14 +227,14 @@ const TestimonialsSection = memo(() => {
           {/* Navigation buttons */}
           <button
             onClick={prevSlide}
-            className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:bg-white hover:scale-110"
+            className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 md:items-center md:justify-center group hover:bg-white hover:scale-110"
           >
             <ChevronLeft className="w-6 h-6 text-gray-700 group-hover:text-primary transition-colors" />
           </button>
           
           <button
             onClick={nextSlide}
-            className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:bg-white hover:scale-110"
+            className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 md:items-center md:justify-center group hover:bg-white hover:scale-110"
           >
             <ChevronRight className="w-6 h-6 text-gray-700 group-hover:text-primary transition-colors" />
           </button>
