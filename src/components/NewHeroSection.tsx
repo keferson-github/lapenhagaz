@@ -38,8 +38,8 @@ const NewHeroSection = () => {
             </p>
 
             <Button 
-              size="lg" 
-              className="bg-white text-primary hover:bg-white/90 font-bold px-8 py-4 rounded-full text-lg shadow-lg"
+              size="default" 
+              className="bg-white text-primary hover:bg-white/90 font-semibold px-6 py-3 rounded-full text-base shadow-lg"
             >
               VAMOS LÁ!
             </Button>

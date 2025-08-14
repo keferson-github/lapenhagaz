@@ -4,24 +4,24 @@ import { Leaf, Clock, Shield, DollarSign } from "lucide-react";
 const AdvantagesSection = () => {
   const advantages = [
     {
-      icon: Leaf,
-      title: "Sustentabilidade",
-      description: "Energia limpa e renovável que contribui para um futuro mais sustentável e responsável com o meio ambiente."
+      icon: Shield,
+      title: "Qualidade Garantida",
+      description: "Trabalhamos apenas com as melhores marcas de gás GLP e água mineral do mercado, garantindo qualidade superior."
     },
     {
       icon: Clock,
-      title: "Praticidade",
-      description: "Fornecimento contínuo 24 horas, sem necessidade de troca de cilindros ou preocupações com o abastecimento."
-    },
-    {
-      icon: Shield,
-      title: "Segurança",
-      description: "Sistema seguro e confiável, com monitoramento constante e tecnologia avançada para sua tranquilidade."
+      title: "Entrega Rápida",
+      description: "Entrega ágil e pontual de gás GLP e água mineral, com agendamento flexível para sua comodidade."
     },
     {
       icon: DollarSign,
-      title: "Economia",
-      description: "Redução significativa nos custos operacionais e maior eficiência energética para sua casa ou empresa."
+      title: "Preços Competitivos",
+      description: "Os melhores preços do mercado em gás GLP e água mineral, com condições especiais para clientes fiéis."
+    },
+    {
+      icon: Leaf,
+      title: "Produtos Certificados",
+      description: "Todos os nossos produtos possuem certificação de qualidade e seguem rigorosos padrões de segurança."
     }
   ];
 
@@ -34,10 +34,10 @@ const AdvantagesSection = () => {
             Por que escolher?
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Vantagens do gás encanado
+            Por que escolher a LapenhaGáz?
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Descubra os benefícios que fazem do gás natural a melhor escolha para sua casa ou empresa
+            Descubra os benefícios que fazem da LapenhaGáz a melhor escolha em gás GLP e água mineral
           </p>
         </div>
 

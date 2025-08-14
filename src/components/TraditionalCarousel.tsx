@@ -106,7 +106,7 @@ const TraditionalCarousel = ({
                   </p>
                   <Button 
                     variant="hero" 
-                    size="lg"
+                    size="default"
                     className="group"
                     asChild
                   >
@@ -126,44 +126,26 @@ const TraditionalCarousel = ({
       <Button
         variant="outline"
         size="icon"
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm border-border/50 hover:bg-background/90 z-30"
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm border-border/50 hover:bg-background/90 z-30 h-8 w-8 md:h-10 md:w-10"
         onClick={prevSlide}
         aria-label="Slide anterior"
       >
-        <ChevronLeft className="h-5 w-5" />
+        <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
       </Button>
 
       <Button
         variant="outline"
         size="icon"
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm border-border/50 hover:bg-background/90 z-30"
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm border-border/50 hover:bg-background/90 z-30 h-8 w-8 md:h-10 md:w-10"
         onClick={nextSlide}
         aria-label="Próximo slide"
       >
-        <ChevronRight className="h-5 w-5" />
+        <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
       </Button>
 
       {/* Bottom controls */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-background/80 backdrop-blur-sm rounded-full px-6 py-3 border border-border/50 z-30">
-        {/* Dots indicator */}
-        <div className="flex gap-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              className={cn(
-                "w-3 h-3 rounded-full transition-all duration-300",
-                index === currentSlide 
-                  ? "bg-primary w-8" 
-                  : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-              )}
-              onClick={() => goToSlide(index)}
-              aria-label={`Ir para slide ${index + 1}`}
-            />
-          ))}
-        </div>
-
         {/* Play/Pause button */}
-        <div className="w-px h-5 bg-border" />
         <Button
           variant="ghost"
           size="sm"

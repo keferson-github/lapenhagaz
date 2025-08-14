@@ -5,9 +5,9 @@ const SiteFooter = () => {
   return (
     <footer className="border-t border-border/60 mt-10 bg-muted/30">
       <div className="container py-12 text-sm">
-        <div className="grid md:grid-cols-4 gap-8">
-          <div>
-            <img src="/images/og-lapenhagaz.jpg" alt="Lapenhagáz logo" className="w-28 rounded-md shadow" loading="lazy" />
+        <div className="grid md:grid-cols-4 gap-8 text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start">
+            <img src="/images/Lapenhagaz_logo-transparent.png" alt="Lapenhagáz logo" className="w-32 h-auto" loading="lazy" />
             <p className="text-muted-foreground mt-4 max-w-xs">
               Energia e pureza para sua vida. Gás natural canalizado e água mineral com qualidade.
             </p>
@@ -23,7 +23,7 @@ const SiteFooter = () => {
           </div>
           <div>
             <h4 className="font-semibold mb-3">Redes sociais</h4>
-            <div className="flex items-center gap-4 text-muted-foreground">
+            <div className="flex items-center justify-center md:justify-start gap-4 text-muted-foreground">
               <a aria-label="Facebook" href="#" className="group hover:text-primary transition-all duration-300 hover:scale-110">
                 <div className="p-2 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white group-hover:shadow-lg transition-all duration-300">
                   <Facebook className="h-5 w-5" />
@@ -51,9 +51,8 @@ const SiteFooter = () => {
             </nav>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mt-8 text-muted-foreground">
+        <div className="flex flex-col items-center gap-4 mt-8 text-muted-foreground">
           <p>© {new Date().getFullYear()} Lapenhagáz. Todos os direitos reservados.</p>
-          <p className="text-xs">Parte do grupo Compass | Regulada pela ARSESP</p>
         </div>
       </div>
     </footer>

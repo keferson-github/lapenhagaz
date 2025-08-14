@@ -1,21 +1,21 @@
 import { Button } from "@/components/ui/button";
-import { Leaf, Recycle, Users } from "lucide-react";
+import { Shield, Recycle, Users } from "lucide-react";
 
 const commitments = [
   {
-    icon: Leaf,
-    title: "Somos ambientalmente responsáveis",
-    desc: "Projetos para reduzir emissões e promover eficiência energética em toda a cadeia.",
+    icon: Shield,
+    title: "Qualidade sem compromisso",
+    desc: "Selecionamos rigorosamente as melhores marcas de gás GLP e fontes de água mineral para garantir excelência.",
   },
   {
     icon: Users,
-    title: "Somos socialmente comprometidos",
-    desc: "Parcerias e iniciativas voltadas às pessoas e às comunidades que atendemos.",
+    title: "Atendimento personalizado",
+    desc: "Cada cliente é único e merece um atendimento diferenciado, com soluções sob medida para suas necessidades.",
   },
   {
     icon: Recycle,
-    title: "Estamos em constante evolução",
-    desc: "Inovação aberta, melhoria contínua e tecnologia aplicada ao dia a dia.",
+    title: "Sustentabilidade e responsabilidade",
+    desc: "Promovemos o uso consciente de recursos e práticas sustentáveis em toda nossa cadeia de fornecimento.",
   },
 ];
 
@@ -28,10 +28,10 @@ const CommitmentsSection = () => {
             Nosso compromisso
           </div>
           <h2 id="compromissos-title" className="text-3xl md:text-4xl font-bold mb-4">
-            Pessoas e meio ambiente
+            Nossos valores e compromissos
           </h2>
           <p className="text-muted-foreground max-w-3xl mx-auto">
-            Trabalhamos para oferecer soluções de energia com segurança, eficiência e respeito ao meio ambiente
+            Trabalhamos com dedicação para oferecer os melhores produtos em gás GLP e água mineral, sempre priorizando qualidade e atendimento
           </p>
         </div>
 

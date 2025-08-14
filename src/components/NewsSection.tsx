@@ -6,28 +6,28 @@ import { Calendar, ArrowRight } from "lucide-react";
 const NewsSection = () => {
   const news = [
     {
-      title: "Expansão da rede para novos bairros",
-      excerpt: "Lapenhagáz anuncia a expansão da rede de gás natural para mais 15 bairros da região metropolitana.",
+      title: "Novas marcas premium de gás GLP",
+      excerpt: "LapenhaGáz amplia portfólio com as marcas mais conceituadas do mercado de gás GLP, oferecendo ainda mais qualidade.",
       date: "15 de Janeiro, 2024",
-      category: "Expansão",
+      category: "Produtos",
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80",
-      alt: "Tubulações industriais representando expansão da rede de gás natural"
+      alt: "Botijões de gás GLP representando novas marcas premium"
     },
     {
-      title: "Tarifas especiais para pequenos comércios",
-      excerpt: "Novo programa oferece condições diferenciadas para microempresas e estabelecimentos comerciais de pequeno porte.",
+      title: "Promoção especial para restaurantes",
+      excerpt: "Condições exclusivas para estabelecimentos comerciais com desconto progressivo na compra de gás GLP.",
       date: "10 de Janeiro, 2024",
-      category: "Tarifas",
+      category: "Promoções",
       image: "https://images.unsplash.com/photo-1545259741-2ea3ebf61fa2?auto=format&fit=crop&w=1600&q=80",
-      alt: "Restaurante com fogões a gás representando pequenos comércios"
+      alt: "Restaurante com fogões a gás representando promoção comercial"
     },
     {
-      title: "Sustentabilidade: metas de carbono zero",
-      excerpt: "Empresa apresenta plano estratégico para redução de emissões e práticas sustentáveis até 2030.",
+      title: "Água mineral com nova fonte natural",
+      excerpt: "LapenhaGáz inaugura parceria com nova fonte de água mineral natural, garantindo pureza e qualidade superior.",
       date: "05 de Janeiro, 2024",
-      category: "Sustentabilidade",
+      category: "Água Mineral",
       image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1600&q=80",
-      alt: "Parque com árvores simbolizando sustentabilidade e carbono zero"
+      alt: "Fonte natural de água mineral simbolizando pureza e qualidade"
     }
   ];
 

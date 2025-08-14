@@ -72,10 +72,10 @@ const Hero = () => {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 animate-fade-in" style={{animationDelay: '0.4s'}}>
                     <a href={slide.primaryAction.href}>
-                      <Button variant="hero" size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">{slide.primaryAction.text}</Button>
+                      <Button variant="hero" size="default" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">{slide.primaryAction.text}</Button>
                     </a>
                     <a href={slide.secondaryAction.href}>
-                      <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105">{slide.secondaryAction.text}</Button>
+                      <Button variant="outline" size="default" className="border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105">{slide.secondaryAction.text}</Button>
                     </a>
                   </div>
                 </div>
@@ -96,24 +96,12 @@ const Hero = () => {
         
         <div className="container">
           <div className="relative">
-            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2" />
-            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2" />
+            <CarouselPrevious className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 h-6 w-6 md:h-8 md:w-8" />
+            <CarouselNext className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 h-6 w-6 md:h-8 md:w-8" />
           </div>
         </div>
         
-        {/* Slide indicators */}
-        <div className="flex justify-center mt-8 gap-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              className={`w-3 h-3 rounded-full transition-colors ${
-                current === index ? 'bg-primary' : 'bg-muted'
-              }`}
-              onClick={() => api?.scrollTo(index)}
-              aria-label={`Ir para slide ${index + 1}`}
-            />
-          ))}
-        </div>
+
       </Carousel>
     </section>
   );

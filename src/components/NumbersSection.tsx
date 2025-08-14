@@ -1,111 +1,218 @@
-const NumbersSection = () => {
-  return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-green-50/30 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23e2e8f0%22%20fill-opacity%3D%220.3%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40" />
+import { useState, useEffect, useRef, memo, useCallback, useMemo } from 'react';
+
+// Hook personalizado otimizado para animar contagem de números com melhor performance
+const useCountAnimation = (endValue: number, duration: number = 2000, decimals: number = 0) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number>();
+  const startTimeRef = useRef<number>();
+
+  // Função de easing memoizada para evitar recálculos
+  const easeOutQuart = useCallback((x: number): number => {
+    return 1 - Math.pow(1 - x, 4);
+  }, []);
+
+  useEffect(() => {
+    // Usando opções otimizadas para o IntersectionObserver com menor threshold
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.05, rootMargin: '150px' } // Carregamento ainda mais antecipado
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      // Limpar animação pendente para evitar vazamento de memória
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const startValue = 0;
+    let lastFrameTime = 0;
+
+    const animate = (currentTime: number) => {
+      if (!startTimeRef.current) startTimeRef.current = currentTime;
+      const elapsed = currentTime - startTimeRef.current;
       
-      <div className="container relative space-y-16">
-        <header className="text-center max-w-3xl mx-auto">
-          <div className="inline-block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider mb-4">
-            Nossa trajetória
+      // Limitar a taxa de atualização para melhorar performance
+      if (currentTime - lastFrameTime < 16) { // ~60fps
+        animationRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      
+      lastFrameTime = currentTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Usando a função de easing memoizada
+      const easedProgress = easeOutQuart(progress);
+      const currentValue = startValue + (endValue - startValue) * easedProgress;
+      
+      // Evitar atualizações desnecessárias do estado
+      const newValue = Number(currentValue.toFixed(decimals));
+      if (newValue !== count) {
+        setCount(newValue);
+      }
+      
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      }
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+    
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isVisible, endValue, duration, decimals, count, easeOutQuart]);
+
+  return { count, elementRef };
+};
+
+// Componente memoizado para evitar renderizações desnecessárias
+const NumbersSection = memo(() => {
+  // Reduzindo a duração das animações para melhorar o desempenho
+  const clientsCount = useCountAnimation(15, 1800);
+  const satisfactionCount = useCountAnimation(98, 1500);
+  const experienceCount = useCountAnimation(15, 1000);
+
+  return (
+    <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50/40 to-green-50/40 relative overflow-hidden">
+      {/* Background decorative elements - Otimizado para melhor renderização */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%222%22%20fill%3D%22%23e2e8f0%22%20fill-opacity%3D%220.4%22%2F%3E%3C%2Fsvg%3E')] opacity-50" />
+      
+      {/* Floating geometric shapes */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-24 h-24 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full blur-xl animate-pulse delay-1000" />
+      <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-gradient-to-br from-secondary/10 to-accent/10 rounded-full blur-xl animate-pulse delay-500" />
+      
+      <div className="container relative space-y-20">
+        <header className="text-center max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider mb-6">
+            <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
+            </svg>
+            Nossa trajetória de crescimento
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent leading-tight">
             LapenhaGáz em Números
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Dados que demonstram nossa presença e compromisso com a excelência
+          <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto">
+            Dados que demonstram nossa trajetória de sucesso no fornecimento de gás GLP e água mineral de qualidade
           </p>
         </header>
 
-        {/* Cards modernizados com números */}
-        <div className="grid md:grid-cols-2 gap-8">
-          <article className="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:bg-white border-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full overflow-hidden border border-white/20 shadow-lg group-hover:scale-110 transition-transform duration-500">
+        {/* Cards de estatísticas principais */}
+        <div className="grid md:grid-cols-2 gap-10">
+          <article ref={clientsCount.elementRef} className="group relative bg-white/90 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-3 hover:bg-white border border-white/50">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full overflow-hidden border-2 border-white/30 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700">
               <img
-                src="https://images.unsplash.com/photo-1556909114-16c3e839c1ce?w=300&h=300&fit=crop&crop=center"
-                alt="Família usando gás com segurança"
-                className="w-full h-full object-cover"
-                loading="lazy"
+                src="https://images.unsplash.com/photo-1556909114-16c3e839c1ce?w=400&h=400&fit=crop&crop=center&auto=format&q=80"
+                srcSet="https://images.unsplash.com/photo-1556909114-16c3e839c1ce?w=200&h=200&fit=crop&crop=center&auto=format&q=75 200w,
+                         https://images.unsplash.com/photo-1556909114-16c3e839c1ce?w=400&h=400&fit=crop&crop=center&auto=format&q=80 400w"
+                sizes="(max-width: 768px) 100px, 200px"
+                alt="Família usando gás GLP com segurança"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                fetchPriority="high"
                 decoding="async"
+                width="400"
+                height="400"
               />
             </div>
             <div className="relative">
-              <div className="flex items-baseline gap-2">
-                <span className="text-5xl md:text-6xl font-black bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-500">
-                  2,6
+              <div className="flex items-baseline gap-3 mb-4">
+                <span className="text-6xl md:text-7xl font-black bg-gradient-to-br from-primary via-accent to-secondary bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-700 leading-none animate-pulse">
+                  +{clientsCount.count}
                 </span>
-                <span className="text-3xl font-bold text-gray-600 group-hover:text-gray-800 transition-colors duration-300">MI</span>
+                <span className="text-4xl font-black text-gray-500 group-hover:text-gray-700 transition-colors duration-500">MIL</span>
               </div>
-              <p className="text-gray-600 font-semibold text-lg mt-2 group-hover:text-gray-800 transition-colors duration-300">Clientes atendidos</p>
+              <p className="text-gray-700 font-bold text-xl group-hover:text-gray-900 transition-colors duration-500">Clientes atendidos</p>
+              <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
+                <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full animate-pulse" />
+                <span>Crescimento contínuo desde 2009</span>
+              </div>
             </div>
           </article>
 
-          <article className="group relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:bg-white border-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full overflow-hidden border border-white/20 shadow-lg group-hover:scale-110 transition-transform duration-500">
+          <article ref={satisfactionCount.elementRef} className="group relative bg-white/90 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-3 hover:bg-white border border-white/50">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute -top-8 -right-8 w-28 h-28 rounded-full overflow-hidden border-2 border-white/30 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700">
               <img
-                src="https://images.unsplash.com/photo-1589831377283-33cb1cc6bd5e?w=300&h=300&fit=crop&crop=center"
+                src="https://images.unsplash.com/photo-1589831377283-33cb1cc6bd5e?w=400&h=400&fit=crop&crop=center&auto=format&q=80"
+                srcSet="https://images.unsplash.com/photo-1589831377283-33cb1cc6bd5e?w=200&h=200&fit=crop&crop=center&auto=format&q=75 200w,
+                         https://images.unsplash.com/photo-1589831377283-33cb1cc6bd5e?w=400&h=400&fit=crop&crop=center&auto=format&q=80 400w"
+                sizes="(max-width: 768px) 100px, 200px"
                 alt="Família satisfeita consumindo com segurança"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 loading="lazy"
                 decoding="async"
+                width="400"
+                height="400"
               />
             </div>
             <div className="relative">
-              <div className="flex items-baseline gap-2">
-                <span className="text-5xl md:text-6xl font-black bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-500">
-                  91%
+              <div className="flex items-baseline gap-3 mb-4">
+                <span className="text-6xl md:text-7xl font-black bg-gradient-to-br from-primary via-accent to-secondary bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-700 leading-none animate-pulse">
+                  {satisfactionCount.count}%
                 </span>
               </div>
-              <p className="text-gray-600 font-semibold text-lg mt-2 group-hover:text-gray-800 transition-colors duration-300">Clientes satisfeitos (fonte interna 2024)</p>
+              <p className="text-gray-700 font-bold text-xl group-hover:text-gray-900 transition-colors duration-500">Clientes satisfeitos</p>
+              <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
+                <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full animate-pulse" />
+                <span>Avaliação de qualidade 2024</span>
+              </div>
             </div>
           </article>
         </div>
 
-        {/* Faixa em gradiente modernizada */}
-        <div className="rounded-3xl overflow-hidden shadow-2xl">
-          <div className="bg-gradient-to-br from-primary via-accent to-secondary text-primary-foreground relative">
-            <div className="absolute inset-0 bg-black/10" />
-            <div className="container px-6 md:px-10 py-12 relative">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="relative aspect-square max-w-xs mx-auto rounded-full overflow-hidden border-4 border-white/30 shadow-2xl hover:scale-105 transition-transform duration-500">
-                  <img
-                    src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&h=600&fit=crop&crop=center"
-                    alt="Cidade com rede de gás natural"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div>
-                  <p className="uppercase tracking-wide text-primary-foreground/90 text-sm mb-4 font-bold">Presença</p>
-                  <p className="text-4xl md:text-5xl font-black leading-tight drop-shadow-lg">presente em 96 municípios</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        {/* Segunda faixa modernizada */}
-        <div className="rounded-3xl overflow-hidden shadow-2xl">
-          <div className="bg-gradient-to-br from-accent to-secondary text-primary-foreground relative">
-            <div className="absolute inset-0 bg-black/10" />
-            <div className="container px-6 md:px-10 py-12 relative">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="order-2 md:order-1">
-                  <p className="text-6xl md:text-7xl font-black leading-none drop-shadow-lg">4,2<span className="align-top text-3xl">BI</span></p>
-                  <p className="text-primary-foreground/95 mt-3 text-lg font-semibold">m³ distribuídos em 2024</p>
-                </div>
-                <div className="order-1 md:order-2 relative aspect-square max-w-xs mx-auto rounded-full overflow-hidden border-4 border-white/30 shadow-2xl hover:scale-105 transition-transform duration-500">
-                  <img
-                    src="https://images.unsplash.com/photo-1581091215367-59ab6dcef1b8?w=600&h=600&fit=crop&crop=center"
-                    alt="Infraestrutura de dutos industriais"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
+
+        {/* Seção de crescimento sustentável */}
+        <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-12 shadow-xl border border-white/50">
+          <div className="text-center max-w-4xl mx-auto space-y-8">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider">
+              <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+              </svg>
+              Compromisso com o futuro
+            </div>
+            <h3 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent leading-tight">
+              Crescimento Sustentável
+            </h3>
+            <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto">
+              Nossa expansão é pautada pela responsabilidade ambiental e social, investindo em tecnologias limpas e práticas sustentáveis que beneficiam as comunidades onde atuamos.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+              <div ref={experienceCount.elementRef} className="text-center space-y-2 group hover:scale-105 transition-transform duration-300">
+                <div className="text-3xl font-black text-green-600 group-hover:text-green-700 transition-colors duration-300 animate-pulse">{experienceCount.count}+</div>
+                <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Anos de experiência</p>
+              </div>
+              <div className="text-center space-y-2 group hover:scale-105 transition-transform duration-300">
+                <div className="text-3xl font-black text-blue-600 group-hover:text-blue-700 transition-colors duration-300">100%</div>
+                <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Energia limpa</p>
+              </div>
+              <div className="text-center space-y-2 group hover:scale-105 transition-transform duration-300">
+                <div className="text-3xl font-black text-purple-600 group-hover:text-purple-700 transition-colors duration-300">24/7</div>
+                <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Suporte técnico</p>
+              </div>
+              <div className="text-center space-y-2 group hover:scale-105 transition-transform duration-300">
+                <div className="text-3xl font-black text-orange-600 group-hover:text-orange-700 transition-colors duration-300">ISO</div>
+                <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Certificações</p>
               </div>
             </div>
           </div>
@@ -113,6 +220,8 @@ const NumbersSection = () => {
       </div>
     </section>
   );
-};
+});
+
+NumbersSection.displayName = 'NumbersSection';
 
 export default NumbersSection;

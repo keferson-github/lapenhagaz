@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Leaf, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
@@ -33,9 +33,12 @@ export const BrandHeader = () => {
 
       {/* Main nav */}
       <nav className="container flex items-center justify-between py-4">
-        <Link to="/" className="flex items-center gap-2 font-bold text-lg">
-          <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Lapenhagáz</span>
-          <Leaf className="text-primary" aria-hidden />
+        <Link to="/" className="flex items-center gap-2">
+          <img 
+            src="/lapenhagaz_logo_horizontal-removebg-horizontal.png" 
+            alt="Lapenhagáz" 
+            className="h-12 w-auto"
+          />
           <span className="sr-only">Lapenhagáz - Página inicial</span>
         </Link>
 

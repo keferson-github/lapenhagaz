@@ -125,13 +125,43 @@ All colors MUST be HSL.
   .animation-delay-600 { animation-delay: 600ms; }
   .animation-delay-800 { animation-delay: 800ms; }
   .animation-delay-1000 { animation-delay: 1000ms; }
+  .animation-delay-1200 { animation-delay: 1200ms; }
   .anim-500 { animation-duration: 500ms; }
+  .anim-600 { animation-duration: 600ms; }
   .anim-700 { animation-duration: 700ms; }
+  .anim-800 { animation-duration: 800ms; }
   .anim-900 { animation-duration: 900ms; }
   .animation-ease-smooth { animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
   .animate-once { animation-iteration-count: 1; }
   .will-change-transform { will-change: transform; }
   .will-change-opacity { will-change: opacity; }
+  
+  /* Animações personalizadas */
+  .animate-slide-up {
+    animation: slide-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2s ease-in-out infinite;
+  }
+  
+  @keyframes slide-up {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse-subtle {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(var(--primary), 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(var(--primary), 0);
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

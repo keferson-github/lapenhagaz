@@ -8,14 +8,14 @@ import BackToTop from "@/components/BackToTop";
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
 import NewsSection from "@/components/NewsSection";
-import ContactSection from "@/components/ContactSection";
+
 const Index = () => {
   const orgLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Lapenhagáz',
     url: '/',
-    logo: '/images/og-lapenhagaz.jpg',
+    logo: '/images/Lapenhagaz_logo-transparent.png',
     sameAs: [] as string[],
     address: {
       '@type': 'PostalAddress',
@@ -26,8 +26,8 @@ const Index = () => {
   return (
     <Layout>
       <Seo 
-        title="Lapenhagáz - Gás Natural e Água Mineral | Energia para sua vida"
-        description="Gás natural canalizado e água mineral com segurança, eficiência e qualidade. Lapenhagáz atende residências, negócios e indústrias."
+        title="LapenhaGáz - Gás GLP e Água Mineral das Melhores Marcas"
+        description="Fornecimento de gás GLP das melhores marcas e água mineral de qualidade superior. Entrega rápida e segura para residências e empresas."
         canonical="/"
       />
 
@@ -50,9 +50,7 @@ const Index = () => {
         <NewsSection />
       </section>
 
-      <section id="contato" aria-label="Contato" className="scroll-mt-24">
-        <ContactSection />
-      </section>
+
 
       <BackToTop />
 

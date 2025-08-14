@@ -12,38 +12,38 @@ const SolutionsSection = () => {
   const categories = [
     {
       id: "residencias",
-      label: "Residências",
-      desc: "Conforto com água quente, cocção e aquecimento sem cilindros, com segurança e previsibilidade.",
+      label: "Gás GLP Residencial",
+      desc: "Botijões de gás GLP das melhores marcas para sua casa. Alto poder calorífico, segurança garantida e diversos tamanhos disponíveis.",
       img: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&h=800&fit=crop&crop=center",
-      alt: "Residência com conforto e gás natural canalizado",
+      alt: "Botijões de gás GLP para residências",
     },
     {
       id: "negocios",
-      label: "Negócios",
-      desc: "Eficiência para restaurantes, hotéis, lavanderias e hospitais, com abastecimento contínuo.",
+      label: "Gás GLP Comercial",
+      desc: "Fornecimento de gás GLP para restaurantes, padarias e estabelecimentos comerciais. Entrega programada e marcas confiáveis.",
       img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&h=800&fit=crop&crop=center",
-      alt: "Cozinha profissional com soluções de gás natural",
+      alt: "Gás GLP para estabelecimentos comerciais",
     },
     {
-      id: "veiculos",
-      label: "Veículos",
-      desc: "Soluções energéticas econômicas e sustentáveis para frotas e mobilidade.",
-      img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200&h=800&fit=crop&crop=center",
-      alt: "Frota de veículos com energia mais econômica",
+      id: "agua-mineral",
+      label: "Água Mineral",
+      desc: "Água mineral natural de alta qualidade. Galões higienizados, entrega pontual e sabor puro para sua família ou empresa.",
+      img: "https://images.unsplash.com/photo-1560472355-536de3962603?w=1200&h=800&fit=crop&crop=center",
+      alt: "Galões de água mineral natural",
     },
     {
       id: "industrias",
-      label: "Indústrias",
-      desc: "Qualidade de chama, eficiência energética e redução de custos para sua planta.",
+      label: "Gás GLP Industrial",
+      desc: "Soluções em gás GLP para indústrias e grandes volumes. Fornecimento contínuo das melhores marcas com preços competitivos.",
       img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&h=800&fit=crop&crop=center",
-      alt: "Indústria com processos otimizados por gás natural",
+      alt: "Gás GLP para uso industrial",
     },
     {
-      id: "especiais",
-      label: "Soluções Especiais",
-      desc: "Projetos sob medida e consultoria técnica para demandas específicas.",
+      id: "marcas-premium",
+      label: "Marcas Premium",
+      desc: "Trabalhamos exclusivamente com as melhores marcas de gás GLP do mercado. Qualidade certificada e confiança garantida.",
       img: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&h=800&fit=crop&crop=center",
-      alt: "Projeto especial com consultoria técnica em energia",
+      alt: "Melhores marcas de gás GLP do mercado",
     },
   ];
 
@@ -53,10 +53,10 @@ const SolutionsSection = () => {
         {/* Título da seção */}
         <header className="mb-10 md:mb-14 text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Soluções em gás natural para cada necessidade
+            Gás GLP e Água Mineral para cada necessidade
           </h2>
           <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
-            Explore nossas soluções para residências, negócios, frotas e indústria, com segurança, eficiência e previsibilidade.
+            Fornecemos gás GLP das melhores marcas e água mineral de qualidade superior para residências, comércios e indústrias.
           </p>
         </header>
 
