@@ -114,7 +114,7 @@ export const BrandHeader = () => {
             <img 
               src="/lapenhagaz_logo_horizontal-removebg-horizontal.png" 
               alt="Lapenhagáz" 
-              className="h-12 w-auto transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
+              className="h-12 w-auto transition-all duration-300 group-hover:brightness-110"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
           </div>
