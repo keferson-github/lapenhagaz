@@ -11,7 +11,7 @@ const HomeHeroCarousel = () => {
       title: "Gás GLP para sua Casa",
       subtitle: "Qualidade e segurança garantidas",
       desc: "Gás GLP das melhores marcas do mercado para sua residência. Entrega rápida, segura e com a qualidade que sua família merece. Atendimento especializado.",
-      img: "/images/banner-gás.webp",
+      img: "/foto-botijao-residencial.webp",
       cta: "Solicite Entrega",
       ctaSecondary: "Ver Marcas"
     },
@@ -21,7 +21,7 @@ const HomeHeroCarousel = () => {
       title: "Gás GLP para Empresas",
       subtitle: "Eficiência e economia garantidas",
       desc: "Gás GLP de alta qualidade para restaurantes, padarias, hotéis e indústrias. Fornecimento regular das melhores marcas. Suporte técnico completo.",
-      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=1080&fit=crop&crop=center",
+      img: "/images/foto-slide-gas-empresas.webp",
       cta: "Solicite Orçamento",
       ctaSecondary: "Ver Soluções"
     },
@@ -31,7 +31,7 @@ const HomeHeroCarousel = () => {
       title: "Água Mineral Natural",
       subtitle: "Pureza e qualidade certificada é na Lapenhagáz",
       desc: "Água mineral de fontes protegidas com entrega programada. Qualidade premium para sua família e empresa. Distribuição confiável e pontual.",
-      img: "/images/banner-agua-mineral-com-logo.webp",
+      img: "/foto-slide-aguas.webp",
       cta: "Assine Agora",
       ctaSecondary: "Ver Planos"
     },
@@ -41,7 +41,7 @@ const HomeHeroCarousel = () => {
       title: "As Melhores Marcas",
       subtitle: "Qualidade certificada e confiança",
       desc: "Trabalhamos exclusivamente com as marcas líderes do mercado de gás GLP e água mineral. Qualidade garantida em cada entrega. Parceiros de confiança.",
-      img: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1920&h=1080&fit=crop&crop=center",
+      img: "/foto-slide-grandes-marcas.webp",
       cta: "Conheça as Marcas",
       ctaSecondary: "Nossos Produtos"
     }
