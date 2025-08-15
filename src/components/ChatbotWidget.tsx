@@ -1,16 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle, X } from "lucide-react";
 import { useChatbot } from "@/hooks/use-chatbot-hook";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const ChatbotWidget = () => {
   const { isOpen, toggleChat } = useChatbot();
+  const isMobile = useIsMobile();
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {/* Chat Options */}
       {isOpen && (
-        <div className="mb-4 space-y-3 animate-in slide-in-from-bottom-4 duration-500 ease-out">
-          <div className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 p-6 max-w-sm">
+        <div className={`mb-4 space-y-3 animate-in slide-in-from-bottom-4 duration-500 ease-out ${
+          isMobile ? 'fixed inset-x-4 bottom-24 z-50' : ''
+        }`}>
+          <div className={`bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 p-6 ${
+            isMobile ? 'w-full max-w-none mx-auto' : 'max-w-sm'
+          }`}>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
                 <MessageCircle className="h-5 w-5 text-white" />
