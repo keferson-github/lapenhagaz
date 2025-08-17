@@ -151,7 +151,7 @@ const NumbersSection = memo(() => {
 
         {/* Cards de estatísticas principais */}
         <motion.div 
-          className="grid md:grid-cols-2 gap-10"
+          className="grid md:grid-cols-2 gap-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -160,8 +160,16 @@ const NumbersSection = memo(() => {
           <motion.article 
             ref={clientsCount.elementRef} 
             className="group relative bg-white/90 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-3xl transition-all duration-700 hover:bg-white border border-white/50"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ 
+              opacity: 0, 
+              x: typeof window !== 'undefined' && window.innerWidth >= 768 ? -30 : 0, 
+              y: 30 
+            }}
+            whileInView={{ 
+              opacity: 1, 
+              x: 0, 
+              y: 0 
+            }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
@@ -212,8 +220,16 @@ const NumbersSection = memo(() => {
           <motion.article 
             ref={satisfactionCount.elementRef} 
             className="group relative bg-white/90 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-3xl transition-all duration-700 hover:bg-white border border-white/50"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ 
+              opacity: 0, 
+              x: typeof window !== 'undefined' && window.innerWidth >= 768 ? 30 : 0, 
+              y: 30 
+            }}
+            whileInView={{ 
+              opacity: 1, 
+              x: 0, 
+              y: 0 
+            }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >

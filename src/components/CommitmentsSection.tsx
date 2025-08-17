@@ -30,45 +30,54 @@ const CommitmentsSection = () => {
   // Previne scroll do body quando modal está aberto e preserva posição
   useEffect(() => {
     if (isModalOpen || isSustainabilityModalOpen) {
-      // Captura a posição atual do scroll
-      const scrollY = window.scrollY;
+      // Captura e armazena a posição atual do scroll
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
       
-      // Armazena a posição para restauração posterior
-      document.body.setAttribute('data-scroll-y', scrollY.toString());
+      // Armazena a posição no body para recuperação
+      document.body.style.setProperty('--scroll-y', scrollY + 'px');
       
-      // Aplica estilos para prevenir scroll
+      // Aplica estilos para prevenir scroll de forma mais robusta
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
       document.body.style.width = '100%';
-    } else if (!isModalOpen && !isSustainabilityModalOpen) {
-      // Recupera a posição do scroll armazenada
-      const scrollY = document.body.getAttribute('data-scroll-y');
       
-      // Remove estilos primeiro
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
+      // Previne scroll em dispositivos móveis
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      // Recupera a posição armazenada
+      const savedScrollY = document.body.style.getPropertyValue('--scroll-y');
+      const scrollPosition = savedScrollY ? parseInt(savedScrollY.replace('px', ''), 10) : 0;
       
-      // Remove o atributo de dados
-      document.body.removeAttribute('data-scroll-y');
+      // Remove todos os estilos aplicados para restaurar scroll normal
+      document.body.style.removeProperty('overflow');
+      document.body.style.removeProperty('position');
+      document.body.style.removeProperty('top');
+      document.body.style.removeProperty('left');
+      document.body.style.removeProperty('right');
+      document.body.style.removeProperty('width');
+      document.body.style.removeProperty('--scroll-y');
+      document.documentElement.style.removeProperty('overflow');
       
-      // Restaura a posição do scroll após a remoção dos estilos
-      if (scrollY) {
-        const scrollPosition = parseInt(scrollY, 10);
-        setTimeout(() => {
-          window.scrollTo(0, scrollPosition);
-        }, 0);
+      // Restaura a posição do scroll e garante que o scroll funcione normalmente
+      if (scrollPosition >= 0) {
+        requestAnimationFrame(() => {
+          window.scrollTo({
+            top: scrollPosition,
+            left: 0,
+            behavior: 'instant'
+          });
+          
+          // Força a reativação do scroll após restauração
+          setTimeout(() => {
+            document.body.style.overflow = 'auto';
+            document.documentElement.style.overflow = 'auto';
+          }, 10);
+        });
       }
     }
-
-    return () => {
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-    };
   }, [isModalOpen, isSustainabilityModalOpen]);
 
   const modalPages = [
