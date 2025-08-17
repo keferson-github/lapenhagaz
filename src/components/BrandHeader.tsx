@@ -232,11 +232,6 @@ export const BrandHeader = () => {
                  <Shield className="w-3 h-3 text-accent stroke-2" />
                  <span ref={securityCount.elementRef}>{securityCount.count}% Seguro</span>
                </div>
-               
-               <div className="flex items-center gap-2 text-xs opacity-90">
-                 <Award className="w-3 h-3 text-accent stroke-2" />
-                 <span>Certificado</span>
-               </div>
             </div>
           </div>
           
