@@ -140,17 +140,41 @@ export const BrandHeader = () => {
     if (typeof window === 'undefined') return 'sticky';
     
     const isMobile = window.innerWidth <= 768;
+    const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+    const isDesktop = window.innerWidth > 1024;
     const isAtTop = window.scrollY <= 20;
     
+    // Comportamento para mobile: relative no topo, fixed quando scrolled
     if (isMobile && isAtTop) {
-      return 'relative'; // Posição normal no topo em mobile
+      return 'relative';
+    }
+    if (isMobile && !isAtTop) {
+      return 'fixed';
     }
     
-    return isMobile ? 'fixed' : 'sticky'; // Fixo quando scrolled em mobile, sticky em desktop
+    // Comportamento para tablet: relative no topo, fixed quando scrolled
+    if (isTablet && isAtTop) {
+      return 'relative';
+    }
+    if (isTablet && !isAtTop) {
+      return 'fixed';
+    }
+    
+    // Comportamento para desktop: relative no topo, fixed quando scrolled
+    if (isDesktop && isAtTop) {
+      return 'relative';
+    }
+    if (isDesktop && !isAtTop) {
+      return 'fixed';
+    }
+    
+    return 'sticky'; // Fallback
   };
 
   const headerPosition = getHeaderPosition();
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+  const isTablet = typeof window !== 'undefined' && window.innerWidth > 768 && window.innerWidth <= 1024;
+  const isDesktop = typeof window !== 'undefined' && window.innerWidth > 1024;
   const isAtTop = typeof window !== 'undefined' && window.scrollY <= 20;
 
   return (
@@ -161,7 +185,7 @@ export const BrandHeader = () => {
           ? 'border-b border-border/80 bg-background/95 backdrop-blur-xl shadow-modern' 
           : 'border-b border-border/40 bg-background/90 backdrop-blur-lg'
       } ${
-        isMobile && isAtTop ? 'header-normal' : 'sticky-header'
+        isAtTop ? 'header-normal' : 'sticky-header'
       }`}
       style={{
         position: headerPosition,

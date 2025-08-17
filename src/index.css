@@ -247,6 +247,32 @@ All colors MUST be HSL.
       z-index: 10001 !important;
     }
   }
+
+  /* Regras específicas para tablet e desktop */
+  @media (min-width: 769px) {
+    .sticky-header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 9999 !important;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+    
+    /* Quando o header está em posição normal (no topo) */
+    .header-normal {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      width: auto !important;
+      z-index: auto !important;
+      transform: none;
+      -webkit-transform: none;
+    }
+  }
 }
 
 /* Garantir que o body e html não interfiram com sticky */
