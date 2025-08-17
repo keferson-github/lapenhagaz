@@ -1,6 +1,78 @@
-import { useState, useEffect, memo, useRef } from 'react';
+import { useState, useEffect, memo, useRef, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Star, Quote, MapPin, Calendar } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
+
+// Hook personalizado para animar contagem de números
+const useCountAnimation = (endValue: number, duration: number = 2000, decimals: number = 0) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number>();
+  const startTimeRef = useRef<number>();
+
+  const easeOutQuart = useCallback((x: number): number => {
+    return 1 - Math.pow(1 - x, 4);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.05, rootMargin: '150px' }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const startValue = 0;
+    let lastFrameTime = 0;
+
+    const animate = (currentTime: number) => {
+      if (!startTimeRef.current) {
+        startTimeRef.current = currentTime;
+      }
+
+      const elapsed = currentTime - startTimeRef.current;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutQuart(progress);
+      const currentValue = startValue + (endValue - startValue) * easedProgress;
+
+      if (currentTime - lastFrameTime >= 16) {
+        setCount(Number(currentValue.toFixed(decimals)));
+        lastFrameTime = currentTime;
+      }
+
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      }
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isVisible, endValue, duration, decimals, easeOutQuart]);
+
+  return { count, elementRef };
+};
 
 // Dados dos depoimentos
 const testimonials = [
@@ -171,7 +243,13 @@ const TestimonialsSection = memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+
+  // Hooks de animação para as estatísticas
+  const clientsCount = useCountAnimation(5000, 2500);
+  const satisfactionCount = useCountAnimation(98, 2000);
+  const experienceCount = useCountAnimation(15, 1800);
+  const supportCount = useCountAnimation(24, 1500);
   
   // Auto-play do carrossel
   useEffect(() => {
@@ -362,24 +440,57 @@ const TestimonialsSection = memo(() => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 max-w-4xl mx-auto"
         >
-          {[
-            { value: '5.000+', label: 'Clientes Satisfeitos', color: 'text-primary' },
-            { value: '98%', label: 'Avaliações Positivas', color: 'text-secondary' },
-            { value: '15+', label: 'Anos de Experiência', color: 'text-accent' },
-            { value: '24h', label: 'Atendimento', color: 'text-primary' }
-          ].map((stat, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 20, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
-              transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -2 }}
-              className="text-center"
-            >
-              <div className={`text-3xl md:text-4xl font-black ${stat.color} mb-2`} style={{ fontFamily: 'Roboto, sans-serif' }}>{stat.value}</div>
-              <div className="text-sm text-muted-foreground font-medium" style={{ fontFamily: 'Roboto, sans-serif' }}>{stat.label}</div>
-            </motion.div>
-          ))}
+          {/* Clientes Satisfeitos */}
+          <motion.div 
+            ref={clientsCount.elementRef}
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+            whileHover={{ y: -2 }}
+            className="text-center"
+          >
+            <div className="text-3xl md:text-4xl font-black text-primary mb-2" style={{ fontFamily: 'Roboto, sans-serif' }}>{clientsCount.count.toLocaleString('pt-BR')}+</div>
+            <div className="text-sm text-muted-foreground font-medium" style={{ fontFamily: 'Roboto, sans-serif' }}>Clientes Satisfeitos</div>
+          </motion.div>
+
+          {/* Avaliações Positivas */}
+          <motion.div 
+            ref={satisfactionCount.elementRef}
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
+            transition={{ duration: 0.6, delay: 1.0 }}
+            whileHover={{ y: -2 }}
+            className="text-center"
+          >
+            <div className="text-3xl md:text-4xl font-black text-secondary mb-2" style={{ fontFamily: 'Roboto, sans-serif' }}>{satisfactionCount.count}%</div>
+            <div className="text-sm text-muted-foreground font-medium" style={{ fontFamily: 'Roboto, sans-serif' }}>Avaliações Positivas</div>
+          </motion.div>
+
+          {/* Anos de Experiência */}
+          <motion.div 
+            ref={experienceCount.elementRef}
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
+            transition={{ duration: 0.6, delay: 1.1 }}
+            whileHover={{ y: -2 }}
+            className="text-center"
+          >
+            <div className="text-3xl md:text-4xl font-black text-accent mb-2" style={{ fontFamily: 'Roboto, sans-serif' }}>{experienceCount.count}+</div>
+            <div className="text-sm text-muted-foreground font-medium" style={{ fontFamily: 'Roboto, sans-serif' }}>Anos de Experiência</div>
+          </motion.div>
+
+          {/* Atendimento */}
+          <motion.div 
+            ref={supportCount.elementRef}
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            whileHover={{ y: -2 }}
+            className="text-center"
+          >
+            <div className="text-3xl md:text-4xl font-black text-primary mb-2" style={{ fontFamily: 'Roboto, sans-serif' }}>{supportCount.count}h</div>
+            <div className="text-sm text-muted-foreground font-medium" style={{ fontFamily: 'Roboto, sans-serif' }}>Atendimento</div>
+          </motion.div>
         </motion.div>
       </div>
     </motion.section>

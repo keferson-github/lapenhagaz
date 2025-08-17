@@ -89,7 +89,9 @@ const NumbersSection = memo(() => {
   // Reduzindo a duração das animações para melhorar o desempenho
   const clientsCount = useCountAnimation(15, 1800);
   const satisfactionCount = useCountAnimation(98, 1500);
-  const experienceCount = useCountAnimation(15, 1000);
+  const sustainableExperienceCount = useCountAnimation(15, 1000);
+  const sustainableEnergyCount = useCountAnimation(100, 1200);
+  const sustainableSupportCount = useCountAnimation(24, 800);
 
   return (
     <motion.section 
@@ -162,10 +164,9 @@ const NumbersSection = memo(() => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            whileHover={{ y: -12, scale: 1.02 }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            <div className="absolute -top-8 -right-4 md:-right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-primary/70 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 ring-2 ring-secondary/40">
+            <div className="absolute -top-8 -right-4 md:-right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-primary/70 shadow-2xl group-hover:rotate-6 transition-all duration-700 ring-2 ring-secondary/40">
               <img
                 src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=400&h=400&fit=crop&crop=center&auto=format&q=80"
                 srcSet="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=200&h=200&fit=crop&crop=center&auto=format&q=75 200w,
@@ -181,7 +182,7 @@ const NumbersSection = memo(() => {
             </div>
             <div className="relative">
               <div className="flex items-baseline gap-3 mb-4">
-                <span className="text-6xl md:text-7xl font-black bg-gradient-to-br from-primary via-accent to-secondary bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-700 leading-none">
+                <span className="text-6xl md:text-7xl font-black bg-gradient-to-br from-primary via-accent to-secondary bg-clip-text text-transparent transition-transform duration-700 leading-none">
                   +{clientsCount.count}
                 </span>
                 <span className="text-4xl font-black text-gray-500 group-hover:text-gray-700 transition-colors duration-500">MIL</span>
@@ -215,10 +216,9 @@ const NumbersSection = memo(() => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            whileHover={{ y: -12, scale: 1.02 }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            <div className="absolute -top-8 -right-4 md:-right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-secondary/70 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 ring-2 ring-primary/40">
+            <div className="absolute -top-8 -right-4 md:-right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-secondary/70 shadow-2xl group-hover:rotate-6 transition-all duration-700 ring-2 ring-primary/40">
               <img
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=400&fit=crop&crop=center&auto=format&q=80"
                 srcSet="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&h=200&fit=crop&crop=center&auto=format&q=75 200w,
@@ -234,7 +234,7 @@ const NumbersSection = memo(() => {
             </div>
             <div className="relative">
               <div className="flex items-baseline gap-3 mb-4">
-                <span className="text-6xl md:text-7xl font-black bg-gradient-to-br from-primary via-accent to-secondary bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-700 leading-none">
+                <span className="text-6xl md:text-7xl font-black bg-gradient-to-br from-primary via-accent to-secondary bg-clip-text text-transparent transition-transform duration-700 leading-none">
                   {satisfactionCount.count}%
                 </span>
               </div>
@@ -310,37 +310,36 @@ const NumbersSection = memo(() => {
               transition={{ duration: 0.8, delay: 1.3 }}
             >
               <motion.div 
-                ref={experienceCount.elementRef} 
+                ref={sustainableExperienceCount.elementRef} 
                 className="text-center space-y-2 group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 1.4 }}
-                whileHover={{ scale: 1.05 }}
               >
-                <div className="text-3xl font-black text-green-600 group-hover:text-green-700 transition-colors duration-300">{experienceCount.count}+</div>
+                <div className="text-3xl font-black text-green-600 group-hover:text-green-700 transition-colors duration-300">{sustainableExperienceCount.count}+</div>
                 <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Anos de experiência</p>
               </motion.div>
               <motion.div 
+                ref={sustainableEnergyCount.elementRef}
                 className="text-center space-y-2 group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 1.5 }}
-                whileHover={{ scale: 1.05 }}
               >
-                <div className="text-3xl font-black text-blue-600 group-hover:text-blue-700 transition-colors duration-300">100%</div>
+                <div className="text-3xl font-black text-blue-600 group-hover:text-blue-700 transition-colors duration-300">{sustainableEnergyCount.count}%</div>
                 <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Energia limpa</p>
               </motion.div>
               <motion.div 
+                ref={sustainableSupportCount.elementRef}
                 className="text-center space-y-2 group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 1.6 }}
-                whileHover={{ scale: 1.05 }}
               >
-                <div className="text-3xl font-black text-purple-600 group-hover:text-purple-700 transition-colors duration-300">24/7</div>
+                <div className="text-3xl font-black text-purple-600 group-hover:text-purple-700 transition-colors duration-300">{sustainableSupportCount.count}/7</div>
                 <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Suporte técnico</p>
               </motion.div>
               <motion.div 
@@ -349,7 +348,6 @@ const NumbersSection = memo(() => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 1.7 }}
-                whileHover={{ scale: 1.05 }}
               >
                 <div className="text-3xl font-black text-orange-600 group-hover:text-orange-700 transition-colors duration-300">ISO</div>
                 <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Certificações</p>

@@ -18,9 +18,81 @@ import {
   WrenchScrewdriverIcon as Tools,
   UserGroupIcon as Team
 } from "@heroicons/react/24/outline";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
+
+// Hook personalizado para animar contagem de números
+const useCountAnimation = (endValue: number, duration: number = 2000, decimals: number = 0) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef<HTMLSpanElement>(null);
+  const animationRef = useRef<number>();
+  const startTimeRef = useRef<number>();
+
+  const easeOutQuart = useCallback((x: number): number => {
+    return 1 - Math.pow(1 - x, 4);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.05, rootMargin: '150px' }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const startValue = 0;
+    let lastFrameTime = 0;
+
+    const animate = (currentTime: number) => {
+      if (!startTimeRef.current) {
+        startTimeRef.current = currentTime;
+      }
+
+      const elapsed = currentTime - startTimeRef.current;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutQuart(progress);
+      const currentValue = startValue + (endValue - startValue) * easedProgress;
+
+      if (currentTime - lastFrameTime >= 16) {
+        setCount(Number(currentValue.toFixed(decimals)));
+        lastFrameTime = currentTime;
+      }
+
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      }
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isVisible, endValue, duration, decimals, easeOutQuart]);
+
+  return { count, elementRef };
+};
 
 
 export const BrandHeader = () => {
@@ -28,6 +100,10 @@ export const BrandHeader = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [searchFocused, setSearchFocused] = useState(false);
+
+  // Hooks de animação para os números
+  const securityCount = useCountAnimation(100, 3000);
+  const ratingCount = useCountAnimation(4.9, 3500, 1);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +152,7 @@ export const BrandHeader = () => {
                
                <div className="flex items-center gap-2 text-xs opacity-90">
                  <Shield className="w-3 h-3 text-accent stroke-2" />
-                 <span>100% Seguro</span>
+                 <span ref={securityCount.elementRef}>{securityCount.count}% Seguro</span>
                </div>
                
                <div className="flex items-center gap-2 text-xs opacity-90">
@@ -89,7 +165,7 @@ export const BrandHeader = () => {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1 text-xs">
               <Star className="w-3 h-3 text-accent stroke-2 fill-accent" />
-              <span className="font-medium">4.9/5 ⭐ Avaliação dos clientes</span>
+              <span ref={ratingCount.elementRef} className="font-medium">{ratingCount.count}/5 ⭐ Avaliação dos clientes</span>
             </div>
             
             <Link to="/login">
