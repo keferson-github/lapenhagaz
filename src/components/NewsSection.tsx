@@ -16,7 +16,7 @@ const NewsSection = () => {
     {
       title: "Novas marcas premium de gás GLP",
       excerpt: "LapenhaGáz amplia portfólio com as marcas mais conceituadas do mercado de gás GLP, oferecendo ainda mais qualidade e segurança.",
-      date: "15 de Janeiro, 2024",
+      date: "15 de Janeiro, 2025",
       category: "Produtos",
       image: "/images/og-lapenhagaz.jpg",
       alt: "Botijões de gás GLP representando novas marcas premium"
@@ -24,7 +24,7 @@ const NewsSection = () => {
     {
       title: "Promoção especial para restaurantes",
       excerpt: "Condições exclusivas para estabelecimentos comerciais com desconto progressivo na compra de gás GLP e entrega garantida.",
-      date: "10 de Janeiro, 2024",
+      date: "10 de Janeiro, 2025",
       category: "Promoções",
       image: "/images/og-lapenhagaz.jpg",
       alt: "Chef profissional cozinhando em restaurante com fogão a gás durante promoção especial"
@@ -32,7 +32,7 @@ const NewsSection = () => {
     {
       title: "Água mineral com nova fonte natural",
       excerpt: "LapenhaGáz inaugura parceria com nova fonte de água mineral natural, garantindo pureza e qualidade superior aos clientes.",
-      date: "05 de Janeiro, 2024",
+      date: "05 de Janeiro, 2025",
       category: "Água Mineral",
       image: "/images/og-lapenhagaz.jpg",
       alt: "Fonte natural de água mineral simbolizando pureza e qualidade"
