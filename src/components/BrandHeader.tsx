@@ -375,7 +375,7 @@ export const BrandHeader = () => {
       </nav>
 
       <div className={`md:hidden border-t border-border/60 bg-background overflow-hidden transition-all duration-300 ease-in-out mobile-menu ${
-        open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        open ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
       }`}
       style={{
         position: headerPosition,
@@ -387,7 +387,7 @@ export const BrandHeader = () => {
         backgroundColor: 'var(--background)',
         backdropFilter: 'blur(12px)'
       }}>
-        <ul className="container py-3 grid gap-3 text-center transform transition-transform duration-300 ease-in-out">
+        <ul className="container py-4 grid gap-3 text-center transform transition-transform duration-300 ease-in-out">
           {[
             { label: "Home", href: "#home" },
             { label: "Serviços", href: "#servicos" },
@@ -406,7 +406,8 @@ export const BrandHeader = () => {
           <li className={`transform transition-all duration-300 ease-in-out ${
             open ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
           }`} style={{ transitionDelay: open ? '250ms' : '0ms' }}>
-            <div className="flex flex-col gap-2 items-center">
+            <div className="flex flex-col gap-3 items-center pb-2">
+              <Link to="/login" className="w-full max-w-xs"><Button variant="default" className="w-full transition-all duration-200 hover:scale-105 font-semibold">Já sou cliente</Button></Link>
               <a href="#servicos" className="w-full max-w-xs"><Button variant="secondary" className="w-full transition-all duration-200 hover:scale-105">Contratar Gás GLP</Button></a>
               <a href="#servicos" className="w-full max-w-xs"><Button variant="hero" className="w-full transition-all duration-200 hover:scale-105">Loja de serviços</Button></a>
             </div>
