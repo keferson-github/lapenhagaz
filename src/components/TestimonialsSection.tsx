@@ -83,7 +83,7 @@ const testimonials = [
     avatar: "/images/og-lapenhagaz.jpg",
     rating: 5,
     date: "Há 2 semanas",
-    comment: "Excelente atendimento! A entrega foi super rápida e o gás chegou em perfeitas condições. Já sou cliente há mais de 3 anos e sempre fui muito bem atendida. Recomendo!",
+    comment: "Excelente atendimento! A entrega foi super rápida e o gás chegou em perfeitas condições. Já sou cliente há mais de 3 anos e sempre fui muito bem atendida.",
     service: "Entrega de Gás GLP",
     verified: true
   },
@@ -94,7 +94,7 @@ const testimonials = [
     avatar: "/images/og-lapenhagaz.jpg",
     rating: 5,
     date: "Há 1 semana",
-    comment: "A água mineral da LapenhaGáz é de excelente qualidade! Sabor puro e refrescante. O sistema de entrega é muito prático e os preços são justos. Virei cliente fiel!",
+    comment: "A água mineral da LapenhaGáz é de excelente qualidade! Sabor puro e refrescante. O sistema de entrega é muito prático e os preços são justos.",
     service: "Água Mineral",
     verified: true
   },
@@ -116,7 +116,7 @@ const testimonials = [
     avatar: "/images/og-lapenhagaz.jpg",
     rating: 5,
     date: "Há 5 dias",
-    comment: "Empresa séria e confiável. Preços competitivos e qualidade garantida. O atendimento via WhatsApp é muito ágil. Estou muito satisfeito com o serviço!",
+    comment: "Empresa séria e confiável. Preços competitivos e qualidade garantida. O atendimento via WhatsApp é muito ágil. Estou muito satisfeito!",
     service: "Água Mineral",
     verified: true
   },
@@ -138,7 +138,7 @@ const testimonials = [
     avatar: "/images/og-lapenhagaz.jpg",
     rating: 5,
     date: "Há 4 dias",
-    comment: "Atendimento nota 10! Desde o primeiro contato até a entrega, tudo perfeito. A água é de excelente qualidade e o preço é muito bom. Super recomendo!",
+    comment: "Atendimento nota 10! Desde o primeiro contato até a entrega, tudo perfeito. A água é de excelente qualidade e o preço é muito bom.",
     service: "Água Mineral",
     verified: true
   }
