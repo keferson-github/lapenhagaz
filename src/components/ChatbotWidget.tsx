@@ -59,7 +59,7 @@ const ChatbotWidget = () => {
       {/* Chat Button */}
       <button
         onClick={toggleChat}
-        className={`relative bg-gradient-to-br from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white rounded-full p-4 shadow-2xl transition-all duration-500 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-primary/30 group ${
+        className={`relative bg-gradient-to-br from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white rounded-full p-4 shadow-2xl transition-all duration-500 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-primary/30 group animate-float-subtle ${
           isOpen ? 'rotate-180' : 'hover:rotate-12'
         }`}
         aria-label={isOpen ? "Fechar chat" : "Abrir chat de ajuda"}
