@@ -419,7 +419,7 @@ const CommitmentsSection = () => {
             
             {/* Modal Content */}
              <motion.div
-                className="relative bg-white rounded-2xl shadow-2xl w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl max-h-[75vh] sm:max-h-[70vh] md:max-h-[65vh] lg:max-h-[60vh] overflow-hidden flex flex-col"
+                className="relative bg-white rounded-2xl shadow-2xl w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl max-h-[85vh] sm:max-h-[70vh] md:max-h-[65vh] lg:max-h-[60vh] overflow-hidden flex flex-col"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
@@ -537,7 +537,7 @@ const CommitmentsSection = () => {
             
             {/* Modal Content */}
              <motion.div
-                className="relative bg-white rounded-2xl shadow-2xl w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl max-h-[75vh] sm:max-h-[70vh] md:max-h-[65vh] lg:max-h-[60vh] overflow-hidden flex flex-col"
+                className="relative bg-white rounded-2xl shadow-2xl w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl max-h-[85vh] sm:max-h-[70vh] md:max-h-[65vh] lg:max-h-[60vh] overflow-hidden flex flex-col"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
