@@ -118,7 +118,7 @@ const HomeHeroCarousel = () => {
                     className="hidden md:block mb-6"
                     initial={{ opacity: 0, y: 30 }}
                     animate={index === selectedIndex ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                    transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                    transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
                   >
                     <span className="inline-block px-6 py-3 bg-primary/30 backdrop-blur-md border border-primary/40 rounded-full text-primary-foreground text-sm font-semibold shadow-lg">
                       {slide.badge}
@@ -131,7 +131,7 @@ const HomeHeroCarousel = () => {
                       className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight drop-shadow-2xl"
                       initial={{ opacity: 0, y: 50, scale: 0.9 }}
                       animate={index === selectedIndex ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
-                      transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                      transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
                     >
                       {slide.title}
                     </motion.h1>
@@ -140,7 +140,7 @@ const HomeHeroCarousel = () => {
                       className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight drop-shadow-2xl"
                       initial={{ opacity: 0, y: 50, scale: 0.9 }}
                       animate={index === selectedIndex ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
-                      transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                      transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
                     >
                       {slide.title}
                     </motion.h2>
@@ -151,7 +151,7 @@ const HomeHeroCarousel = () => {
                     className="text-2xl md:text-3xl lg:text-4xl text-primary mb-6 font-bold drop-shadow-xl"
                     initial={{ opacity: 0, x: -30 }}
                     animate={index === selectedIndex ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                    transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                    transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
                   >
                     {slide.subtitle}
                   </motion.p>
@@ -161,7 +161,7 @@ const HomeHeroCarousel = () => {
                     className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl leading-relaxed drop-shadow-lg"
                     initial={{ opacity: 0, y: 20 }}
                     animate={index === selectedIndex ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+                    transition={{ duration: 0.4, delay: 0.4, ease: "easeOut" }}
                   >
                     {slide.desc}
                   </motion.p>
@@ -171,7 +171,7 @@ const HomeHeroCarousel = () => {
                     className="flex flex-col sm:flex-row gap-3 mb-8"
                     initial={{ opacity: 0, y: 30 }}
                     animate={index === selectedIndex ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                    transition={{ duration: 0.9, delay: 1.0, ease: "easeOut" }}
+                    transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
                   >
                     <motion.div
                       whileHover={{ scale: 1.05, y: -2 }}
