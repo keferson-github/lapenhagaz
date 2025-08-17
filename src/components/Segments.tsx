@@ -26,7 +26,7 @@ const Segments = () => {
         <header className="max-w-2xl mb-10">
           <h2 className="text-3xl md:text-4xl font-bold">Segmentos atendidos</h2>
           <p className="text-muted-foreground mt-2">
-            Lapenhagáz leva gás natural canalizado para diferentes necessidades.
+            Lapenhagáz leva gás natural para diferentes necessidades.
           </p>
         </header>
         <div className="grid md:grid-cols-3 gap-6">

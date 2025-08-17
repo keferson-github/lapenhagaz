@@ -6,7 +6,7 @@ const HeroCarousel = () => {
       id: 1,
       title: "Energia Limpa para sua Casa",
       subtitle: "Gás Natural Residencial",
-      description: "Transforme sua casa com a eficiência e segurança do gás natural canalizado. Sem cilindros, sem preocupações.",
+      description: "Transforme sua casa com a eficiência e segurança do gás natural. Sem cilindros, sem preocupações.",
       image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop&crop=center",
       cta: "Solicite Ligação",
       ctaLink: "/contato"

@@ -33,7 +33,7 @@ const NewHeroSection = () => {
             </div>
 
             <p className="text-lg text-white/80 max-w-lg leading-relaxed">
-              A Lapenhagáz oferece soluções completas em gás natural canalizado e água mineral, 
+              A Lapenhagáz oferece soluções completas em gás natural e água mineral, 
               promovendo eficiência energética e sustentabilidade para sua casa ou empresa.
             </p>
 

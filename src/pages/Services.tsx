@@ -26,7 +26,7 @@ const Services = () => {
               Nossos Serviços
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Fornecemos soluções completas em gás natural canalizado e água mineral, 
+              Fornecemos soluções completas em gás natural e água mineral, 
               atendendo desde residências até grandes complexos industriais.
             </p>
             <Button size="lg" variant="hero">
@@ -43,13 +43,13 @@ const Services = () => {
             <div>
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-4">
                 <Flame className="h-4 w-4" />
-                Gás Natural Canalizado
+                Gás Natural
               </div>
               <h2 className="text-3xl font-bold mb-4">
                 Energia limpa e eficiente para sua casa ou empresa
               </h2>
               <p className="text-muted-foreground mb-6">
-                O gás natural canalizado da LapenhaGáz oferece uma fonte de energia 
+                O gás natural da LapenhaGáz oferece uma fonte de energia 
                 confiável, econômica e sustentável. Ideal para aquecimento, cocção 
                 e processos industriais.
               </p>

@@ -9,7 +9,7 @@ const SiteFooter = () => {
           <div className="flex flex-col items-center md:items-start">
             <img src="/images/Lapenhagaz_logo-transparent.png" alt="Lapenhagáz logo" className="w-32 h-auto" loading="lazy" />
             <p className="text-muted-foreground mt-4 max-w-xs">
-              Energia e pureza para sua vida. Gás natural canalizado e água mineral com qualidade.
+              Energia e pureza para sua vida. Gás natural e água mineral com qualidade.
             </p>
           </div>
           <div>

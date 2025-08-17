@@ -82,7 +82,7 @@ const Hero = () => {
                 <div className="relative">
                   <img
                     src={slide.image}
-                    alt="Lapenhagáz conectando casas e empresas com gás natural canalizado"
+                    alt="Lapenhagáz conectando casas e empresas com gás natural"
                     loading="lazy"
                     decoding="async"
                     sizes="(min-width: 1024px) 560px, (min-width: 768px) 50vw, 100vw"

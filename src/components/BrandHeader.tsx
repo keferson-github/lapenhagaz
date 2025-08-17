@@ -204,7 +204,7 @@ export const BrandHeader = () => {
               variant="secondary" 
               className="relative overflow-hidden bg-secondary hover:bg-secondary/90 transition-all duration-300 hover:scale-105 hover:shadow-modern group-hover:-translate-y-0.5 font-medium px-6"
             >
-              <span className="relative z-10">Contratar gás encanado</span>
+              <span className="relative z-10">Contratar Gás GLP</span>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
             </Button>
           </a>
@@ -244,7 +244,7 @@ export const BrandHeader = () => {
             open ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
           }`} style={{ transitionDelay: open ? '250ms' : '0ms' }}>
             <div className="flex flex-col gap-2 items-center">
-              <a href="#servicos" className="w-full max-w-xs"><Button variant="secondary" className="w-full transition-all duration-200 hover:scale-105">Contratar gás encanado</Button></a>
+              <a href="#servicos" className="w-full max-w-xs"><Button variant="secondary" className="w-full transition-all duration-200 hover:scale-105">Contratar Gás GLP</Button></a>
               <a href="#servicos" className="w-full max-w-xs"><Button variant="hero" className="w-full transition-all duration-200 hover:scale-105">Loja de serviços</Button></a>
             </div>
           </li>

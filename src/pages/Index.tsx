@@ -1,5 +1,4 @@
 import HomeHeroCarousel from "@/components/HomeHeroCarousel";
-import AccessCardsSection from "@/components/AccessCardsSection";
 import AdvantagesSection from "@/components/AdvantagesSection";
 import SolutionsSection from "@/components/SolutionsSection";
 import CommitmentsSection from "@/components/CommitmentsSection";
@@ -35,7 +34,6 @@ const Index = () => {
 
       <section id="home" aria-label="Início" className="scroll-mt-24">
         <HomeHeroCarousel />
-        <AccessCardsSection />
       </section>
 
       <section id="servicos" aria-label="Serviços" className="scroll-mt-24">
