@@ -53,6 +53,17 @@ const SiteFooter = () => {
         </div>
         <div className="flex flex-col items-center gap-4 mt-8 text-muted-foreground">
           <p>© {new Date().getFullYear()} Lapenhagáz. Todos os direitos reservados.</p>
+          <p className="text-sm">
+            Desenvolvido por{" "}
+            <a 
+              href="https://techsolutionspro.com.br/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary/80 font-medium transition-colors duration-300 hover:underline"
+            >
+              Tech Solutions Pro
+            </a>
+          </p>
         </div>
       </div>
     </footer>
