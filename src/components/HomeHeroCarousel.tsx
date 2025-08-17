@@ -168,24 +168,26 @@ const HomeHeroCarousel = () => {
 
                   {/* CTA Buttons */}
                   <motion.div 
-                    className="flex flex-col sm:flex-row gap-3 mb-8"
+                    className="flex flex-col sm:flex-row gap-3 mb-8 w-full"
                     initial={{ opacity: 0, y: 30 }}
                     animate={index === selectedIndex ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                     transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
                   >
                     <motion.div
+                      className="w-full sm:w-auto"
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                       transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
                       <Button 
                         size="default" 
-                        className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-4 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-4 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
                       >
                         {slide.cta}
                       </Button>
                     </motion.div>
                     <motion.div
+                      className="w-full sm:w-auto"
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                       transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -193,7 +195,7 @@ const HomeHeroCarousel = () => {
                       <Button 
                         variant="outline" 
                         size="default"
-                        className="border-white bg-white/20 text-white hover:bg-white hover:text-primary backdrop-blur-sm px-8 py-4 text-base rounded-full font-semibold transition-all duration-300"
+                        className="w-full sm:w-auto border-white bg-white/20 text-white hover:bg-white hover:text-primary backdrop-blur-sm px-8 py-4 text-base rounded-full font-semibold transition-all duration-300"
                       >
                         {slide.ctaSecondary}
                       </Button>
