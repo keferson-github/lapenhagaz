@@ -18,7 +18,7 @@ const NewsSection = () => {
       excerpt: "ANP confirma: ICMS do GLP é R$ 1,39/kg desde fevereiro de 2025, com margens e PMPF por UF/estado, em tabela atualizada. Confira critérios e metodologia oficial.",
       date: "25 de Fevereiro, 2025",
       category: "Regulamentação",
-      image: "/images/og-lapenhagaz.jpg",
+      image: "/images/blog-card1.webp",
       alt: "Regulamentação ANP sobre ICMS do GLP"
     },
     {
@@ -26,7 +26,7 @@ const NewsSection = () => {
       excerpt: "Levantamento nacional indica rejeição à venda fracionada e à troca de marcas em botijões: mais de 80% veem riscos de segurança e desconfiam da proposta no país.",
       date: "10 de Fevereiro, 2025",
       category: "Mercado",
-      image: "/images/og-lapenhagaz.jpg",
+      image: "/images/blog-card2.webp",
       alt: "Pesquisa sobre mudanças no mercado de gás de cozinha"
     },
     {
@@ -71,7 +71,7 @@ const NewsSection = () => {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
     >
-      <div className="container">
+      <div className="container px-8 md:px-12 lg:px-16">
         <motion.div 
           className="flex justify-between items-center mb-12"
           initial={{ opacity: 0, y: 30 }}
@@ -125,14 +125,8 @@ const NewsSection = () => {
             <CarouselContent>
               {news.map((item, index) => (
                 <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.7 + (index * 0.1) }}
-                    whileHover={{ y: -5 }}
-                  >
-                    <Card className="group cursor-pointer hover:shadow-[var(--shadow-elevated)] transition-all duration-300 h-full">
+                  <div>
+                    <Card className="group cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300 h-full border-0">
                       <div className="overflow-hidden rounded-t-lg">
                         <AspectRatio ratio={16 / 9}>
                           <img
@@ -153,7 +147,7 @@ const NewsSection = () => {
                         <span className="inline-block bg-accent/10 text-accent text-xs px-2 py-1 rounded-full mb-3 w-fit">
                           {item.category}
                         </span>
-                        <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                        <CardTitle className="text-lg group-hover:text-primary">
                           {item.title}
                         </CardTitle>
                       </CardHeader>
@@ -161,14 +155,14 @@ const NewsSection = () => {
                         <p className="text-muted-foreground text-sm line-clamp-3">
                           {item.excerpt}
                         </p>
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                           <Button variant="link" className="p-0 mt-4 text-primary">
                             Leia mais <ArrowRight className="ml-1 h-3 w-3" />
                           </Button>
                         </motion.div>
                       </CardContent>
                     </Card>
-                  </motion.div>
+                  </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
