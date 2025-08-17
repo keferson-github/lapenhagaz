@@ -209,7 +209,7 @@ export const BrandHeader = () => {
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 font-medium group cursor-pointer">
               <Phone className="w-4 h-4 text-accent group-hover:scale-110 transition-transform stroke-2" />
-              <span className="group-hover:text-accent transition-colors">Emergência 0800 000 000</span>
+              <span className="group-hover:text-accent transition-colors">WhatsApp: 11 98388-0542 | 11 98388-0596</span>
             </div>
             
             <div className="hidden lg:flex items-center gap-1 text-xs opacity-90">
