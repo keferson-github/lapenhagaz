@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Leaf, Clock, Shield, DollarSign } from "lucide-react";
+import { motion } from "framer-motion";
 
 const AdvantagesSection = () => {
   const advantages = [
@@ -26,43 +27,92 @@ const AdvantagesSection = () => {
   ];
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-24 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5">
+    <motion.section 
+      className="relative overflow-hidden py-20 md:py-24 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.1),transparent_70%)]" />
       <div className="container relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold text-sm uppercase tracking-wider mb-4">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <motion.div 
+            className="inline-block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold text-sm uppercase tracking-wider mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             Por que escolher?
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Por que escolher a LapenhaGáz?
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Descubra os benefícios que fazem da LapenhaGáz a melhor escolha em gás GLP e água mineral
-          </p>
-        </div>
+          </motion.div>
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-foreground mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            Nossas Vantagens
+          </motion.h2>
+          <motion.p 
+            className="text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            Descubra por que somos a escolha preferida para gás GLP e água mineral de qualidade superior.
+          </motion.p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <motion.div 
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
           {advantages.map((advantage, index) => {
             const Icon = advantage.icon;
             return (
-              <Card key={index} className="group border-0 bg-white/80 backdrop-blur-sm hover:bg-white transition-all duration-500 hover:shadow-[var(--shadow-modern)] hover:-translate-y-2">
-                <CardContent className="p-6 text-center">
-                  <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary via-secondary to-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-                    {advantage.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm">
-                    {advantage.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.7 + (index * 0.1) }}
+                whileHover={{ y: -8, scale: 1.02 }}
+              >
+                <Card className="group border-0 bg-white/80 backdrop-blur-sm hover:bg-white transition-all duration-500 hover:shadow-[var(--shadow-modern)] h-full">
+                  <CardContent className="p-6 text-center">
+                    <motion.div 
+                      className="mx-auto w-16 h-16 bg-gradient-to-br from-primary via-secondary to-accent rounded-2xl flex items-center justify-center mb-6"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <Icon className="h-8 w-8 text-white" />
+                    </motion.div>
+                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                      {advantage.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm">
+                      {advantage.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

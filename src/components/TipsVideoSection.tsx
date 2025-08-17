@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, memo } from 'react';
 import { ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
 
 // Dados dos vídeos de dicas
 const tipsVideos = [
@@ -195,6 +196,8 @@ const TipsVideoSection = memo(() => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState<typeof tipsVideos[0] | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % tipsVideos.length);
@@ -229,7 +232,14 @@ const TipsVideoSection = memo(() => {
 
   return (
     <>
-      <section className="py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden">
+      <motion.section 
+        ref={sectionRef}
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.8 }}
+        className="py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden"
+        style={{ fontFamily: 'Roboto, sans-serif' }}
+      >
         {/* Background decorative elements */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23e2e8f0%22%20fill-opacity%3D%220.3%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-40" />
         
@@ -239,23 +249,50 @@ const TipsVideoSection = memo(() => {
         
         <div className="container relative">
           {/* Header */}
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider mb-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center max-w-4xl mx-auto mb-16"
+          >
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider mb-6"
+            >
               <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 6a2 2 0 012-2h6l2 2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
               </svg>
               Conteúdo exclusivo
-            </div>
-            <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent leading-tight">
+            </motion.div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent leading-tight"
+              style={{ fontFamily: 'Roboto, sans-serif' }}
+            >
               Dicas Úteis & Rápidas
-            </h2>
-            <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto">
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto"
+              style={{ fontFamily: 'Roboto, sans-serif' }}
+            >
               Aprenda com nossos especialistas através de vídeos práticos e informativos sobre gás GLP e água mineral
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Stories Carousel */}
-          <div className="relative">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="relative"
+          >
             {/* Navigation buttons */}
             <button
               onClick={prevSlide}
@@ -278,8 +315,12 @@ const TipsVideoSection = memo(() => {
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {tipsVideos.map((video, index) => (
-                <div
+                <motion.div
                   key={video.id}
+                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                  animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
+                  transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
                   className={`flex-shrink-0 w-64 transition-all duration-500 cursor-pointer group ${
                     index === currentIndex ? 'scale-105' : 'scale-95 opacity-70'
                   }`}
@@ -319,15 +360,15 @@ const TipsVideoSection = memo(() => {
                         <div className="inline-block px-2 py-1 bg-primary/80 rounded-full text-xs font-medium mb-2">
                           {video.category}
                         </div>
-                        <h3 className="font-bold text-sm mb-1 leading-tight line-clamp-2">{video.title}</h3>
-                        <div className="flex items-center justify-between text-xs text-white/80">
+                        <h3 className="font-bold text-sm mb-1 leading-tight line-clamp-2" style={{ fontFamily: 'Roboto, sans-serif' }}>{video.title}</h3>
+                        <div className="flex items-center justify-between text-xs text-white/80" style={{ fontFamily: 'Roboto, sans-serif' }}>
                           <span>{video.duration}</span>
                           <span className="bg-black/50 px-2 py-1 rounded-full">Story</span>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 
@@ -345,9 +386,9 @@ const TipsVideoSection = memo(() => {
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Modal de vídeo */}
       {isModalOpen && selectedVideo && (

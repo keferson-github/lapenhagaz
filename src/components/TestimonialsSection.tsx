@@ -1,5 +1,6 @@
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect, memo, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Star, Quote, MapPin, Calendar } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
 
 // Dados dos depoimentos
 const testimonials = [
@@ -72,14 +73,22 @@ const testimonials = [
 ];
 
 // Componente do card de depoimento
-const TestimonialCard = memo(({ testimonial, isActive }: { 
+const TestimonialCard = memo(({ testimonial, isActive, index = 0 }: { 
   testimonial: typeof testimonials[0], 
-  isActive: boolean 
+  isActive: boolean,
+  index?: number
 }) => {
   return (
-    <div className={`relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 p-8 h-full border border-gray-100 ${
-      isActive ? 'scale-105 shadow-2xl border-primary/20' : 'scale-95'
-    }`}>
+    <motion.div 
+      initial={{ opacity: 0, y: 30, scale: 0.9 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      whileHover={{ y: -5, scale: 1.02 }}
+      className={`relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 p-8 h-full border border-gray-100 ${
+        isActive ? 'scale-105 shadow-2xl border-primary/20' : 'scale-95'
+      }`}
+      style={{ fontFamily: 'Roboto, sans-serif' }}
+    >
       {/* Quote icon */}
       <div className="absolute -top-4 left-8">
         <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center shadow-lg">
@@ -106,7 +115,7 @@ const TestimonialCard = memo(({ testimonial, isActive }: {
         </div>
         
         <div className="flex-1">
-          <h3 className="font-bold text-lg text-gray-900 mb-1">{testimonial.name}</h3>
+          <h3 className="font-bold text-lg text-gray-900 mb-1" style={{ fontFamily: 'Roboto, sans-serif' }}>{testimonial.name}</h3>
           <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
             <MapPin className="w-4 h-4" />
             <span>{testimonial.location}</span>
@@ -136,7 +145,7 @@ const TestimonialCard = memo(({ testimonial, isActive }: {
       </div>
       
       {/* Comentário */}
-      <p className="text-gray-700 leading-relaxed text-base italic">
+      <p className="text-gray-700 leading-relaxed text-base italic" style={{ fontFamily: 'Roboto, sans-serif' }}>
         "{testimonial.comment}"
       </p>
       
@@ -151,7 +160,7 @@ const TestimonialCard = memo(({ testimonial, isActive }: {
           <span className="text-sm text-green-600 font-medium">Cliente Verificado</span>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 });
 
@@ -161,6 +170,8 @@ TestimonialCard.displayName = 'TestimonialCard';
 const TestimonialsSection = memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
   
   // Auto-play do carrossel
   useEffect(() => {
@@ -199,7 +210,14 @@ const TestimonialsSection = memo(() => {
   };
   
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden">
+    <motion.section 
+      ref={sectionRef}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: 0.8 }}
+      className="py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden"
+      style={{ fontFamily: 'Roboto, sans-serif' }}
+    >
       {/* Background decorative elements */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23e2e8f0%22%20fill-opacity%3D%220.3%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-40" />
       
@@ -209,21 +227,48 @@ const TestimonialsSection = memo(() => {
       
       <div className="container relative">
         {/* Header */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider mb-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-center max-w-4xl mx-auto mb-16"
+        >
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider mb-6"
+          >
             <Star className="w-4 h-4 text-primary" />
             Depoimentos Reais
-          </div>
-          <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent leading-tight">
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent leading-tight"
+            style={{ fontFamily: 'Roboto, sans-serif' }}
+          >
             O que nossos clientes dizem
-          </h2>
-          <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto"
+            style={{ fontFamily: 'Roboto, sans-serif' }}
+          >
             Mais de <span className="font-bold text-primary">5.000 famílias</span> confiam na LapenhaGáz para suas necessidades de gás e água mineral
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
         
         {/* Carrossel */}
-        <div className="relative max-w-7xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="relative max-w-7xl mx-auto"
+        >
           {/* Navigation buttons */}
           <button
             onClick={prevSlide}
@@ -248,6 +293,7 @@ const TestimonialsSection = memo(() => {
                   key={`${testimonial.id}-${currentIndex}`}
                   testimonial={testimonial}
                   isActive={testimonial.isActive}
+                  index={index}
                 />
               ))}
             </div>
@@ -257,6 +303,7 @@ const TestimonialsSection = memo(() => {
               <TestimonialCard
                 testimonial={testimonials[currentIndex]}
                 isActive={true}
+                index={0}
               />
               <div className="flex justify-between mt-4">
                 <button
@@ -306,29 +353,36 @@ const TestimonialsSection = memo(() => {
               {isAutoPlaying ? 'Reprodução automática ativa' : 'Clique para ativar reprodução automática'}
             </button>
           </div>
-        </div>
+        </motion.div>
         
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 max-w-4xl mx-auto">
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-black text-primary mb-2">5.000+</div>
-            <div className="text-sm text-muted-foreground font-medium">Clientes Satisfeitos</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-black text-secondary mb-2">98%</div>
-            <div className="text-sm text-muted-foreground font-medium">Avaliações Positivas</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-black text-accent mb-2">15+</div>
-            <div className="text-sm text-muted-foreground font-medium">Anos de Experiência</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-black text-primary mb-2">24h</div>
-            <div className="text-sm text-muted-foreground font-medium">Atendimento</div>
-          </div>
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 max-w-4xl mx-auto"
+        >
+          {[
+            { value: '5.000+', label: 'Clientes Satisfeitos', color: 'text-primary' },
+            { value: '98%', label: 'Avaliações Positivas', color: 'text-secondary' },
+            { value: '15+', label: 'Anos de Experiência', color: 'text-accent' },
+            { value: '24h', label: 'Atendimento', color: 'text-primary' }
+          ].map((stat, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 20, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
+              transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              className="text-center"
+            >
+              <div className={`text-3xl md:text-4xl font-black ${stat.color} mb-2`} style={{ fontFamily: 'Roboto, sans-serif' }}>{stat.value}</div>
+              <div className="text-sm text-muted-foreground font-medium" style={{ fontFamily: 'Roboto, sans-serif' }}>{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 });
 

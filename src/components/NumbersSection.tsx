@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, memo, useCallback, useMemo } from 'react';
+import { motion } from 'framer-motion';
 
 // Hook personalizado otimizado para animar contagem de números com melhor performance
 const useCountAnimation = (endValue: number, duration: number = 2000, decimals: number = 0) => {
@@ -91,7 +92,13 @@ const NumbersSection = memo(() => {
   const experienceCount = useCountAnimation(15, 1000);
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50/40 to-green-50/40 relative overflow-hidden">
+    <motion.section 
+      className="py-24 bg-gradient-to-br from-slate-50 via-blue-50/40 to-green-50/40 relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8 }}
+    >
       {/* Background decorative elements - Otimizado para melhor renderização */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%222%22%20fill%3D%22%23e2e8f0%22%20fill-opacity%3D%220.4%22%2F%3E%3C%2Fsvg%3E')] opacity-50" />
       
@@ -101,24 +108,62 @@ const NumbersSection = memo(() => {
       <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-gradient-to-br from-secondary/10 to-accent/10 rounded-full blur-xl animate-pulse delay-500" />
       
       <div className="container relative space-y-20">
-        <header className="text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider mb-6">
+        <motion.header 
+          className="text-center max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <motion.div 
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
             </svg>
             Nossa trajetória de crescimento
-          </div>
-          <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent leading-tight">
+          </motion.div>
+          <motion.h2 
+            className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             LapenhaGáz em Números
-          </h2>
-          <p className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
             Dados que demonstram nossa trajetória de sucesso no fornecimento de gás GLP e água mineral de qualidade
-          </p>
-        </header>
+          </motion.p>
+        </motion.header>
 
         {/* Cards de estatísticas principais */}
-        <div className="grid md:grid-cols-2 gap-10">
-          <article ref={clientsCount.elementRef} className="group relative bg-white/90 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-3 hover:bg-white border border-white/50">
+        <motion.div 
+          className="grid md:grid-cols-2 gap-10"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <motion.article 
+            ref={clientsCount.elementRef} 
+            className="group relative bg-white/90 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-3xl transition-all duration-700 hover:bg-white border border-white/50"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            whileHover={{ y: -12, scale: 1.02 }}
+          >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             <div className="absolute -top-8 -right-4 md:-right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-primary/70 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 ring-2 ring-secondary/40">
               <img
@@ -161,9 +206,17 @@ const NumbersSection = memo(() => {
                 </div>
               </div>
             </div>
-          </article>
+          </motion.article>
 
-          <article ref={satisfactionCount.elementRef} className="group relative bg-white/90 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-3 hover:bg-white border border-white/50">
+          <motion.article 
+            ref={satisfactionCount.elementRef} 
+            className="group relative bg-white/90 backdrop-blur-md rounded-3xl p-10 shadow-xl hover:shadow-3xl transition-all duration-700 hover:bg-white border border-white/50"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            whileHover={{ y: -12, scale: 1.02 }}
+          >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             <div className="absolute -top-8 -right-4 md:-right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-secondary/70 shadow-2xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 ring-2 ring-primary/40">
               <img
@@ -205,48 +258,107 @@ const NumbersSection = memo(() => {
                 </div>
               </div>
             </div>
-          </article>
-        </div>
+          </motion.article>
+        </motion.div>
 
 
 
         {/* Seção de crescimento sustentável */}
-        <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-12 shadow-xl border border-white/50">
+        <motion.div 
+          className="bg-white/70 backdrop-blur-sm rounded-3xl p-12 shadow-xl border border-white/50"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+        >
           <div className="text-center max-w-4xl mx-auto space-y-8">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider">
+            <motion.div 
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+            >
               <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
               </svg>
               Compromisso com o futuro
-            </div>
-            <h3 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent leading-tight">
+            </motion.div>
+            <motion.h3 
+              className="text-4xl md:text-5xl font-black bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent leading-tight"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 1.1 }}
+            >
               Crescimento Sustentável
-            </h3>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto">
+            </motion.h3>
+            <motion.p 
+              className="text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+            >
               Nossa expansão é pautada pela responsabilidade ambiental e social, investindo em tecnologias limpas e práticas sustentáveis que beneficiam as comunidades onde atuamos.
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-              <div ref={experienceCount.elementRef} className="text-center space-y-2 group hover:scale-105 transition-transform duration-300">
+            </motion.p>
+            <motion.div 
+              className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 1.3 }}
+            >
+              <motion.div 
+                ref={experienceCount.elementRef} 
+                className="text-center space-y-2 group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.4 }}
+                whileHover={{ scale: 1.05 }}
+              >
                 <div className="text-3xl font-black text-green-600 group-hover:text-green-700 transition-colors duration-300">{experienceCount.count}+</div>
                 <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Anos de experiência</p>
-              </div>
-              <div className="text-center space-y-2 group hover:scale-105 transition-transform duration-300">
+              </motion.div>
+              <motion.div 
+                className="text-center space-y-2 group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.5 }}
+                whileHover={{ scale: 1.05 }}
+              >
                 <div className="text-3xl font-black text-blue-600 group-hover:text-blue-700 transition-colors duration-300">100%</div>
                 <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Energia limpa</p>
-              </div>
-              <div className="text-center space-y-2 group hover:scale-105 transition-transform duration-300">
+              </motion.div>
+              <motion.div 
+                className="text-center space-y-2 group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.6 }}
+                whileHover={{ scale: 1.05 }}
+              >
                 <div className="text-3xl font-black text-purple-600 group-hover:text-purple-700 transition-colors duration-300">24/7</div>
                 <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Suporte técnico</p>
-              </div>
-              <div className="text-center space-y-2 group hover:scale-105 transition-transform duration-300">
+              </motion.div>
+              <motion.div 
+                className="text-center space-y-2 group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.7 }}
+                whileHover={{ scale: 1.05 }}
+              >
                 <div className="text-3xl font-black text-orange-600 group-hover:text-orange-700 transition-colors duration-300">ISO</div>
                 <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Certificações</p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 });
 

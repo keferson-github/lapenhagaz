@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const HomeHeroCarousel = () => {
   const heroSlides = [
@@ -113,49 +114,91 @@ const HomeHeroCarousel = () => {
                   className="max-w-3xl"
                 >
                   {/* Badge */}
-                  <div className={`hidden md:block mb-6 ${index === selectedIndex ? 'animate-slide-up animation-delay-200 anim-600 animation-ease-smooth animate-once will-change-transform will-change-opacity' : ''}`}>
-                    <span className="inline-block px-6 py-3 bg-primary/30 backdrop-blur-md border border-primary/40 rounded-full text-primary-foreground text-sm font-semibold transform translate-y-0 transition-all duration-700 ease-out shadow-lg">
+                  <motion.div 
+                    className="hidden md:block mb-6"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={index === selectedIndex ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                  >
+                    <span className="inline-block px-6 py-3 bg-primary/30 backdrop-blur-md border border-primary/40 rounded-full text-primary-foreground text-sm font-semibold shadow-lg">
                       {slide.badge}
                     </span>
-                  </div>
+                  </motion.div>
 
                   {/* Title */}
                   {index === 0 ? (
-                    <h1 className={`text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight drop-shadow-2xl ${index === selectedIndex ? 'animate-slide-up animation-delay-400 anim-800 animation-ease-smooth animate-once will-change-transform will-change-opacity' : ''}`}>
+                    <motion.h1 
+                      className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight drop-shadow-2xl"
+                      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                      animate={index === selectedIndex ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
+                      transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                    >
                       {slide.title}
-                    </h1>
+                    </motion.h1>
                   ) : (
-                    <h2 className={`text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight drop-shadow-2xl ${index === selectedIndex ? 'animate-slide-up animation-delay-400 anim-800 animation-ease-smooth animate-once will-change-transform will-change-opacity' : ''}`}>
+                    <motion.h2 
+                      className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight drop-shadow-2xl"
+                      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                      animate={index === selectedIndex ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
+                      transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                    >
                       {slide.title}
-                    </h2>
+                    </motion.h2>
                   )}
 
                   {/* Subtitle */}
-                  <p className={`text-2xl md:text-3xl lg:text-4xl text-primary mb-6 font-bold drop-shadow-xl ${index === selectedIndex ? 'animate-slide-up animation-delay-600 anim-800 animation-ease-smooth animate-once will-change-transform will-change-opacity' : ''}`}>
+                  <motion.p 
+                    className="text-2xl md:text-3xl lg:text-4xl text-primary mb-6 font-bold drop-shadow-xl"
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={index === selectedIndex ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                    transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                  >
                     {slide.subtitle}
-                  </p>
+                  </motion.p>
 
                   {/* Description */}
-                  <p className={`text-lg md:text-xl text-white/90 mb-10 max-w-2xl leading-relaxed drop-shadow-lg ${index === selectedIndex ? 'animate-slide-up animation-delay-800 anim-800 animation-ease-smooth animate-once will-change-transform will-change-opacity' : ''}`}>
+                  <motion.p 
+                    className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl leading-relaxed drop-shadow-lg"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={index === selectedIndex ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+                  >
                     {slide.desc}
-                  </p>
+                  </motion.p>
 
                   {/* CTA Buttons */}
-                  <div className={`flex flex-col sm:flex-row gap-3 mb-8 ${index === selectedIndex ? 'animate-fade-in animation-delay-1000 anim-900 animation-ease-smooth animate-once will-change-transform will-change-opacity' : ''}`}>
-                    <Button 
-                      size="default" 
-                      className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-4 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-110 hover:-translate-y-2 transform motion-reduce:transform-none motion-reduce:transition-none animate-pulse-subtle"
+                  <motion.div 
+                    className="flex flex-col sm:flex-row gap-3 mb-8"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={index === selectedIndex ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.9, delay: 1.0, ease: "easeOut" }}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
-                      {slide.cta}
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      size="default"
-                      className="border-white bg-white/20 text-white hover:bg-white hover:text-primary backdrop-blur-sm px-8 py-4 text-base rounded-full font-semibold transition-all duration-500 hover:scale-110 hover:-translate-y-2 transform motion-reduce:transform-none motion-reduce:transition-none"
+                      <Button 
+                        size="default" 
+                        className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-4 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                      >
+                        {slide.cta}
+                      </Button>
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
-                      {slide.ctaSecondary}
-                    </Button>
-                  </div>
+                      <Button 
+                        variant="outline" 
+                        size="default"
+                        className="border-white bg-white/20 text-white hover:bg-white hover:text-primary backdrop-blur-sm px-8 py-4 text-base rounded-full font-semibold transition-all duration-300"
+                      >
+                        {slide.ctaSecondary}
+                      </Button>
+                    </motion.div>
+                  </motion.div>
 
 
                 </div>
