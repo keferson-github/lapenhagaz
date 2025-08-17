@@ -195,6 +195,105 @@ All colors MUST be HSL.
   }
 }
 
+/* Garantir comportamento sticky em mobile */
+@layer utilities {
+  .sticky-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+    will-change: transform;
+  }
+  
+  /* Fix específico para iOS Safari */
+  @supports (-webkit-touch-callout: none) {
+    .sticky-header {
+      position: -webkit-sticky !important;
+      position: sticky !important;
+    }
+  }
+  
+  /* Variável CSS para altura do header */
+  :root {
+    --header-height: 80px;
+  }
+  
+  /* Regras específicas para mobile - agora controladas dinamicamente */
+  @media (max-width: 768px) {
+    .sticky-header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 9999 !important;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+    
+    /* Quando o header está em posição normal (no topo) */
+    .header-normal {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      width: auto !important;
+      z-index: auto !important;
+      transform: none;
+      -webkit-transform: none;
+    }
+    
+    /* Menu mobile sempre com z-index alto */
+    .mobile-menu {
+      z-index: 10001 !important;
+    }
+  }
+}
+
+/* Garantir que o body e html não interfiram com sticky */
+body, html {
+  overflow-x: hidden;
+}
+
+/* Garantir que containers não quebrem o sticky */
+.min-h-screen {
+  overflow: visible !important;
+}
+
+/* Adicionar padding-top ao body em mobile para compensar o header fixo */
+ @media (max-width: 768px) {
+   body {
+     padding-top: 0;
+   }
+   
+   /* Garantir que o primeiro elemento após o header tenha espaçamento adequado */
+   .sticky-header + * {
+     margin-top: 0;
+   }
+   
+   /* Estilos específicos para o menu mobile */
+   .mobile-menu {
+     background: rgba(255, 255, 255, 0.95) !important;
+     backdrop-filter: blur(12px) !important;
+     -webkit-backdrop-filter: blur(12px) !important;
+     border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+   }
+   
+   /* Garantir que o toggle do menu funcione corretamente */
+   .sticky-header button[aria-label="Alternar menu"] {
+     position: relative !important;
+     z-index: 10000 !important;
+   }
+ }
+ 
+ /* Melhorar a experiência de toque em mobile */
+ @media (max-width: 768px) and (hover: none) {
+   .sticky-header {
+     -webkit-user-select: none;
+     user-select: none;
+     -webkit-touch-callout: none;
+   }
+ }
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;

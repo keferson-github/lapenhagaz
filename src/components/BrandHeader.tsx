@@ -100,6 +100,8 @@ export const BrandHeader = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [searchFocused, setSearchFocused] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(80);
+  const headerRef = useRef<HTMLElement>(null);
 
   // Hooks de animação para os números
   const securityCount = useCountAnimation(100, 3000);
@@ -109,16 +111,68 @@ export const BrandHeader = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
+    
+    const handleResize = () => {
+      // Forçar re-render quando a tela mudar de tamanho
+      setScrolled(window.scrollY > 20);
+      // Atualizar altura do header
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
+    };
+    
+    // Calcular altura inicial do header
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+    }
+    
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
+  // Determinar se deve usar posição fixa ou normal baseado no scroll e tamanho da tela
+  const getHeaderPosition = () => {
+    if (typeof window === 'undefined') return 'sticky';
+    
+    const isMobile = window.innerWidth <= 768;
+    const isAtTop = window.scrollY <= 20;
+    
+    if (isMobile && isAtTop) {
+      return 'relative'; // Posição normal no topo em mobile
+    }
+    
+    return isMobile ? 'fixed' : 'sticky'; // Fixo quando scrolled em mobile, sticky em desktop
+  };
+
+  const headerPosition = getHeaderPosition();
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+  const isAtTop = typeof window !== 'undefined' && window.scrollY <= 20;
+
   return (
-    <header className={`w-full sticky top-0 z-50 transition-all duration-500 ease-out ${
-      scrolled 
-        ? 'border-b border-border/80 bg-background/95 backdrop-blur-xl shadow-modern' 
-        : 'border-b border-border/40 bg-background/90 backdrop-blur-lg'
-    }`}>
+    <header 
+      ref={headerRef}
+      className={`w-full transition-all duration-500 ease-out ${
+        scrolled 
+          ? 'border-b border-border/80 bg-background/95 backdrop-blur-xl shadow-modern' 
+          : 'border-b border-border/40 bg-background/90 backdrop-blur-lg'
+      } ${
+        isMobile && isAtTop ? 'header-normal' : 'sticky-header'
+      }`}
+      style={{
+        position: headerPosition,
+        top: headerPosition === 'relative' ? 'auto' : 0,
+        left: headerPosition === 'fixed' ? 0 : 'auto',
+        right: headerPosition === 'fixed' ? 0 : 'auto',
+        width: headerPosition === 'fixed' ? '100%' : 'auto',
+        zIndex: headerPosition === 'relative' ? 'auto' : 9999,
+        willChange: headerPosition === 'relative' ? 'auto' : 'transform'
+      }}
+    >
       {/* Top bar - Enhanced for Desktop */}
       <div className="hidden md:block bg-gradient-to-r from-secondary via-secondary to-primary text-secondary-foreground relative overflow-hidden">
         {/* Animated background pattern */}
@@ -198,9 +252,13 @@ export const BrandHeader = () => {
         </Link>
 
         <button
-          className="md:hidden inline-flex items-center justify-center p-2 rounded-lg hover:bg-muted/50 transition-all duration-300 hover:scale-110"
+          className="md:hidden inline-flex items-center justify-center p-2 rounded-lg hover:bg-muted/50 transition-all duration-300 hover:scale-110 relative z-[10000]"
           onClick={() => setOpen(!open)}
           aria-label="Alternar menu"
+          style={{
+            position: 'relative',
+            zIndex: 10000
+          }}
         >
           <div className="relative w-6 h-6">
             <Menu className={`absolute inset-0 w-6 h-6 transition-all duration-300 ease-in-out stroke-2 ${
@@ -297,9 +355,19 @@ export const BrandHeader = () => {
         </div>
       </nav>
 
-      <div className={`md:hidden border-t border-border/60 bg-background overflow-hidden transition-all duration-300 ease-in-out ${
+      <div className={`md:hidden border-t border-border/60 bg-background overflow-hidden transition-all duration-300 ease-in-out mobile-menu ${
         open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-      }`}>
+      }`}
+      style={{
+        position: headerPosition,
+        top: headerPosition === 'relative' ? 'auto' : (headerPosition === 'fixed' ? `${headerHeight}px` : 0),
+        left: headerPosition === 'fixed' ? 0 : 'auto',
+        right: headerPosition === 'fixed' ? 0 : 'auto',
+        width: headerPosition === 'fixed' ? '100%' : 'auto',
+        zIndex: 10001,
+        backgroundColor: 'var(--background)',
+        backdropFilter: 'blur(12px)'
+      }}>
         <ul className="container py-3 grid gap-3 text-center transform transition-transform duration-300 ease-in-out">
           {[
             { label: "Home", href: "#home" },
@@ -324,13 +392,7 @@ export const BrandHeader = () => {
               <a href="#servicos" className="w-full max-w-xs"><Button variant="hero" className="w-full transition-all duration-200 hover:scale-105">Loja de serviços</Button></a>
             </div>
           </li>
-          <li className={`flex justify-center transform transition-all duration-300 ease-in-out ${
-            open ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
-          }`} style={{ transitionDelay: open ? '300ms' : '0ms' }}>
-            <div className="w-full max-w-xs">
-              <Input placeholder="Pesquisar" aria-label="Pesquisar" className="text-center transition-all duration-200 focus:scale-105" />
-            </div>
-          </li>
+
         </ul>
       </div>
     </header>
