@@ -14,28 +14,52 @@ import { motion } from "framer-motion";
 const NewsSection = () => {
   const news = [
     {
-      title: "Novas marcas premium de gás GLP",
-      excerpt: "LapenhaGáz amplia portfólio com as marcas mais conceituadas do mercado de gás GLP, oferecendo ainda mais qualidade e segurança.",
-      date: "15 de Janeiro, 2025",
-      category: "Produtos",
+      title: "ANP fixa ICMS ad rem do GLP em R$ 1,39/kg",
+      excerpt: "ANP confirma: ICMS do GLP é R$ 1,39/kg desde fevereiro de 2025, com margens e PMPF por UF/estado, em tabela atualizada. Confira critérios e metodologia oficial.",
+      date: "25 de Fevereiro, 2025",
+      category: "Regulamentação",
       image: "/images/og-lapenhagaz.jpg",
-      alt: "Botijões de gás GLP representando novas marcas premium"
+      alt: "Regulamentação ANP sobre ICMS do GLP"
     },
     {
-      title: "Promoção especial para restaurantes",
-      excerpt: "Condições exclusivas para estabelecimentos comerciais com desconto progressivo na compra de gás GLP e entrega garantida.",
-      date: "10 de Janeiro, 2025",
-      category: "Promoções",
+      title: "Pesquisa rejeita mudanças no gás de cozinha",
+      excerpt: "Levantamento nacional indica rejeição à venda fracionada e à troca de marcas em botijões: mais de 80% veem riscos de segurança e desconfiam da proposta no país.",
+      date: "10 de Fevereiro, 2025",
+      category: "Mercado",
       image: "/images/og-lapenhagaz.jpg",
-      alt: "Chef profissional cozinhando em restaurante com fogão a gás durante promoção especial"
+      alt: "Pesquisa sobre mudanças no mercado de gás de cozinha"
     },
     {
-      title: "Água mineral com nova fonte natural",
-      excerpt: "LapenhaGáz inaugura parceria com nova fonte de água mineral natural, garantindo pureza e qualidade superior aos clientes.",
-      date: "05 de Janeiro, 2025",
-      category: "Água Mineral",
+      title: "MME pauta reforma e investimentos no GLP",
+      excerpt: "Em fórum do setor, MME debate reforma do mercado de GLP, regulação do gás, preços de referência e fiscalização, com foco em investimentos e segurança estrutural.",
+      date: "08 de Fevereiro, 2025",
+      category: "Governo",
       image: "/images/og-lapenhagaz.jpg",
-      alt: "Fonte natural de água mineral simbolizando pureza e qualidade"
+      alt: "Fórum do MME sobre reforma do mercado de GLP"
+    },
+    {
+      title: "Terminal de GLP em Suape avança com R$ 1,2 bi",
+      excerpt: "Projeto da OTGN em Suape soma R$ 1,2 bilhão e capacidade prevista de 1,5 milhão t/ano, ampliando a logística de GLP no Nordeste e gerando empregos em PE.",
+      date: "05 de Fevereiro, 2025",
+      category: "Infraestrutura",
+      image: "/images/og-lapenhagaz.jpg",
+      alt: "Terminal de GLP em Suape - investimento em infraestrutura"
+    },
+    {
+      title: "CBMERJ atualiza norma técnica para uso de GLP",
+      excerpt: "Bombeiros do RJ atualizam a NT 3-02, com requisitos de segurança para centrais e recipientes até 13 kg de GLP, reforçando prevenção de incêndio e pânico no RJ.",
+      date: "03 de Fevereiro, 2025",
+      category: "Segurança",
+      image: "/images/og-lapenhagaz.jpg",
+      alt: "Norma técnica CBMERJ para segurança no uso de GLP"
+    },
+    {
+      title: "Sindigás esclarece cadeia de envase e entrega",
+      excerpt: "Nota reforça: produtores não vendem GLP envasado. Envase cabe a distribuidoras; entrega, instalação e revenda são de empresas autorizadas e fiscalizadas por lei.",
+      date: "27 de Maio, 2025",
+      category: "Esclarecimentos",
+      image: "/images/og-lapenhagaz.jpg",
+      alt: "Esclarecimentos Sindigás sobre cadeia de envase e entrega de GLP"
     }
   ];
 
@@ -100,7 +124,7 @@ const NewsSection = () => {
           <Carousel opts={{ align: "start", loop: true }}>
             <CarouselContent>
               {news.map((item, index) => (
-                <CarouselItem key={index} className="pl-4 sm:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
