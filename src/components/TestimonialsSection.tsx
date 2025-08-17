@@ -170,8 +170,8 @@ const TestimonialCard = memo(({ testimonial, isActive, index = 0 }: {
       
       {/* Header com avatar e info */}
       <div className="flex items-start gap-4 mb-6">
-        {/* Avatar - visível apenas no mobile */}
-        <div className="relative md:hidden">
+        {/* Avatar - oculto na versão mobile */}
+        <div className="relative hidden">
           <img
             src={testimonial.avatar}
             alt={testimonial.name}
