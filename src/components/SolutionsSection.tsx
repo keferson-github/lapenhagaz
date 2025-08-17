@@ -13,39 +13,53 @@ import { useInView } from "framer-motion";
 const SolutionsSection = () => {
   const categories = [
     {
-      id: "residencias",
-      label: "Gás GLP Residencial",
-      desc: "Botijões de gás GLP das melhores marcas para sua casa. Alto poder calorífico, segurança garantida e diversos tamanhos disponíveis.",
+      id: "p2",
+      label: "P2 (2 kg)",
+      desc: "Ideal para fogareiros, acampamentos e lampiões. Prático e portátil.",
       img: "/images/og-lapenhagaz.jpg",
-      alt: "Botijões de gás GLP para residências",
+      alt: "Botijão P2 de 2kg para fogareiros e acampamentos",
     },
     {
-      id: "negocios",
-      label: "Gás GLP Comercial",
-      desc: "Fornecimento de gás GLP para restaurantes, padarias e estabelecimentos comerciais. Entrega programada e marcas confiáveis.",
+      id: "p5",
+      label: "P5 (5 kg)",
+      desc: "Versátil para fogões, maçaricos, trailers e motorhomes em viagens.",
       img: "/images/og-lapenhagaz.jpg",
-      alt: "Gás GLP para estabelecimentos comerciais",
+      alt: "Botijão P5 de 5kg para fogões e maçaricos",
     },
     {
-      id: "agua-mineral",
-      label: "Água Mineral",
-      desc: "Água mineral natural de alta qualidade. Galões higienizados, entrega pontual e sabor puro para sua família ou empresa.",
+      id: "p13",
+      label: "P13 (13 kg)",
+      desc: "O botijão residencial mais usado no Brasil, ideal para cozinhar no dia a dia.",
       img: "/images/og-lapenhagaz.jpg",
-      alt: "Galões de água mineral natural",
+      alt: "Botijão P13 de 13kg residencial",
     },
     {
-      id: "industrias",
-      label: "Gás GLP Industrial",
-      desc: "Soluções em gás GLP para indústrias e grandes volumes. Fornecimento contínuo das melhores marcas com preços competitivos.",
+      id: "p20",
+      label: "P20 (20 kg)",
+      desc: "Comum em empilhadeiras industriais, garante eficiência e praticidade.",
       img: "/images/og-lapenhagaz.jpg",
-      alt: "Gás GLP para uso industrial",
+      alt: "Botijão P20 de 20kg para empilhadeiras",
     },
     {
-      id: "marcas-premium",
-      label: "Marcas Premium",
-      desc: "Trabalhamos exclusivamente com as melhores marcas de gás GLP do mercado. Qualidade certificada e confiança garantida.",
+      id: "p45",
+      label: "P45 (45 kg)",
+      desc: "Indicado para comércios, restaurantes, hospitais e residências de alto consumo.",
       img: "/images/og-lapenhagaz.jpg",
-      alt: "Melhores marcas de gás GLP do mercado",
+      alt: "Botijão P45 de 45kg para comércios e restaurantes",
+    },
+    {
+      id: "p90",
+      label: "P90 (90 kg)",
+      desc: "Para indústrias e grandes comércios. Requer instalação segura com válvula.",
+      img: "/images/og-lapenhagaz.jpg",
+      alt: "Botijão P90 de 90kg para indústrias",
+    },
+    {
+      id: "galao-20l",
+      label: "Galão 20L",
+      desc: "Praticidade e pureza para sua casa ou empresa, com água mineral de qualidade.",
+      img: "/images/og-lapenhagaz.jpg",
+      alt: "Galão de água mineral 20L",
     },
   ];
 
@@ -73,7 +87,7 @@ const SolutionsSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Gás GLP e Água Mineral para cada necessidade
+            Nossos Produtos e Serviços
           </motion.h2>
           <motion.p 
             className="mt-3 text-muted-foreground max-w-2xl mx-auto"
@@ -82,7 +96,7 @@ const SolutionsSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Fornecemos gás GLP das melhores marcas e água mineral de qualidade superior para residências, comércios e indústrias.
+            Botijões de gás GLP em diversos tamanhos e galões de água mineral para atender todas as suas necessidades.
           </motion.p>
         </motion.header>
 
