@@ -163,7 +163,7 @@ const HomeHeroCarousel = () => {
 
                   {/* CTA Button */}
                   <motion.div 
-                    className="flex justify-start mb-8 w-full"
+                    className="flex justify-center items-center sm:justify-start mb-8 w-full"
                     initial={{ opacity: 0, y: 30 }}
                     animate={index === selectedIndex ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                     transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
@@ -181,9 +181,9 @@ const HomeHeroCarousel = () => {
                       >
                         <Button 
                            size="lg" 
-                           className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-4 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-150"
+                           className="w-full sm:w-80 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-12 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-150"
                          >
-                           Peça Agora
+                           Faça agora seu pedido!
                          </Button>
                        </a>
                      </motion.div>
