@@ -6,32 +6,32 @@ import { motion, useInView } from 'framer-motion';
 const tipsVideos = [
   {
     id: 1,
-    title: "Story 1 - LapenhaGáz",
-    description: "Confira nosso primeiro story com dicas exclusivas sobre gás e água mineral.",
+    title: "Dicas de Segurança",
+    description: "Confira dicas exclusivas sobre segurança no uso de gás e água mineral.",
     videoUrl: "/videos/story1.mp4",
     duration: "0:15",
     category: "Story"
   },
   {
     id: 2,
-    title: "Story 2 - LapenhaGáz",
-    description: "Segundo story com informações importantes para nossos clientes.",
+    title: "Qualidade Garantida",
+    description: "Informações importantes sobre a qualidade dos nossos produtos.",
     videoUrl: "/videos/story2.mp4",
     duration: "0:15",
     category: "Story"
   },
   {
     id: 3,
-    title: "Story 3 - LapenhaGáz",
-    description: "Terceiro story com conteúdo exclusivo da LapenhaGáz.",
+    title: "Entrega Rápida",
+    description: "Conheça nosso sistema de entrega rápida e eficiente.",
     videoUrl: "/videos/story3.mp4",
     duration: "0:15",
     category: "Story"
   },
   {
     id: 4,
-    title: "Story 4 - LapenhaGáz",
-    description: "Quarto story com as últimas novidades e promoções especiais.",
+    title: "Promoções Especiais",
+    description: "Fique por dentro das nossas promoções e ofertas especiais.",
     videoUrl: "/videos/story4.mp4",
     duration: "0:15",
     category: "Story"
@@ -333,28 +333,23 @@ const TipsVideoSection = memo(() => {
                     {/* Overlay - Sem botão de play para simular GIF */}
                     <div className="absolute inset-1 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-xl pointer-events-none">
                       
-                      {/* Info */}
-                      <div className="absolute bottom-4 left-4 right-4 text-white pointer-events-auto">
-                        <div className="inline-block px-2 py-1 bg-primary/80 rounded-full text-xs font-medium mb-2">
-                          {video.category}
-                        </div>
-                        <h3 className="font-bold text-sm mb-1 leading-tight line-clamp-2" style={{ fontFamily: 'Roboto, sans-serif' }}>{video.title}</h3>
-                        <div className="flex items-center justify-between text-xs text-white/80 mb-3" style={{ fontFamily: 'Roboto, sans-serif' }}>
-                          <span>{video.duration}</span>
-                          <span className="bg-black/50 px-2 py-1 rounded-full">Story</span>
-                        </div>
-                        
-                        {/* Botão Instagram no rodapé */}
-                        <button 
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            window.open('https://instagram.com/lapenhagaz', '_blank');
-                          }}
-                          className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 transform hover:scale-105 shadow-lg"
-                        >
-                          <Instagram className="w-4 h-4" />
-                          <span className="text-sm font-semibold">Siga no Instagram</span>
-                        </button>
+                      {/* Botão Instagram - Canto inferior esquerdo */}
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open('https://www.instagram.com/lapenha_gaz/', '_blank');
+                        }}
+                        className="group absolute bottom-4 left-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white w-10 h-10 hover:w-auto hover:max-w-44 hover:h-10 flex items-center justify-center transition-all duration-300 ease-out shadow-lg overflow-hidden pointer-events-auto rounded-full hover:rounded-[30px] px-0 hover:px-3"
+                      >
+                        <Instagram className="w-4 h-4 transition-transform duration-300 group-hover:scale-110 flex-shrink-0" />
+                        <span className="text-xs font-semibold opacity-0 max-w-0 overflow-hidden transition-all duration-300 ease-out group-hover:opacity-100 group-hover:max-w-32 whitespace-nowrap ml-0 group-hover:ml-2">
+                          Siga no Instagram
+                        </span>
+                      </button>
+                      
+                      {/* Story Badge - Canto inferior direito */}
+                      <div className="absolute bottom-4 right-4 text-white pointer-events-none">
+                        <span className="bg-black/50 px-3 py-1 rounded-full text-xs font-medium">Story</span>
                       </div>
                     </div>
                   </div>
