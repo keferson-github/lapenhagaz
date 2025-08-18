@@ -176,6 +176,8 @@ const TipsVideoSection = memo(() => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % tipsVideos.length);
@@ -193,6 +195,31 @@ const TipsVideoSection = memo(() => {
   const closeVideo = () => {
     setIsModalOpen(false);
     setSelectedVideo(null);
+  };
+
+  // Funções para navegação por touch (swipe)
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    } else if (isRightSwipe) {
+      prevSlide();
+    }
   };
 
   // Auto-scroll para o item ativo
@@ -273,54 +300,45 @@ const TipsVideoSection = memo(() => {
             transition={{ duration: 0.3, delay: 0.3 }}
             className="relative"
           >
-            {/* Navigation buttons */}
+            {/* Navigation buttons - Hidden on mobile */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:bg-white hover:scale-110"
+              className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 items-center justify-center group hover:bg-white hover:scale-110"
             >
               <ChevronLeft className="w-6 h-6 text-gray-700 group-hover:text-primary transition-colors" />
             </button>
             
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:bg-white hover:scale-110"
+              className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 items-center justify-center group hover:bg-white hover:scale-110"
             >
               <ChevronRight className="w-6 h-6 text-gray-700 group-hover:text-primary transition-colors" />
             </button>
 
             {/* Stories container */}
-            <div 
-              ref={scrollContainerRef}
-              className="flex gap-2 sm:gap-4 overflow-x-auto scrollbar-hide px-4 sm:px-8 lg:px-16 py-4 sm:py-8 justify-center"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            >
-              {tipsVideos.map((video, index) => (
+            <div className="container px-4 sm:px-8 lg:px-16 py-4 sm:py-8">
+              {/* Mobile: Grid com 1 coluna - mesmo padrão do Blog */}
+              <div className="grid grid-cols-1 sm:hidden gap-6">
                 <motion.div
-                  key={video.id}
+                  key={tipsVideos[currentIndex].id}
                   initial={{ opacity: 0, scale: 0.8, y: 20 }}
                   animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
-                  transition={{ duration: 0.3, delay: 0.35 + index * 0.05 }}
-                  className={`flex-shrink-0 w-48 sm:w-56 md:w-64 lg:w-72 transition-all duration-300 cursor-pointer group ${
-                    index === currentIndex ? 'scale-105' : 'scale-95 opacity-70'
-                  }`}
-                  onClick={() => {
-                    setCurrentIndex(index);
-                    openVideo(video);
-                  }}
+                  transition={{ duration: 0.3, delay: 0.35 }}
+                  className="w-full transition-all duration-300 cursor-pointer group"
+                  onClick={() => openVideo(tipsVideos[currentIndex])}
+                  onTouchStart={onTouchStart}
+                  onTouchMove={onTouchMove}
+                  onTouchEnd={onTouchEnd}
                 >
-                  <div className="relative h-64 sm:h-80 md:h-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16]">
+                  <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16] w-full">
                     {/* Story ring */}
-                    <div className={`absolute -inset-1 rounded-2xl transition-all duration-500 ${
-                      index === currentIndex 
-                        ? 'bg-gradient-to-r from-primary via-secondary to-accent p-1' 
-                        : 'bg-gradient-to-r from-gray-300 to-gray-400 p-0.5'
-                    }`}>
+                    <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary via-secondary to-accent p-1">
                       <div className="w-full h-full bg-white rounded-2xl" />
                     </div>
                     
                     {/* Video Preview - GIF Style */}
                     <video
-                      src={video.videoUrl}
+                      src={tipsVideos[currentIndex].videoUrl}
                       className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-xl"
                       muted
                       autoPlay
@@ -330,32 +348,107 @@ const TipsVideoSection = memo(() => {
                       style={{ pointerEvents: 'none' }}
                     />
                     
-                    {/* Overlay - Sem botão de play para simular GIF */}
-                    <div className="absolute inset-1 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-xl pointer-events-none">
-                      
-                      {/* Botão Instagram - Canto inferior esquerdo */}
-                      <button 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open('https://www.instagram.com/lapenha_gaz/', '_blank');
-                        }}
-                        className="group absolute bottom-4 left-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white w-10 h-10 hover:w-auto hover:max-w-44 hover:h-10 flex items-center justify-center transition-all duration-300 ease-out shadow-lg overflow-hidden pointer-events-auto rounded-full hover:rounded-[30px] px-0 hover:px-3"
-                      >
-                        <Instagram className="w-4 h-4 transition-transform duration-300 group-hover:scale-110 flex-shrink-0" />
-                        <span className="text-xs font-semibold opacity-0 max-w-0 overflow-hidden transition-all duration-300 ease-out group-hover:opacity-100 group-hover:max-w-32 whitespace-nowrap ml-0 group-hover:ml-2">
-                          Siga no Instagram
-                        </span>
-                      </button>
-                      
-                      {/* Story Badge - Canto inferior direito */}
-                      <div className="absolute bottom-4 right-4 text-white pointer-events-none">
-                        <span className="bg-black/50 px-3 py-1 rounded-full text-xs font-medium">Story</span>
+                    {/* Overlay with gradient */}
+                    <div className="absolute inset-1 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-xl" />
+                    
+                    {/* Play button overlay */}
+                    <div className="absolute inset-1 flex items-center justify-center rounded-xl">
+                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
+                        <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
                       </div>
+                    </div>
+                    
+                    {/* Content overlay */}
+                    <div className="absolute bottom-1 left-1 right-1 p-4 text-white rounded-b-xl">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
+                          {tipsVideos[currentIndex].duration}
+                        </span>
+                        <span className="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
+                          {tipsVideos[currentIndex].category}
+                        </span>
+                      </div>
+                      <h3 className="font-bold text-sm mb-1 line-clamp-2">
+                        {tipsVideos[currentIndex].title}
+                      </h3>
+                      <p className="text-xs text-white/80 line-clamp-2">
+                        {tipsVideos[currentIndex].description}
+                      </p>
                     </div>
                   </div>
                 </motion.div>
-              ))}
-            </div>
+              </div>
+              
+              {/* Desktop: Flex horizontal */}
+              <div 
+                ref={scrollContainerRef}
+                className="hidden sm:flex gap-4 overflow-x-auto scrollbar-hide justify-center"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                {tipsVideos.map((video, index) => (
+                  <motion.div
+                    key={video.id}
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
+                    transition={{ duration: 0.3, delay: 0.35 + index * 0.05 }}
+                    className={`flex-shrink-0 w-56 md:w-64 lg:w-72 transition-all duration-300 cursor-pointer group ${
+                      index === currentIndex ? 'scale-105' : 'scale-95 opacity-70'
+                    }`}
+                    onClick={() => {
+                      setCurrentIndex(index);
+                      openVideo(video);
+                    }}
+                  >
+                  <div className="relative h-64 sm:h-80 md:h-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16]">
+                       {/* Story ring */}
+                       <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary via-secondary to-accent p-1">
+                         <div className="w-full h-full bg-white rounded-2xl" />
+                       </div>
+                       
+                       {/* Video Preview - GIF Style */}
+                       <video
+                         src={video.videoUrl}
+                         className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-xl"
+                         muted
+                         autoPlay
+                         loop
+                         playsInline
+                         preload="metadata"
+                         style={{ pointerEvents: 'none' }}
+                       />
+                       
+                       {/* Overlay with gradient */}
+                       <div className="absolute inset-1 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-xl" />
+                       
+                       {/* Play button overlay */}
+                       <div className="absolute inset-1 flex items-center justify-center rounded-xl">
+                         <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
+                           <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
+                         </div>
+                       </div>
+                       
+                       {/* Content overlay */}
+                       <div className="absolute bottom-1 left-1 right-1 p-4 text-white rounded-b-xl">
+                         <div className="flex items-center justify-between mb-2">
+                           <span className="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
+                             {video.duration}
+                           </span>
+                           <span className="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
+                             {video.category}
+                           </span>
+                         </div>
+                         <h3 className="font-bold text-sm mb-1 line-clamp-2">
+                           {video.title}
+                         </h3>
+                         <p className="text-xs text-white/80 line-clamp-2">
+                           {video.description}
+                         </p>
+                       </div>
+                     </div>
+                   </motion.div>
+                 ))}
+               </div>
+             </div>
 
             {/* Indicators */}
             <div className="flex justify-center gap-2 mt-8">
@@ -377,9 +470,9 @@ const TipsVideoSection = memo(() => {
 
       {/* Modal de vídeo */}
        {isModalOpen && selectedVideo && (
-         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-2 sm:p-4">
-           <div className="relative w-full max-w-[90vw] sm:max-w-sm md:max-w-md lg:max-w-lg h-[85vh] sm:h-[80vh] md:h-[85vh] mx-auto flex items-center justify-center">
-             <div className="w-full h-full max-h-[600px] aspect-[9/16] bg-black rounded-2xl overflow-hidden shadow-2xl">
+         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 overflow-hidden">
+           <div className="relative w-full max-w-[90vw] sm:max-w-sm md:max-w-md lg:max-w-lg h-[90vh] sm:h-[85vh] md:h-[90vh] flex items-center justify-center">
+             <div className="w-full h-full max-w-[350px] max-h-[600px] aspect-[9/16] bg-black rounded-2xl overflow-hidden shadow-2xl">
                <VideoPlayer 
                  video={selectedVideo} 
                  isActive={isModalOpen}
