@@ -155,11 +155,11 @@ const NewsSection = () => {
                         <p className="text-muted-foreground text-sm line-clamp-3">
                           {item.excerpt}
                         </p>
-                        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                          <Button variant="link" className="p-0 mt-4 text-primary">
+                        <div>
+                          <Button variant="link" className="p-0 mt-4 text-primary underline hover:no-underline">
                             Leia mais <ArrowRight className="ml-1 h-3 w-3" />
                           </Button>
-                        </motion.div>
+                        </div>
                       </CardContent>
                     </Card>
                   </div>
