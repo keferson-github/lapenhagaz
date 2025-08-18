@@ -145,6 +145,18 @@ const VideoPlayer = memo(({ video, isActive, onClose }: {
               </div>
               <h3 className="font-bold text-lg mb-1 leading-tight">{video.title}</h3>
               <p className="text-sm text-white/90 leading-relaxed">{video.description}</p>
+              
+              {/* Instagram button */}
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open('https://instagram.com/lapenhagaz', '_blank');
+                }}
+                className="flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-3 py-2 rounded-full text-xs font-medium hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 mt-3"
+              >
+                <Instagram className="w-4 h-4" />
+                <span>Siga no Instagram</span>
+              </button>
             </div>
             <div className="flex flex-col items-center gap-2 ml-4">
               <button
@@ -319,18 +331,43 @@ const TipsVideoSection = memo(() => {
             <div className="container px-4 sm:px-8 lg:px-16 py-4 sm:py-8">
               {/* Mobile: Grid com 1 coluna - mesmo padrão do Blog */}
               <div className="grid grid-cols-1 sm:hidden gap-6">
-                <motion.div
-                  key={tipsVideos[currentIndex].id}
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                  animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
-                  transition={{ duration: 0.3, delay: 0.35 }}
-                  className="w-full transition-all duration-300 cursor-pointer group"
-                  onClick={() => openVideo(tipsVideos[currentIndex])}
-                  onTouchStart={onTouchStart}
-                  onTouchMove={onTouchMove}
-                  onTouchEnd={onTouchEnd}
-                >
-                  <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16] w-full">
+                <div className="relative w-full">
+                  {/* Seta Esquerda */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      prevSlide();
+                    }}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 opacity-70 hover:opacity-100"
+                    disabled={currentIndex === 0}
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+
+                  {/* Seta Direita */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      nextSlide();
+                    }}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 opacity-70 hover:opacity-100"
+                    disabled={currentIndex === tipsVideos.length - 1}
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+
+                  <motion.div
+                    key={tipsVideos[currentIndex].id}
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0 }}
+                    className="w-full cursor-pointer group"
+                    onClick={() => openVideo(tipsVideos[currentIndex])}
+                    onTouchStart={onTouchStart}
+                    onTouchMove={onTouchMove}
+                    onTouchEnd={onTouchEnd}
+                  >
+                    <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16] w-full">
                     {/* Story ring */}
                     <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary via-secondary to-accent p-1">
                       <div className="w-full h-full bg-white rounded-2xl" />
@@ -358,40 +395,44 @@ const TipsVideoSection = memo(() => {
                       </div>
                     </div>
                     
-                    {/* Content overlay */}
-                    <div className="absolute bottom-1 left-1 right-1 p-4 text-white rounded-b-xl">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
-                          {tipsVideos[currentIndex].duration}
-                        </span>
-                        <span className="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
-                          {tipsVideos[currentIndex].category}
-                        </span>
-                      </div>
-                      <h3 className="font-bold text-sm mb-1 line-clamp-2">
-                        {tipsVideos[currentIndex].title}
-                      </h3>
-                      <p className="text-xs text-white/80 line-clamp-2">
-                        {tipsVideos[currentIndex].description}
-                      </p>
+                    {/* Story badge - canto inferior direito */}
+                    <div className="absolute bottom-4 right-4 z-20">
+                      <span className="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-white font-medium">
+                        {tipsVideos[currentIndex].category}
+                      </span>
+                    </div>
+                    
+                    {/* Instagram button - canto inferior esquerdo */}
+                    <div className="absolute bottom-4 left-4 z-20">
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open('https://instagram.com/lapenhagaz', '_blank');
+                        }}
+                        className="flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-3 py-2 rounded-full text-xs font-medium hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                      >
+                        <Instagram className="w-4 h-4" />
+                        <span>Siga no Instagram</span>
+                      </button>
                     </div>
                   </div>
                 </motion.div>
               </div>
+            </div>
               
-              {/* Desktop: Flex horizontal */}
-              <div 
-                ref={scrollContainerRef}
-                className="hidden sm:flex gap-4 overflow-x-auto scrollbar-hide justify-center"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-              >
+            {/* Desktop: Flex horizontal */}
+            <div 
+              ref={scrollContainerRef}
+              className="hidden sm:flex gap-4 overflow-x-auto scrollbar-hide justify-center"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
                 {tipsVideos.map((video, index) => (
                   <motion.div
                     key={video.id}
-                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                    animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
-                    transition={{ duration: 0.3, delay: 0.35 + index * 0.05 }}
-                    className={`flex-shrink-0 w-56 md:w-64 lg:w-72 transition-all duration-300 cursor-pointer group ${
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0 }}
+                    className={`flex-shrink-0 w-56 md:w-64 lg:w-72 cursor-pointer group ${
                       index === currentIndex ? 'scale-105' : 'scale-95 opacity-70'
                     }`}
                     onClick={() => {
