@@ -126,7 +126,7 @@ const NewsSection = () => {
               {news.map((item, index) => (
                 <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                   <div>
-                    <Card className="group cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300 h-full border-0">
+                    <Card className="group cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300 h-full">
                       <div className="overflow-hidden rounded-t-lg">
                         <AspectRatio ratio={16 / 9}>
                           <img
