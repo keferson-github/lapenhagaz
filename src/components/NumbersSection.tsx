@@ -99,7 +99,7 @@ const NumbersSection = memo(() => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.4 }}
     >
       {/* Background decorative elements - Otimizado para melhor renderização */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2280%22%20height%3D%2280%22%20viewBox%3D%220%200%2080%2080%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%2240%22%20r%3D%222%22%20fill%3D%22%23e2e8f0%22%20fill-opacity%3D%220.4%22%2F%3E%3C%2Fsvg%3E')] opacity-50" />
@@ -115,14 +115,14 @@ const NumbersSection = memo(() => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
         >
           <motion.div 
             className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.3, delay: 0.15 }}
           >
             <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.293l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
@@ -134,7 +134,7 @@ const NumbersSection = memo(() => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
           >
             LapenhaGáz em Números
           </motion.h2>
@@ -143,7 +143,7 @@ const NumbersSection = memo(() => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.3, delay: 0.25 }}
           >
             Dados que demonstram nossa trajetória de sucesso no fornecimento de gás GLP e água mineral de qualidade
           </motion.p>
@@ -155,7 +155,7 @@ const NumbersSection = memo(() => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
         >
           <motion.article 
             ref={clientsCount.elementRef} 
@@ -171,7 +171,7 @@ const NumbersSection = memo(() => {
               y: 0 
             }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.7 }}
+            transition={{ duration: 0.3, delay: 0.35 }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             <div className="absolute -top-8 -right-4 md:-right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-primary/70 shadow-2xl group-hover:rotate-6 transition-all duration-700 ring-2 ring-secondary/40">
@@ -231,7 +231,7 @@ const NumbersSection = memo(() => {
               y: 0 
             }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            transition={{ duration: 0.3, delay: 0.4 }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-secondary/8 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             <div className="absolute -top-8 -right-4 md:-right-8 w-32 h-32 lg:w-48 lg:h-48 rounded-full overflow-hidden border-4 border-secondary/70 shadow-2xl group-hover:rotate-6 transition-all duration-700 ring-2 ring-primary/40">
@@ -285,7 +285,7 @@ const NumbersSection = memo(() => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.9 }}
+          transition={{ duration: 0.4, delay: 0.45 }}
         >
           <div className="text-center max-w-4xl mx-auto space-y-8">
             <motion.div 
@@ -293,7 +293,7 @@ const NumbersSection = memo(() => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 1.0 }}
+              transition={{ duration: 0.3, delay: 0.5 }}
             >
               <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
@@ -305,7 +305,7 @@ const NumbersSection = memo(() => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 1.1 }}
+              transition={{ duration: 0.3, delay: 0.55 }}
             >
               Crescimento Sustentável
             </motion.h3>
@@ -314,7 +314,7 @@ const NumbersSection = memo(() => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 1.2 }}
+              transition={{ duration: 0.3, delay: 0.6 }}
             >
               Nossa expansão é pautada pela responsabilidade ambiental e social, investindo em tecnologias limpas e práticas sustentáveis que beneficiam as comunidades onde atuamos.
             </motion.p>
@@ -323,7 +323,7 @@ const NumbersSection = memo(() => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 1.3 }}
+              transition={{ duration: 0.4, delay: 0.65 }}
             >
               <motion.div 
                 ref={sustainableExperienceCount.elementRef} 
@@ -331,7 +331,7 @@ const NumbersSection = memo(() => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 1.4 }}
+                transition={{ duration: 0.3, delay: 0.7 }}
               >
                 <div className="text-3xl font-black text-green-600 group-hover:text-green-700 transition-colors duration-300">{sustainableExperienceCount.count}+</div>
                 <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Anos de experiência</p>
@@ -342,7 +342,7 @@ const NumbersSection = memo(() => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 1.5 }}
+                transition={{ duration: 0.3, delay: 0.75 }}
               >
                 <div className="text-3xl font-black text-blue-600 group-hover:text-blue-700 transition-colors duration-300">{sustainableEnergyCount.count}%</div>
                 <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Energia limpa</p>
@@ -353,7 +353,7 @@ const NumbersSection = memo(() => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 1.6 }}
+                transition={{ duration: 0.3, delay: 0.8 }}
               >
                 <div className="text-3xl font-black text-purple-600 group-hover:text-purple-700 transition-colors duration-300">{sustainableSupportCount.count}/7</div>
                 <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Suporte técnico</p>
@@ -363,7 +363,7 @@ const NumbersSection = memo(() => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 1.7 }}
+                transition={{ duration: 0.3, delay: 0.85 }}
               >
                 <div className="text-3xl font-black text-orange-600 group-hover:text-orange-700 transition-colors duration-300">ISO</div>
                 <p className="text-sm text-gray-600 font-medium group-hover:text-gray-700 transition-colors duration-300">Certificações</p>

@@ -24,18 +24,18 @@ const SiteFooter = () => {
           <div>
             <h4 className="font-semibold mb-3">Redes sociais</h4>
             <div className="flex items-center justify-center md:justify-start gap-4 text-muted-foreground">
-              <a aria-label="Facebook" href="#" className="group hover:text-primary transition-all duration-300 hover:scale-110">
-                <div className="p-2 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white group-hover:shadow-lg transition-all duration-300">
+              <a aria-label="Facebook" href="#" className="group hover:text-primary transition-all duration-150 hover:scale-110">
+                <div className="p-2 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white group-hover:shadow-lg transition-all duration-150">
                   <Facebook className="h-5 w-5" />
                 </div>
               </a>
-              <a aria-label="Instagram" href="#" className="group hover:text-primary transition-all duration-300 hover:scale-110">
-                <div className="p-2 rounded-full bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 text-white group-hover:shadow-lg transition-all duration-300">
+              <a aria-label="Instagram" href="#" className="group hover:text-primary transition-all duration-150 hover:scale-110">
+                <div className="p-2 rounded-full bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 text-white group-hover:shadow-lg transition-all duration-150">
                   <Instagram className="h-5 w-5" />
                 </div>
               </a>
-              <a aria-label="TikTok" href="#" className="group hover:text-primary transition-all duration-300 hover:scale-110">
-                <div className="p-2 rounded-full bg-gradient-to-br from-black to-gray-800 text-white group-hover:shadow-lg transition-all duration-300">
+              <a aria-label="TikTok" href="#" className="group hover:text-primary transition-all duration-150 hover:scale-110">
+                <div className="p-2 rounded-full bg-gradient-to-br from-black to-gray-800 text-white group-hover:shadow-lg transition-all duration-150">
                   <FaTiktok className="h-5 w-5" />
                 </div>
               </a>
@@ -59,7 +59,7 @@ const SiteFooter = () => {
               href="https://techsolutionspro.com.br/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-primary hover:text-primary/80 font-medium transition-colors duration-300 hover:underline"
+              className="text-primary hover:text-primary/80 font-medium transition-colors duration-150 hover:underline"
             >
               Tech Solutions Pro
             </a>

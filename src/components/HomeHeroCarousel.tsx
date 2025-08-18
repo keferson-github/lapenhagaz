@@ -5,6 +5,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const HomeHeroCarousel = () => {
+  const whatsappNumber = "5511983880542";
+  const whatsappMessage = "Olá, vim pelo site da LapenhaGáz, e gostaria de fazer um pedido!";
+  
   const heroSlides = [
     {
       id: "residencial",
@@ -12,9 +15,7 @@ const HomeHeroCarousel = () => {
       title: "Gás GLP para sua Casa",
       subtitle: "Qualidade e segurança garantidas",
       desc: "Gás GLP das melhores marcas do mercado para sua residência. Entrega rápida, segura e com a qualidade que sua família merece. Atendimento especializado.",
-      img: "/foto-botijao-residencial.webp",
-      cta: "Solicite Entrega",
-      ctaSecondary: "Ver Marcas"
+      img: "/foto-botijao-residencial.webp"
     },
     {
       id: "comercial",
@@ -22,9 +23,7 @@ const HomeHeroCarousel = () => {
       title: "Gás GLP para Empresas",
       subtitle: "Eficiência e economia garantidas",
       desc: "Gás GLP de alta qualidade para restaurantes, padarias, hotéis e indústrias. Fornecimento regular das melhores marcas. Suporte técnico completo.",
-      img: "/images/foto-slide-gas-empresas.webp",
-      cta: "Solicite Orçamento",
-      ctaSecondary: "Ver Soluções"
+      img: "/images/foto-slide-gas-empresas.webp"
     },
     {
       id: "agua-mineral",
@@ -32,9 +31,7 @@ const HomeHeroCarousel = () => {
       title: "Água Mineral Natural",
       subtitle: "Pureza e qualidade certificada é na Lapenhagáz",
       desc: "Água mineral de fontes protegidas com entrega programada. Qualidade premium para sua família e empresa. Distribuição confiável e pontual.",
-      img: "/foto-slide-aguas.webp",
-      cta: "Assine Agora",
-      ctaSecondary: "Ver Planos"
+      img: "/foto-slide-aguas.webp"
     },
     {
       id: "marcas-premium",
@@ -42,9 +39,7 @@ const HomeHeroCarousel = () => {
       title: "As Melhores Marcas",
       subtitle: "Qualidade certificada e confiança",
       desc: "Trabalhamos exclusivamente com as marcas líderes do mercado de gás GLP e água mineral. Qualidade garantida em cada entrega. Parceiros de confiança.",
-      img: "/foto-slide-grandes-marcas.webp",
-      cta: "Conheça as Marcas",
-      ctaSecondary: "Nossos Produtos"
+      img: "/foto-slide-grandes-marcas.webp"
     }
   ];
 
@@ -151,7 +146,7 @@ const HomeHeroCarousel = () => {
                     className="text-2xl md:text-3xl lg:text-4xl text-primary mb-6 font-bold drop-shadow-xl"
                     initial={{ opacity: 0, x: -30 }}
                     animate={index === selectedIndex ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                    transition={{ duration: 0.3, delay: 0.15, ease: "easeOut" }}
+                    transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
                   >
                     {slide.subtitle}
                   </motion.p>
@@ -166,12 +161,12 @@ const HomeHeroCarousel = () => {
                     {slide.desc}
                   </motion.p>
 
-                  {/* CTA Buttons */}
+                  {/* CTA Button */}
                   <motion.div 
-                    className="flex flex-col sm:flex-row gap-3 mb-8 w-full"
+                    className="flex justify-start mb-8 w-full"
                     initial={{ opacity: 0, y: 30 }}
                     animate={index === selectedIndex ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                    transition={{ duration: 0.3, delay: 0.25, ease: "easeOut" }}
+                    transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
                   >
                     <motion.div
                       className="w-full sm:w-auto"
@@ -179,27 +174,19 @@ const HomeHeroCarousel = () => {
                       whileTap={{ scale: 0.95 }}
                       transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
-                      <Button 
-                        size="default" 
-                        className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-4 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                      <a 
+                        href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        {slide.cta}
-                      </Button>
-                    </motion.div>
-                    <motion.div
-                      className="w-full sm:w-auto"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                    >
-                      <Button 
-                        variant="outline" 
-                        size="default"
-                        className="w-full sm:w-auto border-white bg-white/20 text-white hover:bg-white hover:text-primary backdrop-blur-sm px-8 py-4 text-base rounded-full font-semibold transition-all duration-300"
-                      >
-                        {slide.ctaSecondary}
-                      </Button>
-                    </motion.div>
+                        <Button 
+                           size="lg" 
+                           className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-4 text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-150"
+                         >
+                           Peça Agora
+                         </Button>
+                       </a>
+                     </motion.div>
                   </motion.div>
 
 
@@ -219,7 +206,7 @@ const HomeHeroCarousel = () => {
           <button
             onClick={scrollPrev}
             disabled={!canScrollPrev}
-            className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-1 lg:p-2 backdrop-blur-sm transition-all duration-300 group hover:scale-110 z-20"
+            className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-1 lg:p-2 backdrop-blur-sm transition-all duration-150 group hover:scale-110 z-20"
             aria-label="Slide anterior"
           >
             <ChevronLeft className="w-4 h-4 lg:w-6 lg:h-6 text-white group-hover:scale-110 transition-transform" />
@@ -228,7 +215,7 @@ const HomeHeroCarousel = () => {
           <button
             onClick={scrollNext}
             disabled={!canScrollNext}
-            className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-1 lg:p-2 backdrop-blur-sm transition-all duration-300 group hover:scale-110 z-20"
+            className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-1 lg:p-2 backdrop-blur-sm transition-all duration-150 group hover:scale-110 z-20"
             aria-label="Próximo slide"
           >
             <ChevronRight className="w-4 h-4 lg:w-6 lg:h-6 text-white group-hover:scale-110 transition-transform" />
@@ -239,7 +226,7 @@ const HomeHeroCarousel = () => {
         <div className="absolute bottom-0 left-0 right-0 pointer-events-auto">
           <div className="h-1 bg-white/20">
             <div 
-              className="h-full bg-primary transition-all duration-300 ease-out shadow-lg shadow-primary/50"
+              className="h-full bg-primary transition-all duration-150 ease-out shadow-lg shadow-primary/50"
               style={{ 
                 width: `${((selectedIndex + 1) / heroSlides.length) * 100}%` 
               }}

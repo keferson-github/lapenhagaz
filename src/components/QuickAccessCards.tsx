@@ -55,7 +55,7 @@ const QuickAccessCards = () => {
                 aria-label={service.title}
                 className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
               >
-                <Card className="cursor-pointer hover:shadow-[var(--shadow-glow)] transition-all duration-300 hover:-translate-y-1">
+                <Card className="cursor-pointer hover:shadow-[var(--shadow-glow)] transition-all duration-150 hover:-translate-y-1">
                   <CardHeader className="text-center pb-4">
                     <div className="mx-auto w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                       <Icon className="h-6 w-6 text-white" />

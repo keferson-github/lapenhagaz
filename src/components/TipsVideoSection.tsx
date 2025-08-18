@@ -236,7 +236,7 @@ const TipsVideoSection = memo(() => {
         ref={sectionRef}
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.4 }}
         className="py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden"
         style={{ fontFamily: 'Roboto, sans-serif' }}
       >
@@ -252,13 +252,13 @@ const TipsVideoSection = memo(() => {
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
             className="text-center max-w-4xl mx-auto mb-16"
           >
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.3, delay: 0.15 }}
               className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider mb-6"
             >
               <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
@@ -269,7 +269,7 @@ const TipsVideoSection = memo(() => {
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
               className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent leading-tight"
               style={{ fontFamily: 'Roboto, sans-serif' }}
             >
@@ -278,7 +278,7 @@ const TipsVideoSection = memo(() => {
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              transition={{ duration: 0.3, delay: 0.25 }}
               className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto"
               style={{ fontFamily: 'Roboto, sans-serif' }}
             >
@@ -290,7 +290,7 @@ const TipsVideoSection = memo(() => {
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
             className="relative"
           >
             {/* Navigation buttons */}
@@ -319,7 +319,7 @@ const TipsVideoSection = memo(() => {
                   key={video.id}
                   initial={{ opacity: 0, scale: 0.8, y: 20 }}
                   animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
-                  transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+                  transition={{ duration: 0.3, delay: 0.35 + index * 0.05 }}
                   whileHover={{ scale: 1.05, y: -5 }}
                   className={`flex-shrink-0 w-64 transition-all duration-500 cursor-pointer group ${
                     index === currentIndex ? 'scale-105' : 'scale-95 opacity-70'

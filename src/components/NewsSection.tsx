@@ -69,7 +69,7 @@ const NewsSection = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.3 }}
     >
       <div className="container px-12 md:px-16 lg:px-24">
         <motion.div 
@@ -77,7 +77,7 @@ const NewsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
         >
           <div>
             <motion.h2 
@@ -85,7 +85,7 @@ const NewsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.3, delay: 0.15 }}
             >
               Notícias e Comunicados
             </motion.h2>
@@ -94,7 +94,7 @@ const NewsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
             >
               Fique por dentro das novidades da Lapenhagáz
             </motion.p>
@@ -103,7 +103,7 @@ const NewsSection = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.3, delay: 0.25 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -119,14 +119,14 @@ const NewsSection = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
         >
           <Carousel opts={{ align: "start", loop: true }}>
             <CarouselContent>
               {news.map((item, index) => (
                 <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 lg:basis-1/3">
                   <div>
-                    <Card className="group cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-300 h-full">
+                    <Card className="group cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-150 h-full">
                       <div className="overflow-hidden rounded-t-lg">
                         <AspectRatio ratio={16 / 9}>
                           <img
@@ -176,7 +176,7 @@ const NewsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.3, delay: 0.3 }}
         >
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Button variant="outline" className="w-full">

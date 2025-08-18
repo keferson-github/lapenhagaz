@@ -208,8 +208,8 @@ export const BrandHeader = () => {
         <div className="container relative z-10 flex items-center justify-between py-2 text-sm">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 font-medium group cursor-pointer">
-              <Phone className="w-4 h-4 text-accent group-hover:scale-110 transition-transform stroke-2" />
-              <span className="group-hover:text-accent transition-colors">WhatsApp: 11 98388-0542 | 11 98388-0596</span>
+              <Phone className="w-4 h-4 text-accent group-hover:scale-110 transition-transform duration-200 stroke-2" />
+              <span className="group-hover:text-accent transition-colors duration-200">WhatsApp: 11 98388-0542 | 11 98388-0596</span>
             </div>
             
             <div className="hidden lg:flex items-center gap-1 text-xs opacity-90">
@@ -271,7 +271,7 @@ export const BrandHeader = () => {
         </Link>
 
         <button
-          className="md:hidden inline-flex items-center justify-center p-2 rounded-lg hover:bg-muted/50 transition-all duration-300 hover:scale-110 relative z-[10000]"
+          className="md:hidden inline-flex items-center justify-center p-2 rounded-lg hover:bg-muted/50 transition-all duration-200 hover:scale-110 relative z-[10000]"
           onClick={() => setOpen(!open)}
           aria-label="Alternar menu"
           style={{
@@ -280,10 +280,10 @@ export const BrandHeader = () => {
           }}
         >
           <div className="relative w-6 h-6">
-            <Menu className={`absolute inset-0 w-6 h-6 transition-all duration-300 ease-in-out stroke-2 ${
+            <Menu className={`absolute inset-0 w-6 h-6 transition-all duration-200 ease-in-out stroke-2 ${
                open ? 'opacity-0 rotate-180 scale-75' : 'opacity-100 rotate-0 scale-100'
              }`} />
-             <X className={`absolute inset-0 w-6 h-6 transition-all duration-300 ease-in-out stroke-2 ${
+             <X className={`absolute inset-0 w-6 h-6 transition-all duration-200 ease-in-out stroke-2 ${
                open ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-180 scale-75'
              }`} />
           </div>

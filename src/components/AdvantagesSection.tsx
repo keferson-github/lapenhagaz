@@ -32,7 +32,7 @@ const AdvantagesSection = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.3 }}
     >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.1),transparent_70%)]" />
       <div className="container relative z-10">
@@ -41,14 +41,14 @@ const AdvantagesSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
         >
           <motion.div 
             className="inline-block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold text-sm uppercase tracking-wider mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.3, delay: 0.15 }}
           >
             Por que escolher?
           </motion.div>
@@ -57,7 +57,7 @@ const AdvantagesSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
           >
             Nossas Vantagens
           </motion.h2>
@@ -66,7 +66,7 @@ const AdvantagesSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.3, delay: 0.25 }}
           >
             Descubra por que somos a escolha preferida para gás GLP e água mineral de qualidade superior.
           </motion.p>
@@ -77,7 +77,7 @@ const AdvantagesSection = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
         >
           {advantages.map((advantage, index) => {
             const Icon = advantage.icon;
@@ -87,7 +87,7 @@ const AdvantagesSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.7 + (index * 0.1) }}
+                transition={{ duration: 0.3, delay: 0.3 + (index * 0.05) }}
                 whileHover={{ y: -8, scale: 1.02 }}
               >
                 <Card className="group border-0 bg-white/80 backdrop-blur-sm hover:bg-white transition-all duration-500 hover:shadow-[var(--shadow-modern)] h-full">
@@ -95,7 +95,7 @@ const AdvantagesSection = () => {
                     <motion.div 
                       className="mx-auto w-16 h-16 bg-gradient-to-br from-primary via-secondary to-accent rounded-2xl flex items-center justify-center mb-6"
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.4 }}
                     >
                       <Icon className="h-8 w-8 text-white" />
                     </motion.div>

@@ -7,27 +7,24 @@ const Hero = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
+  const whatsappNumber = "5511983880542";
+  const whatsappMessage = "Olá, vim pelo site da LapenhaGáz, e gostaria de fazer um pedido!";
+  
   const slides = [
     {
       title: "Gás Natural Lapenhagáz: seguro, contínuo e eficiente",
       description: "Atendemos residências, comércios e indústrias com energia limpa e disponível 24 horas. Pague apenas o que consumir e diga adeus aos reabastecimentos.",
-      image: "https://images.unsplash.com/photo-1514511547119-0912d1c49b78?auto=format&fit=crop&w=1600&q=80",
-      primaryAction: { text: "Peça sua ligação", href: "#contato" },
-      secondaryAction: { text: "Conheça os segmentos", href: "#segmentos" }
+      image: "https://images.unsplash.com/photo-1514511547119-0912d1c49b78?auto=format&fit=crop&w=1600&q=80"
     },
     {
       title: "Energia limpa para seu negócio crescer",
       description: "Soluções em gás natural para empresas de todos os portes. Redução de custos, maior eficiência e sustentabilidade para sua operação.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80",
-      primaryAction: { text: "Soluções empresariais", href: "#comercial" },
-      secondaryAction: { text: "Calcule a economia", href: "#calculadora" }
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80"
     },
     {
       title: "Sustentabilidade que faz a diferença",
       description: "Escolha a energia do futuro. Gás natural: menos poluente, mais eficiente e com menor impacto ambiental para um planeta melhor.",
-      image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1600&q=80",
-      primaryAction: { text: "Saiba mais", href: "#sustentabilidade" },
-      secondaryAction: { text: "Área de cobertura", href: "#cobertura" }
+      image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1600&q=80"
     }
   ];
 
@@ -64,18 +61,21 @@ const Hero = () => {
             <CarouselItem key={index} className="min-h-[100vh] md:min-h-0">
               <div className="container grid md:grid-cols-2 gap-10 py-20 md:py-24 items-center min-h-[100vh] md:min-h-0">
                 <div className="space-y-6">
-                  <h1 className="text-4xl md:text-5xl font-extrabold leading-tight animate-fade-in">
+                  <h1 className="text-4xl md:text-5xl font-extrabold leading-tight animate-fade-in" style={{animationDuration: '0.8s'}}>
                     {slide.title}
                   </h1>
-                  <p className="text-muted-foreground text-lg animate-fade-in" style={{animationDelay: '0.2s'}}>
+                  <p className="text-muted-foreground text-lg animate-fade-in" style={{animationDuration: '0.8s', animationDelay: '0.4s'}}>
                     {slide.description}
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-3 animate-fade-in" style={{animationDelay: '0.4s'}}>
-                    <a href={slide.primaryAction.href}>
-                      <Button variant="hero" size="default" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">{slide.primaryAction.text}</Button>
-                    </a>
-                    <a href={slide.secondaryAction.href}>
-                      <Button variant="outline" size="default" className="border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105">{slide.secondaryAction.text}</Button>
+                  <div className="flex justify-start animate-fade-in" style={{animationDelay: '0.4s'}}>
+                    <a 
+                      href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button variant="hero" size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                        Peça Agora
+                      </Button>
                     </a>
                   </div>
                 </div>

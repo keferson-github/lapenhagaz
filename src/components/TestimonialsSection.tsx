@@ -154,7 +154,7 @@ const TestimonialCard = memo(({ testimonial, isActive, index = 0 }: {
     <motion.div 
       initial={{ opacity: 0, y: 30, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
       whileHover={{ y: -5, scale: 1.02 }}
       className={`relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 p-8 h-full border border-gray-100 ${
         isActive ? 'scale-105 shadow-2xl border-primary/20' : 'scale-95'
@@ -292,7 +292,7 @@ const TestimonialsSection = memo(() => {
       ref={sectionRef}
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.4 }}
       className="py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden"
       style={{ fontFamily: 'Roboto, sans-serif' }}
     >
@@ -308,13 +308,13 @@ const TestimonialsSection = memo(() => {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="text-center max-w-4xl mx-auto mb-16"
         >
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.3, delay: 0.15 }}
             className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold text-sm uppercase tracking-wider mb-6"
           >
             <Star className="w-4 h-4 text-primary" />
@@ -323,7 +323,7 @@ const TestimonialsSection = memo(() => {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
             className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent leading-tight"
             style={{ fontFamily: 'Roboto, sans-serif' }}
           >
@@ -332,7 +332,7 @@ const TestimonialsSection = memo(() => {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.4, delay: 0.25 }}
             className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto"
             style={{ fontFamily: 'Roboto, sans-serif' }}
           >
@@ -344,7 +344,7 @@ const TestimonialsSection = memo(() => {
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
           className="relative max-w-7xl mx-auto"
         >
           {/* Navigation buttons */}
@@ -437,7 +437,7 @@ const TestimonialsSection = memo(() => {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 max-w-4xl mx-auto"
         >
           {/* Clientes Satisfeitos */}
@@ -445,7 +445,7 @@ const TestimonialsSection = memo(() => {
             ref={clientsCount.elementRef}
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
+            transition={{ duration: 0.3, delay: 0.45 }}
             whileHover={{ y: -2 }}
             className="text-center"
           >
@@ -458,7 +458,7 @@ const TestimonialsSection = memo(() => {
             ref={satisfactionCount.elementRef}
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
+            transition={{ duration: 0.3, delay: 0.5 }}
             whileHover={{ y: -2 }}
             className="text-center"
           >
@@ -471,7 +471,7 @@ const TestimonialsSection = memo(() => {
             ref={experienceCount.elementRef}
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
+            transition={{ duration: 0.3, delay: 0.55 }}
             whileHover={{ y: -2 }}
             className="text-center"
           >
@@ -484,7 +484,7 @@ const TestimonialsSection = memo(() => {
             ref={supportCount.elementRef}
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
+            transition={{ duration: 0.3, delay: 0.6 }}
             whileHover={{ y: -2 }}
             className="text-center"
           >

@@ -69,7 +69,7 @@ const SolutionsSection = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.4 }}
     >
       <div className="container">
         {/* Título da seção */}
@@ -78,14 +78,14 @@ const SolutionsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
         >
           <motion.h2 
             className="text-3xl md:text-4xl font-bold tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.3, delay: 0.15 }}
           >
             Nossos Produtos e Serviços
           </motion.h2>
@@ -94,7 +94,7 @@ const SolutionsSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
           >
             Botijões de gás GLP em diversos tamanhos e galões de água mineral para atender todas as suas necessidades.
           </motion.p>
@@ -106,7 +106,7 @@ const SolutionsSection = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.3, delay: 0.25 }}
         >
           <Carousel opts={{ align: "start", loop: true }}>
             <CarouselContent>
@@ -116,10 +116,10 @@ const SolutionsSection = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.6 + (index * 0.1) }}
+                    transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
                     whileHover={{ y: -5 }}
                   >
-                    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full">
+                    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-150 h-full">
                       <div className="relative aspect-[16/10] w-full overflow-hidden">
                         <img
                           src={item.img}
