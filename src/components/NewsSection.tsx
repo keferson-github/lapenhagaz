@@ -42,7 +42,7 @@ const NewsSection = () => {
       excerpt: "Projeto da OTGN em Suape soma R$ 1,2 bilhão e capacidade prevista de 1,5 milhão t/ano, ampliando a logística de GLP no Nordeste e gerando empregos em PE.",
       date: "05 de Fevereiro, 2025",
       category: "Infraestrutura",
-      image: "/images/og-lapenhagaz.jpg",
+      image: "/images/blog-card4.webp",
       alt: "Terminal de GLP em Suape - investimento em infraestrutura"
     },
     {
@@ -50,7 +50,7 @@ const NewsSection = () => {
       excerpt: "Bombeiros do RJ atualizam a NT 3-02, com requisitos de segurança para centrais e recipientes até 13 kg de GLP, reforçando prevenção de incêndio e pânico no RJ.",
       date: "03 de Fevereiro, 2025",
       category: "Segurança",
-      image: "/images/og-lapenhagaz.jpg",
+      image: "/images/blog-card5.webp",
       alt: "Norma técnica CBMERJ para segurança no uso de GLP"
     },
     {
@@ -58,7 +58,7 @@ const NewsSection = () => {
       excerpt: "Nota reforça: produtores não vendem GLP envasado. Envase cabe a distribuidoras; entrega, instalação e revenda são de empresas autorizadas e fiscalizadas por lei.",
       date: "27 de Maio, 2025",
       category: "Esclarecimentos",
-      image: "/images/og-lapenhagaz.jpg",
+      image: "/images/blog-card6.webp",
       alt: "Esclarecimentos Sindigás sobre cadeia de envase e entrega de GLP"
     }
   ];
