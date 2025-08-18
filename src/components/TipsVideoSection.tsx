@@ -6,7 +6,7 @@ import { motion, useInView } from 'framer-motion';
 const tipsVideos = [
   {
     id: 1,
-    title: "Dicas de Segurança",
+    title: "Dicas rápidas de Segurança",
     description: "Confira dicas exclusivas sobre segurança no uso de gás e água mineral.",
     videoUrl: "/videos/story1.mp4",
     duration: "0:15",
