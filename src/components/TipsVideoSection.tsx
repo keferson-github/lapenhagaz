@@ -1,62 +1,40 @@
 import { useState, useRef, useEffect, memo } from 'react';
-import { ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX, Instagram } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 
-// Dados dos vídeos de dicas
+// Dados dos vídeos de stories
 const tipsVideos = [
   {
     id: 1,
-    title: "Como trocar o botijão de gás com segurança",
-    description: "Aprenda o passo a passo para trocar seu botijão de forma segura e evitar acidentes.",
-    thumbnail: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=600&fit=crop&crop=center&auto=format&q=80",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    duration: "2:30",
-    category: "Segurança"
+    title: "Story 1 - LapenhaGáz",
+    description: "Confira nosso primeiro story com dicas exclusivas sobre gás e água mineral.",
+    videoUrl: "/videos/story1.mp4",
+    duration: "0:15",
+    category: "Story"
   },
   {
     id: 2,
-    title: "Sinais de vazamento de gás: como identificar",
-    description: "Conheça os principais sinais que indicam vazamento de gás e como agir rapidamente.",
-    thumbnail: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&h=600&fit=crop&crop=center&auto=format&q=80",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    duration: "1:45",
-    category: "Segurança"
+    title: "Story 2 - LapenhaGáz",
+    description: "Segundo story com informações importantes para nossos clientes.",
+    videoUrl: "/videos/story2.mp4",
+    duration: "0:15",
+    category: "Story"
   },
   {
     id: 3,
-    title: "Armazenamento correto da água mineral",
-    description: "Dicas para manter a qualidade da sua água mineral por mais tempo.",
-    thumbnail: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=600&fit=crop&crop=center&auto=format&q=80",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    duration: "1:20",
-    category: "Cuidados"
+    title: "Story 3 - LapenhaGáz",
+    description: "Terceiro story com conteúdo exclusivo da LapenhaGáz.",
+    videoUrl: "/videos/story3.mp4",
+    duration: "0:15",
+    category: "Story"
   },
   {
     id: 4,
-    title: "Economia de gás: dicas práticas",
-    description: "Como usar o gás de forma mais eficiente e economizar na conta mensal.",
-    thumbnail: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=600&fit=crop&crop=center&auto=format&q=80",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    duration: "3:15",
-    category: "Economia"
-  },
-  {
-    id: 5,
-    title: "Manutenção do fogão a gás",
-    description: "Mantenha seu fogão sempre funcionando perfeitamente com essas dicas simples.",
-    thumbnail: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=600&fit=crop&crop=center&auto=format&q=80",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-    duration: "2:45",
-    category: "Manutenção"
-  },
-  {
-    id: 6,
-    title: "Benefícios da água mineral natural",
-    description: "Descubra por que a água mineral é a melhor opção para sua saúde e bem-estar.",
-    thumbnail: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=600&fit=crop&crop=center&auto=format&q=80",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-    duration: "2:10",
-    category: "Saúde"
+    title: "Story 4 - LapenhaGáz",
+    description: "Quarto story com as últimas novidades e promoções especiais.",
+    videoUrl: "/videos/story4.mp4",
+    duration: "0:15",
+    category: "Story"
   }
 ];
 
@@ -111,7 +89,7 @@ const VideoPlayer = memo(({ video, isActive, onClose }: {
         muted={isMuted}
         onTimeUpdate={handleTimeUpdate}
         onEnded={() => setIsPlaying(false)}
-        poster={video.thumbnail}
+        preload="metadata"
       >
         <source src={video.videoUrl} type="video/mp4" />
       </video>
@@ -237,7 +215,7 @@ const TipsVideoSection = memo(() => {
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.4 }}
-        className="py-1 md:py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden"
+        className="py-6 md:py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden"
         style={{ fontFamily: 'Roboto, sans-serif' }}
       >
         {/* Background decorative elements */}
@@ -273,17 +251,19 @@ const TipsVideoSection = memo(() => {
               className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent leading-tight"
               style={{ fontFamily: 'Roboto, sans-serif' }}
             >
-              Dicas Úteis & Rápidas
+              Confira Nossos Últimos Stories
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.3, delay: 0.25 }}
-              className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto"
+              className="text-muted-foreground text-xl leading-relaxed max-w-2xl mx-auto mb-8"
               style={{ fontFamily: 'Roboto, sans-serif' }}
             >
-              Aprenda com nossos especialistas através de vídeos práticos e informativos sobre gás GLP e água mineral
+              Acompanhe nossos stories exclusivos com dicas, novidades e promoções especiais da LapenhaGáz
             </motion.p>
+            
+
           </motion.div>
 
           {/* Stories Carousel */}
@@ -311,7 +291,7 @@ const TipsVideoSection = memo(() => {
             {/* Stories container */}
             <div 
               ref={scrollContainerRef}
-              className="flex gap-4 overflow-x-auto scrollbar-hide px-16 py-8"
+              className="flex gap-2 sm:gap-4 overflow-x-auto scrollbar-hide px-4 sm:px-8 lg:px-16 py-4 sm:py-8 justify-center"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {tipsVideos.map((video, index) => (
@@ -320,8 +300,7 @@ const TipsVideoSection = memo(() => {
                   initial={{ opacity: 0, scale: 0.8, y: 20 }}
                   animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.8, y: 20 }}
                   transition={{ duration: 0.3, delay: 0.35 + index * 0.05 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className={`flex-shrink-0 w-64 transition-all duration-500 cursor-pointer group ${
+                  className={`flex-shrink-0 w-48 sm:w-56 md:w-64 lg:w-72 transition-all duration-300 cursor-pointer group ${
                     index === currentIndex ? 'scale-105' : 'scale-95 opacity-70'
                   }`}
                   onClick={() => {
@@ -329,7 +308,7 @@ const TipsVideoSection = memo(() => {
                     openVideo(video);
                   }}
                 >
-                  <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-500">
+                  <div className="relative h-64 sm:h-80 md:h-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16]">
                     {/* Story ring */}
                     <div className={`absolute -inset-1 rounded-2xl transition-all duration-500 ${
                       index === currentIndex 
@@ -339,32 +318,43 @@ const TipsVideoSection = memo(() => {
                       <div className="w-full h-full bg-white rounded-2xl" />
                     </div>
                     
-                    {/* Thumbnail */}
-                    <img
-                      src={video.thumbnail}
-                      alt={video.title}
-                      className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-xl group-hover:scale-105 transition-transform duration-700"
+                    {/* Video Preview - GIF Style */}
+                    <video
+                      src={video.videoUrl}
+                      className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-xl"
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      preload="metadata"
+                      style={{ pointerEvents: 'none' }}
                     />
                     
-                    {/* Overlay */}
-                    <div className="absolute inset-1 bg-gradient-to-t from-black/80 via-transparent to-transparent rounded-xl">
-                      {/* Play button */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 group-hover:scale-110 transition-all duration-300">
-                          <Play className="w-8 h-8 text-white ml-1" />
-                        </div>
-                      </div>
+                    {/* Overlay - Sem botão de play para simular GIF */}
+                    <div className="absolute inset-1 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-xl pointer-events-none">
                       
                       {/* Info */}
-                      <div className="absolute bottom-4 left-4 right-4 text-white">
+                      <div className="absolute bottom-4 left-4 right-4 text-white pointer-events-auto">
                         <div className="inline-block px-2 py-1 bg-primary/80 rounded-full text-xs font-medium mb-2">
                           {video.category}
                         </div>
                         <h3 className="font-bold text-sm mb-1 leading-tight line-clamp-2" style={{ fontFamily: 'Roboto, sans-serif' }}>{video.title}</h3>
-                        <div className="flex items-center justify-between text-xs text-white/80" style={{ fontFamily: 'Roboto, sans-serif' }}>
+                        <div className="flex items-center justify-between text-xs text-white/80 mb-3" style={{ fontFamily: 'Roboto, sans-serif' }}>
                           <span>{video.duration}</span>
                           <span className="bg-black/50 px-2 py-1 rounded-full">Story</span>
                         </div>
+                        
+                        {/* Botão Instagram no rodapé */}
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.open('https://instagram.com/lapenhagaz', '_blank');
+                          }}
+                          className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                        >
+                          <Instagram className="w-4 h-4" />
+                          <span className="text-sm font-semibold">Siga no Instagram</span>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -391,17 +381,19 @@ const TipsVideoSection = memo(() => {
       </motion.section>
 
       {/* Modal de vídeo */}
-      {isModalOpen && selectedVideo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
-          <div className="relative w-full max-w-md h-[80vh] mx-4">
-            <VideoPlayer 
-              video={selectedVideo} 
-              isActive={isModalOpen} 
-              onClose={closeVideo}
-            />
-          </div>
-        </div>
-      )}
+       {isModalOpen && selectedVideo && (
+         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-2 sm:p-4">
+           <div className="relative w-full max-w-[90vw] sm:max-w-sm md:max-w-md lg:max-w-lg h-[85vh] sm:h-[80vh] md:h-[85vh] mx-auto flex items-center justify-center">
+             <div className="w-full h-full max-h-[600px] aspect-[9/16] bg-black rounded-2xl overflow-hidden shadow-2xl">
+               <VideoPlayer 
+                 video={selectedVideo} 
+                 isActive={isModalOpen}
+                 onClose={() => setIsModalOpen(false)}
+               />
+             </div>
+           </div>
+         </div>
+       )}
     </>
   );
 });
