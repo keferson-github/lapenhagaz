@@ -13,12 +13,10 @@ const SiteFooter = () => {
             </p>
           </div>
           <div>
-            <h4 className="font-semibold mb-3">Fale com a gente</h4>
+            <h4 className="font-semibold mb-3">Fale Conosco</h4>
             <ul className="space-y-2 text-muted-foreground">
-              <li>Emergência: 0800 000 000</li>
-              <li>Comercial: (11) 0000-0000</li>
-              <li>Ouvidoria: 0800 000 000</li>
-              <li>Atendimento: contato@lapenhagaz.com.br</li>
+              <li>WhatsApp: 11 98388-0542 | 11 98388-0596</li>
+              <li>contato@lapenhagaz.com.br</li>
             </ul>
           </div>
           <div>
@@ -43,12 +41,13 @@ const SiteFooter = () => {
           </div>
           <div>
             <h4 className="font-semibold mb-3">Outros</h4>
-            <nav className="grid gap-2 text-muted-foreground">
-              <a href="#" className="hover:text-foreground">Área do fornecedor</a>
-              <a href="#" className="hover:text-foreground">Política de privacidade</a>
-              <a href="#" className="hover:text-foreground">LGPD</a>
-              <a href="#" className="hover:text-foreground">Trabalhe conosco</a>
-            </nav>
+            <div className="space-y-2 text-muted-foreground">
+              <p>Atendemos toda região metropolitana</p>
+              <p>Seg-Sex: 8h-18h | Sáb: 8h-12h</p>
+              <p>Entrega Rápida</p>
+              <p>100% Seguro</p>
+              <p>4.9/5 ⭐ Avaliação dos clientes</p>
+            </div>
           </div>
         </div>
         <div className="flex flex-col items-center gap-4 mt-8 text-muted-foreground">
