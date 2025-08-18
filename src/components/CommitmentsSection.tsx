@@ -282,7 +282,7 @@ const CommitmentsSection = () => {
   return (
     <motion.section 
       aria-labelledby="compromissos-title" 
-      className="py-8 md:py-16 bg-gradient-to-r from-primary/5 to-secondary/5"
+      className="py-4 md:py-16 bg-gradient-to-r from-primary/5 to-secondary/5"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}
