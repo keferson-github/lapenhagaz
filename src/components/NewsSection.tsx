@@ -128,7 +128,7 @@ const NewsSection = () => {
                   <div>
                     <Card className="group cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-150 h-full">
                       <div className="overflow-hidden rounded-t-lg">
-                        <AspectRatio ratio={16 / 9}>
+                        <AspectRatio ratio={4 / 3}>
                           <img
                             src={item.image}
                             alt={item.alt}
