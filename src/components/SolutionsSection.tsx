@@ -7,8 +7,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
 
 const SolutionsSection = () => {
   const categories = [
@@ -64,102 +62,60 @@ const SolutionsSection = () => {
   ];
 
   return (
-    <motion.section 
-      className="relative py-16 md:py-24"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.4 }}
-    >
+    <section className="relative py-16 md:py-24">
       <div className="container">
         {/* Título da seção */}
-        <motion.header 
-          className="mb-10 md:mb-14 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: 0.1 }}
-        >
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: 0.15 }}
-          >
+        <header className="mb-10 md:mb-14 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
             Nossos Produtos e Serviços
-          </motion.h2>
-          <motion.p 
-            className="mt-3 text-muted-foreground max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: 0.2 }}
-          >
+          </h2>
+          <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
             Botijões de gás GLP em diversos tamanhos e galões de água mineral para atender todas as suas necessidades.
-          </motion.p>
-        </motion.header>
+          </p>
+        </header>
 
         {/* Carrossel de cards */}
-        <motion.div 
-          className="relative"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: 0.25 }}
-        >
+        <div className="relative">
           <Carousel opts={{ align: "start", loop: true }}>
             <CarouselContent>
-              {categories.map((item, index) => (
+              {categories.map((item) => (
                 <CarouselItem key={item.id} className="pl-4 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
-                    whileHover={{ y: -5 }}
-                  >
-                    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-150 h-full">
-                      <div className="relative aspect-[16/10] w-full overflow-hidden">
-                        <img
-                          src={item.img}
-                          alt={item.alt}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                          decoding="async"
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
+                  <Card className="overflow-hidden h-full">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden">
+                      <img
+                        src={item.img}
+                        alt={item.alt}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
+                    </div>
+                    <CardHeader>
+                      <CardTitle className="text-xl font-semibold">{item.label}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <p className="text-muted-foreground mb-4">{item.desc}</p>
+                      <div className="flex gap-3">
+                        <Button size="sm" className="px-4">
+                          Saiba mais
+                        </Button>
+                        <Button size="sm" variant="outline">
+                          Falar com especialista
+                        </Button>
                       </div>
-                      <CardHeader>
-                        <CardTitle className="text-xl font-semibold">{item.label}</CardTitle>
-                      </CardHeader>
-                      <CardContent className="pt-0">
-                        <p className="text-muted-foreground mb-4">{item.desc}</p>
-                        <div className="flex gap-3">
-                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                            <Button size="sm" className="px-4">
-                              Saiba mais
-                            </Button>
-                          </motion.div>
-                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                            <Button size="sm" variant="outline">
-                              Falar com especialista
-                            </Button>
-                          </motion.div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
+                    </CardContent>
+                  </Card>
                 </CarouselItem>
               ))}
             </CarouselContent>
             <CarouselPrevious className="-left-3 md:-left-6" />
             <CarouselNext className="-right-3 md:-right-6" />
           </Carousel>
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

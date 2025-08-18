@@ -65,7 +65,7 @@ const NewsSection = () => {
 
   return (
     <motion.section 
-      className="py-16"
+      className="py-8 md:py-16"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-100px" }}

@@ -83,7 +83,7 @@ const testimonials = [
     avatar: "/images/og-lapenhagaz.jpg",
     rating: 5,
     date: "Há 2 semanas",
-    comment: "Excelente atendimento! A entrega foi super rápida e o gás chegou em perfeitas condições. Já sou cliente há mais de 3 anos e sempre fui muito bem atendida.",
+    comment: "Excelente atendimento! A entrega foi super rápida e o gás chegou em perfeitas condições. Já sou cliente há mais de 3 anos e sempre fui muito bem atendida pela equipe.",
     service: "Entrega de Gás GLP",
     verified: true
   },
@@ -94,7 +94,7 @@ const testimonials = [
     avatar: "/images/og-lapenhagaz.jpg",
     rating: 5,
     date: "Há 1 semana",
-    comment: "A água mineral da LapenhaGáz é de excelente qualidade! Sabor puro e refrescante. O sistema de entrega é muito prático e os preços são justos.",
+    comment: "A água mineral da LapenhaGáz é de excelente qualidade! Sabor puro e refrescante. O sistema de entrega é muito prático e os preços são justos para todos.",
     service: "Água Mineral",
     verified: true
   },
@@ -105,7 +105,7 @@ const testimonials = [
     avatar: "/images/og-lapenhagaz.jpg",
     rating: 5,
     date: "Há 3 dias",
-    comment: "Serviço impecável! Nunca tive problemas com atraso na entrega. A equipe é muito educada e profissional. Indico para todos os meus vizinhos!",
+    comment: "Serviço impecável! Nunca tive problemas com atraso na entrega. A equipe é muito educada e profissional. Indico para todos os meus vizinhos da região.",
     service: "Entrega de Gás GLP",
     verified: true
   },
@@ -116,7 +116,7 @@ const testimonials = [
     avatar: "/images/og-lapenhagaz.jpg",
     rating: 5,
     date: "Há 5 dias",
-    comment: "Empresa séria e confiável. Preços competitivos e qualidade garantida. O atendimento via WhatsApp é muito ágil. Estou muito satisfeito!",
+    comment: "Empresa séria e confiável. Preços competitivos e qualidade garantida sempre. O atendimento via WhatsApp é muito ágil. Estou muito satisfeito com tudo!",
     service: "Água Mineral",
     verified: true
   },
@@ -138,7 +138,7 @@ const testimonials = [
     avatar: "/images/og-lapenhagaz.jpg",
     rating: 5,
     date: "Há 4 dias",
-    comment: "Atendimento nota 10! Desde o primeiro contato até a entrega, tudo perfeito. A água é de excelente qualidade e o preço é muito bom.",
+    comment: "Atendimento nota 10! Desde o primeiro contato até a entrega, tudo perfeito. A água é de excelente qualidade e o preço é muito bom mesmo.",
     service: "Água Mineral",
     verified: true
   }
@@ -293,7 +293,7 @@ const TestimonialsSection = memo(() => {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.4 }}
-      className="py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden"
+      className="py-12 md:py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden"
       style={{ fontFamily: 'Roboto, sans-serif' }}
     >
       {/* Background decorative elements */}

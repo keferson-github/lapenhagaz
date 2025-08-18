@@ -237,7 +237,7 @@ const TipsVideoSection = memo(() => {
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.4 }}
-        className="py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden"
+        className="py-12 md:py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden"
         style={{ fontFamily: 'Roboto, sans-serif' }}
       >
         {/* Background decorative elements */}
