@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChatbotContext, ChatbotProviderProps } from '@/hooks/use-chatbot-context';
+import { ChatbotContext, ChatbotProviderProps } from '@/contexts/chatbot-context';
 
 export const ChatbotProvider = ({ children }: ChatbotProviderProps) => {
   const [isOpen, setIsOpen] = useState(false);

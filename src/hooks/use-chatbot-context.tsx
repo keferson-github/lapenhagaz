@@ -1,12 +1,5 @@
-import { createContext, useContext, ReactNode } from 'react';
-
-interface ChatbotContextType {
-  isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
-  toggleChat: () => void;
-}
-
-export const ChatbotContext = createContext<ChatbotContextType | undefined>(undefined);
+import { useContext } from 'react';
+import { ChatbotContext } from '@/contexts/chatbot-context';
 
 export const useChatbotContext = () => {
   const context = useContext(ChatbotContext);
@@ -16,6 +9,5 @@ export const useChatbotContext = () => {
   return context;
 };
 
-export interface ChatbotProviderProps {
-  children: ReactNode;
-}
+// Hook principal para usar o contexto do chatbot
+export const useChatbot = useChatbotContext;

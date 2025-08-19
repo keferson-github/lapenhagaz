@@ -5,7 +5,7 @@ const SiteFooter = () => {
   return (
     <footer className="border-t border-border/60 mt-10 bg-muted/30">
       <div className="container py-12 text-sm">
-        <div className="grid md:grid-cols-4 gap-8 text-center md:text-left">
+        <div className="grid md:grid-cols-5 gap-8 text-center md:text-left">
           <div className="flex flex-col items-center md:items-start">
             <img src="/images/Lapenhagaz_logo-transparent.png" alt="Lapenhagáz logo" className="w-32 h-auto" loading="lazy" />
             <p className="text-muted-foreground mt-4 max-w-xs">
@@ -49,6 +49,26 @@ const SiteFooter = () => {
               <p>100% Seguro</p>
               <p>4.9/5 ⭐ Avaliação dos clientes</p>
             </div>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-3">Políticas</h4>
+            <ul className="space-y-2 text-muted-foreground">
+              <li>
+                <a href="/politica-de-privacidade" className="hover:text-primary transition-colors duration-150">
+                  Política de Privacidade
+                </a>
+              </li>
+              <li>
+                <a href="/politica-de-cookies" className="hover:text-primary transition-colors duration-150">
+                  Política de Cookies
+                </a>
+              </li>
+              <li>
+                <a href="/termos-de-uso" className="hover:text-primary transition-colors duration-150">
+                  Termos de Uso
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="flex flex-col items-center gap-4 mt-8 text-muted-foreground">

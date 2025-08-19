@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useChatbot } from "@/hooks/use-chatbot-hook";
+import { useChatbot } from "@/hooks/use-chatbot-context";
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);

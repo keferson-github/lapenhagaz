@@ -1,7 +1,8 @@
 import BrandHeader from "@/components/BrandHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ChatbotWidget from "@/components/ChatbotWidget";
-import { ChatbotProvider } from "@/hooks/use-chatbot-provider";
+import ChatbotProvider from "@/components/ChatbotProvider";
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { ReactNode } from "react";
 
 interface LayoutProps {
@@ -17,6 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
           {children}
         </main>
         <ChatbotWidget />
+        <CookieConsentBanner />
         <SiteFooter />
       </div>
     </ChatbotProvider>
