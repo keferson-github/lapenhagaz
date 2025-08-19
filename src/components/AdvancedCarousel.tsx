@@ -124,15 +124,17 @@ const AdvancedCarousel = ({
                   loading="lazy"
                   decoding="async"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
               </div>
 
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-8 text-foreground">
                 <div className="space-y-4">
-                  <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
-                    {slide.subtitle}
-                  </div>
+                  <div className="inline-block px-3 py-1 bg-blue-500/20 rounded-full text-sm font-medium border border-blue-400/30">
+                          <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent font-semibold">
+                            {slide.subtitle}
+                          </span>
+                        </div>
                   <h3 className="text-3xl md:text-4xl font-bold leading-tight">
                     {slide.title}
                   </h3>

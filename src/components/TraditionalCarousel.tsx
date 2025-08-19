@@ -88,15 +88,17 @@ const TraditionalCarousel = ({
                 loading="lazy"
                 decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
             </div>
 
             {/* Content */}
             <div className="relative z-20 h-full flex items-center">
               <div className="container">
                 <div className="max-w-2xl space-y-6">
-                  <div className="inline-block px-4 py-2 bg-primary/10 backdrop-blur-sm text-primary rounded-full text-sm font-medium border border-primary/20">
-                    {slide.subtitle}
+                  <div className="inline-block px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full text-sm font-medium border border-blue-400/30">
+                    <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent font-semibold">
+                      {slide.subtitle}
+                    </span>
                   </div>
                   <h1 className="text-4xl md:text-6xl font-bold leading-tight text-foreground">
                     {slide.title}

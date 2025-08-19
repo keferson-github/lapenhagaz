@@ -112,7 +112,7 @@ const HomeHeroCarousel = () => {
                   loading={index === 0 ? "eager" : "lazy"}
                 />
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/20" />
               </div>
 
               {/* Content Overlay */}
@@ -156,7 +156,7 @@ const HomeHeroCarousel = () => {
 
                   {/* Subtitle */}
                   <motion.p 
-                    className="text-2xl md:text-3xl lg:text-4xl text-primary mb-6 font-bold drop-shadow-xl"
+                    className="text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent mb-6 font-bold drop-shadow-xl"
                     initial={{ opacity: 0, x: -30 }}
                     animate={index === selectedIndex ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
                     transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
