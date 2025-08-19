@@ -26,49 +26,49 @@ const SolutionsSection = () => {
       id: "p2",
       label: "P2 (2 kg)",
       desc: "Ideal para fogareiros, acampamentos e lampiões. Prático e portátil.",
-      img: "/images/og-lapenhagaz.jpg",
+      img: "/images/img-cilindro-de-gas-p2.webp",
       alt: "Botijão P2 de 2kg para fogareiros e acampamentos",
     },
     {
       id: "p5",
       label: "P5 (5 kg)",
       desc: "Versátil para fogões, maçaricos, trailers e motorhomes em viagens.",
-      img: "/images/og-lapenhagaz.jpg",
+      img: "/images/img-cilindro-de-gas-p5.webp",
       alt: "Botijão P5 de 5kg para fogões e maçaricos",
     },
     {
       id: "p13",
       label: "P13 (13 kg)",
       desc: "O botijão residencial mais usado no Brasil, ideal para cozinhar no dia a dia.",
-      img: "/images/og-lapenhagaz.jpg",
+      img: "/images/img-cilindro-de-gas-p13.webp",
       alt: "Botijão P13 de 13kg residencial",
     },
     {
       id: "p20",
       label: "P20 (20 kg)",
       desc: "Comum em empilhadeiras industriais, garante eficiência e praticidade.",
-      img: "/images/og-lapenhagaz.jpg",
+      img: "/images/img-cilindro-de-gas-p20.webp",
       alt: "Botijão P20 de 20kg para empilhadeiras",
     },
     {
       id: "p45",
       label: "P45 (45 kg)",
       desc: "Indicado para comércios, restaurantes, hospitais e residências de alto consumo.",
-      img: "/images/og-lapenhagaz.jpg",
+      img: "/images/img-cilindro-de-gas-p45.webp",
       alt: "Botijão P45 de 45kg para comércios e restaurantes",
     },
     {
       id: "p90",
       label: "P90 (90 kg)",
       desc: "Para indústrias e grandes comércios. Requer instalação segura com válvula.",
-      img: "/images/og-lapenhagaz.jpg",
+      img: "/images/img-cilindro-de-gas-p90.webp",
       alt: "Botijão P90 de 90kg para indústrias",
     },
     {
       id: "galao-20l",
       label: "Galão 20L",
       desc: "Praticidade e pureza para sua casa ou empresa, com água mineral de qualidade.",
-      img: "/images/og-lapenhagaz.jpg",
+      img: "/images/galao-agua-mineral-20l",
       alt: "Galão de água mineral 20L",
     },
   ];
@@ -93,7 +93,7 @@ const SolutionsSection = () => {
               {categories.map((item) => (
                 <CarouselItem key={item.id} className="pl-4 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                   <Card className="overflow-hidden h-full">
-                    <div className="relative aspect-[16/10] w-full overflow-hidden">
+                    <div className="relative aspect-[3/4] w-full overflow-hidden">
                       <img
                         src={item.img}
                         alt={item.alt}
