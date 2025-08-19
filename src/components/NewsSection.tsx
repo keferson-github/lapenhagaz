@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
@@ -9,7 +10,38 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from 'react';
+import { useLazyImage } from '@/hooks/use-lazy-image';
+
+// Componente LazyImage otimizado
+const LazyImage = memo(({ src, alt, className }: { src: string; alt: string; className?: string }) => {
+  const { imgRef, imageSrc } = useLazyImage(src, { rootMargin: '100px' });
+
+  return (
+    <img
+      ref={imgRef}
+      src={imageSrc}
+      alt={alt}
+      className={className}
+      loading="lazy"
+      decoding="async"
+      fetchPriority="low"
+      sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
+      style={{
+        transition: 'transform 0.3s ease-in-out',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'scale(1.05)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'scale(1)';
+      }}
+    />
+  );
+});
+
+LazyImage.displayName = 'LazyImage';
 
 const NewsSection = () => {
   const news = [
@@ -129,12 +161,9 @@ const NewsSection = () => {
                     <Card className="group cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-150 h-full">
                       <div className="overflow-hidden rounded-t-lg">
                         <AspectRatio ratio={4 / 3}>
-                          <img
+                          <LazyImage
                             src={item.image}
                             alt={item.alt}
-                            loading="lazy"
-                            decoding="async"
-                            sizes="(min-width: 1024px) 360px, (min-width: 768px) 33vw, 100vw"
                             className="h-full w-full object-cover"
                           />
                         </AspectRatio>
