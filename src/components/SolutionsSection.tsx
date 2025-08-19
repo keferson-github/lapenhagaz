@@ -66,7 +66,8 @@ const SolutionsSection = () => {
       desc: "Comum em empilhadeiras industriais, garante eficiência e praticidade.",
       img: "/images/img-cilindro-de-gas-p20.webp",
       alt: "Botijão P20 de 20kg para empilhadeiras",
-      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P20 (20kg)*!",
+      fullDescription: "O botijão de gás P20, também conhecido como cilindro de 20kg, é um recipiente utilizado principalmente para alimentar empilhadeiras industriais. Ele se diferencia por ser consumido na fase líquida, e não gasosa, sendo utilizado na posição horizontal. O P20 armazena uma mistura de propano e butano, que é mantida sob pressão em estado líquido.",
+      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P20 (20kg)*.",
     },
     {
       id: "p45",
@@ -138,7 +139,7 @@ const SolutionsSection = () => {
                     <CardContent className="pt-0">
                       <p className="text-muted-foreground mb-4">{item.desc}</p>
                       <div className="flex gap-3">
-                        {(item.id === "p2" || item.id === "p5" || item.id === "p13") ? (
+                        {(item.id === "p2" || item.id === "p5" || item.id === "p13" || item.id === "p20") ? (
                           <Dialog open={openModal === item.id} onOpenChange={(open) => setOpenModal(open ? item.id : null)}>
                             <DialogTrigger asChild>
                               <Button size="sm" className="px-4">
