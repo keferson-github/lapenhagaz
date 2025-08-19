@@ -93,7 +93,8 @@ const SolutionsSection = () => {
       desc: "Praticidade e pureza para sua casa ou empresa, com água mineral de qualidade.",
       img: "/images/galao-agua-mineral-20l.webp",
       alt: "Galão de água mineral 20L",
-      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Galão de Água Mineral 20L*!",
+      fullDescription: "Água mineral natural envasada na origem, com lacre inviolável e garrafão retornável. Rende ~100 copos (200 ml), ideal para bebedouros em casas, comércios e escritórios. Prática e econômica, com sabor leve para consumo e preparo de bebidas/refeições. Armazenar em local fresco; após aberto, refrigerar. Pode haver caução do casco.",
+      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Galão de 20L (Água Mineral)*.",
     },
   ];
 
@@ -141,7 +142,7 @@ const SolutionsSection = () => {
                     <CardContent className="pt-0">
                       <p className="text-muted-foreground mb-4">{item.desc}</p>
                       <div className="flex gap-3">
-                        {(item.id === "p2" || item.id === "p5" || item.id === "p13" || item.id === "p20" || item.id === "p45" || item.id === "p90") ? (
+                        {(item.id === "p2" || item.id === "p5" || item.id === "p13" || item.id === "p20" || item.id === "p45" || item.id === "p90" || item.id === "galao-20l") ? (
                           <Dialog open={openModal === item.id} onOpenChange={(open) => setOpenModal(open ? item.id : null)}>
                             <DialogTrigger asChild>
                               <Button size="sm" className="px-4">
