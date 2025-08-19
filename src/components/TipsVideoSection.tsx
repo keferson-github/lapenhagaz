@@ -35,6 +35,14 @@ const tipsVideos = [
     videoUrl: "/videos/story4.mp4",
     duration: "0:15",
     category: "Story"
+  },
+  {
+    id: 5,
+    title: "Novidades Exclusivas",
+    description: "Descubra as últimas novidades e lançamentos da LapenhaGáz.",
+    videoUrl: "/videos/story5.mp4",
+    duration: "0:15",
+    category: "Story"
   }
 ];
 
@@ -188,6 +196,9 @@ const TipsVideoSection = memo(() => {
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [isInstagramExpanded, setIsInstagramExpanded] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState<typeof tipsVideos[0] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % tipsVideos.length);
@@ -358,7 +369,7 @@ const TipsVideoSection = memo(() => {
                     onTouchMove={onTouchMove}
                     onTouchEnd={onTouchEnd}
                   >
-                    <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16] w-full">
+                    <div className="relative h-80 md:h-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16] w-48 md:w-60 lg:w-72 mx-auto">
                     {/* Story ring */}
                     <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary via-secondary to-accent p-1">
                       <div className="w-full h-full bg-white rounded-2xl" />
@@ -393,12 +404,19 @@ const TipsVideoSection = memo(() => {
                       <button 
                         onClick={(e) => {
                           e.stopPropagation();
-                          window.open('https://instagram.com/lapenhagaz', '_blank');
+                          if (isInstagramExpanded) {
+                            window.open('https://instagram.com/lapenhagaz', '_blank');
+                          } else {
+                            setIsInstagramExpanded(true);
+                          }
                         }}
-                        className="flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-3 py-2 rounded-full text-xs font-medium hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                        onMouseLeave={() => setIsInstagramExpanded(false)}
+                        className={`flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full text-xs font-medium hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${
+                          isInstagramExpanded ? 'px-3 py-2' : 'p-2'
+                        }`}
                       >
                         <Instagram className="w-4 h-4" />
-                        <span>Siga no Instagram</span>
+                        {isInstagramExpanded && <span className="whitespace-nowrap">Siga no Instagram</span>}
                       </button>
                     </div>
                   </div>
@@ -418,12 +436,12 @@ const TipsVideoSection = memo(() => {
                     initial={{ opacity: 1 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0 }}
-                    className={`flex-shrink-0 w-56 md:w-64 lg:w-72 group ${
-                      index === currentIndex ? 'scale-105' : 'scale-95 opacity-70'
+                    className={`flex-shrink-0 w-48 md:w-60 lg:w-72 group ${
+                      index === currentIndex ? '' : 'opacity-70'
                     }`}
                     onClick={() => setCurrentIndex(index)}
                   >
-                  <div className="relative h-64 sm:h-80 md:h-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16]">
+                  <div className="relative h-80 md:h-96 lg:h-[32rem] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16] w-48 md:w-60 lg:w-72">
                        {/* Story ring */}
                        <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary via-secondary to-accent p-1">
                          <div className="w-full h-full bg-white rounded-2xl" />
@@ -446,22 +464,32 @@ const TipsVideoSection = memo(() => {
                        
 
                        
-                       {/* Content overlay */}
-                       <div className="absolute bottom-1 left-1 right-1 p-4 text-white rounded-b-xl">
-                         <div className="flex items-center justify-between mb-2">
-                           <span className="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
-                             {video.duration}
-                           </span>
-                           <span className="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
-                             {video.category}
-                           </span>
-                         </div>
-                         <h3 className="font-bold text-sm mb-1 line-clamp-2">
-                           {video.title}
-                         </h3>
-                         <p className="text-xs text-white/80 line-clamp-2">
-                           {video.description}
-                         </p>
+                       {/* Story badge - canto inferior direito */}
+                       <div className="absolute bottom-4 right-4 z-20">
+                         <span className="text-xs bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full text-white font-medium">
+                           {video.category}
+                         </span>
+                       </div>
+                       
+                       {/* Instagram button - canto inferior esquerdo */}
+                       <div className="absolute bottom-4 left-4 z-20">
+                         <button 
+                           onClick={(e) => {
+                             e.stopPropagation();
+                             if (isInstagramExpanded) {
+                               window.open('https://instagram.com/lapenhagaz', '_blank');
+                             } else {
+                               setIsInstagramExpanded(true);
+                             }
+                           }}
+                           onMouseLeave={() => setIsInstagramExpanded(false)}
+                           className={`flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full text-xs font-medium hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${
+                             isInstagramExpanded ? 'px-3 py-2' : 'p-2'
+                           }`}
+                         >
+                           <Instagram className="w-4 h-4" />
+                           {isInstagramExpanded && <span className="whitespace-nowrap">Siga no Instagram</span>}
+                         </button>
                        </div>
                      </div>
                    </motion.div>
