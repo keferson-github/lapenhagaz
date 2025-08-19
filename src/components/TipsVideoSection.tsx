@@ -359,7 +359,7 @@ const TipsVideoSection = memo(() => {
             <div className="container px-4 sm:px-8 lg:px-16 py-4 sm:py-8">
               {/* Mobile: Grid com 1 coluna - mesmo padrão do Blog */}
               <div className="grid grid-cols-1 sm:hidden gap-6">
-                <div className="relative w-full">
+                <div className="relative w-full flex justify-center items-center">
                   {/* Seta Esquerda */}
                   <button
                     onClick={(e) => {
@@ -393,12 +393,12 @@ const TipsVideoSection = memo(() => {
                     initial={{ opacity: 1 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0 }}
-                    className="w-full group"
+                    className="w-full group flex justify-center items-center"
                     onTouchStart={onTouchStart}
                     onTouchMove={onTouchMove}
                     onTouchEnd={onTouchEnd}
                   >
-                    <div className="relative h-80 md:h-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16] w-48 md:w-60 lg:w-72 mx-auto">
+                    <div className="relative h-[36rem] md:h-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16] w-[22rem] md:w-60 lg:w-72 mx-auto">
                     {/* Story ring */}
                     <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary via-secondary to-accent p-1">
                       <div className="w-full h-full bg-white rounded-2xl" />
@@ -408,7 +408,7 @@ const TipsVideoSection = memo(() => {
                     <video
                       key={`mobile-video-${tipsVideos[currentIndex].id}`}
                       src={tipsVideos[currentIndex].videoUrl}
-                      className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-xl"
+                      className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-xl object-center"
                       muted
                       autoPlay
                       loop
@@ -484,7 +484,7 @@ const TipsVideoSection = memo(() => {
                        <video
                          key={`desktop-video-${video.id}`}
                          src={video.videoUrl}
-                         className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-xl"
+                         className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-xl object-center"
                          muted
                          autoPlay
                          loop
