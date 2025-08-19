@@ -27,28 +27,40 @@ const ChatbotWidget = () => {
               </div>
             </div>
             <div className="space-y-2">
-              <button className="group w-full text-left p-3 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 text-sm border border-transparent hover:border-primary/20 hover:shadow-md">
+              <button 
+                onClick={() => window.open('https://wa.me/5511983880542?text=Olá, vim pelo site da LapenhaGáz, e gostaria de fazer um *pedido*.', '_blank')}
+                className="group w-full text-left p-3 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 text-sm border border-transparent hover:border-primary/20 hover:shadow-md"
+              >
                 <div className="flex items-center gap-3">
                   <span className="text-lg">💬</span>
                   <span className="font-medium group-hover:text-primary transition-colors">Falar com atendente</span>
                 </div>
               </button>
-              <button className="group w-full text-left p-3 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 text-sm border border-transparent hover:border-primary/20 hover:shadow-md">
+              <button 
+                onClick={() => window.open('tel:+5511983880542', '_self')}
+                className="group w-full text-left p-3 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 text-sm border border-transparent hover:border-primary/20 hover:shadow-md"
+              >
                 <div className="flex items-center gap-3">
                   <span className="text-lg">📞</span>
                   <span className="font-medium group-hover:text-primary transition-colors">Solicitar ligação</span>
                 </div>
               </button>
-              <button className="group w-full text-left p-3 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 text-sm border border-transparent hover:border-primary/20 hover:shadow-md">
+              <button 
+                onClick={() => window.open('mailto:contato@lapenhagaz.com.br', '_self')}
+                className="group w-full text-left p-3 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 text-sm border border-transparent hover:border-primary/20 hover:shadow-md"
+              >
                 <div className="flex items-center gap-3">
                   <span className="text-lg">📧</span>
                   <span className="font-medium group-hover:text-primary transition-colors">Enviar e-mail</span>
                 </div>
               </button>
-              <button className="group w-full text-left p-3 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 text-sm border border-transparent hover:border-primary/20 hover:shadow-md">
+              <button 
+                onClick={() => window.open('https://wa.me/5511983880542?text=Olá, vim pelo site da LapenhaGáz, e gostaria de tirar *algumas dúvidas*.', '_blank')}
+                className="group w-full text-left p-3 rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300 text-sm border border-transparent hover:border-primary/20 hover:shadow-md"
+              >
                 <div className="flex items-center gap-3">
                   <span className="text-lg">❓</span>
-                  <span className="font-medium group-hover:text-primary transition-colors">Perguntas frequentes</span>
+                  <span className="font-medium group-hover:text-primary transition-colors">Tire suas dúvidas</span>
                 </div>
               </button>
             </div>
