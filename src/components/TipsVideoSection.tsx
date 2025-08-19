@@ -13,7 +13,7 @@ import {
 const tipsVideos = [
   {
     id: 1,
-    title: "",
+    title: "@lapenha_gaz",
     description: "",
     videoUrl: "/videos/story1.mp4",
     duration: "",
@@ -21,7 +21,7 @@ const tipsVideos = [
   },
   {
     id: 2,
-    title: "",
+    title: "@lapenha_gaz",
     description: "",
     videoUrl: "/videos/story2.mp4",
     duration: "",
@@ -29,7 +29,7 @@ const tipsVideos = [
   },
   {
     id: 3,
-    title: "",
+    title: "@lapenha_gaz",
     description: "",
     videoUrl: "/videos/story3.mp4",
     duration: "",
@@ -37,7 +37,7 @@ const tipsVideos = [
   },
   {
     id: 4,
-    title: "",
+    title: "@lapenha_gaz",
     description: "",
     videoUrl: "/videos/story4.mp4",
     duration: "",
@@ -45,7 +45,7 @@ const tipsVideos = [
   },
   {
     id: 5,
-    title: "",
+    title: "@lapenha_gaz",
     description: "",
     videoUrl: "/videos/story5.mp4",
     duration: "",
