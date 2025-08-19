@@ -105,13 +105,13 @@ const NewsSection = () => {
     >
       <div className="container px-12 md:px-16 lg:px-24">
         <motion.div 
-          className="flex justify-between items-center mb-12"
+          className="flex flex-col md:flex-row justify-between items-center md:items-center mb-12 text-center md:text-left"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.3, delay: 0.1 }}
         >
-          <div>
+          <div className="mb-6 md:mb-0">
             <motion.h2 
               className="text-3xl font-bold mb-4"
               initial={{ opacity: 0, y: 20 }}
@@ -122,13 +122,13 @@ const NewsSection = () => {
               Notícias e Comunicados
             </motion.h2>
             <motion.p 
-              className="text-muted-foreground"
+              className="text-muted-foreground max-w-2xl"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.2 }}
             >
-              Fique por dentro das novidades da Lapenhagáz
+              Acompanhe as principais atualizações do setor de gás e água mineral, regulamentações da ANP, normas de segurança e novidades que impactam diretamente nossos serviços e sua experiência como cliente.
             </motion.p>
           </div>
           <motion.div
