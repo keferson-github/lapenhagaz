@@ -44,7 +44,7 @@ const SiteFooter = () => {
             <h4 className="font-semibold mb-3">Outros</h4>
             <div className="space-y-2 text-muted-foreground">
               <p>Atendemos toda região metropolitana</p>
-              <p>Seg-Sex: 8h-18h | Sáb: 8h-12h</p>
+              <p>Seg-Sab: 8h-20h | Dom: 8h-16h</p>
               <p>Entrega Rápida</p>
               <p>100% Seguro</p>
               <p>4.9/5 ⭐ Avaliação dos clientes</p>

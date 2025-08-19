@@ -310,7 +310,7 @@ export const BrandHeader = () => {
                 simple: true
               },
               { 
-                label: "Dicas Úteis & Rápidas", 
+                label: "Últimos Stories", 
                 href: "#dicas",
                 simple: true
               },
@@ -393,7 +393,8 @@ export const BrandHeader = () => {
             { label: "Home", href: "#home" },
             { label: "Serviços", href: "#servicos" },
             { label: "Sobre Nós", href: "#sobre" },
-            { label: "Contato", href: "#contato" },
+            { label: "Últimos Stories", href: "#dicas" },
+            { label: "Depoimentos", href: "#depoimentos" },
             { label: "Blog", href: "#blog" },
           ].map((item, index) => (
             <li key={item.label} className={`transform transition-all duration-300 ease-in-out ${
