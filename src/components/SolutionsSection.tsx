@@ -75,7 +75,8 @@ const SolutionsSection = () => {
       desc: "Indicado para comércios, restaurantes, hospitais e residências de alto consumo.",
       img: "/images/img-cilindro-de-gas-p45.webp",
       alt: "Botijão P45 de 45kg para comércios e restaurantes",
-      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P45 (45kg)*!",
+      fullDescription: "O Cilindro de Gás de 45kg, também conhecido como Cilindro de Gás P45, é o gás de cozinha comumente utilizado nos fogões industriais de todo país. Pode ser utilizado em cozinhas de restaurantes, pizzarias, lanchonetes, aquecimento de ambientes (calefação), chuveiros (aquecedor a gás) e diversas outras situações.",
+      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P45 (45kg)*.",
     },
     {
       id: "p90",
@@ -139,7 +140,7 @@ const SolutionsSection = () => {
                     <CardContent className="pt-0">
                       <p className="text-muted-foreground mb-4">{item.desc}</p>
                       <div className="flex gap-3">
-                        {(item.id === "p2" || item.id === "p5" || item.id === "p13" || item.id === "p20") ? (
+                        {(item.id === "p2" || item.id === "p5" || item.id === "p13" || item.id === "p20" || item.id === "p45") ? (
                           <Dialog open={openModal === item.id} onOpenChange={(open) => setOpenModal(open ? item.id : null)}>
                             <DialogTrigger asChild>
                               <Button size="sm" className="px-4">
