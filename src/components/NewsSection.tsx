@@ -152,14 +152,15 @@ const NewsSection = () => {
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-muted-foreground text-sm line-clamp-3">
+                        <p className="text-muted-foreground text-sm">
                           {item.excerpt}
                         </p>
-                        <div>
+                        {/* Botão "Leia mais" ocultado temporariamente */}
+                        {/* <div>
                           <Button variant="link" className="p-0 mt-4 text-primary underline hover:no-underline">
                             Leia mais <ArrowRight className="ml-1 h-3 w-3" />
                           </Button>
-                        </div>
+                        </div> */}
                       </CardContent>
                     </Card>
                   </div>
@@ -171,7 +172,8 @@ const NewsSection = () => {
           </Carousel>
         </motion.div>
         
-        <motion.div 
+        {/* Botão "Ver todas as notícias" ocultado temporariamente */}
+        {/* <motion.div 
           className="text-center mt-8 md:hidden"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -184,7 +186,7 @@ const NewsSection = () => {
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </motion.div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </motion.section>
   );

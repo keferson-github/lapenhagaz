@@ -19,7 +19,8 @@ const SiteFooter = () => {
               <li>contato@lapenhagaz.com.br</li>
             </ul>
           </div>
-          <div>
+          {/* Coluna "Redes Sociais" ocultada temporariamente */}
+          {/* <div>
             <h4 className="font-semibold mb-3">Redes sociais</h4>
             <div className="flex items-center justify-center md:justify-start gap-4 text-muted-foreground">
               <a aria-label="Facebook" href="#" className="group hover:text-primary transition-all duration-150 hover:scale-110">
@@ -38,7 +39,7 @@ const SiteFooter = () => {
                 </div>
               </a>
             </div>
-          </div>
+          </div> */}
           <div>
             <h4 className="font-semibold mb-3">Outros</h4>
             <div className="space-y-2 text-muted-foreground">

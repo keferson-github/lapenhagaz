@@ -371,7 +371,7 @@ const CommitmentsSection = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 min-w-[240px]"
               >
                 Ver nossos compromissos
               </Button>
@@ -380,7 +380,7 @@ const CommitmentsSection = () => {
               <Button 
                 onClick={() => setIsSustainabilityModalOpen(true)}
                 variant="outline" 
-                className="border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full transition-all duration-300"
+                className="border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full transition-all duration-300 min-w-[240px]"
               >
                 Relatório de sustentabilidade
               </Button>

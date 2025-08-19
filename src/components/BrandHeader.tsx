@@ -241,7 +241,8 @@ export const BrandHeader = () => {
               <span ref={ratingCount.elementRef} className="font-medium">{ratingCount.count}/5 ⭐ Avaliação dos clientes</span>
             </div>
             
-            <Link to="/login">
+            {/* Botão "Já sou cliente" ocultado temporariamente */}
+            {/* <Link to="/login">
               <Button 
                 size="sm" 
                 variant="secondary" 
@@ -249,7 +250,7 @@ export const BrandHeader = () => {
               >
                 Já sou cliente
               </Button>
-            </Link>
+            </Link> */}
             
 
           </div>
@@ -350,8 +351,8 @@ export const BrandHeader = () => {
           </nav>
         </div>
 
-        {/* Enhanced CTA Buttons */}
-        <div className="hidden md:flex items-center gap-4 flex-shrink-0">
+        {/* Enhanced CTA Buttons - Ocultados temporariamente */}
+        {/* <div className="hidden md:flex items-center gap-4 flex-shrink-0">
           <a href="#servicos" className="group">
             <Button 
               variant="secondary" 
@@ -371,7 +372,7 @@ export const BrandHeader = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
             </Button>
           </a>
-        </div>
+        </div> */}
       </nav>
 
       <div className={`md:hidden border-t border-border/60 bg-background overflow-hidden transition-all duration-300 ease-in-out mobile-menu ${
@@ -403,7 +404,8 @@ export const BrandHeader = () => {
               </a>
             </li>
           ))}
-          <li className={`transform transition-all duration-300 ease-in-out ${
+          {/* Botões do menu mobile ocultados temporariamente */}
+          {/* <li className={`transform transition-all duration-300 ease-in-out ${
             open ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
           }`} style={{ transitionDelay: open ? '250ms' : '0ms' }}>
             <div className="flex flex-col gap-3 items-center pb-2">
@@ -411,7 +413,7 @@ export const BrandHeader = () => {
               <a href="#servicos" className="w-full max-w-xs"><Button variant="secondary" className="w-full transition-all duration-200 hover:scale-105">Contratar Gás GLP</Button></a>
               <a href="#servicos" className="w-full max-w-xs"><Button variant="hero" className="w-full transition-all duration-200 hover:scale-105">Loja de serviços</Button></a>
             </div>
-          </li>
+          </li> */}
 
         </ul>
       </div>
