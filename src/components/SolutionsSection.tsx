@@ -7,6 +7,15 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useState } from "react";
 
 // Ícone personalizado do WhatsApp
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -21,6 +30,8 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 const SolutionsSection = () => {
+  const [openModal, setOpenModal] = useState<string | null>(null);
+
   const categories = [
     {
       id: "p2",
@@ -28,6 +39,8 @@ const SolutionsSection = () => {
       desc: "Ideal para fogareiros, acampamentos e lampiões. Prático e portátil.",
       img: "/images/img-cilindro-de-gas-p2.webp",
       alt: "Botijão P2 de 2kg para fogareiros e acampamentos",
+      fullDescription: "O botijão de gás P2, também conhecido como botijão de 2kg, é um recipiente portátil de gás liquefeito de petróleo (GLP) projetado para aplicações específicas, como fogareiros de uma ou duas bocas e lampiões. Ele não é recomendado para uso em fogões domésticos convencionais, exceto em casos específicos com rosca grossa, e é mais adequado para uso comercial de pequeno porte, como carrinhos de comida, e atividades recreativas como camping.",
+      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P2 (2kg)*.",
     },
     {
       id: "p5",
@@ -35,6 +48,7 @@ const SolutionsSection = () => {
       desc: "Versátil para fogões, maçaricos, trailers e motorhomes em viagens.",
       img: "/images/img-cilindro-de-gas-p5.webp",
       alt: "Botijão P5 de 5kg para fogões e maçaricos",
+      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P5 (5kg)*!",
     },
     {
       id: "p13",
@@ -42,6 +56,7 @@ const SolutionsSection = () => {
       desc: "O botijão residencial mais usado no Brasil, ideal para cozinhar no dia a dia.",
       img: "/images/img-cilindro-de-gas-p13.webp",
       alt: "Botijão P13 de 13kg residencial",
+      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P13 (13kg)*!",
     },
     {
       id: "p20",
@@ -49,6 +64,7 @@ const SolutionsSection = () => {
       desc: "Comum em empilhadeiras industriais, garante eficiência e praticidade.",
       img: "/images/img-cilindro-de-gas-p20.webp",
       alt: "Botijão P20 de 20kg para empilhadeiras",
+      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P20 (20kg)*!",
     },
     {
       id: "p45",
@@ -56,6 +72,7 @@ const SolutionsSection = () => {
       desc: "Indicado para comércios, restaurantes, hospitais e residências de alto consumo.",
       img: "/images/img-cilindro-de-gas-p45.webp",
       alt: "Botijão P45 de 45kg para comércios e restaurantes",
+      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P45 (45kg)*!",
     },
     {
       id: "p90",
@@ -63,15 +80,24 @@ const SolutionsSection = () => {
       desc: "Para indústrias e grandes comércios. Requer instalação segura com válvula.",
       img: "/images/img-cilindro-de-gas-p90.webp",
       alt: "Botijão P90 de 90kg para indústrias",
+      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P90 (90kg)*!",
     },
     {
       id: "galao-20l",
       label: "Galão 20L",
       desc: "Praticidade e pureza para sua casa ou empresa, com água mineral de qualidade.",
-      img: "/images/galao-agua-mineral-20l",
+      img: "/images/galao-agua-mineral-20l.webp",
       alt: "Galão de água mineral 20L",
+      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Galão de Água Mineral 20L*!",
     },
   ];
+
+  const handleWhatsAppClick = (message: string) => {
+    const phoneNumber = "5511983880542";
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <section className="relative py-16 md:py-24">
@@ -110,12 +136,49 @@ const SolutionsSection = () => {
                     <CardContent className="pt-0">
                       <p className="text-muted-foreground mb-4">{item.desc}</p>
                       <div className="flex gap-3">
-                        <Button size="sm" className="px-4">
-                          Saiba mais
-                        </Button>
+                        {item.id === "p2" ? (
+                          <Dialog open={openModal === item.id} onOpenChange={(open) => setOpenModal(open ? item.id : null)}>
+                            <DialogTrigger asChild>
+                              <Button size="sm" className="px-4">
+                                Saiba mais
+                              </Button>
+                            </DialogTrigger>
+                            <DialogContent className="w-[calc(100vw-2rem)] max-w-[340px] sm:max-w-[425px] md:max-w-[600px] lg:max-w-[700px] max-h-[80vh] sm:max-h-[90vh] overflow-y-auto rounded-2xl sm:rounded-lg">
+                              <DialogHeader>
+                                <DialogTitle className="text-xl md:text-2xl font-bold text-center mb-2">
+                                  {item.label}
+                                </DialogTitle>
+                                <div className="flex justify-center mb-4">
+                                  <img
+                                    src={item.img}
+                                    alt={item.alt}
+                                    className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-lg"
+                                  />
+                                </div>
+                              </DialogHeader>
+                              <DialogDescription className="text-sm md:text-base leading-relaxed text-justify px-2">
+                                {item.fullDescription}
+                              </DialogDescription>
+                              <div className="flex justify-center mt-6">
+                                <Button 
+                                  onClick={() => handleWhatsAppClick(item.whatsappMessage)}
+                                  className="bg-green-600 hover:bg-green-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 w-full sm:w-auto"
+                                >
+                                  <WhatsAppIcon className="h-4 w-4 mr-2" />
+                                  Pedir Agora
+                                </Button>
+                              </div>
+                            </DialogContent>
+                          </Dialog>
+                        ) : (
+                          <Button size="sm" className="px-4">
+                            Saiba mais
+                          </Button>
+                        )}
                         <Button 
                           size="sm" 
                           variant="default"
+                          onClick={() => handleWhatsAppClick(item.whatsappMessage)}
                           className="bg-green-600 hover:bg-green-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
                         >
                           <WhatsAppIcon className="h-4 w-4 mr-2" />
