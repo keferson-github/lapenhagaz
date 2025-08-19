@@ -57,7 +57,8 @@ const SolutionsSection = () => {
       desc: "O botijão residencial mais usado no Brasil, ideal para cozinhar no dia a dia.",
       img: "/images/img-cilindro-de-gas-p13.webp",
       alt: "Botijão P13 de 13kg residencial",
-      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P13 (13kg)*!",
+      fullDescription: "O botijão de gás P13, também conhecido como botijão de gás de 13kg, é o tipo mais comum de botijão de gás de cozinha utilizado em residências no Brasil. Ele é ideal para o uso em fogões, aquecedores de água e outros equipamentos a gás em ambientes domésticos. Possui capacidade para 13kg de GLP (Gás Liquefeito de Petróleo) e é projetado para garantir segurança e eficiência no preparo de alimentos, além de ser compatível com reguladores de pressão e mangueiras adequadas para uso doméstico.",
+      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P13 (13kg)*.",
     },
     {
       id: "p20",
@@ -137,7 +138,7 @@ const SolutionsSection = () => {
                     <CardContent className="pt-0">
                       <p className="text-muted-foreground mb-4">{item.desc}</p>
                       <div className="flex gap-3">
-                        {(item.id === "p2" || item.id === "p5") ? (
+                        {(item.id === "p2" || item.id === "p5" || item.id === "p13") ? (
                           <Dialog open={openModal === item.id} onOpenChange={(open) => setOpenModal(open ? item.id : null)}>
                             <DialogTrigger asChild>
                               <Button size="sm" className="px-4">
