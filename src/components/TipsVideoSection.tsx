@@ -183,8 +183,6 @@ VideoPlayer.displayName = 'VideoPlayer';
 // Componente principal
 const TipsVideoSection = memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState<typeof tipsVideos[0] | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
@@ -199,15 +197,9 @@ const TipsVideoSection = memo(() => {
     setCurrentIndex((prev) => (prev - 1 + tipsVideos.length) % tipsVideos.length);
   };
 
-  const openVideo = (video: typeof tipsVideos[0]) => {
-    setSelectedVideo(video);
-    setIsModalOpen(true);
-  };
 
-  const closeVideo = () => {
-    setIsModalOpen(false);
-    setSelectedVideo(null);
-  };
+
+
 
   // Funções para navegação por touch (swipe)
   const minSwipeDistance = 50;
@@ -361,8 +353,7 @@ const TipsVideoSection = memo(() => {
                     initial={{ opacity: 1 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0 }}
-                    className="w-full cursor-pointer group"
-                    onClick={() => openVideo(tipsVideos[currentIndex])}
+                    className="w-full group"
                     onTouchStart={onTouchStart}
                     onTouchMove={onTouchMove}
                     onTouchEnd={onTouchEnd}
@@ -388,12 +379,7 @@ const TipsVideoSection = memo(() => {
                     {/* Overlay with gradient */}
                     <div className="absolute inset-1 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-xl" />
                     
-                    {/* Play button overlay */}
-                    <div className="absolute inset-1 flex items-center justify-center rounded-xl">
-                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
-                        <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
-                      </div>
-                    </div>
+
                     
                     {/* Story badge - canto inferior direito */}
                     <div className="absolute bottom-4 right-4 z-20">
@@ -432,13 +418,10 @@ const TipsVideoSection = memo(() => {
                     initial={{ opacity: 1 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0 }}
-                    className={`flex-shrink-0 w-56 md:w-64 lg:w-72 cursor-pointer group ${
+                    className={`flex-shrink-0 w-56 md:w-64 lg:w-72 group ${
                       index === currentIndex ? 'scale-105' : 'scale-95 opacity-70'
                     }`}
-                    onClick={() => {
-                      setCurrentIndex(index);
-                      openVideo(video);
-                    }}
+                    onClick={() => setCurrentIndex(index)}
                   >
                   <div className="relative h-64 sm:h-80 md:h-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16]">
                        {/* Story ring */}
@@ -461,12 +444,7 @@ const TipsVideoSection = memo(() => {
                        {/* Overlay with gradient */}
                        <div className="absolute inset-1 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-xl" />
                        
-                       {/* Play button overlay */}
-                       <div className="absolute inset-1 flex items-center justify-center rounded-xl">
-                         <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-all duration-300 group-hover:scale-110">
-                           <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
-                         </div>
-                       </div>
+
                        
                        {/* Content overlay */}
                        <div className="absolute bottom-1 left-1 right-1 p-4 text-white rounded-b-xl">
@@ -509,20 +487,7 @@ const TipsVideoSection = memo(() => {
         </div>
       </motion.section>
 
-      {/* Modal de vídeo */}
-       {isModalOpen && selectedVideo && (
-         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 overflow-hidden">
-           <div className="relative w-full max-w-[90vw] sm:max-w-sm md:max-w-md lg:max-w-lg h-[90vh] sm:h-[85vh] md:h-[90vh] flex items-center justify-center">
-             <div className="w-full h-full max-w-[350px] max-h-[600px] aspect-[9/16] bg-black rounded-2xl overflow-hidden shadow-2xl">
-               <VideoPlayer 
-                 video={selectedVideo} 
-                 isActive={isModalOpen}
-                 onClose={() => setIsModalOpen(false)}
-               />
-             </div>
-           </div>
-         </div>
-       )}
+
     </>
   );
 });
