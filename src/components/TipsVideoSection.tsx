@@ -57,7 +57,7 @@ const tipsVideos = [
 const TipsVideoSection = memo(() => {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
-  const [isInstagramExpanded, setIsInstagramExpanded] = useState(false);
+  const [expandedInstagramId, setExpandedInstagramId] = useState<number | null>(null);
 
   return (
     <motion.section 
@@ -135,7 +135,7 @@ const TipsVideoSection = memo(() => {
                   key={video.id} 
                   className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5"
                 >
-                  <div className="relative h-[28rem] rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 aspect-[9/16] w-full max-w-[280px] mx-auto">
+                  <div className="relative h-[36rem] sm:h-[32rem] rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl aspect-[9/16] w-full max-w-[320px] sm:max-w-[280px] mx-auto">
                     {/* Story ring */}
                     <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary via-secondary to-accent p-1">
                       <div className="w-full h-full bg-white rounded-2xl" />
@@ -171,19 +171,19 @@ const TipsVideoSection = memo(() => {
                       <button 
                         onClick={(e) => {
                           e.stopPropagation();
-                          if (isInstagramExpanded) {
-                            window.open('https://instagram.com/lapenhagaz', '_blank');
+                          if (expandedInstagramId === video.id) {
+                            window.open('https://www.instagram.com/lapenha_gaz/', '_blank');
                           } else {
-                            setIsInstagramExpanded(true);
+                            setExpandedInstagramId(video.id);
                           }
                         }}
-                        onMouseLeave={() => setIsInstagramExpanded(false)}
+                        onMouseLeave={() => setExpandedInstagramId(null)}
                         className={`flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full text-xs font-medium hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${
-                          isInstagramExpanded ? 'px-3 py-2' : 'p-2'
+                          expandedInstagramId === video.id ? 'px-3 py-2' : 'p-2'
                         }`}
                       >
                         <Instagram className="w-4 h-4" />
-                        {isInstagramExpanded && <span className="whitespace-nowrap">Siga no Instagram</span>}
+                        {expandedInstagramId === video.id && <span className="whitespace-nowrap">Siga no Instagram</span>}
                       </button>
                     </div>
 
