@@ -241,12 +241,23 @@ const TipsVideoSection = memo(() => {
   useEffect(() => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const itemWidth = 280; // w-64 + gap
-      const scrollPosition = currentIndex * itemWidth;
-      container.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth'
-      });
+      const firstChild = container.firstElementChild as HTMLElement;
+      
+      if (firstChild) {
+        // Calcula a largura real do item incluindo gap
+        const itemWidth = firstChild.offsetWidth;
+        const gap = 16; // gap-4 = 1rem = 16px
+        const totalItemWidth = itemWidth + gap;
+        
+        // Calcula a posição de scroll para centralizar o item
+        const containerWidth = container.offsetWidth;
+        const scrollPosition = (currentIndex * totalItemWidth) - (containerWidth / 2) + (itemWidth / 2);
+        
+        container.scrollTo({
+          left: Math.max(0, scrollPosition),
+          behavior: 'smooth'
+        });
+      }
     }
   }, [currentIndex]);
 
@@ -257,7 +268,7 @@ const TipsVideoSection = memo(() => {
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.4 }}
-        className="py-6 md:py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-hidden"
+        className="py-6 md:py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-green-50/30 relative overflow-visible"
         style={{ fontFamily: 'Roboto, sans-serif' }}
       >
         {/* Background decorative elements */}
@@ -267,7 +278,7 @@ const TipsVideoSection = memo(() => {
         <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-xl animate-pulse" />
         <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full blur-xl animate-pulse delay-1000" />
         
-        <div className="container relative">
+        <div className="container relative overflow-visible">
           {/* Header */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -313,21 +324,35 @@ const TipsVideoSection = memo(() => {
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{ duration: 0.3, delay: 0.3 }}
-            className="relative"
+            className="relative overflow-visible"
           >
-            {/* Navigation buttons - Hidden on mobile */}
+            {/* Navigation buttons - Melhorados para Desktop */}
             <button
               onClick={prevSlide}
-              className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 items-center justify-center group hover:bg-white hover:scale-110"
+              className={`hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 items-center justify-center group ${
+                currentIndex === 0 
+                  ? 'bg-gray-200/50 cursor-not-allowed opacity-50' 
+                  : 'bg-white/90 hover:bg-white hover:scale-110'
+              }`}
+              disabled={currentIndex === 0}
             >
-              <ChevronLeft className="w-6 h-6 text-gray-700 group-hover:text-primary transition-colors" />
+              <ChevronLeft className={`w-6 h-6 transition-colors ${
+                currentIndex === 0 ? 'text-gray-400' : 'text-gray-700 group-hover:text-primary'
+              }`} />
             </button>
             
             <button
               onClick={nextSlide}
-              className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 items-center justify-center group hover:bg-white hover:scale-110"
+              className={`hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 backdrop-blur-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 items-center justify-center group ${
+                currentIndex === tipsVideos.length - 1 
+                  ? 'bg-gray-200/50 cursor-not-allowed opacity-50' 
+                  : 'bg-white/90 hover:bg-white hover:scale-110'
+              }`}
+              disabled={currentIndex === tipsVideos.length - 1}
             >
-              <ChevronRight className="w-6 h-6 text-gray-700 group-hover:text-primary transition-colors" />
+              <ChevronRight className={`w-6 h-6 transition-colors ${
+                currentIndex === tipsVideos.length - 1 ? 'text-gray-400' : 'text-gray-700 group-hover:text-primary'
+              }`} />
             </button>
 
             {/* Stories container */}
@@ -341,7 +366,9 @@ const TipsVideoSection = memo(() => {
                       e.stopPropagation();
                       prevSlide();
                     }}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 opacity-70 hover:opacity-100"
+                    className={`absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 ${
+                      currentIndex === 0 ? 'opacity-30 cursor-not-allowed' : 'opacity-80 hover:opacity-100'
+                    }`}
                     disabled={currentIndex === 0}
                   >
                     <ChevronLeft className="w-5 h-5" />
@@ -353,7 +380,9 @@ const TipsVideoSection = memo(() => {
                       e.stopPropagation();
                       nextSlide();
                     }}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 opacity-70 hover:opacity-100"
+                    className={`absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 ${
+                      currentIndex === tipsVideos.length - 1 ? 'opacity-30 cursor-not-allowed' : 'opacity-80 hover:opacity-100'
+                    }`}
                     disabled={currentIndex === tipsVideos.length - 1}
                   >
                     <ChevronRight className="w-5 h-5" />
@@ -375,8 +404,9 @@ const TipsVideoSection = memo(() => {
                       <div className="w-full h-full bg-white rounded-2xl" />
                     </div>
                     
-                    {/* Video Preview - GIF Style */}
+                    {/* Video Preview - Corrigido para todos os vídeos */}
                     <video
+                      key={`mobile-video-${tipsVideos[currentIndex].id}`}
                       src={tipsVideos[currentIndex].videoUrl}
                       className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-xl"
                       muted
@@ -385,6 +415,9 @@ const TipsVideoSection = memo(() => {
                       playsInline
                       preload="metadata"
                       style={{ pointerEvents: 'none' }}
+                      onError={(e) => {
+                        console.error(`Erro ao carregar vídeo ${tipsVideos[currentIndex].id}:`, e);
+                      }}
                     />
                     
                     {/* Overlay with gradient */}
@@ -427,7 +460,7 @@ const TipsVideoSection = memo(() => {
             {/* Desktop: Flex horizontal */}
             <div 
               ref={scrollContainerRef}
-              className="hidden sm:flex gap-4 overflow-x-auto scrollbar-hide justify-center"
+              className="hidden sm:flex gap-4 overflow-x-auto scrollbar-hide px-8 py-4"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
                 {tipsVideos.map((video, index) => (
@@ -447,8 +480,9 @@ const TipsVideoSection = memo(() => {
                          <div className="w-full h-full bg-white rounded-2xl" />
                        </div>
                        
-                       {/* Video Preview - GIF Style */}
+                       {/* Video Preview - Corrigido para todos os vídeos */}
                        <video
+                         key={`desktop-video-${video.id}`}
                          src={video.videoUrl}
                          className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-xl"
                          muted
@@ -457,6 +491,9 @@ const TipsVideoSection = memo(() => {
                          playsInline
                          preload="metadata"
                          style={{ pointerEvents: 'none' }}
+                         onError={(e) => {
+                           console.error(`Erro ao carregar vídeo ${video.id}:`, e);
+                         }}
                        />
                        
                        {/* Overlay with gradient */}
@@ -497,18 +534,25 @@ const TipsVideoSection = memo(() => {
                </div>
              </div>
 
-            {/* Indicators */}
-            <div className="flex justify-center gap-2 mt-8">
-              {tipsVideos.map((_, index) => (
+            {/* Indicators - Navegação Manual */}
+            <div className="flex justify-center gap-3 mt-8">
+              {tipsVideos.map((video, index) => (
                 <button
-                  key={index}
+                  key={video.id}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  className={`relative group transition-all duration-300 ${
                     index === currentIndex 
-                      ? 'bg-primary w-8' 
-                      : 'bg-gray-300 hover:bg-gray-400'
+                      ? 'w-12 h-3 bg-gradient-to-r from-primary to-secondary rounded-full shadow-lg' 
+                      : 'w-3 h-3 bg-gray-300 hover:bg-gray-400 rounded-full hover:scale-110'
                   }`}
-                />
+                  title={`Story ${index + 1}: ${video.title}`}
+                >
+                  {index === currentIndex && (
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                      {video.title}
+                    </div>
+                  )}
+                </button>
               ))}
             </div>
           </motion.div>
