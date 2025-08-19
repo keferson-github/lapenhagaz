@@ -48,7 +48,8 @@ const SolutionsSection = () => {
       desc: "Versátil para fogões, maçaricos, trailers e motorhomes em viagens.",
       img: "/images/img-cilindro-de-gas-p5.webp",
       alt: "Botijão P5 de 5kg para fogões e maçaricos",
-      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P5 (5kg)*!",
+      fullDescription: "O botijão de gás de cinco quilos, também chamado de botijão P5, é utilizado com regulador de pressão em fogareiros de uma ou duas bocas e em fogões residenciais. Sua instalação e manuseio são semelhantes aos do botijão de 13 quilos e, por isso, ele é uma opção para consumidores que utilizam menor quantidade de gás.",
+      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P5 (5kg)*.",
     },
     {
       id: "p13",
@@ -136,7 +137,7 @@ const SolutionsSection = () => {
                     <CardContent className="pt-0">
                       <p className="text-muted-foreground mb-4">{item.desc}</p>
                       <div className="flex gap-3">
-                        {item.id === "p2" ? (
+                        {(item.id === "p2" || item.id === "p5") ? (
                           <Dialog open={openModal === item.id} onOpenChange={(open) => setOpenModal(open ? item.id : null)}>
                             <DialogTrigger asChild>
                               <Button size="sm" className="px-4">
