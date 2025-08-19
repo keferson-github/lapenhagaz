@@ -174,8 +174,10 @@ const TestimonialCard = memo(({ testimonial, isActive, index = 0 }: {
         <div className="relative hidden">
           <img
             src={testimonial.avatar}
-            alt={testimonial.name}
+            alt={`Foto de perfil de ${testimonial.name} - Cliente da Lapenhagáz`}
             className="w-16 h-16 rounded-full object-cover border-4 border-white shadow-lg"
+            loading="lazy"
+            decoding="async"
           />
           {testimonial.verified && (
             <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center border-2 border-white">

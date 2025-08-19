@@ -263,8 +263,10 @@ export const BrandHeader = () => {
           <div className="relative overflow-hidden rounded-lg">
             <img 
               src="/lapenhagaz_logo_horizontal-removebg-horizontal.png" 
-              alt="Lapenhagáz" 
+              alt="Lapenhagáz - Gás GLP e Água Mineral" 
               className="h-12 w-auto transition-all duration-300 group-hover:brightness-110"
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
           </div>

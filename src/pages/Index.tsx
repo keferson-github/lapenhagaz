@@ -11,6 +11,7 @@ import Seo from "@/components/Seo";
 import NewsSection from "@/components/NewsSection";
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { getHomePageStructuredData } from '@/lib/structured-data';
 
 const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,18 +25,7 @@ const Index = () => {
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '200%']);
   const cloudY = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
-  const orgLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Lapenhagáz',
-    url: '/',
-    logo: '/images/Lapenhagaz_logo-transparent.png',
-    sameAs: [] as string[],
-    address: {
-      '@type': 'PostalAddress',
-      addressCountry: 'BR'
-    }
-  };
+  const structuredData = getHomePageStructuredData();
 
   return (
     <Layout>
@@ -43,6 +33,9 @@ const Index = () => {
         title="LapenhaGáz - Gás GLP e Água Mineral das Melhores Marcas"
         description="Fornecimento de gás GLP das melhores marcas e água mineral de qualidade superior. Entrega rápida e segura para residências e empresas."
         canonical="/"
+        keywords="gás glp, água mineral, botijão de gás, galão de água, entrega de gás, fornecimento gás residencial, gás empresarial, lapenhagáz"
+        image="/images/Lapenhagaz_logo-transparent.png"
+        structuredData={structuredData}
       />
 
       <div ref={containerRef} className="relative">
@@ -121,7 +114,7 @@ const Index = () => {
 
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </div>
     </Layout>

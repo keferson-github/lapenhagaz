@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Página Principal -->
+  <url>
+    <loc>https://lapenhagaz.com.br/</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://lapenhagaz.com.br/images/Lapenhagaz_logo-transparent.png</image:loc>
+      <image:title>Lapenhagáz - Logo</image:title>
+      <image:caption>Lapenhagáz - Gás GLP e Água Mineral</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lapenhagaz.com.br/slides/foto-botijao-residencial.webp</image:loc>
+      <image:title>Botijão de Gás Residencial</image:title>
+      <image:caption>Fornecimento de gás GLP para residências</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Página Sobre -->
+  <url>
+    <loc>https://lapenhagaz.com.br/sobre</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Página Serviços -->
+  <url>
+    <loc>https://lapenhagaz.com.br/servicos</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://lapenhagaz.com.br/images/img-cilindro-de-gas-p13.webp</image:loc>
+      <image:title>Cilindro de Gás P13</image:title>
+      <image:caption>Botijão de gás P13 para uso residencial</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lapenhagaz.com.br/images/galao-agua-mineral-20l.webp</image:loc>
+      <image:title>Galão de Água Mineral 20L</image:title>
+      <image:caption>Água mineral pura em galão de 20 litros</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Página Blog -->
+  <url>
+    <loc>https://lapenhagaz.com.br/blog</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Página Contato -->
+  <url>
+    <loc>https://lapenhagaz.com.br/contato</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Produtos Específicos -->
+  <url>
+    <loc>https://lapenhagaz.com.br/produtos/gas-glp</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lapenhagaz.com.br/images/img-cilindro-de-gas-p2.webp</image:loc>
+      <image:title>Cilindro de Gás P2</image:title>
+      <image:caption>Botijão de gás P2 portátil</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lapenhagaz.com.br/images/img-cilindro-de-gas-p5.webp</image:loc>
+      <image:title>Cilindro de Gás P5</image:title>
+      <image:caption>Botijão de gás P5 para uso doméstico</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lapenhagaz.com.br/images/img-cilindro-de-gas-p20.webp</image:loc>
+      <image:title>Cilindro de Gás P20</image:title>
+      <image:caption>Botijão de gás P20 para uso comercial</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lapenhagaz.com.br/images/img-cilindro-de-gas-p45.webp</image:loc>
+      <image:title>Cilindro de Gás P45</image:title>
+      <image:caption>Botijão de gás P45 para uso industrial</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lapenhagaz.com.br/images/img-cilindro-de-gas-p90.webp</image:loc>
+      <image:title>Cilindro de Gás P90</image:title>
+      <image:caption>Botijão de gás P90 para grandes volumes</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://lapenhagaz.com.br/produtos/agua-mineral</loc>
+    <lastmod>2024-01-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lapenhagaz.com.br/images/galao-agua-mineral-20l.webp</image:loc>
+      <image:title>Galão de Água Mineral 20L</image:title>
+      <image:caption>Água mineral natural em galão de 20 litros</image:caption>
+    </image:image>
+  </url>
+  
+</urlset>
