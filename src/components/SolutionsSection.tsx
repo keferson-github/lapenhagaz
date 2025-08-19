@@ -36,7 +36,7 @@ const SolutionsSection = () => {
     {
       id: "p2",
       label: "P2 (2 kg)",
-      desc: "Ideal para fogareiros, acampamentos e lampiões. Prático e portátil.",
+      desc: "Ideal para fogareiros, acampamentos e lampiões. Prático e portátil para uso externo seguro.",
       img: "/images/img-cilindro-de-gas-p2.webp",
       alt: "Botijão P2 de 2kg para fogareiros e acampamentos",
       fullDescription: "O botijão de gás P2, também conhecido como botijão de 2kg, é um recipiente portátil de gás liquefeito de petróleo (GLP) projetado para aplicações específicas, como fogareiros de uma ou duas bocas e lampiões. Ele não é recomendado para uso em fogões domésticos convencionais, exceto em casos específicos com rosca grossa, e é mais adequado para uso comercial de pequeno porte, como carrinhos de comida, e atividades recreativas como camping.",
@@ -45,7 +45,7 @@ const SolutionsSection = () => {
     {
       id: "p5",
       label: "P5 (5 kg)",
-      desc: "Versátil para fogões, maçaricos, trailers e motorhomes em viagens.",
+      desc: "Versátil para fogões, maçaricos, trailers e motorhomes em viagens longas e acampamentos.",
       img: "/images/img-cilindro-de-gas-p5.webp",
       alt: "Botijão P5 de 5kg para fogões e maçaricos",
       fullDescription: "O botijão de gás de cinco quilos, também chamado de botijão P5, é utilizado com regulador de pressão em fogareiros de uma ou duas bocas e em fogões residenciais. Sua instalação e manuseio são semelhantes aos do botijão de 13 quilos e, por isso, ele é uma opção para consumidores que utilizam menor quantidade de gás.",
@@ -54,7 +54,7 @@ const SolutionsSection = () => {
     {
       id: "p13",
       label: "P13 (13 kg)",
-      desc: "O botijão residencial mais usado no Brasil, ideal para cozinhar no dia a dia.",
+      desc: "O botijão residencial mais usado no Brasil, ideal para cozinhar no dia a dia com segurança.",
       img: "/images/img-cilindro-de-gas-p13.webp",
       alt: "Botijão P13 de 13kg residencial",
       fullDescription: "O botijão de gás P13, também conhecido como botijão de gás de 13kg, é o tipo mais comum de botijão de gás de cozinha utilizado em residências no Brasil. Ele é ideal para o uso em fogões, aquecedores de água e outros equipamentos a gás em ambientes domésticos. Possui capacidade para 13kg de GLP (Gás Liquefeito de Petróleo) e é projetado para garantir segurança e eficiência no preparo de alimentos, além de ser compatível com reguladores de pressão e mangueiras adequadas para uso doméstico.",
@@ -63,7 +63,7 @@ const SolutionsSection = () => {
     {
       id: "p20",
       label: "P20 (20 kg)",
-      desc: "Comum em empilhadeiras industriais, garante eficiência e praticidade.",
+      desc: "Comum em empilhadeiras industriais, garante eficiência e praticidade operacional diária.",
       img: "/images/img-cilindro-de-gas-p20.webp",
       alt: "Botijão P20 de 20kg para empilhadeiras",
       fullDescription: "O botijão de gás P20, também conhecido como cilindro de 20kg, é um recipiente utilizado principalmente para alimentar empilhadeiras industriais. Ele se diferencia por ser consumido na fase líquida, e não gasosa, sendo utilizado na posição horizontal. O P20 armazena uma mistura de propano e butano, que é mantida sob pressão em estado líquido.",
@@ -72,7 +72,7 @@ const SolutionsSection = () => {
     {
       id: "p45",
       label: "P45 (45 kg)",
-      desc: "Indicado para comércios, restaurantes, hospitais e residências de alto consumo.",
+      desc: "Indicado para comércios, restaurantes, hospitais e residências de alto consumo energético.",
       img: "/images/img-cilindro-de-gas-p45.webp",
       alt: "Botijão P45 de 45kg para comércios e restaurantes",
       fullDescription: "O Cilindro de Gás de 45kg, também conhecido como Cilindro de Gás P45, é o gás de cozinha comumente utilizado nos fogões industriais de todo país. Pode ser utilizado em cozinhas de restaurantes, pizzarias, lanchonetes, aquecimento de ambientes (calefação), chuveiros (aquecedor a gás) e diversas outras situações.",
@@ -81,7 +81,7 @@ const SolutionsSection = () => {
     {
       id: "p90",
       label: "P90 (90 kg)",
-      desc: "Para indústrias e grandes comércios. Requer instalação segura com válvula.",
+      desc: "Para indústrias e grandes comércios. Requer instalação segura com válvula especial técnica.",
       img: "/images/img-cilindro-de-gas-p90.webp",
       alt: "Botijão P90 de 90kg para indústrias",
       fullDescription: "O botijão de gás P90, também conhecido como cilindro de 90 kg, é uma opção para consumidores com demanda moderada a alta de gás liquefeito de petróleo (GLP), como empresas, indústrias e estabelecimentos comerciais. Ele oferece uma quantidade significativa de gás, sendo uma alternativa entre os menores (P13, P45) e os maiores (P190).",
@@ -90,7 +90,7 @@ const SolutionsSection = () => {
     {
       id: "galao-20l",
       label: "Galão 20L",
-      desc: "Praticidade e pureza para sua casa ou empresa, com água mineral de qualidade.",
+      desc: "Praticidade e pureza para sua casa ou empresa, com água mineral de qualidade superior natural.",
       img: "/images/galao-agua-mineral-20l.webp",
       alt: "Galão de água mineral 20L",
       fullDescription: "Água mineral natural envasada na origem, com lacre inviolável e garrafão retornável. Rende ~100 copos (200 ml), ideal para bebedouros em casas, comércios e escritórios. Prática e econômica, com sabor leve para consumo e preparo de bebidas/refeições. Armazenar em local fresco; após aberto, refrigerar. Pode haver caução do casco.",

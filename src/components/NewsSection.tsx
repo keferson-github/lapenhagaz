@@ -139,7 +139,7 @@ const NewsSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button variant="outline" className="hidden md:flex">
+            <Button variant="outline" className="hidden">
               Ver todas as notícias
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
