@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, memo } from 'react';
 import { ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX, Instagram } from 'lucide-react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 
 // Dados dos vídeos de stories
 const tipsVideos = [
@@ -193,6 +193,8 @@ const TipsVideoSection = memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -201,11 +203,59 @@ const TipsVideoSection = memo(() => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % tipsVideos.length);
+    const newIndex = (currentIndex + 1) % tipsVideos.length;
+    setCurrentIndex(newIndex);
+    
+    // Comportamento diferente para desktop e mobile
+    setTimeout(() => {
+      // Desktop: Reinicia e reproduz o vídeo completamente (remove loop temporariamente)
+      if (window.innerWidth >= 768 && videoRefs.current[newIndex]) {
+        const video = videoRefs.current[newIndex]!;
+        video.loop = false; // Remove loop para reprodução completa
+        video.currentTime = 0;
+        video.play();
+        
+        // Restaura o loop após o vídeo terminar
+        const handleEnded = () => {
+          video.loop = true;
+          video.removeEventListener('ended', handleEnded);
+        };
+        video.addEventListener('ended', handleEnded);
+      }
+      // Mobile: Apenas reinicia para efeito de slide (mantém loop)
+      else if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+        videoRef.current.play();
+      }
+    }, 100);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + tipsVideos.length) % tipsVideos.length);
+    const newIndex = (currentIndex - 1 + tipsVideos.length) % tipsVideos.length;
+    setCurrentIndex(newIndex);
+    
+    // Comportamento diferente para desktop e mobile
+    setTimeout(() => {
+      // Desktop: Reinicia e reproduz o vídeo completamente (remove loop temporariamente)
+      if (window.innerWidth >= 768 && videoRefs.current[newIndex]) {
+        const video = videoRefs.current[newIndex]!;
+        video.loop = false; // Remove loop para reprodução completa
+        video.currentTime = 0;
+        video.play();
+        
+        // Restaura o loop após o vídeo terminar
+        const handleEnded = () => {
+          video.loop = true;
+          video.removeEventListener('ended', handleEnded);
+        };
+        video.addEventListener('ended', handleEnded);
+      }
+      // Mobile: Apenas reinicia para efeito de slide (mantém loop)
+      else if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+        videoRef.current.play();
+      }
+    }, 100);
   };
 
 
@@ -388,16 +438,23 @@ const TipsVideoSection = memo(() => {
                     <ChevronRight className="w-5 h-5" />
                   </button>
 
-                  <motion.div
-                    key={tipsVideos[currentIndex].id}
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0 }}
-                    className="w-full group flex justify-center items-center"
-                    onTouchStart={onTouchStart}
-                    onTouchMove={onTouchMove}
-                    onTouchEnd={onTouchEnd}
-                  >
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={tipsVideos[currentIndex].id}
+                      initial={{ x: 300, opacity: 0, scale: 0.8 }}
+                      animate={{ x: 0, opacity: 1, scale: 1 }}
+                      exit={{ x: -300, opacity: 0, scale: 0.8 }}
+                      transition={{ 
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                        duration: 0.6
+                      }}
+                      className="w-full group flex justify-center items-center"
+                      onTouchStart={onTouchStart}
+                      onTouchMove={onTouchMove}
+                      onTouchEnd={onTouchEnd}
+                    >
                     <div className="relative h-[36rem] md:h-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-xl transition-all duration-500 aspect-[9/16] w-[22rem] md:w-60 lg:w-72 mx-auto">
                     {/* Story ring */}
                     <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary via-secondary to-accent p-1">
@@ -406,6 +463,7 @@ const TipsVideoSection = memo(() => {
                     
                     {/* Video Preview - Corrigido para todos os vídeos */}
                     <video
+                      ref={videoRef}
                       key={`mobile-video-${tipsVideos[currentIndex].id}`}
                       src={tipsVideos[currentIndex].videoUrl}
                       className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-xl object-center"
@@ -453,7 +511,8 @@ const TipsVideoSection = memo(() => {
                       </button>
                     </div>
                   </div>
-                </motion.div>
+                    </motion.div>
+                  </AnimatePresence>
               </div>
             </div>
               
@@ -482,6 +541,9 @@ const TipsVideoSection = memo(() => {
                        
                        {/* Video Preview - Corrigido para todos os vídeos */}
                        <video
+                         ref={(el) => {
+                           videoRefs.current[index] = el;
+                         }}
                          key={`desktop-video-${video.id}`}
                          src={video.videoUrl}
                          className="absolute inset-1 w-[calc(100%-8px)] h-[calc(100%-8px)] object-cover rounded-xl object-center"
