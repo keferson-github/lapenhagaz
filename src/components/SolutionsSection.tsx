@@ -84,7 +84,8 @@ const SolutionsSection = () => {
       desc: "Para indústrias e grandes comércios. Requer instalação segura com válvula.",
       img: "/images/img-cilindro-de-gas-p90.webp",
       alt: "Botijão P90 de 90kg para indústrias",
-      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P90 (90kg)*!",
+      fullDescription: "O botijão de gás P90, também conhecido como cilindro de 90 kg, é uma opção para consumidores com demanda moderada a alta de gás liquefeito de petróleo (GLP), como empresas, indústrias e estabelecimentos comerciais. Ele oferece uma quantidade significativa de gás, sendo uma alternativa entre os menores (P13, P45) e os maiores (P190).",
+      whatsappMessage: "Olá, vim pelo site da LapenhaGáz, e gostaria de comprar um *Botijão P90 (90kg)*.",
     },
     {
       id: "galao-20l",
@@ -140,7 +141,7 @@ const SolutionsSection = () => {
                     <CardContent className="pt-0">
                       <p className="text-muted-foreground mb-4">{item.desc}</p>
                       <div className="flex gap-3">
-                        {(item.id === "p2" || item.id === "p5" || item.id === "p13" || item.id === "p20" || item.id === "p45") ? (
+                        {(item.id === "p2" || item.id === "p5" || item.id === "p13" || item.id === "p20" || item.id === "p45" || item.id === "p90") ? (
                           <Dialog open={openModal === item.id} onOpenChange={(open) => setOpenModal(open ? item.id : null)}>
                             <DialogTrigger asChild>
                               <Button size="sm" className="px-4">
