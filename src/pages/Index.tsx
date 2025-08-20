@@ -123,13 +123,11 @@ const Index = () => {
         />
       </div>
 
-      {/* Modal de Consentimento de Políticas */}
-      {showModal && (
-        <PolicyConsentModal 
-          onAccept={handleAccept}
-          onReject={handleReject}
-        />
-      )}
+      {/* Modal de Consentimento de Políticas - Sempre renderizado */}
+      <PolicyConsentModal 
+        onAccept={handleAccept}
+        onReject={handleReject}
+      />
     </Layout>
   );
 };
