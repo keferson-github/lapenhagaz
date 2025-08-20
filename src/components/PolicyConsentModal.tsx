@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Shield, ChevronUp, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -10,6 +10,16 @@ interface PolicyConsentModalProps {
 export function PolicyConsentModal({ onAccept, onReject }: PolicyConsentModalProps) {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isVisible, setIsVisible] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  // Efeito de entrada inicial
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsInitialLoad(false);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
@@ -19,19 +29,33 @@ export function PolicyConsentModal({ onAccept, onReject }: PolicyConsentModalPro
     if (!isVisible) {
       setIsVisible(true);
       setIsExpanded(true);
+      setIsInitialLoad(true);
+      setTimeout(() => setIsInitialLoad(false), 100);
     } else {
-      setIsVisible(false);
+      setIsAnimating(true);
+      setTimeout(() => {
+        setIsVisible(false);
+        setIsAnimating(false);
+      }, 300); // Duração da animação de saída
     }
   };
 
   const handleAccept = () => {
-    onAccept();
-    setIsVisible(false); // Apenas fecha o modal, mantém o botão flutuante
+    setIsAnimating(true);
+    setTimeout(() => {
+      onAccept();
+      setIsVisible(false);
+      setIsAnimating(false);
+    }, 300);
   };
 
   const handleReject = () => {
-    onReject();
-    setIsVisible(false); // Apenas fecha o modal, mantém o botão flutuante
+    setIsAnimating(true);
+    setTimeout(() => {
+      onReject();
+      setIsVisible(false);
+      setIsAnimating(false);
+    }, 300);
   };
 
   return (
@@ -39,17 +63,23 @@ export function PolicyConsentModal({ onAccept, onReject }: PolicyConsentModalPro
       {/* Botão flutuante sempre visível */}
       <button
         onClick={toggleVisibility}
-        className="fixed bottom-20 left-6 z-50 w-12 h-12 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white rounded-full shadow-lg transition-all duration-150 flex items-center justify-center hover:scale-105 opacity-100"
+        className={`fixed bottom-20 left-6 z-50 w-12 h-12 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white rounded-full shadow-lg transition-all duration-300 ease-out flex items-center justify-center hover:scale-105 ${
+          isVisible ? 'rotate-0 opacity-90' : 'rotate-180 opacity-100 scale-110'
+        }`}
         aria-label={isVisible ? "Ocultar políticas de privacidade" : "Mostrar políticas de privacidade"}
       >
-        <Shield className="h-6 w-6 text-white" />
+        <Shield className={`h-6 w-6 text-white transition-transform duration-300 ease-out ${
+          isVisible ? 'rotate-0' : 'rotate-180'
+        }`} />
       </button>
       
       {/* Modal principal */}
       {isVisible && (
-        <div className="fixed bottom-36 left-1/2 transform -translate-x-1/2 sm:bottom-34 sm:left-20 sm:transform-none sm:translate-x-0 z-50 max-w-sm sm:max-w-md w-full sm:w-auto px-4 sm:px-0">
+        <div className={`fixed bottom-36 left-1/2 transform -translate-x-1/2 sm:bottom-34 sm:left-20 sm:transform-none sm:translate-x-0 z-50 max-w-sm sm:max-w-md w-full sm:w-auto px-4 sm:px-0 transition-all duration-300 ease-out ${
+          isAnimating || isInitialLoad ? 'opacity-0 translate-y-4 scale-95' : 'opacity-100 translate-y-0 scale-100'
+        }`}>
       {/* Pop-up Container */}
-      <div className="bg-white rounded-2xl shadow-elevated border border-border overflow-hidden transition-all duration-300 ease-in-out">
+      <div className="bg-white rounded-2xl shadow-elevated border border-border overflow-hidden transition-all duration-300 ease-out transform">
         {/* Header sempre visível */}
         <div className="bg-gradient-to-r from-primary to-secondary p-3 sm:p-4 text-white relative">
           <div className="flex items-center justify-between">
@@ -86,7 +116,9 @@ export function PolicyConsentModal({ onAccept, onReject }: PolicyConsentModalPro
         </div>
 
         {/* Conteúdo expansível */}
-        {isExpanded && (
+        <div className={`overflow-hidden transition-all duration-300 ease-out ${
+          isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
           <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
             {/* Links das políticas */}
             <div className="flex flex-col gap-1 text-xs sm:text-sm sm:flex-row sm:flex-wrap sm:gap-1">
@@ -124,7 +156,7 @@ export function PolicyConsentModal({ onAccept, onReject }: PolicyConsentModalPro
                 onClick={handleReject}
                 variant="outline"
                 size="sm"
-                className="flex-1 text-xs sm:text-sm border-border hover:bg-muted transition-all duration-200 h-8 sm:h-9 min-w-0"
+                className="flex-1 text-xs sm:text-sm border-border hover:bg-muted hover:text-primary active:text-primary transition-all duration-200 h-8 sm:h-9 min-w-0"
               >
                 Rejeitar
               </Button>
@@ -137,7 +169,7 @@ export function PolicyConsentModal({ onAccept, onReject }: PolicyConsentModalPro
               </Button>
             </div>
           </div>
-        )}
+        </div>
       </div>
         </div>
       )}
