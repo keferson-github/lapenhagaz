@@ -9,6 +9,8 @@ import BackToTop from "@/components/BackToTop";
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
 import NewsSection from "@/components/NewsSection";
+import { PolicyConsentModal } from "@/components/PolicyConsentModal";
+import { usePolicyConsent } from "@/hooks/use-policy-consent";
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { getHomePageStructuredData } from '@/lib/structured-data';
@@ -19,6 +21,9 @@ const Index = () => {
     target: containerRef,
     offset: ['start start', 'end end']
   });
+
+  // Hook para gerenciar o consentimento de políticas
+  const { handleAccept, handleReject, showModal } = usePolicyConsent();
 
   // Parallax transforms para diferentes elementos
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
@@ -117,6 +122,14 @@ const Index = () => {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </div>
+
+      {/* Modal de Consentimento de Políticas */}
+      {showModal && (
+        <PolicyConsentModal 
+          onAccept={handleAccept}
+          onReject={handleReject}
+        />
+      )}
     </Layout>
   );
 };

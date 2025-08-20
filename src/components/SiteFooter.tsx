@@ -5,14 +5,14 @@ const SiteFooter = () => {
   return (
     <footer className="border-t border-border/60 mt-10 bg-muted/30">
       <div className="container py-12 text-sm">
-        <div className="grid md:grid-cols-5 gap-8 text-center md:text-left">
-          <div className="flex flex-col items-center md:items-start">
+        <div className="grid md:grid-cols-4 gap-8 text-center md:text-left">
+          <div className="md:col-span-1 flex flex-col items-center md:items-start">
             <img src="/images/Lapenhagaz_logo-transparent.png" alt="Lapenhagáz logo" className="w-32 h-auto" loading="lazy" />
             <p className="text-muted-foreground mt-4 max-w-xs">
               Energia e pureza para sua vida. Gás natural e água mineral com qualidade.
             </p>
           </div>
-          <div>
+          <div className="md:col-span-1">
             <h4 className="font-semibold mb-3">Fale Conosco</h4>
             <ul className="space-y-2 text-muted-foreground">
               <li>WhatsApp: 11 98388-0542 | 11 98388-0596</li>
@@ -40,7 +40,7 @@ const SiteFooter = () => {
               </a>
             </div>
           </div> */}
-          <div>
+          <div className="md:col-span-1">
             <h4 className="font-semibold mb-3">Outros</h4>
             <div className="space-y-2 text-muted-foreground">
               <p>Atendemos toda região metropolitana</p>
@@ -50,7 +50,7 @@ const SiteFooter = () => {
               <p>4.9/5 ⭐ Avaliação dos clientes</p>
             </div>
           </div>
-          <div>
+          <div className="md:col-span-1">
             <h4 className="font-semibold mb-3">Políticas</h4>
             <ul className="space-y-2 text-muted-foreground">
               <li>
