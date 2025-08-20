@@ -47,7 +47,7 @@ export function PolicyConsentModal({ onAccept, onReject }: PolicyConsentModalPro
       
       {/* Modal principal */}
       {isVisible && (
-        <div className="fixed bottom-32 left-1/2 transform -translate-x-1/2 sm:bottom-32 sm:left-20 sm:transform-none sm:translate-x-0 z-50 max-w-xs sm:max-w-sm w-full sm:w-auto px-4 sm:px-0">
+        <div className="fixed bottom-36 left-1/2 transform -translate-x-1/2 sm:bottom-34 sm:left-20 sm:transform-none sm:translate-x-0 z-50 max-w-sm sm:max-w-md w-full sm:w-auto px-4 sm:px-0">
       {/* Pop-up Container */}
       <div className="bg-white rounded-2xl shadow-elevated border border-border overflow-hidden transition-all duration-300 ease-in-out">
         {/* Header sempre visível */}
@@ -76,7 +76,7 @@ export function PolicyConsentModal({ onAccept, onReject }: PolicyConsentModalPro
               </button>
               <button
                 onClick={toggleVisibility}
-                className="p-1 hover:bg-white/20 rounded-full transition-colors ml-1"
+                className="w-8 h-8 rounded-full bg-transparent border-2 border-white/30 ml-1 flex items-center justify-center"
                 aria-label="Ocultar modal"
               >
                 <span className="text-white text-sm font-bold">×</span>
