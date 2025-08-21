@@ -2,23 +2,30 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
-
-// Importação direta para componentes críticos de UI
 import ToasterComponents from "./components/ToasterComponents";
 
-// Lazy loading das páginas com prefetch inteligente
+// Lazy loading de todas as páginas
 const Index = lazy(() => import("./pages/Index"));
 const Services = lazy(() => import("./pages/Services"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Blog = lazy(() => import("./pages/Blog"));
 const HeaderDemo = lazy(() => import("./pages/HeaderDemo"));
+const Benefits = lazy(() => import("./components/Benefits"));
+const Segments = lazy(() => import("./components/Segments"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfUse = lazy(() => import("./pages/TermsOfUse"));
+const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-// Páginas legais agrupadas em um chunk separado
-const LegalPages = lazy(() => import("./components/LegalPages"));
-
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutos
+      gcTime: 1000 * 60 * 10, // 10 minutos
+    },
+  },
+});
 
 // Componente de loading para Suspense
 const PageLoader = () => (
@@ -40,9 +47,11 @@ const App = () => (
             <Route path="/contato" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/header-demo" element={<HeaderDemo />} />
-            <Route path="/politica-de-privacidade" element={<LegalPages />} />
-            <Route path="/politica-de-cookies" element={<LegalPages />} />
-            <Route path="/termos-de-uso" element={<LegalPages />} />
+            <Route path="/beneficios" element={<Benefits />} />
+            <Route path="/segmentos" element={<Segments />} />
+            <Route path="/politica-privacidade" element={<PrivacyPolicy />} />
+            <Route path="/termos-uso" element={<TermsOfUse />} />
+            <Route path="/politica-cookies" element={<CookiePolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

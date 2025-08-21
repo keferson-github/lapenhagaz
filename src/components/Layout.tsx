@@ -1,45 +1,58 @@
+import { ReactNode, Suspense, lazy } from "react";
 import BrandHeader from "@/components/BrandHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ResourcePreloader from "@/components/ResourcePreloader";
-import ChatbotProvider from "@/components/ChatbotProvider"; // Importação direta para componente crítico
-import { ReactNode, Suspense, lazy } from "react";
+import ChatbotProvider from "@/components/ChatbotProvider";
 
-// Lazy load apenas de componentes realmente não críticos
+// Lazy loading para componentes não críticos
 const ChatbotWidget = lazy(() => import("@/components/ChatbotWidget"));
 const CookieConsentBanner = lazy(() => import("@/components/CookieConsentBanner"));
-
-// Componente de fallback para lazy loading
-const LazyFallback = () => <div style={{ display: 'none' }} />;
 
 interface LayoutProps {
   children: ReactNode;
 }
 
+// Componente de fallback para lazy loading
+const LazyFallback = () => (
+  <div className="w-full h-8 bg-gray-100 animate-pulse rounded" />
+);
+
 const Layout = ({ children }: LayoutProps) => {
   return (
     <ChatbotProvider>
-      <ResourcePreloader 
-        criticalImages={[
-          '/images/banner-gás.webp',
-          '/images/banner-agua-mineral-com-logo.webp',
-          '/images/Lapenhagaz_logo-transparent.png'
-        ]}
-        criticalFonts={[
-          // Adicionar fontes críticas se houver
-        ]}
-      />
-      <div className="min-h-screen">
+      <div className="min-h-screen flex flex-col">
+        {/* Preloader para recursos críticos */}
+        <ResourcePreloader
+          images={[
+            "/images/Lapenhagaz_logo-transparent.png",
+            "/slides/foto-botijao-residencial.webp",
+            "/slides/foto-slide-aguas.webp"
+          ]}
+          fonts={[
+            "Inter",
+            "system-ui"
+          ]}
+        />
+        
+        {/* Header */}
         <BrandHeader />
-        <main>
+        
+        {/* Conteúdo principal */}
+        <main className="flex-1">
           {children}
         </main>
+        
+        {/* Footer */}
+        <SiteFooter />
+        
+        {/* Componentes lazy-loaded */}
         <Suspense fallback={<LazyFallback />}>
           <ChatbotWidget />
         </Suspense>
-        <Suspense fallback={<LazyFallback />}>
+        
+        <Suspense fallback={null}>
           <CookieConsentBanner />
         </Suspense>
-        <SiteFooter />
       </div>
     </ChatbotProvider>
   );

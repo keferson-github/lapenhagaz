@@ -14,7 +14,7 @@ const TipsVideoSection = lazy(() => import("@/components/TipsVideoSection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const NewsSection = lazy(() => import("@/components/NewsSection"));
 const GoogleMapsSection = lazy(() => import("@/components/GoogleMapsSection"));
-const BackToTop = lazy(() => import("@/components/BackToTop"));
+// const BackToTop = lazy(() => import("@/components/BackToTop"));
 const PolicyConsentModal = lazy(() => import("@/components/PolicyConsentModal"));
 
 // Componente de fallback para seções
@@ -146,9 +146,9 @@ const Index = () => {
           </Suspense>
         </motion.section>
 
-        <Suspense fallback={null}>
+        {/* <Suspense fallback={<div className="fixed bottom-4 right-4 w-12 h-12 bg-gray-200 rounded-full animate-pulse" />}>
           <BackToTop />
-        </Suspense>
+        </Suspense> */}
 
         <script
           type="application/ld+json"
