@@ -229,11 +229,11 @@ const SolutionsSection = () => {
               Fechar
             </button>
             
-            {/* Imagem ampliada - pelo menos 2x maior que o card */}
+            {/* Imagem ampliada - responsiva para desktop */}
              <img
                src={zoomImage.src}
                alt={zoomImage.alt}
-               className="max-w-[90vw] max-h-[90vh] sm:min-w-[600px] sm:min-h-[700px] md:min-w-[750px] md:min-h-[950px] lg:min-w-[850px] lg:min-h-[1100px] object-contain cursor-zoom-out rounded-lg shadow-2xl"
+               className="w-auto h-auto max-w-[90vw] max-h-[90vh] sm:max-w-[80vw] sm:max-h-[80vh] md:max-w-[70vw] md:max-h-[75vh] lg:max-w-[60vw] lg:max-h-[70vh] xl:max-w-[50vw] xl:max-h-[65vh] object-contain cursor-zoom-out rounded-lg shadow-2xl"
                onClick={() => setZoomImage(null)}
                loading="eager"
              />
