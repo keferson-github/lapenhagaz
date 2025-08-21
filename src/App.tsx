@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-// Lazy loading agressivo - componentes UI carregados sob demanda
-const ToasterComponents = lazy(() => import("./components/ToasterComponents"));
+// Importação direta para componentes críticos de UI
+import ToasterComponents from "./components/ToasterComponents";
 
 // Lazy loading das páginas com prefetch inteligente
 const Index = lazy(() => import("./pages/Index"));
@@ -30,25 +30,23 @@ const PageLoader = () => (
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Suspense fallback={null}>
-        <ToasterComponents />
-      </Suspense>
+      <ToasterComponents />
       <BrowserRouter>
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/servicos" element={<Services />} />
-          <Route path="/sobre" element={<About />} />
-          <Route path="/contato" element={<Contact />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/header-demo" element={<HeaderDemo />} />
-          <Route path="/politica-de-privacidade" element={<LegalPages />} />
-          <Route path="/politica-de-cookies" element={<LegalPages />} />
-          <Route path="/termos-de-uso" element={<LegalPages />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/servicos" element={<Services />} />
+            <Route path="/sobre" element={<About />} />
+            <Route path="/contato" element={<Contact />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/header-demo" element={<HeaderDemo />} />
+            <Route path="/politica-de-privacidade" element={<LegalPages />} />
+            <Route path="/politica-de-cookies" element={<LegalPages />} />
+            <Route path="/termos-de-uso" element={<LegalPages />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
