@@ -121,30 +121,30 @@ export function PolicyConsentModal({ onAccept, onReject }: PolicyConsentModalPro
         }`}>
           <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
             {/* Links das políticas */}
-            <div className="flex flex-col gap-1 text-xs sm:text-sm sm:flex-row sm:flex-wrap sm:gap-1">
+            <div className="flex flex-row flex-wrap gap-1 text-xs sm:text-sm justify-center sm:justify-start">
               <a 
                 href="/politica-de-privacidade"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:text-primary/80 font-medium underline transition-colors block sm:inline"
+                className="text-primary hover:text-primary/80 font-medium underline transition-colors inline"
               >
                 Política de Privacidade
               </a>
-              <span className="text-muted-foreground hidden sm:inline">•</span>
+              <span className="text-muted-foreground">•</span>
               <a 
                 href="/politica-de-cookies"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:text-primary/80 font-medium underline transition-colors block sm:inline"
+                className="text-primary hover:text-primary/80 font-medium underline transition-colors inline"
               >
                 Política de Cookies
               </a>
-              <span className="text-muted-foreground hidden sm:inline">-</span>
+              <span className="text-muted-foreground">•</span>
               <a 
                 href="/termos-de-uso"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:text-primary/80 font-medium underline transition-colors block sm:inline"
+                className="text-primary hover:text-primary/80 font-medium underline transition-colors inline"
               >
                 Termos de uso
               </a>
