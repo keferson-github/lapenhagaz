@@ -3,6 +3,7 @@ import SiteFooter from "@/components/SiteFooter";
 import ChatbotWidget from "@/components/ChatbotWidget";
 import ChatbotProvider from "@/components/ChatbotProvider";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
+import ResourcePreloader from "@/components/ResourcePreloader";
 import { ReactNode } from "react";
 
 interface LayoutProps {
@@ -12,6 +13,16 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <ChatbotProvider>
+      <ResourcePreloader 
+        criticalImages={[
+          '/images/banner-gás.webp',
+          '/images/banner-agua-mineral-com-logo.webp',
+          '/images/Lapenhagaz_logo-transparent.png'
+        ]}
+        criticalFonts={[
+          // Adicionar fontes críticas se houver
+        ]}
+      />
       <div className="min-h-screen">
         <BrandHeader />
         <main>
