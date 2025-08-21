@@ -13,6 +13,7 @@ const NumbersSection = lazy(() => import("@/components/NumbersSection"));
 const TipsVideoSection = lazy(() => import("@/components/TipsVideoSection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const NewsSection = lazy(() => import("@/components/NewsSection"));
+const GoogleMapsSection = lazy(() => import("@/components/GoogleMapsSection"));
 const BackToTop = lazy(() => import("@/components/BackToTop"));
 const PolicyConsentModal = lazy(() => import("@/components/PolicyConsentModal").then(module => ({ default: module.PolicyConsentModal })));
 
@@ -134,7 +135,16 @@ const Index = () => {
           </Suspense>
         </motion.section>
 
-
+        <motion.section 
+          id="localizacao" 
+          aria-label="Localização" 
+          className="relative z-10"
+          style={{ y: useTransform(scrollYProgress, [0.8, 1], ['0%', '-5%']) }}
+        >
+          <Suspense fallback={<SectionFallback />}>
+            <GoogleMapsSection />
+          </Suspense>
+        </motion.section>
 
         <Suspense fallback={null}>
           <BackToTop />

@@ -16,6 +16,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useState } from "react";
+import { ZoomIn, X } from "lucide-react";
 
 // Ícone personalizado do WhatsApp
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -31,6 +32,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const SolutionsSection = () => {
   const [openModal, setOpenModal] = useState<string | null>(null);
+  const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
 
   const categories = [
     {
