@@ -15,7 +15,7 @@ const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"
 const NewsSection = lazy(() => import("@/components/NewsSection"));
 const GoogleMapsSection = lazy(() => import("@/components/GoogleMapsSection"));
 const BackToTop = lazy(() => import("@/components/BackToTop"));
-const PolicyConsentModal = lazy(() => import("@/components/PolicyConsentModal").then(module => ({ default: module.PolicyConsentModal })));
+const PolicyConsentModal = lazy(() => import("@/components/PolicyConsentModal"));
 
 // Componente de fallback para seções
 const SectionFallback = () => (

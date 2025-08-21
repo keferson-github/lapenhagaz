@@ -6,7 +6,7 @@ import { ReactNode, Suspense, lazy } from "react";
 // Lazy load de componentes não críticos
 const ChatbotWidget = lazy(() => import("@/components/ChatbotWidget"));
 const ChatbotProvider = lazy(() => import("@/components/ChatbotProvider"));
-const CookieConsentBanner = lazy(() => import("@/components/CookieConsentBanner").then(module => ({ default: module.CookieConsentBanner })));
+const CookieConsentBanner = lazy(() => import("@/components/CookieConsentBanner"));
 
 // Componente de fallback para lazy loading
 const LazyFallback = () => <div style={{ display: 'none' }} />;

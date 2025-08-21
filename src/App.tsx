@@ -1,10 +1,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 // Lazy loading agressivo - componentes UI carregados sob demanda
 const ToasterComponents = lazy(() => import("./components/ToasterComponents"));
-const TooltipProvider = lazy(() => import("@/components/ui/tooltip").then(module => ({ default: module.TooltipProvider })));
 
 // Lazy loading das páginas com prefetch inteligente
 const Index = lazy(() => import("./pages/Index"));

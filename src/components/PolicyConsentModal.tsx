@@ -176,3 +176,5 @@ export function PolicyConsentModal({ onAccept, onReject }: PolicyConsentModalPro
     </>
   );
 }
+
+export default PolicyConsentModal;

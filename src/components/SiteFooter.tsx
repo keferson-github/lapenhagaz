@@ -72,7 +72,7 @@ const SiteFooter = () => {
           </div>
         </div>
         
-        <div className="flex flex-col items-center gap-4 mt-8 text-muted-foreground">
+        <div className="flex flex-col md:flex-row md:justify-around items-center gap-4 mt-8 text-muted-foreground">
           <p>© {new Date().getFullYear()} Lapenhagáz. Todos os direitos reservados.</p>
           <p className="text-sm">
             Desenvolvido por{" "}
