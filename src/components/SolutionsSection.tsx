@@ -127,16 +127,27 @@ const SolutionsSection = () => {
               {categories.map((item) => (
                 <CarouselItem key={item.id} className="pl-4 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                   <Card className="overflow-hidden h-full">
-                    <div className="relative aspect-[3/4] w-full overflow-hidden">
+                    <div className="relative aspect-[3/4] w-full overflow-hidden group">
                       <img
                         src={item.img}
                         alt={item.alt}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         loading="lazy"
                         decoding="async"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
-
+                      {/* Ícone de lupa sempre visível no canto superior direito */}
+                      <div className="absolute top-3 right-3 z-10">
+                        <button
+                          onClick={() => setZoomImage({ src: item.img, alt: item.alt })}
+                          className="bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 shadow-lg transition-all duration-300 cursor-pointer"
+                          aria-label="Ampliar imagem"
+                        >
+                          <ZoomIn className="h-5 w-5 text-gray-800" />
+                        </button>
+                      </div>
+                      {/* Overlay de hover */}
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300"></div>
                     </div>
                     <CardHeader>
                       <CardTitle className="text-xl font-semibold">{item.label}</CardTitle>
@@ -203,6 +214,33 @@ const SolutionsSection = () => {
           </Carousel>
         </div>
       </div>
+
+      {/* Modal de Zoom da Imagem */}
+      {zoomImage && (
+        <Dialog open={!!zoomImage} onOpenChange={() => setZoomImage(null)}>
+          <DialogContent className="max-w-[90vw] max-h-[90vh] w-auto h-auto p-0 bg-transparent border-0 shadow-none">
+          <div className="relative flex items-center justify-center">
+            {/* Botão de fechar */}
+            <button
+              onClick={() => setZoomImage(null)}
+              className="absolute top-4 right-4 z-30 bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-4 py-2 transition-colors duration-200 shadow-lg font-medium"
+              aria-label="Fechar zoom"
+            >
+              Fechar
+            </button>
+            
+            {/* Imagem ampliada - pelo menos 2x maior que o card */}
+             <img
+               src={zoomImage.src}
+               alt={zoomImage.alt}
+               className="max-w-[90vw] max-h-[90vh] sm:min-w-[600px] sm:min-h-[700px] md:min-w-[750px] md:min-h-[950px] lg:min-w-[850px] lg:min-h-[1100px] object-contain cursor-zoom-out rounded-lg shadow-2xl"
+               onClick={() => setZoomImage(null)}
+               loading="eager"
+             />
+          </div>
+        </DialogContent>
+        </Dialog>
+      )}
     </section>
   );
 };
