@@ -6,7 +6,7 @@ import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Cookie, Shield, BarChart3, Settings, Target, ExternalLink } from 'lucide-react';
 
-export function CookiePolicy() {
+function CookiePolicy() {
   // Definição das categorias de cookies
   const cookieCategories = [
     {
@@ -650,3 +650,5 @@ export function CookiePolicy() {
     </Layout>
   );
 }
+
+export default CookiePolicy;

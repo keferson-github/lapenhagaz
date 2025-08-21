@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import OptimizedImage from '@/components/OptimizedImage';
+import OptimizedHeroImage from '@/components/OptimizedHeroImage';
 
 // Ícone do WhatsApp SVG
 const WhatsAppIcon = () => (
@@ -122,14 +122,14 @@ const HomeHeroCarousel = () => {
             >
               {/* Background Image */}
               <div className="absolute inset-0">
-                <OptimizedImage
+                <OptimizedHeroImage
                   src={slide.img}
                   alt={`${slide.title} - ${slide.subtitle}`}
                   className={`w-full h-full ${
                     slide.id === 'agua-mineral' ? 'object-center' : 'object-bottom'
                   }`}
                   priority={index === 0}
-                  sizes="100vw"
+                  sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, 1920px"
                   width={1920}
                   height={650}
                 />

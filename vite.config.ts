@@ -39,20 +39,71 @@ export default defineConfig(({ mode }) => ({
     minify: 'terser',
     cssMinify: true,
     sourcemap: false,
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 500,
+    assetsInlineLimit: 4096,
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn']
+        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
+        passes: 2,
+        unsafe_arrows: true,
+        unsafe_methods: true,
+        unsafe_proto: true
+      },
+      mangle: {
+        safari10: true
+      },
+      format: {
+        comments: false
       }
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          ui: ['lucide-react'],
-          carousel: ['embla-carousel-react']
+        manualChunks: (id) => {
+          // Vendor chunks
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react-vendor';
+            }
+            if (id.includes('framer-motion')) {
+              return 'animation-vendor';
+            }
+            if (id.includes('embla-carousel')) {
+              return 'carousel-vendor';
+            }
+            if (id.includes('lucide-react')) {
+              return 'icons-vendor';
+            }
+            if (id.includes('@tanstack/react-query') || id.includes('sonner') || id.includes('@radix-ui')) {
+              return 'ui-vendor';
+            }
+            return 'vendor';
+          }
+          
+          // Component chunks por funcionalidade
+          if (id.includes('/pages/')) {
+            if (id.includes('PrivacyPolicy') || id.includes('CookiePolicy') || id.includes('TermsOfUse')) {
+              return 'legal-pages';
+            }
+            if (id.includes('About') || id.includes('Services') || id.includes('Contact')) {
+              return 'info-pages';
+            }
+            return 'pages';
+          }
+          
+          if (id.includes('/components/')) {
+            if (id.includes('Carousel') || id.includes('OptimizedImage')) {
+              return 'carousel-components';
+            }
+            if (id.includes('Chatbot') || id.includes('Toast')) {
+              return 'interactive-components';
+            }
+            if (id.includes('Policy') || id.includes('Cookie')) {
+              return 'legal-components';
+            }
+            return 'components';
+          }
         },
         // Otimizar nomes de arquivos
         entryFileNames: 'assets/[name]-[hash].js',
@@ -69,6 +120,25 @@ export default defineConfig(({ mode }) => ({
       'react-router-dom',
       'framer-motion',
       '@tanstack/react-query',
+      'lucide-react',
+      'embla-carousel-react',
+      'sonner'
     ],
+    exclude: [
+      // Excluir dependências que devem ser carregadas dinamicamente
+    ],
+    esbuildOptions: {
+      target: 'es2020',
+      supported: {
+        'top-level-await': true
+      }
+    }
+  },
+  
+  // Configurações adicionais para otimização
+  esbuild: {
+    target: 'es2020',
+    legalComments: 'none',
+    treeShaking: true
   }
 }));

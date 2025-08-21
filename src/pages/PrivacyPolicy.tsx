@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 
-export function PrivacyPolicy() {
+function PrivacyPolicy() {
   const companyInfo = {
     name: 'Lapenhagaz Comercio de Gas LTDA',
     cnpj: '04.394.600/0001-32',
@@ -617,3 +617,5 @@ export function PrivacyPolicy() {
     </Layout>
   );
 }
+
+export default PrivacyPolicy;
