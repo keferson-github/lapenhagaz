@@ -9,6 +9,13 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 5173,
+    fs: {
+      strict: false
+    },
+    middlewareMode: false,
+    hmr: {
+      overlay: true
+    }
   },
   plugins: [
     react(),
@@ -134,6 +141,13 @@ export default defineConfig(({ mode }) => ({
       }
     }
   },
+  
+  define: {
+    __DEV__: mode === 'development'
+  },
+  
+  // Configuração para resolver problemas de MIME type
+  assetsInclude: ['**/*.woff', '**/*.woff2', '**/*.ttf', '**/*.otf'],
   
   // Configurações adicionais para otimização
   esbuild: {

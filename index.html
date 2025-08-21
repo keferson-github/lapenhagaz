@@ -28,8 +28,8 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"></noscript>
     
     <!-- Preload only critical modules for initial render -->
-    <link rel="modulepreload" href="/src/main.tsx">
-    <link rel="modulepreload" href="/src/App.tsx">
+    <link rel="modulepreload" href="/src/main.tsx" as="script">
+    <link rel="modulepreload" href="/src/App.tsx" as="script">
     
     <!-- Preload critical images for LCP optimization with responsive support -->
     <!-- Hero image - primeira imagem do carousel (crítica para LCP) -->
@@ -45,9 +45,7 @@
     <!-- Logo crítico -->
     <link rel="preload" as="image" href="/images/Lapenhagaz_logo-transparent.png" fetchpriority="high">
     
-    <!-- Outras imagens do carousel com prioridade baixa -->
-    <link rel="preload" as="image" href="/slides/optimized/foto-slide-gas-empresas-desktop.avif" type="image/avif" fetchpriority="low" media="(min-width: 1024px)">
-    <link rel="preload" as="image" href="/slides/optimized/foto-slide-aguas-desktop.avif" type="image/avif" fetchpriority="low" media="(min-width: 1024px)">
+    <!-- Outras imagens do carousel serão carregadas sob demanda -->
     
     <!-- Resource hints para melhor performance -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -115,6 +113,7 @@
     <!-- Performance optimizations -->
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
