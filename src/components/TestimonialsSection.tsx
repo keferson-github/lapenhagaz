@@ -290,7 +290,7 @@ const TestimonialsSection = memo(() => {
       <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-xl animate-pulse" />
       <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full blur-xl animate-pulse delay-1000" />
       
-      <div className="container relative">
+      <div className="container relative" style={{ position: 'relative' }}>
         {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}

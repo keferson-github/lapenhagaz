@@ -116,7 +116,7 @@ const OptimizedHeroImage = ({
             onError={handleError}
             loading={priority ? 'eager' : 'lazy'}
             decoding={priority ? 'sync' : 'async'}
-            fetchPriority={priority ? 'high' : 'auto'}
+            fetchpriority={priority ? 'high' : 'auto'}
           />
         </picture>
       ) : (

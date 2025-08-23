@@ -288,7 +288,7 @@ const CommitmentsSection = () => {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.3 }}
     >
-      <div className="container">
+      <div className="container" style={{ position: 'relative' }}>
         <motion.div 
           className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
