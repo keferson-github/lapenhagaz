@@ -48,6 +48,8 @@ export default defineConfig(({ mode }) => ({
     sourcemap: false,
     chunkSizeWarningLimit: 500,
     assetsInlineLimit: 4096,
+    outDir: 'dist',
+    emptyOutDir: true,
     terserOptions: {
       compress: {
         drop_console: true,
@@ -116,6 +118,7 @@ export default defineConfig(({ mode }) => ({
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]',
+        format: 'es',
       },
     },
   },
