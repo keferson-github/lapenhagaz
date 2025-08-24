@@ -1,11 +1,11 @@
 import HomeHeroCarousel from "@/components/HomeHeroCarousel";
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
-import NewsSection from "@/components/NewsSection";
-import { PolicyConsentModal } from "@/components/PolicyConsentModal";
+import BackToTop from "@/components/BackToTop";
 import { usePolicyConsent } from "@/hooks/use-policy-consent";
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, Suspense, lazy } from 'react';
+import { getHomePageStructuredData } from '@/lib/structured-data';
 
 // Lazy load de componentes não críticos (below-the-fold)
 const AdvantagesSection = lazy(() => import("@/components/AdvantagesSection"));
@@ -16,14 +16,11 @@ const TipsVideoSection = lazy(() => import("@/components/TipsVideoSection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const NewsSection = lazy(() => import("@/components/NewsSection"));
 const GoogleMapsSection = lazy(() => import("@/components/GoogleMapsSection"));
-// const BackToTop = lazy(() => import("@/components/BackToTop"));
 const PolicyConsentModal = lazy(() => import("@/components/PolicyConsentModal"));
 
-// Componente de fallback para seções
 const SectionFallback = () => (
   <div className="w-full h-32 bg-gray-50 animate-pulse rounded-lg" />
 );
-import { getHomePageStructuredData } from '@/lib/structured-data';
 
 const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -137,7 +134,16 @@ const Index = () => {
           </Suspense>
         </motion.section>
 
-
+        <motion.section 
+          id="localizacao" 
+          aria-label="Nossa Localização" 
+          className="scroll-mt-24 relative z-10"
+          style={{ y: useTransform(scrollYProgress, [0.8, 1], ['0%', '-5%']) }}
+        >
+          <Suspense fallback={<SectionFallback />}>
+            <GoogleMapsSection />
+          </Suspense>
+        </motion.section>
 
         <BackToTop />
 

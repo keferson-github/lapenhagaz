@@ -23,12 +23,12 @@ const Layout = ({ children }: LayoutProps) => {
       <div className="min-h-screen flex flex-col">
         {/* Preloader para recursos críticos */}
         <ResourcePreloader
-          images={[
+          criticalImages={[
             "/images/Lapenhagaz_logo-transparent.png",
             "/slides/foto-botijao-residencial.webp",
             "/slides/foto-slide-aguas.webp"
           ]}
-          fonts={[
+          criticalFonts={[
             "Inter",
             "system-ui"
           ]}
