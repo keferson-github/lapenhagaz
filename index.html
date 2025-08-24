@@ -12,8 +12,8 @@
     <link rel="canonical" href="https://lapenhagaz.com.br/" />
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/images/lapenhagaz_favicon.ico" />
-    <link rel="shortcut icon" type="image/x-icon" href="/images/lapenhagaz_favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="./images/lapenhagaz_favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="./images/lapenhagaz_favicon.ico" />
 
     <!-- Critical resource preloads -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,17 +31,17 @@
     
     <!-- Preload critical images for LCP optimization with responsive support -->
     <!-- Hero image - primeira imagem do carousel (crítica para LCP) -->
-    <link rel="preload" as="image" href="/slides/optimized/foto-botijao-residencial-desktop.avif" type="image/avif" fetchpriority="high" media="(min-width: 1024px)">
-    <link rel="preload" as="image" href="/slides/optimized/foto-botijao-residencial-tablet.avif" type="image/avif" fetchpriority="high" media="(min-width: 768px) and (max-width: 1023px)">
-    <link rel="preload" as="image" href="/slides/optimized/foto-botijao-residencial-mobile.avif" type="image/avif" fetchpriority="high" media="(max-width: 767px)">
+    <link rel="preload" as="image" href="./slides/optimized/foto-botijao-residencial-desktop.avif" type="image/avif" fetchpriority="high" media="(min-width: 1024px)">
+    <link rel="preload" as="image" href="./slides/optimized/foto-botijao-residencial-tablet.avif" type="image/avif" fetchpriority="high" media="(min-width: 768px) and (max-width: 1023px)">
+    <link rel="preload" as="image" href="./slides/optimized/foto-botijao-residencial-mobile.avif" type="image/avif" fetchpriority="high" media="(max-width: 767px)">
     
     <!-- Fallback WebP para navegadores sem suporte AVIF -->
-    <link rel="preload" as="image" href="/slides/optimized/foto-botijao-residencial-desktop.webp" type="image/webp" fetchpriority="high" media="(min-width: 1024px)">
-    <link rel="preload" as="image" href="/slides/optimized/foto-botijao-residencial-tablet.webp" type="image/webp" fetchpriority="high" media="(min-width: 768px) and (max-width: 1023px)">
-    <link rel="preload" as="image" href="/slides/optimized/foto-botijao-residencial-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 767px)">
+    <link rel="preload" as="image" href="./slides/optimized/foto-botijao-residencial-desktop.webp" type="image/webp" fetchpriority="high" media="(min-width: 1024px)">
+    <link rel="preload" as="image" href="./slides/optimized/foto-botijao-residencial-tablet.webp" type="image/webp" fetchpriority="high" media="(min-width: 768px) and (max-width: 1023px)">
+    <link rel="preload" as="image" href="./slides/optimized/foto-botijao-residencial-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 767px)">
     
     <!-- Logo crítico -->
-    <link rel="preload" as="image" href="/images/Lapenhagaz_logo-transparent.png" fetchpriority="high">
+    <link rel="preload" as="image" href="./images/Lapenhagaz_logo-transparent.png" fetchpriority="high">
     
     <!-- Outras imagens do carousel serão carregadas sob demanda -->
     
@@ -120,7 +120,7 @@
     <meta property="og:url" content="https://lapenhagaz.com.br/" />
     <meta property="og:title" content="Lapenhagáz | Gás GLP e Água Mineral das Melhores Marcas" />
     <meta property="og:description" content="Fornecimento de gás GLP das melhores marcas e água mineral de qualidade superior. Entrega rápida e segura para residências e empresas." />
-    <meta property="og:image" content="https://lapenhagaz.com.br/images/Lapenhagaz_logo-transparent.png" />
+    <meta property="og:image" content="https://lapenhagaz.com.br/lapenhagaz/images/Lapenhagaz_logo-transparent.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Lapenhagáz" />
@@ -131,13 +131,13 @@
     <meta name="twitter:url" content="https://lapenhagaz.com.br/" />
     <meta name="twitter:title" content="Lapenhagáz | Gás GLP e Água Mineral das Melhores Marcas" />
     <meta name="twitter:description" content="Fornecimento de gás GLP das melhores marcas e água mineral de qualidade superior. Entrega rápida e segura para residências e empresas." />
-    <meta name="twitter:image" content="https://lapenhagaz.com.br/images/Lapenhagaz_logo-transparent.png" />
+    <meta name="twitter:image" content="https://lapenhagaz.com.br/lapenhagaz/images/Lapenhagaz_logo-transparent.png" />
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="./manifest.json">
     
     <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="/images/Lapenhagaz_logo-transparent.png">
+    <link rel="apple-touch-icon" href="./images/Lapenhagaz_logo-transparent.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Lapenhagáz">
@@ -145,7 +145,7 @@
 
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="./src/main.tsx"></script>
     
     <!-- Async loading of non-critical resources -->
     <script>
@@ -153,8 +153,8 @@
       window.addEventListener('load', function() {
         // Preload remaining carousel images after initial load
         const images = [
-          '/slides/optimized/foto-slide-gas-empresas-desktop.avif',
-          '/slides/optimized/foto-slide-aguas-desktop.avif'
+          './slides/optimized/foto-slide-gas-empresas-desktop.avif',
+          './slides/optimized/foto-slide-aguas-desktop.avif'
         ];
         
         images.forEach(src => {
