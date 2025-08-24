@@ -136,7 +136,6 @@ const SolutionsSection = () => {
                         decoding="async"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
                     </div>
                     <CardHeader>
                       <CardTitle className="text-xl font-semibold">{item.label}</CardTitle>
