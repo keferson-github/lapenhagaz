@@ -72,24 +72,7 @@ const SiteFooter = () => {
           </div>
         </div>
         
-        {/* Seção do Mapa */}
-        <div className="mt-12 mb-8">
-          <h4 className="font-semibold mb-6 text-center">Nossa Localização</h4>
-          <div className="w-full overflow-hidden rounded-xl">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d117080.42709758284!2d-46.62149188942513!3d-23.50503202857625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x94ce610ba4ebe9dd%3A0x1f19f592ca450df!2sAv.%20Dr.%20Assis%20Ribeiro%2C%201424%20A%20-%20Jardim%20Piratininga%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2003717-000!3m2!1d-23.5050883!2d-46.539068!5e0!3m2!1spt-BR!2sbr!4v1755644203059!5m2!1spt-BR!2sbr" 
-              width="100%" 
-              height="450" 
-              style={{border: 0}} 
-              allowFullScreen 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Localização Lapenhagáz"
-            />
-          </div>
-        </div>
-        
-        <div className="flex flex-col items-center gap-4 mt-8 text-muted-foreground">
+        <div className="flex flex-col items-center gap-4 mt-8 text-muted-foreground md:flex-row md:justify-around md:gap-0">
           <p>© {new Date().getFullYear()} Lapenhagáz. Todos os direitos reservados.</p>
           <p className="text-sm">
             Desenvolvido por{" "}

@@ -9,6 +9,7 @@ import BackToTop from "@/components/BackToTop";
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
 import NewsSection from "@/components/NewsSection";
+import GoogleMaps from "@/components/GoogleMaps";
 import { PolicyConsentModal } from "@/components/PolicyConsentModal";
 import { usePolicyConsent } from "@/hooks/use-policy-consent";
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -113,7 +114,14 @@ const Index = () => {
           <NewsSection />
         </motion.section>
 
-
+        <motion.section 
+          id="localizacao" 
+          aria-label="Nossa Localização" 
+          className="scroll-mt-24 relative z-10"
+          style={{ y: useTransform(scrollYProgress, [0.8, 1], ['0%', '-5%']) }}
+        >
+          <GoogleMaps />
+        </motion.section>
 
         <BackToTop />
 
