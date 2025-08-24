@@ -234,6 +234,37 @@ export const BrandHeader = () => {
   const isDesktop = typeof window !== 'undefined' && window.innerWidth > 1024;
   const isAtTop = typeof window !== 'undefined' && window.scrollY <= 20;
 
+  // Se estiver em uma página de política, renderizar apenas o botão "Voltar para o início"
+  if (isPolicyPage) {
+    return (
+      <header 
+        ref={headerRef}
+        className="w-full border-b border-border/80 bg-background/95 backdrop-blur-xl shadow-modern sticky top-0 z-50"
+      >
+        <div className="container flex items-center justify-between py-4">
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-200 hover:scale-105 font-medium"
+          >
+            <Home className="w-4 h-4" />
+            <span>Voltar para o início</span>
+          </Link>
+          
+          {/* Logo pequeno no canto direito */}
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/lapenhagaz_logo_horizontal-removebg-horizontal.png" 
+              alt="Lapenhagáz" 
+              className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity duration-200"
+              loading="lazy"
+              decoding="async"
+            />
+          </Link>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <header 
       ref={headerRef}
