@@ -2,7 +2,8 @@ import { useEffect, useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+
+import OptimizedHeroImage from '@/components/OptimizedHeroImage';
 
 // Ícone do WhatsApp SVG
 const WhatsAppIcon = () => (
@@ -82,13 +83,29 @@ const HomeHeroCarousel = () => {
     onSelect();
   }, [emblaApi, onSelect]);
 
-  // Auto-play
+  // Auto-play otimizado
   useEffect(() => {
     if (!emblaApi) return;
-    const autoplay = setInterval(() => {
-      emblaApi.scrollNext();
-    }, 6000);
-    return () => clearInterval(autoplay);
+    
+    // Use requestIdleCallback para não bloquear a thread principal
+    let autoplayId: number;
+    const startAutoplay = () => {
+      autoplayId = window.setInterval(() => {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(() => emblaApi.scrollNext());
+        } else {
+          emblaApi.scrollNext();
+        }
+      }, 6000);
+    };
+    
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(startAutoplay);
+    } else {
+      startAutoplay();
+    }
+    
+    return () => clearInterval(autoplayId);
   }, [emblaApi]);
 
   return (
@@ -99,20 +116,22 @@ const HomeHeroCarousel = () => {
           {heroSlides.map((slide, index) => (
             <div
               key={slide.id}
-              className="relative flex-none w-full h-full flex items-center"
+              className={`relative flex-none w-full h-full flex items-center transition-opacity duration-500 ${
+                index === selectedIndex ? 'opacity-100' : 'opacity-70'
+              }`}
             >
               {/* Background Image */}
               <div className="absolute inset-0">
-                <img
+                <OptimizedHeroImage
                   src={slide.img}
                   alt={`${slide.title} - ${slide.subtitle}`}
-                  className={`w-full h-full object-cover ${
+                  className={`w-full h-full ${
                     slide.id === 'agua-mineral' ? 'object-center' : 'object-bottom'
                   }`}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  decoding={index === 0 ? "sync" : "async"}
-                  fetchPriority={index === 0 ? "high" : "low"}
-                  sizes="100vw"
+                  priority={index === 0}
+                  sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1440px) 1440px, 1920px"
+                  width={1920}
+                  height={650}
                 />
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/20" />
@@ -121,75 +140,41 @@ const HomeHeroCarousel = () => {
               {/* Content Overlay */}
               <div className="relative z-10 container mx-auto px-6">
                 <div
-                  key={`${slide.id}-${index === selectedIndex ? 'active' : 'inactive'}`}
-                  className="max-w-3xl"
+                  className={`max-w-3xl transition-all duration-700 ${
+                    index === selectedIndex ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}
                 >
                   {/* Badge */}
-                  <motion.div 
-                    className="hidden md:block mb-6"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={index === selectedIndex ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                    transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
-                  >
+                  <div className="hidden md:block mb-6">
                     <span className="inline-block px-6 py-3 bg-primary/30 backdrop-blur-md border border-primary/40 rounded-full text-primary-foreground text-sm font-semibold shadow-lg">
                       {slide.badge}
                     </span>
-                  </motion.div>
+                  </div>
 
                   {/* Title */}
                   {index === 0 ? (
-                    <motion.h1 
-                      className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight drop-shadow-2xl"
-                      initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                      animate={index === selectedIndex ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
-                      transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
-                    >
+                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight drop-shadow-2xl">
                       {slide.title}
-                    </motion.h1>
+                    </h1>
                   ) : (
-                    <motion.h2 
-                      className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight drop-shadow-2xl"
-                      initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                      animate={index === selectedIndex ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.9 }}
-                      transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
-                    >
+                    <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight drop-shadow-2xl">
                       {slide.title}
-                    </motion.h2>
+                    </h2>
                   )}
 
                   {/* Subtitle */}
-                  <motion.p 
-                    className="text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent mb-6 font-bold drop-shadow-xl"
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={index === selectedIndex ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                    transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                  >
+                  <p className="text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent mb-6 font-bold drop-shadow-xl">
                     {slide.subtitle}
-                  </motion.p>
+                  </p>
 
                   {/* Description */}
-                  <motion.p 
-                    className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl leading-relaxed drop-shadow-lg"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={index === selectedIndex ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
-                  >
+                  <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl leading-relaxed drop-shadow-lg">
                     {slide.desc}
-                  </motion.p>
+                  </p>
 
                   {/* CTA Button */}
-                  <motion.div 
-                    className="flex justify-center items-center sm:justify-start mb-8 w-full"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={index === selectedIndex ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                    transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-                  >
-                    <motion.div
-                      className="w-full sm:w-auto"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                    >
+                  <div className="flex justify-center items-center sm:justify-start mb-8 w-full">
+                    <div className="w-full sm:w-auto">
                       <a 
                         href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
                         target="_blank"
@@ -203,8 +188,8 @@ const HomeHeroCarousel = () => {
                            Faça agora seu pedido
                          </Button>
                        </a>
-                     </motion.div>
-                  </motion.div>
+                     </div>
+                  </div>
 
 
                 </div>

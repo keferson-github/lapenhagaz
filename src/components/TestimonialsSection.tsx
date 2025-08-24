@@ -1,4 +1,4 @@
-import { useState, useEffect, memo, useRef, useCallback } from 'react';
+import { useState, memo, useRef, useCallback, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star, Quote, MapPin, Calendar } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 
@@ -243,7 +243,6 @@ TestimonialCard.displayName = 'TestimonialCard';
 // Componente principal
 const TestimonialsSection = memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
@@ -253,30 +252,16 @@ const TestimonialsSection = memo(() => {
   const experienceCount = useCountAnimation(15, 1800);
   const supportCount = useCountAnimation(24, 1500);
   
-  // Auto-play do carrossel
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    
-    return () => clearInterval(interval);
-  }, [isAutoPlaying]);
-  
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    setIsAutoPlaying(false);
   };
   
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-    setIsAutoPlaying(false);
   };
   
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
-    setIsAutoPlaying(false);
   };
   
   // Calcular quais cards mostrar (3 por vez no desktop)
@@ -305,7 +290,7 @@ const TestimonialsSection = memo(() => {
       <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full blur-xl animate-pulse" />
       <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full blur-xl animate-pulse delay-1000" />
       
-      <div className="container relative">
+      <div className="container relative" style={{ position: 'relative' }}>
         {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -417,22 +402,7 @@ const TestimonialsSection = memo(() => {
             ))}
           </div>
           
-          {/* Auto-play indicator */}
-          <div className="flex justify-center mt-6">
-            <button
-              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                isAutoPlaying 
-                  ? 'bg-primary/10 text-primary' 
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              <div className={`w-2 h-2 rounded-full ${
-                isAutoPlaying ? 'bg-primary animate-pulse' : 'bg-gray-400'
-              }`} />
-              {isAutoPlaying ? 'Reprodução automática ativa' : 'Clique para ativar reprodução automática'}
-            </button>
-          </div>
+
         </motion.div>
         
         {/* Stats */}

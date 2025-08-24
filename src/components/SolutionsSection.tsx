@@ -16,6 +16,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useState } from "react";
+import { ZoomIn, X } from "lucide-react";
 
 // Ícone personalizado do WhatsApp
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -31,6 +32,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const SolutionsSection = () => {
   const [openModal, setOpenModal] = useState<string | null>(null);
+  const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
 
   const categories = [
     {
@@ -125,15 +127,16 @@ const SolutionsSection = () => {
               {categories.map((item) => (
                 <CarouselItem key={item.id} className="pl-4 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                   <Card className="overflow-hidden h-full">
-                    <div className="relative aspect-[3/4] w-full overflow-hidden">
+                    <div className="relative aspect-[3/4] w-full overflow-hidden group">
                       <img
                         src={item.img}
                         alt={item.alt}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                         loading="lazy"
                         decoding="async"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
                     </div>
                     <CardHeader>
                       <CardTitle className="text-xl font-semibold">{item.label}</CardTitle>
@@ -200,6 +203,33 @@ const SolutionsSection = () => {
           </Carousel>
         </div>
       </div>
+
+      {/* Modal de Zoom da Imagem */}
+      {zoomImage && (
+        <Dialog open={!!zoomImage} onOpenChange={() => setZoomImage(null)}>
+          <DialogContent className="max-w-[90vw] max-h-[90vh] w-auto h-auto p-0 bg-transparent border-0 shadow-none">
+          <div className="relative flex items-center justify-center">
+            {/* Botão de fechar */}
+            <button
+              onClick={() => setZoomImage(null)}
+              className="absolute top-4 right-4 z-30 bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-4 py-2 transition-colors duration-200 shadow-lg font-medium"
+              aria-label="Fechar zoom"
+            >
+              Fechar
+            </button>
+            
+            {/* Imagem ampliada - responsiva para desktop */}
+             <img
+               src={zoomImage.src}
+               alt={zoomImage.alt}
+               className="w-auto h-auto max-w-[90vw] max-h-[90vh] sm:max-w-[80vw] sm:max-h-[80vh] md:max-w-[70vw] md:max-h-[75vh] lg:max-w-[60vw] lg:max-h-[70vh] xl:max-w-[50vw] xl:max-h-[65vh] object-contain cursor-zoom-out rounded-lg shadow-2xl"
+               onClick={() => setZoomImage(null)}
+               loading="eager"
+             />
+          </div>
+        </DialogContent>
+        </Dialog>
+      )}
     </section>
   );
 };

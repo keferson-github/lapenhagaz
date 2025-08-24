@@ -1,19 +1,28 @@
 import HomeHeroCarousel from "@/components/HomeHeroCarousel";
-import AdvantagesSection from "@/components/AdvantagesSection";
-import SolutionsSection from "@/components/SolutionsSection";
-import CommitmentsSection from "@/components/CommitmentsSection";
-import NumbersSection from "@/components/NumbersSection";
-import TipsVideoSection from "@/components/TipsVideoSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import BackToTop from "@/components/BackToTop";
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
 import NewsSection from "@/components/NewsSection";
-import GoogleMaps from "@/components/GoogleMaps";
 import { PolicyConsentModal } from "@/components/PolicyConsentModal";
 import { usePolicyConsent } from "@/hooks/use-policy-consent";
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, Suspense, lazy } from 'react';
+
+// Lazy load de componentes não críticos (below-the-fold)
+const AdvantagesSection = lazy(() => import("@/components/AdvantagesSection"));
+const SolutionsSection = lazy(() => import("@/components/SolutionsSection"));
+const CommitmentsSection = lazy(() => import("@/components/CommitmentsSection"));
+const NumbersSection = lazy(() => import("@/components/NumbersSection"));
+const TipsVideoSection = lazy(() => import("@/components/TipsVideoSection"));
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+const NewsSection = lazy(() => import("@/components/NewsSection"));
+const GoogleMapsSection = lazy(() => import("@/components/GoogleMapsSection"));
+// const BackToTop = lazy(() => import("@/components/BackToTop"));
+const PolicyConsentModal = lazy(() => import("@/components/PolicyConsentModal"));
+
+// Componente de fallback para seções
+const SectionFallback = () => (
+  <div className="w-full h-32 bg-gray-50 animate-pulse rounded-lg" />
+);
 import { getHomePageStructuredData } from '@/lib/structured-data';
 
 const Index = () => {
@@ -72,18 +81,26 @@ const Index = () => {
           className="scroll-mt-24 relative z-10"
           style={{ y: useTransform(scrollYProgress, [0.1, 0.3], ['0%', '-10%']) }}
         >
-          <SolutionsSection />
+          <Suspense fallback={<SectionFallback />}>
+            <SolutionsSection />
+          </Suspense>
         </motion.section>
 
         <section id="sobre" aria-label="Sobre nós" className="scroll-mt-24 relative z-10">
           <motion.div style={{ y: useTransform(scrollYProgress, [0.2, 0.4], ['0%', '-5%']) }}>
-            <AdvantagesSection />
+            <Suspense fallback={<SectionFallback />}>
+              <AdvantagesSection />
+            </Suspense>
           </motion.div>
           <motion.div style={{ y: useTransform(scrollYProgress, [0.3, 0.5], ['0%', '-8%']) }}>
-            <CommitmentsSection />
+            <Suspense fallback={<SectionFallback />}>
+              <CommitmentsSection />
+            </Suspense>
           </motion.div>
           <motion.div style={{ y: useTransform(scrollYProgress, [0.4, 0.6], ['0%', '-12%']) }}>
-            <NumbersSection />
+            <Suspense fallback={<SectionFallback />}>
+              <NumbersSection />
+            </Suspense>
           </motion.div>
         </section>
 
@@ -93,7 +110,9 @@ const Index = () => {
           className="scroll-mt-24 relative z-10"
           style={{ y: useTransform(scrollYProgress, [0.5, 0.7], ['0%', '-15%']) }}
         >
-          <TipsVideoSection />
+          <Suspense fallback={<SectionFallback />}>
+            <TipsVideoSection />
+          </Suspense>
         </motion.section>
 
         <motion.section 
@@ -102,7 +121,9 @@ const Index = () => {
           className="scroll-mt-24 relative z-10"
           style={{ y: useTransform(scrollYProgress, [0.6, 0.8], ['0%', '-10%']) }}
         >
-          <TestimonialsSection />
+          <Suspense fallback={<SectionFallback />}>
+            <TestimonialsSection />
+          </Suspense>
         </motion.section>
 
         <motion.section 
@@ -111,17 +132,12 @@ const Index = () => {
           className="scroll-mt-24 relative z-10"
           style={{ y: useTransform(scrollYProgress, [0.7, 0.9], ['0%', '-8%']) }}
         >
-          <NewsSection />
+          <Suspense fallback={<SectionFallback />}>
+            <NewsSection />
+          </Suspense>
         </motion.section>
 
-        <motion.section 
-          id="localizacao" 
-          aria-label="Nossa Localização" 
-          className="scroll-mt-24 relative z-10"
-          style={{ y: useTransform(scrollYProgress, [0.8, 1], ['0%', '-5%']) }}
-        >
-          <GoogleMaps />
-        </motion.section>
+
 
         <BackToTop />
 
@@ -132,10 +148,12 @@ const Index = () => {
       </div>
 
       {/* Modal de Consentimento de Políticas - Sempre renderizado */}
-      <PolicyConsentModal 
-        onAccept={handleAccept}
-        onReject={handleReject}
-      />
+      <Suspense fallback={null}>
+        <PolicyConsentModal 
+          onAccept={handleAccept}
+          onReject={handleReject}
+        />
+      </Suspense>
     </Layout>
   );
 };

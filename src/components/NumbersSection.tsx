@@ -109,7 +109,7 @@ const NumbersSection = memo(() => {
       <div className="absolute bottom-20 right-10 w-24 h-24 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full blur-xl animate-pulse delay-1000" />
       <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-gradient-to-br from-secondary/10 to-accent/10 rounded-full blur-xl animate-pulse delay-500" />
       
-      <div className="container relative space-y-20">
+      <div className="container relative space-y-20" style={{ position: 'relative' }}>
         <motion.header 
           className="text-center max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 30 }}

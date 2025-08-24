@@ -269,3 +269,5 @@ export function CookieStatus() {
     </div>
   );
 }
+
+export default CookieConsentBanner;

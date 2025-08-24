@@ -1,0 +1,27 @@
+# Configuração para resolver problemas de MIME type
+<IfModule mod_mime.c>
+    AddType application/javascript .js
+    AddType application/javascript .mjs
+    AddType text/css .css
+    AddType application/json .json
+    AddType application/manifest+json .webmanifest
+    AddType image/webp .webp
+    AddType image/avif .avif
+    AddType font/woff .woff
+    AddType font/woff2 .woff2
+</IfModule>
+
+# Headers para módulos ES
+<IfModule mod_headers.c>
+    <FilesMatch "\.(js|mjs)$">
+        Header set Content-Type "application/javascript; charset=utf-8"
+    </FilesMatch>
+    <FilesMatch "\.json$">
+        Header set Content-Type "application/json; charset=utf-8"
+    </FilesMatch>
+</IfModule>
+
+# Configuração para PWA
+<Files "manifest.json">
+    Header set Content-Type "application/manifest+json; charset=utf-8"
+</Files>

@@ -16,7 +16,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 
-export function TermsOfUse() {
+function TermsOfUse() {
   const lastUpdated = '19 de Agosto de 2025';
   const effectiveDate = '19 de Agosto de 2025';
 
@@ -543,3 +543,5 @@ export function TermsOfUse() {
     </Layout>
   );
 }
+
+export default TermsOfUse;
