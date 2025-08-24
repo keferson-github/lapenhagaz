@@ -22,10 +22,10 @@ const Services = () => {
       <section className="relative py-20 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="container">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-6">
               Nossos Serviços
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-lg sm:text-xl text-muted-foreground mb-8">
               Fornecemos soluções completas em gás natural e água mineral, 
               atendendo desde residências até grandes complexos industriais.
             </p>
@@ -45,7 +45,7 @@ const Services = () => {
                 <Flame className="h-4 w-4" />
                 Gás Natural
               </div>
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-xl sm:text-3xl font-bold mb-4">
                 Energia limpa e eficiente para sua casa ou empresa
               </h2>
               <p className="text-muted-foreground mb-6">
@@ -101,7 +101,7 @@ const Services = () => {
                 <Droplets className="h-4 w-4" />
                 Água Mineral
               </div>
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-xl sm:text-3xl font-bold mb-4">
                 Água mineral pura para seu bem-estar
               </h2>
               <p className="text-muted-foreground mb-6">
@@ -134,10 +134,10 @@ const Services = () => {
         <div className="container">
           <Card className="bg-gradient-to-r from-primary to-accent text-primary-foreground border-0 shadow-[var(--shadow-glow)]">
             <CardContent className="p-8 md:p-12 text-center">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-xl sm:text-3xl font-bold mb-4">
                 Pronto para fazer a diferença?
               </h2>
-              <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg opacity-90 mb-8 max-w-2xl mx-auto">
                 Entre em contato conosco e descubra como nossos serviços podem 
                 otimizar seus custos e melhorar sua qualidade de vida.
               </p>

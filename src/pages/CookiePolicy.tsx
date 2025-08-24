@@ -151,12 +151,12 @@ function CookiePolicy() {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Cookie className="h-8 w-8 text-blue-600" />
-              <h1 className="text-3xl lg:text-4xl font-bold text-gray-900">
+              <Cookie className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 text-center">
                 Política de Cookies
               </h1>
             </div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
               Esta Política descreve como a LapenhaGáz utiliza cookies e tecnologias semelhantes 
               em seu site e canais digitais, em conformidade com a LGPD (Lei nº 13.709/2018).
             </p>
@@ -177,13 +177,13 @@ function CookiePolicy() {
             {/* O que são Cookies */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Cookie className="h-5 w-5" />
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                  <Cookie className="h-4 w-4 sm:h-5 sm:w-5" />
                   1) O que são cookies?
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-gray-600">
+                <p className="text-gray-600 text-sm sm:text-base">
                   Cookies são pequenos arquivos de texto armazenados no seu navegador que permitem lembrar 
                   preferências, aprimorar a segurança, medir audiência e personalizar conteúdo. Tecnologias 
                   equivalentes (como pixels e localStorage) podem ser usadas com finalidades semelhantes.
@@ -194,50 +194,50 @@ function CookiePolicy() {
             {/* Como usamos cookies */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Settings className="h-5 w-5" />
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                  <Settings className="h-4 w-4 sm:h-5 sm:w-5" />
                   2) Como usamos cookies
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-gray-600 mb-4">Utilizamos cookies para:</p>
+                <p className="text-gray-600 mb-4 text-sm sm:text-base">Utilizamos cookies para:</p>
                 
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <Shield className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                    <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-green-600 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-gray-900">Operação e segurança do site</p>
-                      <p className="text-sm text-gray-600">(ex.: manter sessões, prevenir fraudes)</p>
+                      <p className="font-medium text-gray-900 text-sm sm:text-base">Operação e segurança do site</p>
+                      <p className="text-xs sm:text-sm text-gray-600">(ex.: manter sessões, prevenir fraudes)</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-3">
-                    <BarChart3 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <BarChart3 className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-gray-900">Medição e desempenho</p>
-                      <p className="text-sm text-gray-600">(entender navegação e melhorar a experiência)</p>
+                      <p className="font-medium text-gray-900 text-sm sm:text-base">Medição e desempenho</p>
+                      <p className="text-xs sm:text-sm text-gray-600">(entender navegação e melhorar a experiência)</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-3">
-                    <Settings className="h-5 w-5 text-purple-600 mt-0.5 flex-shrink-0" />
+                    <Settings className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-gray-900">Funcionalidades</p>
-                      <p className="text-sm text-gray-600">(guardar idioma, carrinho, formulários)</p>
+                      <p className="font-medium text-gray-900 text-sm sm:text-base">Funcionalidades</p>
+                      <p className="text-xs sm:text-sm text-gray-600">(guardar idioma, carrinho, formulários)</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-3">
-                    <Target className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                    <Target className="h-4 w-4 sm:h-5 sm:w-5 text-orange-600 mt-0.5 flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-gray-900">Marketing/remarketing</p>
-                      <p className="text-sm text-gray-600">(exibir ofertas e medir campanhas), somente com seu consentimento</p>
+                      <p className="font-medium text-gray-900 text-sm sm:text-base">Marketing/remarketing</p>
+                      <p className="text-xs sm:text-sm text-gray-600">(exibir ofertas e medir campanhas), somente com seu consentimento</p>
                     </div>
                   </div>
                 </div>
                 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
-                  <h4 className="font-semibold text-blue-900 mb-3">Base legal:</h4>
+                  <h4 className="font-semibold text-blue-900 mb-3 text-sm sm:text-base">Base legal:</h4>
                   <div className="space-y-2 text-sm text-blue-800">
                     <p><strong>Cookies essenciais:</strong> legítimo interesse e execução de contrato (funcionamento do site).</p>
                     <p><strong>Cookies não essenciais (analytics e marketing):</strong> consentimento do titular.</p>
@@ -249,8 +249,8 @@ function CookiePolicy() {
             {/* Banner de consentimento */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Settings className="h-5 w-5" />
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                  <Settings className="h-4 w-4 sm:h-5 sm:w-5" />
                   3) Banner de consentimento e gestão de preferências
                 </CardTitle>
               </CardHeader>
@@ -271,8 +271,8 @@ function CookiePolicy() {
             {/* Categorias de cookies */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Cookie className="h-5 w-5" />
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                  <Cookie className="h-4 w-4 sm:h-5 sm:w-5" />
                   4) Categorias de cookies
                 </CardTitle>
               </CardHeader>
@@ -280,8 +280,8 @@ function CookiePolicy() {
                 <div className="space-y-4">
                   <div className="border-l-4 border-green-500 pl-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <Shield className="h-5 w-5 text-green-600" />
-                      <h4 className="font-semibold text-gray-900">Essenciais (obrigatórios)</h4>
+                      <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-green-600" />
+                      <h4 className="font-semibold text-gray-900 text-sm sm:text-base">Essenciais (obrigatórios)</h4>
                     </div>
                     <p className="text-sm text-gray-600">
                       Necessários para o funcionamento do site e a segurança (não podem ser desativados no sistema).
@@ -290,8 +290,8 @@ function CookiePolicy() {
                   
                   <div className="border-l-4 border-blue-500 pl-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <BarChart3 className="h-5 w-5 text-blue-600" />
-                      <h4 className="font-semibold text-gray-900">Desempenho/Analytics</h4>
+                      <BarChart3 className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
+                      <h4 className="font-semibold text-gray-900 text-sm sm:text-base">Desempenho/Analytics</h4>
                     </div>
                     <p className="text-sm text-gray-600">
                       Medem audiência e uso do site para melhoria contínua (dependem de consentimento).
@@ -300,8 +300,8 @@ function CookiePolicy() {
                   
                   <div className="border-l-4 border-purple-500 pl-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <Settings className="h-5 w-5 text-purple-600" />
-                      <h4 className="font-semibold text-gray-900">Funcionais</h4>
+                      <Settings className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
+                      <h4 className="font-semibold text-gray-900 text-sm sm:text-base">Funcionais</h4>
                     </div>
                     <p className="text-sm text-gray-600">
                       Lembram preferências (idioma, região, formulário).
@@ -310,8 +310,8 @@ function CookiePolicy() {
                   
                   <div className="border-l-4 border-orange-500 pl-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <Target className="h-5 w-5 text-orange-600" />
-                      <h4 className="font-semibold text-gray-900">Marketing/Remarketing</h4>
+                      <Target className="h-4 w-4 sm:h-5 sm:w-5 text-orange-600" />
+                      <h4 className="font-semibold text-gray-900 text-sm sm:text-base">Marketing/Remarketing</h4>
                     </div>
                     <p className="text-sm text-gray-600">
                       Personalizam anúncios e medem campanhas (dependem de consentimento).
@@ -324,13 +324,13 @@ function CookiePolicy() {
             {/* Cookies de terceiros */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <ExternalLink className="h-5 w-5" />
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                  <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5" />
                   5) Cookies de terceiros e transferências internacionais
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-gray-600">
+                <p className="text-gray-600 text-sm sm:text-base">
                   Alguns cookies são definidos por terceiros (por exemplo, provedores de analytics e publicidade) 
                   e podem processar dados fora do Brasil. Nesses casos, buscamos fornecedores com cláusulas 
                   contratuais, padrões de segurança e privacidade compatíveis com a LGPD.
@@ -347,7 +347,7 @@ function CookiePolicy() {
             <Card className="bg-blue-50 border-blue-200">
               <CardContent className="pt-6">
                 <div className="text-center">
-                  <h3 className="text-lg font-semibold text-blue-900 mb-2">
+                  <h3 className="text-base sm:text-lg font-semibold text-blue-900 mb-2">
                     Contato e Dúvidas sobre Cookies
                   </h3>
                   <p className="text-blue-800 mb-4">
@@ -410,10 +410,10 @@ function CookiePolicy() {
               {/* Tabela de Cookies */}
               <Card>
                 <CardHeader>
-                  <CardTitle>6. Tabela de cookies (exemplos)</CardTitle>
+                  <CardTitle className="text-base sm:text-lg">6. Tabela de cookies (exemplos)</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 text-sm sm:text-base">
                     A lista abaixo é exemplificativa e pode variar conforme as ferramentas ativas no site. 
                     O inventário definitivo aparece no banner de consentimento e poderá ser atualizado.
                   </p>
@@ -422,69 +422,69 @@ function CookiePolicy() {
                     <table className="w-full border-collapse border border-gray-300 text-sm">
                       <thead>
                         <tr className="bg-gray-50">
-                          <th className="border border-gray-300 px-3 py-2 text-left font-semibold">Nome do cookie</th>
-                          <th className="border border-gray-300 px-3 py-2 text-left font-semibold">Domínio</th>
-                          <th className="border border-gray-300 px-3 py-2 text-left font-semibold">Finalidade</th>
-                          <th className="border border-gray-300 px-3 py-2 text-left font-semibold">Duração</th>
-                          <th className="border border-gray-300 px-3 py-2 text-left font-semibold">Categoria</th>
+                          <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-xs sm:text-sm">Nome do cookie</th>
+                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-xs sm:text-sm">Domínio</th>
+                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-xs sm:text-sm">Finalidade</th>
+                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-xs sm:text-sm">Duração</th>
+                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-xs sm:text-sm">Categoria</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="border border-gray-300 px-3 py-2 font-mono text-xs">cookie_consent</td>
-                          <td className="border border-gray-300 px-3 py-2">lapenhagaz.com.br</td>
-                          <td className="border border-gray-300 px-3 py-2">Guardar suas escolhas de consentimento</td>
-                          <td className="border border-gray-300 px-3 py-2">12 meses</td>
-                          <td className="border border-gray-300 px-3 py-2"><span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Essencial</span></td>
+                          <td className="border border-gray-300 px-2 sm:px-3 py-2 font-mono text-xs">cookie_consent</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">lapenhagaz.com.br</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">Guardar suas escolhas de consentimento</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">12 meses</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2"><span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Essencial</span></td>
                         </tr>
                         <tr className="bg-gray-50">
-                          <td className="border border-gray-300 px-3 py-2 font-mono text-xs">sessionid / phpsessid</td>
-                          <td className="border border-gray-300 px-3 py-2">lapenhagaz.com.br</td>
-                          <td className="border border-gray-300 px-3 py-2">Manter sessão e segurança</td>
-                          <td className="border border-gray-300 px-3 py-2">Sessão</td>
-                          <td className="border border-gray-300 px-3 py-2"><span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Essencial</span></td>
+                          <td className="border border-gray-300 px-2 sm:px-3 py-2 font-mono text-xs">sessionid / phpsessid</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">lapenhagaz.com.br</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">Manter sessão e segurança</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">Sessão</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2"><span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Essencial</span></td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-300 px-3 py-2 font-mono text-xs">_ga</td>
-                          <td className="border border-gray-300 px-3 py-2">lapenhagaz.com.br</td>
-                          <td className="border border-gray-300 px-3 py-2">Métricas de uso (Google Analytics)*</td>
-                          <td className="border border-gray-300 px-3 py-2">Até 2 anos</td>
-                          <td className="border border-gray-300 px-3 py-2"><span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Analytics</span></td>
+                          <td className="border border-gray-300 px-2 sm:px-3 py-2 font-mono text-xs">_ga</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">lapenhagaz.com.br</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">Métricas de uso (Google Analytics)*</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">Até 2 anos</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2"><span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Analytics</span></td>
                         </tr>
                         <tr className="bg-gray-50">
-                          <td className="border border-gray-300 px-3 py-2 font-mono text-xs">_ga_*</td>
-                          <td className="border border-gray-300 px-3 py-2">lapenhagaz.com.br</td>
-                          <td className="border border-gray-300 px-3 py-2">Métricas por propriedade (GA4)*</td>
-                          <td className="border border-gray-300 px-3 py-2">Até 2 anos</td>
-                          <td className="border border-gray-300 px-3 py-2"><span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Analytics</span></td>
+                          <td className="border border-gray-300 px-2 sm:px-3 py-2 font-mono text-xs">_ga_*</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">lapenhagaz.com.br</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">Métricas por propriedade (GA4)*</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">Até 2 anos</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2"><span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Analytics</span></td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-300 px-3 py-2 font-mono text-xs">_gid</td>
-                          <td className="border border-gray-300 px-3 py-2">lapenhagaz.com.br</td>
-                          <td className="border border-gray-300 px-3 py-2">Diferenciar visitantes (GA4)*</td>
-                          <td className="border border-gray-300 px-3 py-2">24 horas</td>
-                          <td className="border border-gray-300 px-3 py-2"><span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Analytics</span></td>
+                          <td className="border border-gray-300 px-2 sm:px-3 py-2 font-mono text-xs">_gid</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">lapenhagaz.com.br</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">Diferenciar visitantes (GA4)*</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">24 horas</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2"><span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Analytics</span></td>
                         </tr>
                         <tr className="bg-gray-50">
-                          <td className="border border-gray-300 px-3 py-2 font-mono text-xs">_gcl_au</td>
-                          <td className="border border-gray-300 px-3 py-2">lapenhagaz.com.br</td>
-                          <td className="border border-gray-300 px-3 py-2">Testes/atribuição de anúncios (Google Ads)*</td>
-                          <td className="border border-gray-300 px-3 py-2">90 dias</td>
-                          <td className="border border-gray-300 px-3 py-2"><span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Marketing</span></td>
+                          <td className="border border-gray-300 px-2 sm:px-3 py-2 font-mono text-xs">_gcl_au</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">lapenhagaz.com.br</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">Testes/atribuição de anúncios (Google Ads)*</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">90 dias</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2"><span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Marketing</span></td>
                         </tr>
                         <tr>
-                          <td className="border border-gray-300 px-3 py-2 font-mono text-xs">_fbp</td>
-                          <td className="border border-gray-300 px-3 py-2">lapenhagaz.com.br</td>
-                          <td className="border border-gray-300 px-3 py-2">Entregar/analisar publicidade (Meta)*</td>
-                          <td className="border border-gray-300 px-3 py-2">3 meses</td>
-                          <td className="border border-gray-300 px-3 py-2"><span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Marketing</span></td>
+                          <td className="border border-gray-300 px-2 sm:px-3 py-2 font-mono text-xs">_fbp</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">lapenhagaz.com.br</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">Entregar/analisar publicidade (Meta)*</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">3 meses</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2"><span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Marketing</span></td>
                         </tr>
                         <tr className="bg-gray-50">
-                          <td className="border border-gray-300 px-3 py-2 font-mono text-xs">remember_locale</td>
-                          <td className="border border-gray-300 px-3 py-2">lapenhagaz.com.br</td>
-                          <td className="border border-gray-300 px-3 py-2">Lembrar idioma/região</td>
-                          <td className="border border-gray-300 px-3 py-2">6 meses</td>
-                          <td className="border border-gray-300 px-3 py-2"><span className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Funcional</span></td>
+                          <td className="border border-gray-300 px-2 sm:px-3 py-2 font-mono text-xs">remember_locale</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">lapenhagaz.com.br</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">Lembrar idioma/região</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2 text-xs sm:text-sm">6 meses</td>
+                            <td className="border border-gray-300 px-2 sm:px-3 py-2"><span className="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Funcional</span></td>
                         </tr>
                       </tbody>
                     </table>
@@ -499,10 +499,10 @@ function CookiePolicy() {
               {/* Como Gerenciar Cookies */}
               <Card>
                 <CardHeader>
-                  <CardTitle>7. Como gerenciar e apagar cookies no navegador</CardTitle>
+                  <CardTitle className="text-base sm:text-lg">7. Como gerenciar e apagar cookies no navegador</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 text-sm sm:text-base">
                     Você pode gerenciar cookies pelo banner de consentimento e também pelo seu navegador:
                   </p>
                   
@@ -548,10 +548,10 @@ function CookiePolicy() {
               {/* Retenção e Prazo */}
               <Card>
                 <CardHeader>
-                  <CardTitle>8. Retenção e prazo de armazenamento</CardTitle>
+                  <CardTitle className="text-base sm:text-lg">8. Retenção e prazo de armazenamento</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 text-sm sm:text-base">
                     Cookies persistentes permanecem até o término do prazo indicado ou até você excluí-los. 
                     Cookies de sessão expiram ao fechar o navegador. Registros agregados de analytics podem 
                     permanecer anonimizados para fins estatísticos.
@@ -562,10 +562,10 @@ function CookiePolicy() {
               {/* Atualizações */}
               <Card>
                 <CardHeader>
-                  <CardTitle>9. Atualizações desta Política</CardTitle>
+                  <CardTitle className="text-base sm:text-lg">9. Atualizações desta Política</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-600 mb-4 text-sm sm:text-base">
                     Podemos atualizar esta Política para refletir mudanças legais, tecnológicas ou operacionais. 
                     Publicaremos a versão vigente neste endereço, indicando a data de atualização. Em alterações 
                     relevantes, poderemos comunicar por aviso no site.
@@ -576,10 +576,10 @@ function CookiePolicy() {
               {/* Contato Final */}
               <Card className="bg-blue-50 border-blue-200">
                 <CardHeader>
-                  <CardTitle className="text-blue-900">10. Contato</CardTitle>
+                  <CardTitle className="text-blue-900 text-base sm:text-lg">10. Contato</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-blue-800 mb-4">
+                  <p className="text-blue-800 mb-4 text-sm sm:text-base">
                     Dúvidas sobre esta Política ou sobre suas preferências de cookies?
                   </p>
                   
@@ -632,7 +632,7 @@ function CookiePolicy() {
                   </div>
                   
                   <div className="border-t border-blue-200 pt-4 mt-6">
-                    <h4 className="font-semibold text-blue-900 mb-2">Referências relacionadas</h4>
+                    <h4 className="font-semibold text-blue-900 mb-2 text-sm sm:text-base">Referências relacionadas</h4>
                     <p className="text-sm text-blue-700 mb-4">
                       Política de Privacidade: consulte a versão vigente no site da LapenhaGáz.
                     </p>

@@ -108,10 +108,10 @@ const Blog = () => {
       <section className="relative py-20 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="container">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-6">
               Blog LapenhaGáz
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-lg sm:text-xl text-muted-foreground mb-8">
               Fique por dentro das últimas novidades sobre gás natural, água mineral 
               e sustentabilidade. Conteúdo especializado para você.
             </p>
@@ -151,7 +151,7 @@ const Blog = () => {
       {featuredPost && selectedCategory === "all" && (
         <section className="py-16">
           <div className="container">
-            <h2 className="text-2xl font-bold mb-8">Artigo em Destaque</h2>
+            <h2 className="text-xl sm:text-2xl font-bold mb-8">Artigo em Destaque</h2>
             <Card className="overflow-hidden border-border/70 hover:shadow-[var(--shadow-elevated)] transition-shadow">
               <div className="grid lg:grid-cols-2">
                 <div className="aspect-video lg:aspect-auto">
@@ -171,7 +171,7 @@ const Blog = () => {
                       {new Date(featuredPost.date).toLocaleDateString('pt-BR')}
                     </div>
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">{featuredPost.title}</h3>
+                  <h3 className="text-lg sm:text-2xl font-bold mb-4">{featuredPost.title}</h3>
                   <p className="text-muted-foreground mb-6">{featuredPost.excerpt}</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -193,7 +193,7 @@ const Blog = () => {
       {/* Blog Posts Grid */}
       <section className="py-16 bg-muted/30">
         <div className="container">
-          <h2 className="text-2xl font-bold mb-8">
+          <h2 className="text-xl sm:text-2xl font-bold mb-8">
             {selectedCategory === "all" ? "Todos os Artigos" : 
              categories.find(c => c.id === selectedCategory)?.name}
           </h2>
@@ -260,10 +260,10 @@ const Blog = () => {
         <div className="container">
           <Card className="bg-gradient-to-r from-primary to-accent text-primary-foreground border-0 shadow-[var(--shadow-glow)]">
             <CardContent className="p-8 md:p-12 text-center">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-xl sm:text-3xl font-bold mb-4">
                 Fique por Dentro das Novidades
               </h2>
-              <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg opacity-90 mb-8 max-w-2xl mx-auto">
                 Assine nossa newsletter e receba conteúdos exclusivos sobre 
                 energia limpa e sustentabilidade.
               </p>

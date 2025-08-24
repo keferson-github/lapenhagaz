@@ -54,9 +54,9 @@ const App = () => (
             <Route path="/header-demo" element={<HeaderDemo />} />
             <Route path="/beneficios" element={<Benefits />} />
             <Route path="/segmentos" element={<Segments />} />
-            <Route path="/politica-privacidade" element={<PrivacyPolicy />} />
-            <Route path="/termos-uso" element={<TermsOfUse />} />
-            <Route path="/politica-cookies" element={<CookiePolicy />} />
+            <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+            <Route path="/termos-de-uso" element={<TermsOfUse />} />
+            <Route path="/politica-de-cookies" element={<CookiePolicy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

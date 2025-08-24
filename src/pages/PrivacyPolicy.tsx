@@ -86,8 +86,8 @@ function PrivacyPolicy() {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Shield className="h-8 w-8 text-blue-600" />
-              <h1 className="text-3xl lg:text-4xl font-bold text-gray-900">
+              <Shield className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 text-center">
                 Política de Privacidade — LapenhaGáz
               </h1>
             </div>
@@ -102,7 +102,7 @@ function PrivacyPolicy() {
                 <p><strong>WhatsApp:</strong> {companyInfo.whatsapp.join(' / ')}</p>
               </div>
             </div>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-4">
               Esta política explica como tratamos dados pessoais em conformidade com a LGPD (Lei 13.709/2018) 
               e outras normas aplicáveis. Leia com atenção para entender seus direitos e nossas práticas.
             </p>
@@ -113,19 +113,19 @@ function PrivacyPolicy() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Eye className="h-5 w-5" />
+                  <Eye className="h-4 w-4 sm:h-5 sm:w-5" />
                   1. Quais dados pessoais coletamos
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 {/* Dados fornecidos pelo usuário */}
                 <div>
-                  <h4 className="font-semibold mb-3 text-lg">a) Dados que você nos fornece</h4>
+                  <h4 className="font-semibold mb-3 text-base sm:text-lg">a) Dados que você nos fornece</h4>
                   <div className="space-y-4">
                     {dataTypesCollected.providedByUser.map((category, index) => (
                       <div key={index} className="border-l-4 border-blue-500 pl-4">
-                        <h5 className="font-medium text-gray-900 mb-2">{category.category}:</h5>
-                        <p className="text-gray-700">{category.items.join(', ')}.</p>
+                        <h5 className="font-medium text-gray-900 mb-2 text-sm sm:text-base">{category.category}:</h5>
+                        <p className="text-gray-700 text-sm sm:text-base">{category.items.join(', ')}.</p>
                       </div>
                     ))}
                   </div>
@@ -133,7 +133,7 @@ function PrivacyPolicy() {
 
                 {/* Dados coletados automaticamente */}
                 <div>
-                  <h4 className="font-semibold mb-3 text-lg">b) Dados coletados automaticamente</h4>
+                  <h4 className="font-semibold mb-3 text-base sm:text-lg">b) Dados coletados automaticamente</h4>
                   <div className="space-y-4">
                     {dataTypesCollected.automaticallyCollected.map((category, index) => (
                       <div key={index} className="border-l-4 border-green-500 pl-4">
@@ -146,7 +146,7 @@ function PrivacyPolicy() {
 
                 {/* Dados de terceiros */}
                 <div>
-                  <h4 className="font-semibold mb-3 text-lg">c) Dados de terceiros (operadores)</h4>
+                  <h4 className="font-semibold mb-3 text-base sm:text-lg">c) Dados de terceiros (operadores)</h4>
                   <div className="space-y-4">
                     {dataTypesCollected.fromThirdParties.map((category, index) => (
                       <div key={index} className="border-l-4 border-orange-500 pl-4">
@@ -170,7 +170,7 @@ function PrivacyPolicy() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <FileText className="h-5 w-5" />
+                  <FileText className="h-4 w-4 sm:h-5 sm:w-5" />
                   2. Para que usamos seus dados (finalidades)
                 </CardTitle>
               </CardHeader>
@@ -179,7 +179,7 @@ function PrivacyPolicy() {
                   {purposes.map((purpose, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
-                      <p className="text-gray-700">{purpose}</p>
+                      <p className="text-gray-700 text-sm sm:text-base">{purpose}</p>
                     </div>
                   ))}
                 </div>
@@ -190,35 +190,35 @@ function PrivacyPolicy() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Lock className="h-5 w-5" />
+                  <Lock className="h-4 w-4 sm:h-5 sm:w-5" />
                   3. Bases legais (LGPD)
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-4">
                   <div className="border-l-4 border-blue-600 pl-4">
-                    <h4 className="font-semibold mb-2">Execução de contrato (art. 7º, V)</h4>
-                    <p className="text-gray-600 text-sm">Pedidos, entrega e suporte.</p>
+                    <h4 className="font-semibold mb-2 text-sm sm:text-base">Execução de contrato (art. 7º, V)</h4>
+                    <p className="text-gray-600 text-xs sm:text-sm">Pedidos, entrega e suporte.</p>
                   </div>
                   
                   <div className="border-l-4 border-green-600 pl-4">
-                    <h4 className="font-semibold mb-2">Obrigação legal/regulatória (art. 7º, II)</h4>
-                    <p className="text-gray-600 text-sm">Documentação fiscal e guarda mínima.</p>
+                    <h4 className="font-semibold mb-2 text-sm sm:text-base">Obrigação legal/regulatória (art. 7º, II)</h4>
+                    <p className="text-gray-600 text-xs sm:text-sm">Documentação fiscal e guarda mínima.</p>
                   </div>
                   
                   <div className="border-l-4 border-orange-600 pl-4">
-                    <h4 className="font-semibold mb-2">Legítimo interesse (art. 7º, IX)</h4>
-                    <p className="text-gray-600 text-sm">Segurança, prevenção a fraudes e melhorias, sempre preservando seus direitos.</p>
+                    <h4 className="font-semibold mb-2 text-sm sm:text-base">Legítimo interesse (art. 7º, IX)</h4>
+                    <p className="text-gray-600 text-xs sm:text-sm">Segurança, prevenção a fraudes e melhorias, sempre preservando seus direitos.</p>
                   </div>
                   
                   <div className="border-l-4 border-purple-600 pl-4">
-                    <h4 className="font-semibold mb-2">Consentimento (art. 7º, I)</h4>
-                    <p className="text-gray-600 text-sm">Comunicações promocionais, cookies não essenciais e geolocalização.</p>
+                    <h4 className="font-semibold mb-2 text-sm sm:text-base">Consentimento (art. 7º, I)</h4>
+                    <p className="text-gray-600 text-xs sm:text-sm">Comunicações promocionais, cookies não essenciais e geolocalização.</p>
                   </div>
                   
                   <div className="border-l-4 border-red-600 pl-4">
-                    <h4 className="font-semibold mb-2">Proteção do crédito (art. 7º, X)</h4>
-                    <p className="text-gray-600 text-sm">Análises antifraude e confirmação de pagamento.</p>
+                    <h4 className="font-semibold mb-2 text-sm sm:text-base">Proteção do crédito (art. 7º, X)</h4>
+                    <p className="text-gray-600 text-xs sm:text-sm">Análises antifraude e confirmação de pagamento.</p>
                   </div>
                 </div>
               </CardContent>
@@ -228,7 +228,7 @@ function PrivacyPolicy() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Shield className="h-5 w-5" />
+                  <Shield className="h-4 w-4 sm:h-5 sm:w-5" />
                   4. Cookies e tecnologias semelhantes
                 </CardTitle>
               </CardHeader>
@@ -241,28 +241,28 @@ function PrivacyPolicy() {
                 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                    <h4 className="font-semibold text-green-800 mb-2">Cookies Essenciais</h4>
+                    <h4 className="font-semibold text-green-800 mb-2 text-sm sm:text-base">Cookies Essenciais</h4>
                     <p className="text-sm text-green-700">
                       Necessários para funcionamento básico (sessão, carrinho, preferências de cookies).
                     </p>
                   </div>
                   
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                    <h4 className="font-semibold text-blue-800 mb-2">Cookies Analíticos</h4>
+                    <h4 className="font-semibold text-blue-800 mb-2 text-sm sm:text-base">Cookies Analíticos</h4>
                     <p className="text-sm text-blue-700">
                       Coletam dados sobre uso e performance para melhorias (Google Analytics).
                     </p>
                   </div>
                   
                   <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                    <h4 className="font-semibold text-purple-800 mb-2">Cookies de Preferências</h4>
+                    <h4 className="font-semibold text-purple-800 mb-2 text-sm sm:text-base">Cookies de Preferências</h4>
                     <p className="text-sm text-purple-700">
                       Lembram suas configurações e personalizam a experiência.
                     </p>
                   </div>
                   
                   <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                    <h4 className="font-semibold text-orange-800 mb-2">Cookies de Marketing</h4>
+                    <h4 className="font-semibold text-orange-800 mb-2 text-sm sm:text-base">Cookies de Marketing</h4>
                     <p className="text-sm text-orange-700">
                       Para anúncios relevantes e medição de campanhas (Facebook, Google Ads).
                     </p>
@@ -282,7 +282,7 @@ function PrivacyPolicy() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <UserCheck className="h-5 w-5" />
+                  <UserCheck className="h-4 w-4 sm:h-5 sm:w-5" />
                   5. Compartilhamento de dados
                 </CardTitle>
               </CardHeader>
@@ -293,7 +293,7 @@ function PrivacyPolicy() {
                 
                 <div className="space-y-4">
                   <div className="border-l-4 border-blue-500 pl-4">
-                    <h4 className="font-semibold mb-2">Prestadores de serviços (operadores)</h4>
+                    <h4 className="font-semibold mb-2 text-sm sm:text-base">Prestadores de serviços (operadores)</h4>
                     <p className="text-gray-600 text-sm">
                       Pagamento, logística, comunicação, hospedagem e análise de dados. 
                       Todos com contratos de proteção de dados.
@@ -301,14 +301,14 @@ function PrivacyPolicy() {
                   </div>
                   
                   <div className="border-l-4 border-green-500 pl-4">
-                    <h4 className="font-semibold mb-2">Autoridades competentes</h4>
+                    <h4 className="font-semibold mb-2 text-sm sm:text-base">Autoridades competentes</h4>
                     <p className="text-gray-600 text-sm">
                       Quando exigido por lei, ordem judicial ou para proteção de direitos.
                     </p>
                   </div>
                   
                   <div className="border-l-4 border-orange-500 pl-4">
-                    <h4 className="font-semibold mb-2">Operações societárias</h4>
+                    <h4 className="font-semibold mb-2 text-sm sm:text-base">Operações societárias</h4>
                     <p className="text-gray-600 text-sm">
                       Em caso de fusão, aquisição ou reestruturação, com as devidas proteções.
                     </p>
@@ -328,7 +328,7 @@ function PrivacyPolicy() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <MapPin className="h-5 w-5" />
+                  <MapPin className="h-4 w-4 sm:h-5 sm:w-5" />
                   6. Transferência internacional de dados
                 </CardTitle>
               </CardHeader>
@@ -373,7 +373,7 @@ function PrivacyPolicy() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Shield className="h-5 w-5" />
+                  <Shield className="h-4 w-4 sm:h-5 sm:w-5" />
                   7. Segurança da informação
                 </CardTitle>
               </CardHeader>
@@ -385,7 +385,7 @@ function PrivacyPolicy() {
                 
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <h4 className="font-semibold mb-3">Medidas Técnicas</h4>
+                    <h4 className="font-semibold mb-3 text-sm sm:text-base">Medidas Técnicas</h4>
                     <div className="space-y-2">
                       <div className="flex gap-3">
                         <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0" />
@@ -410,7 +410,7 @@ function PrivacyPolicy() {
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold mb-3">Medidas Organizacionais</h4>
+                    <h4 className="font-semibold mb-3 text-sm sm:text-base">Medidas Organizacionais</h4>
                     <div className="space-y-2">
                       <div className="flex gap-3">
                         <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0" />
@@ -453,7 +453,7 @@ function PrivacyPolicy() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <FileText className="h-5 w-5" />
+                  <FileText className="h-4 w-4 sm:h-5 sm:w-5" />
                   8. Prazos de retenção de dados
                 </CardTitle>
               </CardHeader>
@@ -490,7 +490,7 @@ function PrivacyPolicy() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <UserCheck className="h-5 w-5" />
+                  <UserCheck className="h-4 w-4 sm:h-5 sm:w-5" />
                   9. Seus direitos (art. 18 da LGPD)
                 </CardTitle>
               </CardHeader>
@@ -510,7 +510,7 @@ function PrivacyPolicy() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Shield className="h-5 w-5" />
+                  <Shield className="h-4 w-4 sm:h-5 sm:w-5" />
                   10. Crianças e adolescentes
                 </CardTitle>
               </CardHeader>
@@ -526,7 +526,7 @@ function PrivacyPolicy() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Phone className="h-5 w-5" />
+                  <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
                   11. Canais de contato (Encarregado/DPO)
                 </CardTitle>
               </CardHeader>
@@ -552,7 +552,7 @@ function PrivacyPolicy() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <FileText className="h-5 w-5" />
+                  <FileText className="h-4 w-4 sm:h-5 sm:w-5" />
                   12. Atualizações desta política
                 </CardTitle>
               </CardHeader>
@@ -584,7 +584,7 @@ function PrivacyPolicy() {
               <CardContent className="pt-6">
                 <div className="text-center space-y-4">
                   <div>
-                    <h3 className="text-lg font-semibold text-blue-900 mb-2">
+                    <h3 className="text-base sm:text-lg font-semibold text-blue-900 mb-2">
                       Lapenhagaz Comercio de Gas LTDA
                     </h3>
                     <p className="text-blue-800 text-sm">

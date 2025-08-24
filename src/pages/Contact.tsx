@@ -61,10 +61,10 @@ const Contact = () => {
       <section className="relative py-20 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="container">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Entre em Contato
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-6">
+          Entre em Contato
+        </h1>
+        <p className="text-lg sm:text-xl text-muted-foreground mb-8">
               Estamos aqui para ajudar você. Entre em contato conosco e descobra 
               como podemos atender suas necessidades de energia e água mineral.
             </p>
@@ -99,7 +99,7 @@ const Contact = () => {
             {/* Contact Form */}
             <Card className="border-border/70">
               <CardHeader>
-                <CardTitle className="text-2xl">Envie sua Mensagem</CardTitle>
+                <CardTitle className="text-lg sm:text-2xl">Envie sua Mensagem</CardTitle>
                 <p className="text-muted-foreground">
                   Preencha o formulário abaixo e nossa equipe entrará em contato.
                 </p>
@@ -243,7 +243,7 @@ const Contact = () => {
       <section className="py-16">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Precisa de Ajuda Rápida?</h2>
+            <h2 className="text-xl sm:text-3xl font-bold mb-4">Precisa de Ajuda Rápida?</h2>
             <p className="text-muted-foreground">
               Escolha a opção mais conveniente para você.
             </p>

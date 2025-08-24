@@ -23,10 +23,10 @@ const About = () => {
       <section className="relative py-20 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="container">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Sobre a LapenhaGáz
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-6">
+          Sobre a Lapenhagáz
+        </h1>
+        <p className="text-lg sm:text-xl text-muted-foreground mb-8">
               Mais de uma década de experiência fornecendo energia limpa e água pura 
               para milhares de famílias e empresas em nossa região.
             </p>
@@ -39,7 +39,7 @@ const About = () => {
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Nossa História</h2>
+              <h2 className="text-xl sm:text-3xl font-bold mb-6">Nossa História</h2>
               <p className="text-muted-foreground mb-6">
                 A LapenhaGáz nasceu em 2010 com a missão de levar energia limpa e 
                 confiável para residências e empresas. Começamos como uma pequena 
@@ -70,7 +70,7 @@ const About = () => {
       {/* Timeline */}
       <section className="py-16 bg-muted/30">
         <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12">Marcos da Nossa Jornada</h2>
+          <h2 className="text-xl sm:text-3xl font-bold text-center mb-12">Marcos da Nossa Jornada</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {timeline.map(({ year, title, desc }, index) => (
               <Card key={year} className="relative border-border/70">
@@ -79,9 +79,9 @@ const About = () => {
                     <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
                       <Calendar className="h-5 w-5 text-primary" />
                     </div>
-                    <div className="font-bold text-2xl text-primary">{year}</div>
+                    <div className="font-bold text-lg sm:text-2xl text-primary">{year}</div>
                   </div>
-                  <h3 className="font-semibold text-lg mb-2">{title}</h3>
+                  <h3 className="font-semibold text-base sm:text-lg mb-2">{title}</h3>
                   <p className="text-sm text-muted-foreground">{desc}</p>
                 </CardContent>
               </Card>
@@ -94,7 +94,7 @@ const About = () => {
       <section className="py-16">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Nossos Valores</h2>
+            <h2 className="text-xl sm:text-3xl font-bold mb-4">Nossos Valores</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Os princípios que guiam nossa empresa e definem nossa cultura organizacional.
             </p>
@@ -106,7 +106,7 @@ const About = () => {
                   <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
                     <Icon className="h-8 w-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-4">{title}</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-4">{title}</h3>
                   <p className="text-muted-foreground">{desc}</p>
                 </CardContent>
               </Card>
@@ -129,7 +129,7 @@ const About = () => {
               />
             </div>
             <div className="order-1 lg:order-2">
-              <h2 className="text-3xl font-bold mb-6">Infraestrutura de Ponta</h2>
+              <h2 className="text-xl sm:text-3xl font-bold mb-6">Infraestrutura de Ponta</h2>
               <p className="text-muted-foreground mb-6">
                 Investimos continuamente em infraestrutura moderna e segura. 
                 Nossas instalações seguem os mais rigorosos padrões de qualidade 
@@ -166,10 +166,10 @@ const About = () => {
         <div className="container">
           <Card className="bg-gradient-to-r from-primary to-accent text-primary-foreground border-0 shadow-[var(--shadow-glow)]">
             <CardContent className="p-8 md:p-12 text-center">
-              <h2 className="text-3xl font-bold mb-4">
+              <h2 className="text-xl sm:text-3xl font-bold mb-4">
                 Faça parte da nossa história
               </h2>
-              <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg opacity-90 mb-8 max-w-2xl mx-auto">
                 Junte-se aos milhares de clientes que já confiam na LapenhaGáz 
                 para suas necessidades energéticas.
               </p>

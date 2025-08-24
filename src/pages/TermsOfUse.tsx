@@ -127,12 +127,12 @@ function TermsOfUse() {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Scale className="h-8 w-8 text-blue-600" />
-              <h1 className="text-3xl lg:text-4xl font-bold text-gray-900">
+              <Scale className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 text-center">
                 Termos de Uso
               </h1>
             </div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
               Estes termos estabelecem as condições para o uso de nossos serviços. 
               Leia atentamente antes de utilizar nossa plataforma.
             </p>
@@ -177,18 +177,18 @@ function TermsOfUse() {
               return (
                 <Card key={section.id}>
                   <CardHeader>
-                    <CardTitle className="flex items-center gap-3">
+                    <CardTitle className="flex items-center gap-3 text-base sm:text-lg">
                       <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
                         {index + 1}
                       </div>
-                      <Icon className="h-5 w-5 text-blue-600" />
+                      <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
                       {section.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
                       {section.content.map((paragraph, pIndex) => (
-                        <p key={pIndex} className="text-gray-600 leading-relaxed">
+                        <p key={pIndex} className="text-gray-600 leading-relaxed text-sm sm:text-base">
                           {paragraph}
                         </p>
                       ))}
@@ -203,13 +203,13 @@ function TermsOfUse() {
           <Card className="mt-8 bg-yellow-50 border-yellow-200">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-yellow-900">
-                <AlertTriangle className="h-5 w-5" />
+                <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5" />
                 Informações Importantes
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="text-yellow-800 space-y-2">
-                <p className="font-semibold">Antes de utilizar nossos serviços:</p>
+                <p className="font-semibold text-sm sm:text-base">Antes de utilizar nossos serviços:</p>
                 <ul className="space-y-1 text-sm">
                   <li className="flex items-center gap-2">
                     <div className="w-1.5 h-1.5 bg-yellow-600 rounded-full" />
@@ -236,7 +236,7 @@ function TermsOfUse() {
           <Card className="mt-6">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Scale className="h-5 w-5" />
+                <Scale className="h-4 w-4 sm:h-5 sm:w-5" />
                 Resolução de Conflitos
               </CardTitle>
             </CardHeader>
@@ -247,21 +247,21 @@ function TermsOfUse() {
               
               <div className="grid lg:grid-cols-3 gap-4">
                 <div className="border rounded-lg p-4">
-                  <h4 className="font-semibold mb-2 text-blue-900">1º Passo</h4>
+                  <h4 className="font-semibold mb-2 text-blue-900 text-sm sm:text-base">1º Passo</h4>
                   <p className="text-sm text-gray-600">
                     Entre em contato com nosso atendimento ao cliente através dos canais oficiais.
                   </p>
                 </div>
                 
                 <div className="border rounded-lg p-4">
-                  <h4 className="font-semibold mb-2 text-blue-900">2º Passo</h4>
+                  <h4 className="font-semibold mb-2 text-blue-900 text-sm sm:text-base">2º Passo</h4>
                   <p className="text-sm text-gray-600">
                     Se necessário, encaminhe sua questão para nosso departamento jurídico.
                   </p>
                 </div>
                 
                 <div className="border rounded-lg p-4">
-                  <h4 className="font-semibold mb-2 text-blue-900">3º Passo</h4>
+                  <h4 className="font-semibold mb-2 text-blue-900 text-sm sm:text-base">3º Passo</h4>
                   <p className="text-sm text-gray-600">
                     Como último recurso, a questão será resolvida conforme a legislação vigente.
                   </p>
@@ -294,7 +294,7 @@ function TermsOfUse() {
                   <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
                     9
                   </div>
-                  <Shield className="h-5 w-5 text-blue-600" />
+                  <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
                   Privacidade e Cookies
                 </CardTitle>
               </CardHeader>
@@ -324,7 +324,7 @@ function TermsOfUse() {
                   <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
                     10
                   </div>
-                  <AlertTriangle className="h-5 w-5 text-blue-600" />
+                  <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
                   Garantias, Responsabilidades e Isenções
                 </CardTitle>
               </CardHeader>
@@ -356,7 +356,7 @@ function TermsOfUse() {
                   <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
                     11
                   </div>
-                  <FileText className="h-5 w-5 text-blue-600" />
+                  <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
                   Links para Terceiros
                 </CardTitle>
               </CardHeader>
@@ -375,7 +375,7 @@ function TermsOfUse() {
                   <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
                     12
                   </div>
-                  <Phone className="h-5 w-5 text-blue-600" />
+                  <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
                   Comunicações Oficiais
                 </CardTitle>
               </CardHeader>
@@ -395,7 +395,7 @@ function TermsOfUse() {
                   <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
                     13
                   </div>
-                  <FileText className="h-5 w-5 text-blue-600" />
+                  <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
                   Alterações destes Termos
                 </CardTitle>
               </CardHeader>
@@ -415,7 +415,7 @@ function TermsOfUse() {
                   <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
                     14
                   </div>
-                  <Scale className="h-5 w-5 text-blue-600" />
+                  <Scale className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
                   Legislação e Foro
                 </CardTitle>
               </CardHeader>
@@ -432,10 +432,10 @@ function TermsOfUse() {
           <Card className="mt-8 bg-blue-50 border-blue-200">
             <CardContent className="pt-6">
               <div className="text-center">
-                <h3 className="text-lg font-semibold text-blue-900 mb-2">
+                <h3 className="text-base sm:text-lg font-semibold text-blue-900 mb-2">
                   Dúvidas sobre os Termos de Uso?
                 </h3>
-                <p className="text-blue-800 mb-4">
+                <p className="text-blue-800 mb-4 text-sm sm:text-base">
                   Nossa equipe está pronta para esclarecer qualquer questão sobre nossos termos e condições.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -463,7 +463,7 @@ function TermsOfUse() {
           {/* Seção 15: Contato */}
           <Card className="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200">
             <CardHeader>
-              <CardTitle className="flex items-center gap-3 text-2xl">
+              <CardTitle className="flex items-center gap-3 text-lg sm:text-2xl">
                 <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold">
                   15
                 </div>
@@ -477,26 +477,26 @@ function TermsOfUse() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <Mail className="h-5 w-5 text-blue-600" />
+                    <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-blue-600" />
                     <div>
-                      <p className="font-medium text-gray-900">E-mail</p>
-                      <p className="text-gray-600">contato@lapenhagaz.com.br</p>
+                      <p className="font-medium text-gray-900 text-sm sm:text-base">E-mail</p>
+                      <p className="text-gray-600 text-sm sm:text-base">contato@lapenhagaz.com.br</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center gap-3">
-                    <Phone className="h-5 w-5 text-green-600" />
+                    <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-green-600" />
                     <div>
-                      <p className="font-medium text-gray-900">WhatsApp</p>
-                      <p className="text-gray-600">(11) 98388-0542 / (11) 98388-0596</p>
+                      <p className="font-medium text-gray-900 text-sm sm:text-base">WhatsApp</p>
+                      <p className="text-gray-600 text-sm sm:text-base">(11) 98388-0542 / (11) 98388-0596</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-3">
-                     <MapPin className="h-5 w-5 text-red-600 mt-1" />
+                     <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-red-600 mt-1" />
                      <div>
-                       <p className="font-medium text-gray-900">Endereço</p>
-                       <p className="text-gray-600">
+                       <p className="font-medium text-gray-900 text-sm sm:text-base">Endereço</p>
+                       <p className="text-gray-600 text-sm sm:text-base">
                          Rua Dr. Assis Ribeiro, 1424 – Anexo A<br />
                          Jardim Piratininga, São Paulo/SP<br />
                          CEP 03717-000
@@ -507,7 +507,7 @@ function TermsOfUse() {
                 
                 <div className="space-y-4">
                   <div className="p-4 bg-white rounded-lg border">
-                    <p className="font-semibold text-gray-900 mb-2">Lapenhagaz Comercio de Gas LTDA</p>
+                    <p className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Lapenhagaz Comercio de Gas LTDA</p>
                     <p className="text-gray-600">CNPJ 04.394.600/0001-32</p>
                   </div>
                   
@@ -526,7 +526,7 @@ function TermsOfUse() {
             <CardContent className="pt-6">
               <div className="text-center">
                 <Shield className="h-8 w-8 text-green-600 mx-auto mb-3" />
-                <h3 className="text-lg font-semibold text-green-900 mb-2">
+                <h3 className="text-base sm:text-lg font-semibold text-green-900 mb-2">
                   Ao utilizar nossos serviços, você confirma que:
                 </h3>
                 <div className="text-green-800 space-y-2 max-w-2xl mx-auto">

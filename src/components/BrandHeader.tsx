@@ -19,7 +19,7 @@ import {
   UserGroupIcon as Team
 } from "@heroicons/react/24/outline";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 
 // Hook personalizado para animar contagem de números
@@ -102,6 +102,63 @@ export const BrandHeader = () => {
   const [searchFocused, setSearchFocused] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(80);
   const headerRef = useRef<HTMLElement>(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Detectar se estamos em uma página de política
+  const isPolicyPage = ['/politica-de-privacidade', '/termos-de-uso', '/politica-de-cookies'].includes(location.pathname);
+
+  // Função para lidar com navegação das páginas de política
+  const handleNavigation = (href: string, event: React.MouseEvent) => {
+    if (isPolicyPage) {
+      event.preventDefault();
+
+      if (href.startsWith('#')) {
+        navigate('/', { replace: true });
+
+        const sectionId = href.substring(1);
+        const tryScroll = () => {
+          const el = document.getElementById(sectionId);
+          if (el) {
+            // Calcular offset baseado na altura real do cabeçalho
+            const headerHeight = headerRef.current?.offsetHeight || 96;
+            const elementPosition = el.offsetTop;
+            const offsetPosition = elementPosition - headerHeight;
+
+            // Scroll suave para a posição exata
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+            
+            if (window?.history?.replaceState) {
+              window.history.replaceState(null, '', `/#${sectionId}`);
+            }
+            return true;
+          }
+          return false;
+        };
+
+        if (!tryScroll()) {
+          let attempts = 0;
+          const maxAttempts = 100; // até ~5s (50ms * 100)
+          const interval = setInterval(() => {
+            if (tryScroll() || attempts++ >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 50);
+        }
+      } else {
+        navigate(href);
+      }
+    } else {
+      // Se não for página de política e estivermos fora da home, redireciona para a home com a âncora
+      if (href.startsWith('#') && location.pathname !== '/') {
+        event.preventDefault();
+        navigate('/' + href);
+      }
+    }
+  };
 
   // Hooks de animação para os números
   const securityCount = useCountAnimation(100, 3000);
@@ -335,6 +392,7 @@ export const BrandHeader = () => {
               >
                 <a 
                   href={item.href} 
+                  onClick={(e) => handleNavigation(item.href, e)}
                   className={`flex items-center gap-1 px-4 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-muted/50 hover:text-primary group ${
                     activeDropdown === item.label ? 'bg-muted/50 text-primary' : 'text-foreground/80'
                   }`}
@@ -402,7 +460,14 @@ export const BrandHeader = () => {
             <li key={item.label} className={`transform transition-all duration-300 ease-in-out ${
               open ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
             }`} style={{ transitionDelay: open ? `${index * 50}ms` : '0ms' }}>
-              <a href={item.href} onClick={() => setOpen(false)} className="block py-2 text-center font-medium hover:text-primary transition-colors duration-200">
+              <a 
+                href={item.href} 
+                onClick={(e) => {
+                  handleNavigation(item.href, e);
+                  setOpen(false);
+                }} 
+                className="block py-2 text-center font-medium hover:text-primary transition-colors duration-200"
+              >
                 {item.label}
               </a>
             </li>
