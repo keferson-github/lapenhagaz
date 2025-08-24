@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:dev": "vite build --mode development",
+    "build": "vite build && powershell -Command \"Copy-Item .\\vercel.json .\\dist\\vercel.json -Force\"",
+    "build:dev": "vite build --mode development && powershell -Command \"Copy-Item .\\vercel.json .\\dist\\vercel.json -Force\"",
     "lint": "eslint .",
     "preview": "vite preview",
     "optimize:images": "node scripts/optimize-hero-images.js",

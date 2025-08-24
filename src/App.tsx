@@ -4,7 +4,7 @@ import { Suspense, lazy } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ToasterComponents from "./components/ToasterComponents";
 
-// Lazy loading de todas as páginas
+// Dynamic imports para code splitting
 const Index = lazy(() => import("./pages/Index"));
 const Services = lazy(() => import("./pages/Services"));
 const About = lazy(() => import("./pages/About"));

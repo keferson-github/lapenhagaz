@@ -24,7 +24,7 @@
       ]
     },
     {
-      "source": "/(.*\\.mjs)$",
+      "source": "/(.*\\.js)$",
       "headers": [
         {
           "key": "Content-Type",
